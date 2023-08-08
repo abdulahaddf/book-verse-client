@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg_primary_red{
+.primary-Bg{
     background-color: #d71d24; 
 }
-.primary_red{
+.primary-Color{
     color: #d71d24; 
 }
