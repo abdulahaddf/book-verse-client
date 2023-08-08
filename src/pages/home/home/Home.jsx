@@ -1,3 +1,4 @@
+import BookCard from "../../../shared/components/BookCard/BookCard";
 import Footer from "../../../shared/footer/Footer";
 
 const Home = () => {
@@ -6,15 +7,7 @@ const Home = () => {
             {/* All Components of home will be shown here */}
 
 
-            <h1>Tonu Tonmoy</h1>
-            <h1>Tonmoy</h1>
-
-            <button className="btn btn-neutral">Neutral</button>
-
-            <h1>heheheh</h1>
-
-
-            <h2> parbo</h2>
+            <BookCard></BookCard>
 
             <div>
                 <h1 className="text-5xl text-center">WELCOME TO THE BOOK VERSE</h1>
