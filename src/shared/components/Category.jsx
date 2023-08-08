@@ -3,7 +3,7 @@
 const Category = () => {
     return (
         <div>
-            <h2>Hello world</h2>
+            <h2>hello</h2>
         </div>
     );
 };
