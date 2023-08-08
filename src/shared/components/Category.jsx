@@ -6,8 +6,8 @@ const Category = () => {
     <div>
       <style>
         {`
-            .react-tabs__tab--selected {
-                background-color: #d56868; 
+            .react-tabs__tab--selected{
+              background-color: #d71d24; 
                 color: #fff; 
                 border-radius: 10px;
                 border:0;

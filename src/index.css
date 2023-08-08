@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg_primary_red{
+    background-color: #d71d24; 
+}
+.primary_red{
+    color: #d71d24; 
+}
