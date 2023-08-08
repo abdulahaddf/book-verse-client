@@ -1,4 +1,6 @@
 import Footer from "../../../shared/footer/Footer";
+import Category from "../../../shared/components/Category";
+import "react-tabs/style/react-tabs.css";
 
 const Home = () => {
     return (
@@ -22,6 +24,7 @@ const Home = () => {
                 <h1>updated</h1>
             </div>
 
+            <Category/>
 
 
         </div>
