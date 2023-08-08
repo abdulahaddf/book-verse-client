@@ -14,6 +14,8 @@ const Home = () => {
             <button className="btn btn-neutral">Neutral</button>
 
             <h1>heheheh</h1>
+
+            <h2> r pari na</h2>
         </div>
     );
 };
