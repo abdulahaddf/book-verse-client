@@ -8,16 +8,16 @@ const Home = () => {
         <div>
             {/* All Components of home will be shown here */}
 
+                <h1 className="text-3xl text-center">WELCOME TO THE BOOK VERSE</h1>
 
             <BookCard></BookCard>
 
-            <div>
-                <h1 className="text-5xl text-center">WELCOME TO THE BOOK VERSE</h1>
-                <Footer></Footer>
-                <h1>updated</h1>
-            </div>
-
+          
             <Category/>
+                
+        
+
+                <Footer></Footer>
 
 
         </div>
