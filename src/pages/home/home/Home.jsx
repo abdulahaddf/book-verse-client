@@ -12,6 +12,8 @@ const Home = () => {
             <h1>Tonmoy</h1>
 
             <button className="btn btn-neutral">Neutral</button>
+
+            <h1>heheheh</h1>
         </div>
     );
 };
