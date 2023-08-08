@@ -14,7 +14,7 @@ const Home = () => {
             <h1>heheheh</h1>
 
 
-            <h2> r pari na</h2>
+            <h2> parbo</h2>
 
             <div>
                 <h1 className="text-5xl text-center">WELCOME TO THE BOOK VERSE</h1>
@@ -25,6 +25,8 @@ const Home = () => {
 
 
         </div>
+
+
     );
 
 };
