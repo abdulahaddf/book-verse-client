@@ -1,3 +1,7 @@
+
+
+
+
 .book-card-container {
 
     border-bottom: 10px solid rgba(20, 7, 7, 0.178);
@@ -33,34 +37,11 @@
 }
 
 
-.book-card-button{
+/* 
 
- outline-color: #d71d24;
-    
-
-   
-
-}
-
-.book-card-button:hover{
-
- outline: none !important;
-
- background-color: #d71d24;
-
- transition-duration: 1s;
-
- 
+*/
 
 
 
- border-radius: 10px;
 
- color: rgb(255, 255, 255);
-
- 
-    
-
-   
-
-}
+/* CSS */
