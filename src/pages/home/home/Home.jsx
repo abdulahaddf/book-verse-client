@@ -2,13 +2,15 @@ import BookCard from "../../../shared/components/BookCard/BookCard";
 import Footer from "../../../shared/footer/Footer";
 import Category from "../../../shared/components/Category";
 import "react-tabs/style/react-tabs.css";
+import Navbar from "../../../shared/navbar/Navbar";
 
 const Home = () => {
     return (
         <div>
             {/* All Components of home will be shown here */}
 
-                <h1 className="text-3xl text-center">WELCOME TO THE BOOK VERSE</h1>
+               
+                <Navbar></Navbar>
 
             <BookCard></BookCard>
 
