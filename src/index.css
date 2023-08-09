@@ -88,3 +88,13 @@
      transition-duration: 1s;
 }
 /* button end */
+
+
+@layer components {
+    
+    .primary-Color{
+        @apply text-[#d71d24]; 
+    }
+    
+  }
+  
