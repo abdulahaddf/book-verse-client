@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Tab, TabList, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -46,3 +47,16 @@ const Category = () => {
 };
 
 export default Category;
+=======
+
+
+const Category = () => {
+    return (
+        <div>
+            <h2>hello world</h2>
+        </div>
+    );
+};
+
+export default Category;
+>>>>>>> 3de3d4b887a09d9b3454efe6bdc6dd0be69311e1

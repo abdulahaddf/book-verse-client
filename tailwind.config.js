@@ -9,5 +9,5 @@ export default {
     themes: ["light"],
   },
   plugins: [require("daisyui")],
-};
-  
+}
+
