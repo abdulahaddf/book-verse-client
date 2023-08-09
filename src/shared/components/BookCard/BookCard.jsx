@@ -4,11 +4,11 @@ import './BookCard.css'
 
 const BookCard = () => {
     return (
-        <div className=" w-[90%] mx-auto py-[50px]">
+        <div className=" w-[90%] mx-auto py-[50px] duration-[2s] ">
 
             {/* card 1 start */}
             <div className="group book-card-container relative block bg-black  h-[500px] w-[300px] 
-            overflow-hidden  
+            overflow-hidden  duration-[2s]
             
              " >
                 <img
@@ -27,7 +27,7 @@ const BookCard = () => {
 
                     <div className="mt-32 sm:mt-48 lg:mt-[50%]   ">
                         <div
-                            className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-[1s]  "
+                            className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-[2s]  "
                         >
                             <h3 className="text-[20px] text-white my-5 ">
                                 Name:  By The Book  lorem
@@ -65,33 +65,27 @@ const BookCard = () => {
 
                                 <div>
                                     <button
-                                        className="inline-block px-4 py-2 text-[15px] font-medium text-white outline 
-                                          rounded-[30px] 
-                                      book-card-button  hover:bg-gradient-to-r from-green-500 to-green-700  "
+                                        className="primary-button  "
                                     >
                                         Rent Now
                                     </button>
                                 </div>
                                 <div>
                                     <button
-                                        className="inline-block px-4 py-2 text-[15px] font-medium text-white outline 
-                                          rounded-[30px] 
-                                      book-card-button  hover:bg-gradient-to-r from-green-500 to-green-700  "
+                                        className="primary-button  "
                                     >
                                         Buy Now
                                     </button>
                                 </div>
                                 <div>
                                     <button
-                                        className="inline-block px-4 py-2 text-[15px] font-medium text-white outline 
-                                          rounded-[30px] 
-                                      book-card-button  
-                                      
-                                    hover:bg-gradient-to-r from-green-500 to-green-700
+                                        className="primary-button 
+
+                                    
                                     
                                     "
                                     >
-                                       View Details
+                                        View Details
                                     </button>
                                 </div>
 
@@ -109,10 +103,13 @@ const BookCard = () => {
             {/* card 1 end */}
 
 
+            <div className='mt-[50px] text-center'>
 
-            {/* card 2 */}
+                {/* Button 1 */}
 
-
+                <button className="primary-button hover:scale-105  " type="button">HOVER ME</button>
+                {/* Button end 1*/}
+            </div>
 
         </div>
     );
