@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.primary-Bg{
-    background-color: #d71d24; 
-}
-.primary-Color{
-    color: #d71d24; 
-}
+
+
+@layer components {
+    
+    .primary-Color{
+        @apply text-[#d71d24]; 
+    }
+    
+  }
+  
