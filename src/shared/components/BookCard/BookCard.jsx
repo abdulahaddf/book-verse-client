@@ -107,7 +107,7 @@ const BookCard = () => {
 
                 {/* Button 1 */}
 
-                <button className="primary-button hover:scale-105  " type="button">HOVER ME</button>
+                <button className="primary-button hover:scale-105  " type="button">Button</button>
                 {/* Button end 1*/}
             </div>
 
