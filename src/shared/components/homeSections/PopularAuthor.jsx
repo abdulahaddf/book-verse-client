@@ -6,7 +6,7 @@ const PopularAuthor = () => {
     return (
         <div>
              <Heading title={'Popular Author'} ></Heading>
-            <div className="grid grid-cols-3 content-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 content-center">
                 <BookCard/>
                 <BookCard/>
                 <BookCard/>
