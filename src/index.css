@@ -13,79 +13,53 @@
 /* button start */
 
 
+
+
+/* CSS */
 .primary-button {
-    padding: 15px;
-    border: none;
-    outline: none;
-    color: rgb(255, 255, 255);
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 100px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .primary-button:before {
-    content: "";
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing-button-85 20s linear infinite;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 100px;
-  }
-  
-  @keyframes glowing-button-85 {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-  
-  .primary-button:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #222;
-    left: 0;
-    top: 0;
-    border-radius: 100px;
-  }
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #d71d24;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  /* min-height: 60px; */
+  min-width: 0;
+  outline: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  /* width: 100%; */
+  will-change: transform;
 
-.primary-button:hover{
-    color: rgb(0, 255, 255) !important;
+ 
+}
 
-    transform: scale(1.1) !important;
+.primary-button:disabled {
+  pointer-events: none;
+}
 
-     transition-duration: 1s;
+.primary-button:hover {
+  color: white;
+  background-color: #d71d24;
+  box-shadow: rgba(105, 4, 4, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.primary-button:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
 /* button end */
 
