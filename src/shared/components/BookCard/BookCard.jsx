@@ -4,11 +4,11 @@ import './BookCard.css'
 
 const BookCard = () => {
     return (
-        <div className=" w-[90%] mx-auto py-[50px] duration-[2s] ">
+        <div className=" w-[90%] mx-auto py-[50px]  ">
 
             {/* card 1 start */}
             <div className="group book-card-container relative block bg-black  h-[500px] w-[300px] 
-            overflow-hidden  duration-[2s]
+            overflow-hidden  
             
              " >
                 <img
@@ -25,16 +25,15 @@ const BookCard = () => {
 
                     <p className="text-xl font-bold text-white sm:text-2xl">Tony Wayne</p> */}
 
-                    <div className="mt-32 sm:mt-48 lg:mt-[50%]   ">
+                    <div className="mt-32 sm:mt-48 lg:mt-[30%]   ">
                         <div
-                            className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-[2s]  "
+                            className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-[1s]  "
                         >
                             <h3 className="text-[20px] text-white my-5 ">
-                                Name:  By The Book  lorem
-
+                                Name:  By The Book  
                             </h3>
                             <p className="text-[18px] text-white my-5 ">
-                                Author:  Jasmine Juillory
+                                Author:  Jasmine Juillory   
 
 
                             </p>
@@ -44,7 +43,7 @@ const BookCard = () => {
                             </p>
 
 
-                            <div className=' flex items-center  mt-5 pb-[100px]'>
+                            <div className=' flex items-center  mt-5 pb-[30px]'>
                                 <p className="text-[18px] text-white mr-2">
 
                                     Rating:
@@ -60,39 +59,44 @@ const BookCard = () => {
 
                             </div>
 
+                            <div>
+                                <section className='flex gap-3 w-full    '>
 
-                            <section className='flex gap-3 w-full  absolute bottom-0   '>
+                                    <div>
+                                        <button
+                                            className="primary-button  "
+                                        >
+                                            Rent Now
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button
+                                            className="primary-button  "
+                                        >
+                                            Buy Now
+                                        </button>
+                                    </div>
 
-                                <div>
-                                    <button
-                                        className="primary-button  "
-                                    >
-                                        Rent Now
-                                    </button>
-                                </div>
-                                <div>
-                                    <button
-                                        className="primary-button  "
-                                    >
-                                        Buy Now
-                                    </button>
-                                </div>
-                                <div>
-                                    <button
-                                        className="primary-button 
 
-                                    
-                                    
-                                    "
+
+
+
+                                </section>
+
+
+
+                                <section className=' my-5'>
+                                    <button
+                                        className="primary-button w-full "
                                     >
                                         View Details
                                     </button>
-                                </div>
+                                </section>
 
 
+                            </div>
 
 
-                            </section>
 
 
                         </div>
