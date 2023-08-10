@@ -43,22 +43,22 @@ const Footer = () => {
           </p>
           <div className="flex items-center justify-between my-2">
             <a href="">
-              <FaFacebookSquare className="hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaFacebookSquare>
+              <FaFacebookSquare className="text-[#3b5998] hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaFacebookSquare>
             </a>
             <a href="">
-              <FaTwitterSquare className="hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaTwitterSquare>
+              <FaTwitterSquare className="text-[#55acee] hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaTwitterSquare>
             </a>
             <a href="">
-              <FaTumblrSquare className="hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm  text-3xl"></FaTumblrSquare>
+              <FaTumblrSquare className="text-[#001833] hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm  text-3xl"></FaTumblrSquare>
             </a>
             <a href="">
-              <FaGooglePlusSquare className="hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaGooglePlusSquare>
+              <FaGooglePlusSquare className="text-[#de4e43] hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaGooglePlusSquare>
             </a>
             <a href="">
-              <FaYoutubeSquare className="hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaYoutubeSquare>
+              <FaYoutubeSquare className="text-[#ff0101] hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaYoutubeSquare>
             </a>
             <a href="">
-              <FaLinkedin className="hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaLinkedin>
+              <FaLinkedin className="text-[#007bb5] hover:bg-[#d71d24] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaLinkedin>
             </a>
           </div>
         </div>
@@ -173,8 +173,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <div className="divider"></div>  */}
+
       <hr />
+
       <div className="footer items-center py-6 px-10 text-base-content">
         <div className="items-center">
           <p>Copyright © 2023 Book verse- All right reserved</p>
@@ -184,25 +185,25 @@ const Footer = () => {
         </div>
         <div className="grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center md:justify-self-end text-center">
           <a
-            className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
+            className="text-3xl text-[#002f86] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
           >
             <FaPaypal></FaPaypal>
           </a>
           <a
-            className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
+            className="text-3xl text-[#6772e5] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
           >
             <FaStripe></FaStripe>
           </a>
           <a
-            className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
+            className="text-3xl text-[#f79e1b] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
           >
             <FaCcMastercard></FaCcMastercard>
           </a>
           <a
-            className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
+            className="text-3xl text-[#1434cb] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
           >
             <FaCcVisa></FaCcVisa>
@@ -214,7 +215,7 @@ const Footer = () => {
             <FaCcDiscover></FaCcDiscover>
           </a>
           <a
-            className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
+            className="text-3xl text-[#016fd0] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
           >
             <SiAmericanexpress></SiAmericanexpress>
