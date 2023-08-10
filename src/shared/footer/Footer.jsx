@@ -14,6 +14,7 @@ import {
   FaCcVisa,
   FaCcDiscover,
 } from "react-icons/fa";
+import {SiAmericanexpress} from "react-icons/si"
 import { Link } from "react-router-dom";
 import img1 from "../../assets/store/apple.png";
 import img2 from "../../assets/store/google.png";
@@ -180,7 +181,7 @@ const Footer = () => {
             Designed by <span className="text-[#d71d24]">Team EndCoders</span>
           </p>
         </div>
-        <div className="grid grid-cols-4 md:grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <div className="grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center md:justify-self-end text-center">
           <a
             className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
@@ -210,6 +211,12 @@ const Footer = () => {
             href=""
           >
             <FaCcDiscover></FaCcDiscover>
+          </a>
+          <a
+            className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
+            href=""
+          >
+            <SiAmericanexpress></SiAmericanexpress>
           </a>
         </div>
       </div>
