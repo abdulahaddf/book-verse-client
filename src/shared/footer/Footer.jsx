@@ -14,7 +14,7 @@ import {
   FaCcVisa,
   FaCcDiscover,
 } from "react-icons/fa";
-import {SiAmericanexpress} from "react-icons/si"
+import { SiAmericanexpress } from "react-icons/si";
 import { Link } from "react-router-dom";
 import img1 from "../../assets/store/apple.png";
 import img2 from "../../assets/store/google.png";
@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="footer p-10 flex-row md:flex-col justify-between">
         <div>
           <h3 className="font-bold uppercase">Book Verse</h3>
-          {/* <img src="" alt="" /> */}
+          {/* <img className="w-12 h-12 rounded-lg" src="../../assets/image/logo.jpg" alt="" /> */}
           <p>
             Your premier source for captivating books <br /> across genres.
             Explore with us!
@@ -173,8 +173,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      <div className="footer items-center bg-slate-200 py-4 px-10 text-base-content">
+      {/* <div className="divider"></div>  */}
+      <hr />
+      <div className="footer items-center py-6 px-10 text-base-content">
         <div className="items-center">
           <p>Copyright © 2023 Book verse- All right reserved</p>
           <p>
