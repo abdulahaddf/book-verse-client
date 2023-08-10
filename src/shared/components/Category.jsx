@@ -19,7 +19,7 @@ const Category = () => {
       </style>
 
       <div className="p-10">
-        <div className="text-center p-5 ">
+        <div className="text-center p-5">
           <Tabs>
             <TabList>
               <Tab>Fiction</Tab>
@@ -34,7 +34,7 @@ const Category = () => {
               <Tab>Cookbooks & Food Travel</Tab>
               <Tab>Health & Wellness</Tab>
               <Tab>Business & Economics</Tab>
-              <Tab>Children's Books Young Adult Poetry</Tab>
+              <Tab>Childrens Books Young Adult Poetry</Tab>
               <Tab>Religion & Spirituality</Tab>
               <Tab>Philosophy Gardening & DIY</Tab>
             </TabList>
