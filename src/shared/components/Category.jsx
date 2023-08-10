@@ -1,21 +1,22 @@
-import { Tab, TabList, Tabs } from "react-tabs";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-
+import CategoryCard from "./CategoryCard";
 const Category = () => {
   return (
     <div>
       <style>
         {`
             .react-tabs__tab--selected{
-              background-color: #d71d24; 
-                color: #fff; 
-                border-radius: 10px;
-                border:0;
+              background-color: #d71d24;  
+              opacity: 90%;
+              color: #fff; 
+              border-radius: 10px;
+              border:0;
               }
               .react-tabs__tab-list{
                 border: none;
               }
-            `}
+            `}<CategoryCard/>
       </style>
 
       <div className="p-10">
@@ -34,10 +35,139 @@ const Category = () => {
               <Tab>Cookbooks & Food Travel</Tab>
               <Tab>Health & Wellness</Tab>
               <Tab>Business & Economics</Tab>
-              <Tab>Childrens Books Young Adult Poetry</Tab>
+              <Tab>Children's Books </Tab>
+              <Tab>Young Adult Poetry</Tab>
               <Tab>Religion & Spirituality</Tab>
               <Tab>Philosophy Gardening & DIY</Tab>
             </TabList>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+                <CategoryCard/>
+              </div>
+            </TabPanel>
           </Tabs>
         </div>
       </div>
