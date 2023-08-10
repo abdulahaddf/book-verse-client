@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
+
 import { Link, NavLink } from 'react-router-dom';
 import '../navbar/Navbar.css'
 import {  Bars3Icon } from '@heroicons/react/24/solid'
 import logo from '../../assets/image/logo.jpg'
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
+ 
   const navItems = 
    
-    <>
-                <li><NavLink to="/submenu-1" activeClassName="active-link">Home</NavLink></li>
-                <li><NavLink to="/submenu-2" activeClassName="active-link">All Books</NavLink></li>
-                <li><NavLink to="/submenu-2" activeClassName="active-link">Popular Books</NavLink></li>
-                <li><NavLink to="/submenu-2" activeClassName="active-link">Old Books</NavLink></li>
+    <ul className='text-xl flex gap-5'>
+                 <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " text-red" : " link link-hover"
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
+                <NavLink to="/submenu-2" className={({ isActive }) =>
+                    isActive ? " text-red " : " link link-hover"
+                  }>All Books</NavLink>
+                <NavLink to="/submenu-2" className={({ isActive }) =>
+                    isActive ? " text-red " : " link link-hover"
+                  }>Popular Books</NavLink>
+                <NavLink to="/submenu-2" className={({ isActive }) =>
+                    isActive ? " text-red " : " link link-hover"
+                  }>Old Books</NavLink>
 
      
      
     
-    </>
+    </ul>
 
   return (
     <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
@@ -42,8 +52,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to='/' className=" rounded-full  "><img className='items-center justify-center ' style={{ width:70}} src={logo} alt="" /></Link>
-        <NavLink to="/" className="font-bold text-3xl px-4 text-red-600" activeClassName="active-link">Book Verse</NavLink>
+        <Link to='/' className=" rounded-full  "><img className='w-32 items-center justify-center ' src={logo} alt="logo" /></Link>
+       
       </div>
       {/* ... rest of the code */}
       <div className="navbar-center hidden lg:flex">
@@ -53,7 +63,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <NavLink to="/button" className="btn " activeClassName="active-link">LogIn</NavLink>
+        <NavLink to="/button" className="btn-primary " activeClassName="active-link">LogIn</NavLink>
       </div>
     </div>
   );

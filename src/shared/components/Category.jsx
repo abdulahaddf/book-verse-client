@@ -1,9 +1,11 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import CategoryCard from "./CategoryCard";
+import Heading from "./heading/Heading";
 const Category = () => {
   return (
-    <div>
+    <div className="section">
+      <Heading title={'Categories'}></Heading>
       <style>
         {`
             .react-tabs__tab--selected{
@@ -44,8 +46,7 @@ const Category = () => {
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 <CategoryCard/>
                 <CategoryCard/>
-                <CategoryCard/>
-                <CategoryCard/>
+               
               </div>
             </TabPanel>
             <TabPanel>
@@ -53,7 +54,7 @@ const Category = () => {
                 <CategoryCard/>
                 <CategoryCard/>
                 <CategoryCard/>
-                <CategoryCard/>
+            
               </div>
             </TabPanel>
             <TabPanel>
