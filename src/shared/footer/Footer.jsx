@@ -164,7 +164,7 @@ const Footer = () => {
           </form>
           <div className="flex -mt-6">
             <a href="">
-              <img className="w-24 h-24" src={img1} alt="" />
+              <img className="w-24 h-24 -ms-1" src={img1} alt="" />
             </a>
             <a href="">
               <img className="w-24 h-24" src={img2} alt="" />
@@ -180,7 +180,7 @@ const Footer = () => {
             Designed by <span className="text-[#d71d24]">Team EndCoders</span>
           </p>
         </div>
-        <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <div className="grid grid-cols-4 md:grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <a
             className="text-3xl bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
