@@ -3,12 +3,24 @@
 import React, { useState } from 'react';
 import { Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
-import { Link, NavLink } from 'react-router-dom';
-import '../navbar/Navbar.css'
+
+
 import {  Bars3Icon } from '@heroicons/react/24/solid'
-import logo from '../../assets/image/logo.jpg'
+import logo from '../../assets/image/logo.png'
 
 const Navbar = () => {
+
+
+ 
+
+
+
+
+
+
+
+
+
 
 
  
@@ -17,14 +29,18 @@ const Navbar = () => {
     <>
 
 
+
+<li>
 <NavLink
-  className={({ isActive }) =>
+  className={({ isActive } ) =>
     isActive ? " text-red hover:text-orange-400" : " no-underline"
   }
   to="/"
 >
   Home
 </NavLink>
+</li>
+<li>
 <NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
@@ -33,6 +49,8 @@ const Navbar = () => {
 >
   All Books
 </NavLink>
+</li>
+<li>
 <NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
@@ -41,6 +59,8 @@ const Navbar = () => {
 >
   Popular Books
 </NavLink>
+</li>
+<li>
 <NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
@@ -49,22 +69,24 @@ const Navbar = () => {
 >
   Old Books
 </NavLink>
+</li>
 
 
 
+</>
      
      
     
-    </ul>
+    
 
   return (
-    <div className="navbar bg-base-100 max-w-screen-xl mx-auto ">
+    <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
       <div className="navbar-start">
-        <div className="drawer lg:hidden z-10">
+        <div className="drawer lg:hidden">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {/* Page content here */}
-            <label htmlFor="my-drawer" className=""><Bars3Icon className='w-[35px]'></Bars3Icon></label>
+            <label htmlFor="my-drawer" className=""><Bars3Icon className='w-[24px]'></Bars3Icon></label>
           </div> 
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
@@ -75,7 +97,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to='/' className=" rounded-full  "><img className='w-32 items-center justify-center ' src={logo} alt="logo" /></Link>
+        {/* <Link to='/' className=" "><img className='w-32 items-center justify-center  rounded-full ' src={logo} alt="logo" /></Link> */}
+        <Link to='/' className="w-[83px] h-[63px] rounded-full  "><img className='rounded-full'  src={logo} alt="" /></Link>
        
       </div>
       {/* ... rest of the code */}

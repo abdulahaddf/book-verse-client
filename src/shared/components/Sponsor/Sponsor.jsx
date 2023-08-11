@@ -9,7 +9,8 @@ import "./Sponsor.css";
 const Sponsor = () => {
   return (
     <div className="my-20">
-      <Marquee pauseOnHover>
+    
+      <Marquee  pauseOnHover>
         <div>
           <img
             className="w-48 h-16 px-3 py-2 bg-slate-100 rounded-md image_wrapper"

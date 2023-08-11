@@ -168,6 +168,7 @@ const Category = () => {
               </div>
             </TabPanel>
           </Tabs>
+          <div></div>
         </div>
       </div>
     </div>
