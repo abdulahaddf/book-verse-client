@@ -1,6 +1,5 @@
-.active-link {
-    color: red;
+.active-link:hover{
+    
+    color: blue;
   }
-  .fontSize {
-    font-size: 43px; /* Adjust the size as needed */
-  }
+ 
