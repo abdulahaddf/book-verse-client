@@ -9,7 +9,7 @@ const FeaturedBooks = () => {
         <Heading title={"Featured Books"}></Heading>
         <Link className="btn-primary ">See More</Link>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 content-center">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 content-center">
         <BookCard />
         <BookCard />
         <BookCard />
