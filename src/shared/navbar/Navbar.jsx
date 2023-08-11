@@ -1,6 +1,8 @@
+
+
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import '../navbar/Navbar.css'
+import { Link, NavLink} from 'react-router-dom';
+import './Navbar.css';
 import {  Bars3Icon } from '@heroicons/react/24/solid'
 import logo from '../../assets/image/logo.jpg'
 
@@ -14,10 +16,42 @@ const Navbar = () => {
   const navItems = 
    
     <>
-                <li><NavLink to="/" activeClassName="active-link">Home</NavLink></li>
-                <li><NavLink to="/submenu-2" activeClassName="active-link">All Books</NavLink></li>
-                <li><NavLink to="/submenu-2" activeClassName="active-link">Popular Books</NavLink></li>
-                <li><NavLink to="/submenu-2" activeClassName="active-link">Old Books</NavLink></li>
+
+
+<li><NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red hover:text-orange-400" : " no-underline"
+  }
+  to="/"
+>
+  Home
+</NavLink></li>
+<li><NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  All Books
+</NavLink></li>
+<li><NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  Popular Books
+</NavLink></li>
+<li><NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  Old Books
+</NavLink></li>
+
+
 
      
      
@@ -31,7 +65,7 @@ const Navbar = () => {
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {/* Page content here */}
-            <label htmlFor="my-drawer" className=""><Bars3Icon className='w-[24px]'></Bars3Icon></label>
+            <label htmlFor="my-drawer" className=""><Bars3Icon className='w-[35px]'></Bars3Icon></label>
           </div> 
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
@@ -43,7 +77,7 @@ const Navbar = () => {
           </div>
         </div>
         <Link to='/' className=" rounded-full  "><img className='items-center justify-center ' style={{ width:70}} src={logo} alt="" /></Link>
-        <NavLink to="/" className="font-bold text-3xl px-4 text-red-600" activeClassName="active-link">Book Verse</NavLink>
+        <NavLink to="/" className="font-bold text-3xl px-4 text-red-600 whitespace-nowrap" activeClassName="active-link">Book Verse</NavLink>
       </div>
       {/* ... rest of the code */}
       <div className="navbar-center hidden lg:flex">
@@ -53,7 +87,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <NavLink to="/button" className="btn " activeClassName="active-link">LogIn</NavLink>
+        <NavLink to="/button" className="btn btn-sm " activeClassName="active-link">LogIn</NavLink>
       </div>
     </div>
   );
