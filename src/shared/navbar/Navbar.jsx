@@ -1,6 +1,10 @@
 
-import { Link, NavLink } from 'react-router-dom';
-import '../navbar/Navbar.css'
+
+import React, { useState } from 'react';
+import { Link, NavLink} from 'react-router-dom';
+import './Navbar.css';
+
+
 import {  Bars3Icon } from '@heroicons/react/24/solid'
 import logo from '../../assets/image/logo.png'
 
@@ -8,31 +12,72 @@ const Navbar = () => {
 
 
  
+
+
+
+
+
+
+
+
+
+
+
+ 
   const navItems = 
    
-    <ul className='text-xl flex gap-5'>
-                 <NavLink
-                  className={({ isActive }) =>
-                    isActive ? " text-red" : " link link-hover"
-                  }
-                  to="/"
-                >
-                  Home
-                </NavLink>
-                <NavLink to="/submenu-2" className={({ isActive }) =>
-                    isActive ? " text-red " : " link link-hover"
-                  }>All Books</NavLink>
-                <NavLink to="/submenu-2" className={({ isActive }) =>
-                    isActive ? " text-red " : " link link-hover"
-                  }>Popular Books</NavLink>
-                <NavLink to="/submenu-2" className={({ isActive }) =>
-                    isActive ? " text-red " : " link link-hover"
-                  }>Old Books</NavLink>
+    <>
 
+
+
+<li>
+<NavLink
+  className={({ isActive } ) =>
+    isActive ? " text-red hover:text-orange-400" : " no-underline"
+  }
+  to="/"
+>
+  Home
+</NavLink>
+</li>
+<li>
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  All Books
+</NavLink>
+</li>
+<li>
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  Popular Books
+</NavLink>
+</li>
+<li>
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  Old Books
+</NavLink>
+</li>
+
+
+
+</>
      
      
     
-    </ul>
+    
 
   return (
     <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
@@ -52,7 +97,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to='/' className=" rounded-full  "><img className='w-14 items-center justify-center ' src={logo} alt="logo" /></Link>
+        {/* <Link to='/' className=" "><img className='w-32 items-center justify-center  rounded-full ' src={logo} alt="logo" /></Link> */}
+        <Link to='/' className="w-[83px] h-[63px] rounded-full  "><img className='rounded-full'  src={logo} alt="" /></Link>
        
       </div>
       {/* ... rest of the code */}
