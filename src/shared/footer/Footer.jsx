@@ -18,7 +18,7 @@ import { SiAmericanexpress } from "react-icons/si";
 import { Link } from "react-router-dom";
 import img1 from "../../assets/store/apple.png";
 import img2 from "../../assets/store/google.png";
-import logo from "../../assets/image/logo.jpg";
+import logo from "../../assets/image/logo.png";
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">

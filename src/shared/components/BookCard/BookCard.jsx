@@ -2,12 +2,12 @@ import "./BookCard.css";
 
 const BookCard = () => {
   return (
-    <div className=" mx-auto py-10  ">
+    <div className=" mx-auto my-5 py-10  ">
       {/* card 1 start */}
       <div
-        className="group book-card-container relative block bg-black  h-[500px] w-[300px] 
+        className="group book-card-container relative block bg-black h-11/12
             overflow-hidden "
-      >
+      > 
         <img
           alt="Developer"
           src="https://i.ibb.co/Hh6CkGD/71im6-JWXVu-L-AC-UF1000-1000-QL80.jpg"
@@ -15,7 +15,6 @@ const BookCard = () => {
         />
 
         <div className="relative px-8 flex justify-between   ">
-
           <div className="mt-32 sm:mt-48 lg:mt-[30%]   ">
             <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500  ">
               <h3 className="text-[20px] text-white my-5 ">
@@ -79,10 +78,6 @@ const BookCard = () => {
           </div>
         </div>
       </div>
-
-  
-
-     
     </div>
   );
 };

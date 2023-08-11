@@ -2,7 +2,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import '../navbar/Navbar.css'
 import {  Bars3Icon } from '@heroicons/react/24/solid'
-import logo from '../../assets/image/logo.jpg'
+import logo from '../../assets/image/logo.png'
 
 const Navbar = () => {
 
@@ -52,7 +52,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to='/' className=" rounded-full  "><img className='w-32 items-center justify-center ' src={logo} alt="logo" /></Link>
+        <Link to='/' className=" rounded-full  "><img className='w-20 items-center justify-center ' src={logo} alt="logo" /></Link>
        
       </div>
       {/* ... rest of the code */}
