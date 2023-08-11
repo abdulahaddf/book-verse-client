@@ -16,8 +16,8 @@ import {
 } from "react-icons/fa";
 import { SiAmericanexpress } from "react-icons/si";
 import { Link } from "react-router-dom";
-import img1 from "../../assets/store/apple.png";
-import img2 from "../../assets/store/google.png";
+import appleStore from "../../assets/store/apple.png";
+import googlePlay from "../../assets/store/google.png";
 import logo from "../../assets/image/logo.jpg";
 const Footer = () => {
   return (
@@ -169,10 +169,10 @@ const Footer = () => {
           </form>
           <div className="flex -mt-6">
             <a href="">
-              <img className="w-24 h-24 -ms-1" src={img1} alt="" />
+              <img className="w-24 h-24 -ms-1" src={appleStore} alt="" />
             </a>
             <a href="">
-              <img className="w-24 h-24" src={img2} alt="" />
+              <img className="w-24 h-24" src={googlePlay} alt="" />
             </a>
           </div>
         </div>

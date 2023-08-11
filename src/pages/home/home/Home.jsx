@@ -5,6 +5,7 @@ import Navbar from "../../../shared/navbar/Navbar";
 import FeaturedBooks from "../../../shared/components/homeSections/FeaturedBooks";
 import PopularAuthor from "../../../shared/components/homeSections/PopularAuthor";
 import Banner from "../Banner/Banner";
+import Sponsor from "../../../shared/components/Sponsor/Sponsor";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Category />
       <FeaturedBooks/>
       <PopularAuthor/>
+      <Sponsor></Sponsor>
       </section>
       <Footer></Footer>
     </div>
