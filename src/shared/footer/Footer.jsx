@@ -25,7 +25,7 @@ const Footer = () => {
       <div className="footer p-10 flex-row md:flex-col justify-between">
         <div>
           <div className=" flex items-center gap-4">
-            <img className="w-16 h-12 rounded-sm" src={logo} alt="" />
+            <img className="w-12 h-12 rounded-sm" src={logo} alt="" />
             <h1 className="font-bold text-2xl text-[#d71d24]">Book verse</h1>
           </div>
           <p>
