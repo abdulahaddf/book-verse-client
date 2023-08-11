@@ -60,10 +60,10 @@ const BookCard = () => {
               <div>
                 <section className="flex gap-3 w-full    ">
                   <div>
-                    <button className="btn-card  ">Rent Now</button>
+                    <button className="btn-card h-[45px] ">Rent Now</button>
                   </div>
                   <div>
-                    <button className="btn-card  ">Buy Now</button>
+                    <button className="btn-card h-[45px] ">Buy Now</button>
                   </div>
                 </section>
 
