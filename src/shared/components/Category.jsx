@@ -18,7 +18,7 @@ const Category = () => {
               .react-tabs__tab-list{
                 border: none;
               }
-            `}<CategoryCard/>
+            `}
       </style>
 
       <div className="p-10">
@@ -46,8 +46,10 @@ const Category = () => {
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 <CategoryCard/>
                 <CategoryCard/>
-               
+                <CategoryCard/>
+                <CategoryCard/>
               </div>
+              <button className="button-52 text-white font-bold">See more</button>
             </TabPanel>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
@@ -70,6 +72,11 @@ const Category = () => {
                 <CategoryCard/>
                 <CategoryCard/>
                 <CategoryCard/>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                <CategoryCard/>
                 <CategoryCard/>
               </div>
             </TabPanel>
@@ -83,15 +90,6 @@ const Category = () => {
             </TabPanel>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                <CategoryCard/>
-                <CategoryCard/>
-                <CategoryCard/>
-                <CategoryCard/>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                <CategoryCard/>
                 <CategoryCard/>
                 <CategoryCard/>
                 <CategoryCard/>
