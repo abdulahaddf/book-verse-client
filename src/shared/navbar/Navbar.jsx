@@ -1,4 +1,8 @@
 
+
+import React, { useState } from 'react';
+import { Link, NavLink} from 'react-router-dom';
+import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import '../navbar/Navbar.css'
 import {  Bars3Icon } from '@heroicons/react/24/solid'
@@ -10,24 +14,43 @@ const Navbar = () => {
  
   const navItems = 
    
-    <ul className='text-xl flex gap-5'>
-                 <NavLink
-                  className={({ isActive }) =>
-                    isActive ? " text-red" : " link link-hover"
-                  }
-                  to="/"
-                >
-                  Home
-                </NavLink>
-                <NavLink to="/submenu-2" className={({ isActive }) =>
-                    isActive ? " text-red " : " link link-hover"
-                  }>All Books</NavLink>
-                <NavLink to="/submenu-2" className={({ isActive }) =>
-                    isActive ? " text-red " : " link link-hover"
-                  }>Popular Books</NavLink>
-                <NavLink to="/submenu-2" className={({ isActive }) =>
-                    isActive ? " text-red " : " link link-hover"
-                  }>Old Books</NavLink>
+    <>
+
+
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red hover:text-orange-400" : " no-underline"
+  }
+  to="/"
+>
+  Home
+</NavLink>
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  All Books
+</NavLink>
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  Popular Books
+</NavLink>
+<NavLink
+  className={({ isActive }) =>
+    isActive ? " text-red" : "no-underline"
+  }
+  to="/fd"
+>
+  Old Books
+</NavLink>
+
+
 
      
      
@@ -35,13 +58,13 @@ const Navbar = () => {
     </ul>
 
   return (
-    <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
+    <div className="navbar bg-base-100 max-w-screen-xl mx-auto ">
       <div className="navbar-start">
-        <div className="drawer lg:hidden">
+        <div className="drawer lg:hidden z-10">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {/* Page content here */}
-            <label htmlFor="my-drawer" className=""><Bars3Icon className='w-[24px]'></Bars3Icon></label>
+            <label htmlFor="my-drawer" className=""><Bars3Icon className='w-[35px]'></Bars3Icon></label>
           </div> 
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
