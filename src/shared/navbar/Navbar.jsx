@@ -3,12 +3,24 @@
 import React, { useState } from 'react';
 import { Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
-import { Link, NavLink } from 'react-router-dom';
-import '../navbar/Navbar.css'
+
+
 import {  Bars3Icon } from '@heroicons/react/24/solid'
 import logo from '../../assets/image/logo.jpg'
 
 const Navbar = () => {
+
+
+ 
+
+
+
+
+
+
+
+
+
 
 
  
@@ -17,14 +29,18 @@ const Navbar = () => {
     <>
 
 
+
+<li>
 <NavLink
-  className={({ isActive }) =>
+  className={({ isActive } ) =>
     isActive ? " text-red hover:text-orange-400" : " no-underline"
   }
   to="/"
 >
   Home
 </NavLink>
+</li>
+<li>
 <NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
@@ -33,6 +49,8 @@ const Navbar = () => {
 >
   All Books
 </NavLink>
+</li>
+<li>
 <NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
@@ -41,6 +59,8 @@ const Navbar = () => {
 >
   Popular Books
 </NavLink>
+</li>
+<li>
 <NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
@@ -49,13 +69,15 @@ const Navbar = () => {
 >
   Old Books
 </NavLink>
+</li>
 
 
 
+</>
      
      
     
-    </ul>
+    
 
   return (
     <div className="navbar bg-base-100 max-w-screen-xl mx-auto ">
@@ -75,7 +97,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to='/' className=" rounded-full  "><img className='w-32 items-center justify-center ' src={logo} alt="logo" /></Link>
+        {/* <Link to='/' className=" "><img className='w-32 items-center justify-center  rounded-full ' src={logo} alt="logo" /></Link> */}
+        <Link to='/' className="w-[83px] h-[63px] rounded-full  "><img className='rounded-full'  src={logo} alt="" /></Link>
        
       </div>
       {/* ... rest of the code */}
