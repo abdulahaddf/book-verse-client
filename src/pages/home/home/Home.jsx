@@ -4,6 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import Navbar from "../../../shared/navbar/Navbar";
 import FeaturedBooks from "../../../shared/components/homeSections/FeaturedBooks";
 import PopularAuthor from "../../../shared/components/homeSections/PopularAuthor";
+import Sponsor from "../../../shared/components/Sponsor/Sponsor";
 
 const Home = () => {
   return (
@@ -12,10 +13,10 @@ const Home = () => {
       <Navbar></Navbar>
 
       <section className="w-11/12 mx-auto">
-
-      <Category />
-      <FeaturedBooks/>
-      <PopularAuthor/>
+        <Category />
+        <FeaturedBooks />
+        <PopularAuthor />
+        <Sponsor></Sponsor>
       </section>
       <Footer></Footer>
     </div>

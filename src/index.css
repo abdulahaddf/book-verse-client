@@ -4,11 +4,15 @@
 
 @layer components {
     
-    .primary-Color{
-        @apply text-[#d71d24]; 
-    }
+    
     .btn-card{
         @apply btn-sm btn btn-outline btn-secondary text-white hover:text-red border-red  hover:border-b-red hover:bg-white  px-4 py-1 rounded-lg border-b-4 hover:scale-105 duration-300;
+    }
+    .btn-primary{
+        @apply btn w-24 text-black  bg-white hover:text-white border-red  hover:border-b-white hover:bg-red  px-2 py-1 rounded-3xl border-b-4 hover:scale-105 duration-300;
+    }
+    .section{
+        @apply shadow-xl rounded-lg p-5 my-5;
     }
     
     

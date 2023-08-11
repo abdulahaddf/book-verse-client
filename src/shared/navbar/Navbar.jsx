@@ -3,60 +3,59 @@
 import React, { useState } from 'react';
 import { Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
+import { Link, NavLink } from 'react-router-dom';
+import '../navbar/Navbar.css'
 import {  Bars3Icon } from '@heroicons/react/24/solid'
 import logo from '../../assets/image/logo.jpg'
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
+ 
   const navItems = 
    
     <>
 
 
-<li><NavLink
+<NavLink
   className={({ isActive }) =>
     isActive ? " text-red hover:text-orange-400" : " no-underline"
   }
   to="/"
 >
   Home
-</NavLink></li>
-<li><NavLink
+</NavLink>
+<NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
   }
   to="/fd"
 >
   All Books
-</NavLink></li>
-<li><NavLink
+</NavLink>
+<NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
   }
   to="/fd"
 >
   Popular Books
-</NavLink></li>
-<li><NavLink
+</NavLink>
+<NavLink
   className={({ isActive }) =>
     isActive ? " text-red" : "no-underline"
   }
   to="/fd"
 >
   Old Books
-</NavLink></li>
+</NavLink>
 
 
 
      
      
     
-    </>
+    </ul>
 
   return (
     <div className="navbar bg-base-100 max-w-screen-xl mx-auto ">
@@ -76,8 +75,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to='/' className=" rounded-full  "><img className='items-center justify-center ' style={{ width:70}} src={logo} alt="" /></Link>
-        <NavLink to="/" className="font-bold text-3xl px-4 text-red-600 whitespace-nowrap" activeClassName="active-link">Book Verse</NavLink>
+        <Link to='/' className=" rounded-full  "><img className='w-32 items-center justify-center ' src={logo} alt="logo" /></Link>
+       
       </div>
       {/* ... rest of the code */}
       <div className="navbar-center hidden lg:flex">
@@ -87,7 +86,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <NavLink to="/button" className="btn btn-sm " activeClassName="active-link">LogIn</NavLink>
+        <NavLink to="/button" className="btn-primary " activeClassName="active-link">LogIn</NavLink>
       </div>
     </div>
   );
