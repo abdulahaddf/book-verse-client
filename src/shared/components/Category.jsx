@@ -26,21 +26,21 @@ const Category = () => {
           <Tabs>
             <TabList>
               <Tab>Fiction</Tab>
-              <Tab>Non-Fiction</Tab>
+              <Tab>Comics</Tab>
               <Tab>Mystery & Thriller</Tab>
               <Tab>Romance</Tab>
-              <Tab>Science Fiction & Fantasy</Tab>
+              <Tab>Science Fiction </Tab>
               <Tab>Biography & Memoir</Tab>
-              <Tab>Self-Help & Personal Development</Tab>
+              <Tab>Sports</Tab>
               <Tab> History Science & Nature</Tab>
               <Tab>Art & Photography</Tab>
               <Tab>Cookbooks & Food Travel</Tab>
-              <Tab>Health & Wellness</Tab>
+              <Tab>Travel</Tab>
               <Tab>Business & Economics</Tab>
-              <Tab>Children's Books </Tab>
-              <Tab>Young Adult Poetry</Tab>
-              <Tab>Religion & Spirituality</Tab>
-              <Tab>Philosophy Gardening & DIY</Tab>
+              <Tab>Children </Tab>
+              <Tab>Young Adult </Tab>
+              <Tab>Horror</Tab>
+              <Tab>Classics</Tab>
             </TabList>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
