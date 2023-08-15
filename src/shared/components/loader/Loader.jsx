@@ -8,8 +8,7 @@ const Loader = () => {
       flex 
       flex-col 
       justify-center 
-      items-center 
-    '
+      items-center'
     >
       <FadeLoader color="#d71d24" />
     </div>
