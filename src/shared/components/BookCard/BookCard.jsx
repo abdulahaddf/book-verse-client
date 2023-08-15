@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import "./BookCard.css";
 
 const BookCard = ({book}) => {
   console.log(book);
-  const {title, author, cover_image, offer_price, rating  } = book;
+  const {_id,title, author, cover_image, offer_price, rating  } = book;
   return (
     <div className=" mx-auto my-5 py-10  ">
       {/* card 1 start */}
@@ -74,7 +75,7 @@ const BookCard = ({book}) => {
                   <button className="btn-card w-full ">Add to Cart</button>
                 </section>
                 <section className=" my-5">
-                  <button className="btn-card w-full ">View Details</button>
+                  <Link to={`/details/${_id}`}><button className="btn-card w-full ">View Details</button></Link>
                 </section>
               </div>
             </div>
