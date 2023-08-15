@@ -84,7 +84,7 @@ const Login = () => {
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
         };
-        fetch("https://apperture-server-abdulahaddf.vercel.app/users", {
+        fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -121,7 +121,7 @@ const Login = () => {
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
         };
-        fetch("https://apperture-server-abdulahaddf.vercel.app/users", {
+        fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

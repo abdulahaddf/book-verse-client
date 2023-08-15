@@ -8,7 +8,7 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import Navbar from "../../navbar/Navbar";
 
 const Register = () => {
-  const { createUser, signInGoogle,signInFB, profileUpdate, setLoading } =
+  const { createUser, signInGoogle, signInFB, profileUpdate, setLoading } =
     useContext(AuthContext);
 
   const {
@@ -34,7 +34,7 @@ const Register = () => {
             email: data.email,
             photoURL: data.url,
           };
-          fetch("https://apperture-server-abdulahaddf.vercel.app/users", {
+          fetch("https://book-verse-server-phi.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -73,7 +73,7 @@ const Register = () => {
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
         };
-        fetch("https://apperture-server-abdulahaddf.vercel.app/users", {
+        fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -100,48 +100,46 @@ const Register = () => {
       });
   };
 
- // Handle FB signin
- const handlefbSignIn = () => {
-  signInFB()
-    .then((result) => {
-      const loggedInUser = result.user;
-      console.log(loggedInUser);
-      const saveUser = {
-        name: loggedInUser.displayName,
-        email: loggedInUser.email,
-        photoURL: loggedInUser.photoURL,
-      };
-      fetch("https://apperture-server-abdulahaddf.vercel.app/users", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(saveUser),
-      })
-        .then((res) => res.json())
-        .then(() => {
-          console.log(result.user);
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Successfully Signed In",
-            showConfirmButton: false,
-            timer: 1500,
+  // Handle FB signin
+  const handlefbSignIn = () => {
+    signInFB()
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const saveUser = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+          photoURL: loggedInUser.photoURL,
+        };
+        fetch("https://book-verse-server-phi.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            console.log(result.user);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Signed In",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(from, { replace: true });
           });
-          navigate(from, { replace: true });
-        });
-    })
+      })
 
-    .catch((err) => {
-      setLoading(false);
-      console.log(err.message);
-    });
-};
-
+      .catch((err) => {
+        setLoading(false);
+        console.log(err.message);
+      });
+  };
 
   return (
     <div>
-      
       <Navbar></Navbar>
       <div className="relative flex flex-col justify-center my-4 overflow-hidden">
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
@@ -243,7 +241,6 @@ const Register = () => {
               <span className="error">{errors.confirmPassword.message}</span>
             )}
 
-           
             <div className="mt-6">
               <button
                 type="submit"
@@ -278,7 +275,7 @@ const Register = () => {
               type="button"
               className="flex items-center justify-center w-full p-2 border border-red rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-red"
             >
-             <FaFacebookF></FaFacebookF>
+              <FaFacebookF></FaFacebookF>
               <span className="ml-2">Sign up with FaceBook</span>
             </button>
           </div>
