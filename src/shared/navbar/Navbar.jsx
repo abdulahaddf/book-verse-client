@@ -93,7 +93,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <NavLink
-          to="/button"
+          to="/login"
           className="btn-primary "
           activeClassName="active-link"
         >
