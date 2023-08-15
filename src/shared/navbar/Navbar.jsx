@@ -23,7 +23,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? " text-red" : "no-underline"
           }
-          to="/fd"
+          to="/all-books"
         >
           All Books
         </NavLink>
