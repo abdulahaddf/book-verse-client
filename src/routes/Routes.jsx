@@ -3,7 +3,6 @@ import Main from "../layouts/Main";
 import Home from "../pages/home/home/Home";
 import AllBooks from "../pages/home/AllBooks/AllBooks";
 import BookRent from "../shared/components/BookRent/BookRent";
-
 export const router = createBrowserRouter([
     {
       path: "/",
