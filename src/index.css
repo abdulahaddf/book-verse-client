@@ -1,3 +1,118 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    
+    
+    .btn-card{
+        @apply btn-sm btn btn-outline btn-secondary text-white hover:text-red border-red  hover:border-b-red hover:bg-white  px-4 py-1 rounded-lg border-b-4 hover:scale-105 duration-300;
+    }
+    .btn-primary{
+        @apply btn w-24 text-black  bg-white hover:text-white border-red  hover:border-b-white hover:bg-red  px-2 py-1 rounded-3xl border-b-4 hover:scale-105 duration-300;
+    }
+    .section{
+        @apply shadow-xl rounded-lg p-5 my-5;
+    }
+    
+    
+  }
+  
+
+/* button start */
+
+
+
+
+/* CSS */
+.primary-button {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #d71d24;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: rgb(42, 42, 42);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  /* min-height: 60px; */
+  min-width: 0;
+  outline: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  /* width: 100%; */
+  will-change: transform;
+
+ 
+}
+
+.primary-button:disabled {
+  pointer-events: none;
+}
+
+.primary-button:hover {
+  color: white;
+  background-color: #d71d24;
+  box-shadow: rgba(105, 4, 4, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.primary-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+/* button end */
+
+
+
+
+  
+
+
+/* CSS */
+.button-52 {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid rgb(64, 63, 63);
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(57, 56, 56, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-52:after {
+  content: "";
+  background-color: #d71d24;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.button-52:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (min-width: 768px) {
+  .button-52 {
+    padding: 13px 50px 13px;
+  }
+}

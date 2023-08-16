@@ -1,0 +1,47 @@
+
+
+
+
+.book-card-container {
+
+    border-bottom: 5px solid rgba(20, 7, 7, 0.178);
+    border-right: 5px solid rgba(17, 7, 7, 0.39);
+
+
+    border-right: 5px solid #d71d24;
+    border-top: 5px solid #d71d24;
+
+    /* transition-duration: 1s; */
+   
+    border-radius: 0px 50px 0px 50px;
+    box-shadow: 5px -5px 5px black;
+}
+
+.book-card-container:hover {
+
+   
+   
+   
+    border-right: none;
+
+    border-top: 10px solid #d71d24;
+    border-bottom: 10px solid #d71d24;
+
+
+    border-radius: 0px 0px 0px 0px;
+
+    transition-duration: 1s;
+
+    box-shadow: 10px 10px 10px black;
+
+}
+
+
+/* 
+
+*/
+
+
+
+
+/* CSS */
