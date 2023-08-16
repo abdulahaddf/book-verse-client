@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CategoryCard = () => {
   return (
     <div className="w-64 hover:rounded-sm hover:shadow-red shadow-md overflow-hidden">
@@ -25,6 +27,7 @@ const CategoryCard = () => {
                       voluptates doloremque reiciendis nostrum harum.
                       Repudiandae?
                     </p> */}
+
             <button className="btn btn-ghost hover:bg-rose-500 normal-case w-full text-white">
               Details
             </button>
