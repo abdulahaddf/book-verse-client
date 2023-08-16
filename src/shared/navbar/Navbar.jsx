@@ -4,8 +4,11 @@ import "./Navbar.css";
 
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import logo from "../../assets/image/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const navItems = (
     <>
       <li>
@@ -92,14 +95,31 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-xl font-semibold">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <NavLink
-          to="/login"
-          className="btn-primary "
-          activeClassName="active-link"
-        >
-          LogIn
-        </NavLink>
-      </div>
+            {user ? (
+              <div className="flex items-center">
+                <div
+                  className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
+                  data-tip={user?.displayName}
+                >
+                  <img
+                    className="rounded-full border-2 border-red "
+                    referrerPolicy="no-referrer"
+                    src={user?.photoURL}
+                    alt="user"
+                  />
+                </div>
+
+                <button onClick={logOut} className="btn-custom">
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <Link to="/login" className="btn-custom ">
+                Login
+              </Link>
+            )}
+          </div>
+      
     </div>
   );
 };
