@@ -36,7 +36,7 @@ const AddBook = () => {
   };
 
   return (
-    <div className="w-full h-full ps-4 md:p-4">
+    <div className="w-full h-full ps-4 md:mt-6">
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}

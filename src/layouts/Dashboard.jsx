@@ -41,7 +41,7 @@ const Dashboard = () => {
               
               <li>
                 <Link to="/dashboard/adminHome">
-                  <FaHome></FaHome>Home
+                  <FaHome></FaHome>Admin Home
                 </Link>
               </li>
               <li>
