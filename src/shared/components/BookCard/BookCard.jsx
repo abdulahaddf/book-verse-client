@@ -34,9 +34,9 @@ const BookCard = ({book}) => {
 
       if(find){
         return   Swal.fire({
-          title: 'You have already added it.Please click on cart icon in Navbar',
+          title: 'The book is already added to the cart',
           
-          icon: 'success',
+          icon: 'error',
           confirmButtonText: 'Ok'
         })
 
@@ -50,10 +50,11 @@ const BookCard = ({book}) => {
     setValue("cartItems", updatedCart);
     
     Swal.fire({
-      title: 'Add to cart successfully',
-      
-      icon: 'success',
-      confirmButtonText: 'Ok'
+      position: 'top-end',
+  icon: 'success',
+  title: 'The book is added to the cart',
+  showConfirmButton: false,
+  timer: 1500
     })
 
     cartRefetch()
@@ -76,7 +77,7 @@ const BookCard = ({book}) => {
 
         <div className="relative px-8 flex justify-between   ">
           <div className="mt-32 sm:mt-48 lg:mt-[30%]   ">
-            <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500  ">
+            <div className="translate-y-8 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500  ">
               <h3 className="text-[20px] text-white my-5 ">
                 Name: {title}
               </h3>
@@ -84,7 +85,7 @@ const BookCard = ({book}) => {
                 Author:{author}
               </p>
 
-              <p className="text-[18px] text-white my-5">Price:{offer_price}</p>
+              <p className="text-[18px] text-white my-5">Price: ${offer_price}</p>
 
               <div className=" flex items-center  mt-5 pb-[30px]">
                 <p className="text-[18px] text-white mr-2">Rating: {rating}</p>
@@ -118,14 +119,7 @@ const BookCard = ({book}) => {
               </div>
 
               <div>
-                <section className="flex gap-3 w-full    ">
-                  <div>
-                    <button className="btn-card  h-[45px]">Rent Now</button>
-                  </div>
-                  <div>
-                    <button className="btn-card  h-[45px] ">Buy Now</button>
-                  </div>
-                </section>
+                
 
                 <section className=" my-5">
                   <button onClick={handleAddToCart}  className="btn-card w-full ">Add to Cart</button>
