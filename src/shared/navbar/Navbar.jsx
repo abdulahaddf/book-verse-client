@@ -11,7 +11,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
 
-  const {addToCartData}=useContext(AuthContext);
+  const {addToCartData,user}=useContext(AuthContext);
 
 
   
