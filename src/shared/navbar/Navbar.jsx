@@ -4,8 +4,17 @@ import "./Navbar.css";
 
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import logo from "../../assets/image/logo.png";
+import { BsCart3 } from 'react-icons/bs';
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+
 
 const Navbar = () => {
+
+  const {addToCartData,user, logOut}=useContext(AuthContext);
+
+
+  
   const navItems = (
     <>
       <li>
@@ -48,6 +57,22 @@ const Navbar = () => {
           Old Books
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/addToCart"
+        >
+          
+            <span className="mt-[5px]"><BsCart3  /></span>
+            <span className="indicator-item badge badge-secondary mt-[5px]">{ addToCartData ? addToCartData.length : 0}</span>
+         
+            
+        
+
+        </NavLink>
+      </li>
     </>
   );
 
@@ -65,21 +90,21 @@ const Navbar = () => {
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            <div className="flex justify-center">
+              <div className="flex justify-center">
 
-        <Link to="/" className="w-[83px] h-[63px]  ">
-          <img className="" src={logo} alt="" />
-        </Link>
-</div>
+                <Link to="/" className="w-[83px] h-[63px]  ">
+                  <img className="" src={logo} alt="" />
+                </Link>
+              </div>
               {/* Sidebar content here */}
               <div>
 
-              {navItems}
+                {navItems}
               </div>
             </ul>
           </div>
         </div>
-     
+
 
 
         <Link to="/" className="w-[83px] h-[63px]  ">
@@ -92,14 +117,31 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-xl font-semibold">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <NavLink
-          to="/login"
-          className="btn-primary "
-          activeClassName="active-link"
-        >
-          LogIn
-        </NavLink>
-      </div>
+            {user ? (
+              <div className="flex items-center">
+                <div
+                  className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
+                  data-tip={user?.displayName}
+                >
+                  <img
+                    className="rounded-full border-2 border-red "
+                    referrerPolicy="no-referrer"
+                    src={user?.photoURL}
+                    alt="user"
+                  />
+                </div>
+
+                <button onClick={logOut} className="btn-custom">
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <Link to="/login" className="btn-custom ">
+                Login
+              </Link>
+            )}
+          </div>
+      
     </div>
   );
 };

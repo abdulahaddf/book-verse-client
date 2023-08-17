@@ -2,7 +2,63 @@
 import { Link } from "react-router-dom";
 import "./BookCard.css";
 
+import useLocalStorage from "../../../hooks/useLocalStorage";
+
+import Swal from 'sweetalert2'
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useContext } from "react";
+
+
+
+
+// 
+
+
+
 const BookCard = ({book}) => {
+
+  const {cartRefetch}=useContext(AuthContext);
+  
+
+  const { getValue, setValue } = useLocalStorage(); // Use the custom hook
+
+  const handleAddToCart = () => {
+    const cartItems = getValue("cartItems", []);
+    
+    
+    // Ensure cartItems is initialized as an empty array
+
+    if(cartItems){
+
+      const find= cartItems.find(a=> a?._id === book?._id)
+
+      if(find){
+        return   Swal.fire({
+          title: 'You have already added it.Please click on cart icon in Navbar',
+          
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+
+
+      }
+
+     
+    }
+     book.real_price2=  book?.real_price
+    const updatedCart = [...cartItems, book];
+    setValue("cartItems", updatedCart);
+    
+    Swal.fire({
+      title: 'Add to cart successfully',
+      
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    })
+
+    cartRefetch()
+  };
+
   console.log(book);
   const {_id,title, author, cover_image, offer_price, rating  } = book;
   return (
@@ -72,11 +128,12 @@ const BookCard = ({book}) => {
                 </section>
 
                 <section className=" my-5">
-                  <button className="btn-card w-full ">Add to Cart</button>
+                  <button onClick={handleAddToCart}  className="btn-card w-full ">Add to Cart</button>
                 </section>
                 <section className=" my-5">
                   <Link to={`/details/${_id}`}><button className="btn-card w-full ">View Details</button></Link>
                 </section>
+                
               </div>
             </div>
           </div>

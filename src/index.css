@@ -11,6 +11,10 @@
     .btn-primary{
         @apply btn w-24 text-black  bg-white hover:text-white border-red  hover:border-b-white hover:bg-red  px-2 py-1 rounded-3xl border-b-4 hover:scale-105 duration-300;
     }
+    .btn-custom{
+        @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white
+         hover:bg-red  rounded-2xl border-b-4 hover:scale-105 duration-300;
+    }
     .section{
         @apply shadow-xl rounded-lg p-5 my-5;
     }
