@@ -6,6 +6,7 @@ import BookDetails from "../shared/components/BookDetails/BookDetails";
 import Login from "../shared/Login/login/Login";
 import Register from "../shared/Login/register/Register";
 import ResetForm from "../shared/Login/login/ResetForm";
+import AddToCart from "../pages/AddToCart/AddToCart";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
             element: <BookDetails></BookDetails>,
             loader: ({params}) => fetch(`https://book-verse-server-phi.vercel.app/singleBook/${params.id}`)
           },
-         {
+        {
+            path: "/addToCart",
+            element: <AddToCart></AddToCart>
+          },
+        {
             path: "/login",
             element: <Login/>
           },

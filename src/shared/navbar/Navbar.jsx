@@ -4,11 +4,17 @@ import "./Navbar.css";
 
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import logo from "../../assets/image/logo.png";
+import { BsCart3 } from 'react-icons/bs';
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
+
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+
+  const {addToCartData}=useContext(AuthContext);
+
+
+  
   const navItems = (
     <>
       <li>
@@ -51,6 +57,22 @@ const Navbar = () => {
           Old Books
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/addToCart"
+        >
+          
+            <span className="mt-[5px]"><BsCart3  /></span>
+            <span className="indicator-item badge badge-secondary mt-[5px]">{ addToCartData ? addToCartData.length : 0}</span>
+         
+            
+        
+
+        </NavLink>
+      </li>
     </>
   );
 
@@ -68,21 +90,21 @@ const Navbar = () => {
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            <div className="flex justify-center">
+              <div className="flex justify-center">
 
-        <Link to="/" className="w-[83px] h-[63px]  ">
-          <img className="" src={logo} alt="" />
-        </Link>
-</div>
+                <Link to="/" className="w-[83px] h-[63px]  ">
+                  <img className="" src={logo} alt="" />
+                </Link>
+              </div>
               {/* Sidebar content here */}
               <div>
 
-              {navItems}
+                {navItems}
               </div>
             </ul>
           </div>
         </div>
-     
+
 
 
         <Link to="/" className="w-[83px] h-[63px]  ">
