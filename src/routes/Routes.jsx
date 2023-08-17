@@ -9,6 +9,7 @@ import Register from "../shared/Login/register/Register";
 import ResetForm from "../shared/Login/login/ResetForm";
 import AddBook from "../Dashboard/Admin/AddBook";
 import AddToCart from "../pages/AddToCart/AddToCart";
+import AdminHome from "../Dashboard/Admin/AdminHome";
 
 export const router = createBrowserRouter([
     {
@@ -54,7 +55,11 @@ export const router = createBrowserRouter([
       {
         path: 'addBook',
         element: <AddBook></AddBook>
-      }
+      },
+      {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
      ]
     }
   ]);

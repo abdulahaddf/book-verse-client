@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { FaBars, FaBook, FaBookOpen, FaHome, FaUsers } from "react-icons/fa";
+import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -38,9 +38,15 @@ const Dashboard = () => {
             {/* Sidebar content here */}
 
             <>
+              
+              <li>
+                <Link to="/dashboard/adminHome">
+                  <FaHome></FaHome>Home
+                </Link>
+              </li>
               <li>
                 <Link to="/dashboard/addBook">
-                  <FaBookOpen></FaBookOpen>Add Book
+                  <FaBookReader></FaBookReader>Add Book
                 </Link>
               </li>
               <li>
