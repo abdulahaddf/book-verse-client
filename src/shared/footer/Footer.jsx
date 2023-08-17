@@ -162,7 +162,7 @@ const Footer = () => {
               />
             </div>
             <input
-              className="py-2 px-3 btn btn-sm hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:bordered:[#d71d24] text-[#d71d24]"
+              className="py-2 px-3 btn btn-sm hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
               type="submit"
               value="Subscribe"
             />
