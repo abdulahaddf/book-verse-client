@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         {
             path: "/forget",
             element: <ResetForm/>
-          },
+        }
       ]
     },
   ]);

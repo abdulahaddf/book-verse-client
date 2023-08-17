@@ -37,7 +37,7 @@ const Footer = () => {
             <FaLocationArrow className="mr-3"></FaLocationArrow>No 45, Season
             Street,,
           </p>
-          <p className="ms-6">Livingstone LA Inc - 4502</p>
+          <p className="ms-[25px]">Livingstone LA Inc - 4502</p>
           <p className="flex items-center my-2">
             <FaEnvelope className="mr-3"></FaEnvelope>bookverse@gmail.com
           </p>
