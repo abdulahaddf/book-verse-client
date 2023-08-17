@@ -160,7 +160,6 @@ const AddBook = () => {
               type="date"
               name="published"
               {...register("published")}
-              placeholder="Published date"
               className="input input-bordered w-full"
             />
           </div>

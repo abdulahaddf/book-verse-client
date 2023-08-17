@@ -26,7 +26,7 @@ const Dashboard = () => {
         <div className="menu p-4 w-80 h-full bg-slate-100">
           <div className="text-center mx-auto">
             <img
-              className="rounded-full w-24 h-24"
+              className="rounded-full w-24 h-24 mx-auto"
               src={user && user.photoURL ? user.photoURL : avatar}
             />
             <h3 className="font-bold text-2xl text-[#d71d24] uppercase">
