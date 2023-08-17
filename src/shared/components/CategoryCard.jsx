@@ -28,8 +28,8 @@ const CategoryCard = ({data}) => {
                       voluptates doloremque reiciendis nostrum harum.
                       Repudiandae?
                     </p> */}
-            <p className="text-white ">{title}</p>
-            <p className="text-white  py-5 text-sm">{author}</p>
+            <p className="text-cyan-50 text-lg">{title}</p>
+            <p className="text-teal-50 py-5 text-sm">{author}</p>
 
             <button className="btn border-none  hover:bg-rose-700  bg-[#d71d24] normal-case w-full text-white">
               <Link to={`details/${_id}`}>Details</Link>
