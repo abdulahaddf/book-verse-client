@@ -119,7 +119,7 @@ const AddToCart = () => {
                   <button
                     onClick={() => decrementHandler(data?._id)}
                     type="button"
-                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75 "
                   >
                     -
                   </button>

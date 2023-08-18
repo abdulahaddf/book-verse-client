@@ -1,11 +1,16 @@
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Footer from '../../footer/Footer';
 import Navbar from '../../navbar/Navbar';
+import Swal from 'sweetalert2'
+import { AuthContext } from '../../../provider/AuthProvider';
+import useLocalStorage from '../../../hooks/useLocalStorage';
 
 
 const BookDetails = () => {
+    const {cartRefetch}=useContext(AuthContext);
+    const { getValue, setValue } = useLocalStorage();
     const singleBookDetails = useLoaderData();
     const {
         title,
@@ -28,6 +33,48 @@ const BookDetails = () => {
         setActiveTab(tab);
     };
 
+    // add to cart by Tonmoy
+
+    const handleAddToCart = () => {
+        const cartItems = getValue("cartItems", []);
+        
+        
+        // Ensure cartItems is initialized as an empty array
+    
+        if(cartItems){
+    
+          const find= cartItems.find(a=> a?._id === singleBookDetails?._id)
+    
+          if(find){
+            return   Swal.fire({
+              title: 'The book is already added to the cart',
+              
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            })
+    
+    
+          }
+    
+         
+        }
+        singleBookDetails.real_price2=  singleBookDetails?.real_price
+        const updatedCart = [...cartItems, singleBookDetails];
+        setValue("cartItems", updatedCart);
+        
+        Swal.fire({
+          position: 'top-end',
+      icon: 'success',
+      title: 'The book is added to the cart',
+      showConfirmButton: false,
+      timer: 1500
+        })
+    
+        cartRefetch()
+      };
+
+    //   add to cart end
+
     return (
       
       
@@ -48,7 +95,7 @@ const BookDetails = () => {
                         
                         <div className='flex justify-center items-center mt-6'>
                             <button className="btn btn-primary mr-6 ">Rent Now</button>
-                            <button className="btn btn-primary">Add to Cart</button>
+                            <button onClick={handleAddToCart} className="btn btn-primary">Add to Cart</button>
                         </div>
                     </div>
                 </div>
