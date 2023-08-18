@@ -66,19 +66,19 @@ const BookCard = ({book}) => {
     <div className=" mx-auto my-5 py-10  ">
       {/* card 1 start */}
       <div
-        className="group book-card-container relative block bg-black h-11/12
+        className="group book-card-container relative block bg-black w-[300px]
             overflow-hidden "
       > 
         <img
           alt="Developer"
           src={cover_image}
-          className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-30  book-card-img "
+          className="absolute inset-0  object-cover opacity-75 transition-opacity group-hover:opacity-30  book-card-img "
         />
 
         <div className="relative px-8 flex justify-between   ">
           <div className="mt-32 sm:mt-48 lg:mt-[30%]   ">
             <div className="translate-y-8 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500  ">
-              <h3 className="text-[20px] text-white my-5 ">
+              <h3 className="text-[20px] text-white my-5 h-14 ">
                 Name: {title}
               </h3>
               <p className="text-[18px] text-white my-5 ">

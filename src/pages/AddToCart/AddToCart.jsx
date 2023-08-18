@@ -94,14 +94,14 @@ const AddToCart = () => {
           {addToCartData?.map((data) => (
             <div
               key={data?._id}
-              className=" grid lg:grid-cols-3  gap-10 p-3 my-20 "
+              className=" grid lg:grid-cols-3  md:gap-10 p-3 my-20 "
               style={{ boxShadow: "10px 10px 10px black" }}
             >
-              <div className=" w-1/2 ">
+              <div className=" md:w-1/2 ">
                 <img src={data?.cover_image} className="" />
               </div>
 
-              <div className="">
+              <div className="space-y-3">
                 <p className=" my-5 ">
                  <span className="font-semibold">Name: </span> {data?.title}{" "}
                 </p>

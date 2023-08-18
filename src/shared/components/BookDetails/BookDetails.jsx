@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Footer from "../../footer/Footer";
 import Navbar from "../../navbar/Navbar";
@@ -9,6 +9,9 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
 const BookDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const singleBookDetails = useLoaderData();
   const {
     title,
@@ -42,6 +45,7 @@ const BookDetails = () => {
   // add to cart by Tonmoy
 
   const handleAddToCart = () => {
+    
     const cartItems = getValue("cartItems", []);
 
     if (cartItems) {
