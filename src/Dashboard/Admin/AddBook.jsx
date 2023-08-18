@@ -27,7 +27,7 @@ const AddBook = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: "class added successfully",
+            text: "Book added successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
