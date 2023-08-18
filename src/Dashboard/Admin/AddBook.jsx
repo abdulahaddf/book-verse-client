@@ -15,7 +15,7 @@ const AddBook = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/allBooks", {
+    fetch("https://book-verse-server-phi.vercel.app/allBooks", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,7 +27,7 @@ const AddBook = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: "class added successfully",
+            text: "Book added successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
@@ -36,7 +36,7 @@ const AddBook = () => {
   };
 
   return (
-    <div className="w-full h-full ps-4 md:p-4">
+    <div className="w-full h-full ps-4 md:mt-6">
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -50,6 +50,7 @@ const AddBook = () => {
             <input
               type="text"
               name="title"
+              required
               {...register("title")}
               placeholder="Book name"
               className="input input-bordered w-full"
@@ -62,6 +63,7 @@ const AddBook = () => {
             <input
               type="text"
               name="author"
+              required
               {...register("author")}
               placeholder="Author name"
               className="input input-bordered w-full"
@@ -76,6 +78,7 @@ const AddBook = () => {
             <input
               type="text"
               name="category"
+              required
               {...register("category")}
               placeholder="Select category"
               className="input input-bordered w-full"
@@ -88,6 +91,7 @@ const AddBook = () => {
             <input
               type="text"
               name="language"
+              required
               {...register("language")}
               placeholder="Select language"
               className="input input-bordered w-full"
@@ -103,6 +107,7 @@ const AddBook = () => {
             <input
               type="number"
               name="real_price"
+              required
               {...register("real_price")}
               placeholder="Real price"
               className="input input-bordered w-full"
@@ -116,6 +121,7 @@ const AddBook = () => {
             <input
               type="number"
               name="offer_price"
+              required
               {...register("offer_price")}
               placeholder="Offer price"
               className="input input-bordered w-full"
@@ -130,6 +136,7 @@ const AddBook = () => {
             </label>
             <input
               type="number"
+              required
               name="page_numbers"
               {...register("page_numbers")}
               placeholder="Page numbers"
@@ -144,6 +151,7 @@ const AddBook = () => {
             <input
               type="text"
               name="rating"
+              required
               {...register("rating")}
               placeholder="Rating"
               className="input input-bordered w-full"
@@ -159,8 +167,8 @@ const AddBook = () => {
             <input
               type="date"
               name="published"
+              required
               {...register("published")}
-              placeholder="Published date"
               className="input input-bordered w-full"
             />
           </div>
@@ -171,6 +179,7 @@ const AddBook = () => {
             </label>
             <input
               type="rating"
+              required
               name="about_author"
               {...register("about_author")}
               placeholder="About author"
@@ -186,6 +195,7 @@ const AddBook = () => {
             </label>
             <input
               type="text"
+              required
               name="cover_image"
               {...register("cover_image")}
               placeholder="Cover image"
@@ -198,6 +208,7 @@ const AddBook = () => {
             </label>
             <input
               type="text"
+              required
               name="author_image"
               {...register("author_image")}
               placeholder="Author image"
@@ -213,6 +224,7 @@ const AddBook = () => {
           <textarea
             className="textarea textarea-bordered h-24"
             name="description"
+            required
             {...register("description")}
             placeholder="Description"
           ></textarea>
