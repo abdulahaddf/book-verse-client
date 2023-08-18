@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const CategoryCard = ({data}) => {
-  const {author,title,cover_image,_id}=data;
+  const {author,title,cover_image,_id}= data;
   return (
     <div className="w-64 h-96 hover:rounded-sm hover:shadow-red shadow-md overflow-hidden">
       <div href="#" className="group relative block bg-black">
@@ -32,7 +32,7 @@ const CategoryCard = ({data}) => {
             <p className="text-teal-50 py-5 text-sm">{author}</p>
 
             <button className="btn border-none  hover:bg-rose-700  bg-[#d71d24] normal-case w-full text-white">
-              <Link to={`details/${_id}`}>Details</Link>
+              <Link to={`/details/${_id}`}>Details</Link>
             </button>
           </div>
         </div>
