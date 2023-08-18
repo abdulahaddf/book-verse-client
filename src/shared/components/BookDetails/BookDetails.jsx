@@ -34,7 +34,7 @@ const BookDetails = () => {
     setAgree(!agree);
   };
 
-  const linkName = readMore ? "Read Less << " : "Read More >> ";
+  const linkName = readMore ? "Read Less << " : "...Read More >> ";
 
   const extraContent = (
     <div>
