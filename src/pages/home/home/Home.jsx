@@ -6,6 +6,7 @@ import FeaturedBooks from "../../../shared/components/homeSections/FeaturedBooks
 import BestSelling from "../../../shared/components/homeSections/BestSelling";
 import Banner from "../Banner/Banner";
 import Sponsor from "../../../shared/components/Sponsor/Sponsor";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 const Home = () => {
@@ -13,8 +14,8 @@ const Home = () => {
     <div>
       {/* All Components of home will be shown here */}
       <Navbar></Navbar>
-
       <section className="w-11/12 mx-auto">
+<SearchBar></SearchBar>
         <Banner></Banner>
         <Category />
         <FeaturedBooks />
