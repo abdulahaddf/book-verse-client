@@ -122,7 +122,7 @@ const BookCard = ({book}) => {
                 
 
                 <section className=" my-5">
-                  <button onClick={handleAddToCart}  className="btn-card w-full ">Add to Cart</button>
+                  <button onClick={handleAddToCart} className="btn-card w-full ">Add to Cart</button>
                 </section>
                 <section className=" my-5">
                   <Link to={`/details/${_id}`}><button className="btn-card w-full ">View Details</button></Link>
