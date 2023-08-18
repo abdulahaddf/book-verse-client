@@ -15,7 +15,7 @@ const AddBook = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/allBooks", {
+    fetch("https://book-verse-server-phi.vercel.app/allBooks", {
       method: "POST",
       headers: {
         "content-type": "application/json",
