@@ -1,39 +1,39 @@
-import React from 'react';
-import ReactSearchBox from "react-search-box";
+import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import "./SearchBar.css"
+import UseBooks from "../../../hooks/UseBooks";
 
-const SearchBar = () => {
+export const SearchBar = ({ setResults }) => {
+  const [input, setInput] = useState("");
 
-    const data = [
-        {
-          key: "john",
-          value: "John Doe",
-        },
-        {
-          key: "jane",
-          value: "Jane Doe",
-        },
-        {
-          key: "mary",
-          value: "Mary Phillips",
-        },
-        {
-          key: "robert",
-          value: "Robert",
-        },
-        {
-          key: "karius",
-          value: "Karius",
-        },
-      ]
+  const { books, loading } = UseBooks()
+  const fetchData = (value) => {
+    const results = books.filter((b) => {
+      return (
+        value &&
+        b &&
+        b.title &&
+        b.title.toLowerCase().includes(value)
+      );
+    });
+    setResults(results);
+    // console.log(results)
+  };
 
-    return (
-        <ReactSearchBox
-        placeholder="Placeholder"
-        value="Doe"
-        data={data}
-        callback={(record) => console.log(record)}
+  const handleChange = (value) => {
+    setInput(value);
+    fetchData(value);
+  };
+
+  return (
+    <div className="input-wrapper">
+      <FaSearch id="search-icon" />
+      <input
+        placeholder="Type to search..."
+        value={input}
+        onChange={(e) => handleChange(e.target.value)}
       />
-    );
+    </div>
+  );
 };
-
 export default SearchBar;
