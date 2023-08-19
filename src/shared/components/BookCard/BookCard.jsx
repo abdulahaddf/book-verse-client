@@ -66,13 +66,13 @@ const BookCard = ({book}) => {
     <div className=" mx-auto my-5 py-10  ">
       {/* card 1 start */}
       <div
-        className="group book-card-container relative block bg-black w-[300px]
+        className="group book-card-container relative block bg-black  xl:w-[300px]
             overflow-hidden "
       > 
         <img
           alt="Developer"
           src={cover_image}
-          className="absolute inset-0  object-cover opacity-75 transition-opacity group-hover:opacity-30  book-card-img "
+          className="absolute inset-0 w-[300px] object-cover opacity-75 transition-opacity group-hover:opacity-30  book-card-img "
         />
 
         <div className="relative px-8 flex justify-between   ">
@@ -87,9 +87,9 @@ const BookCard = ({book}) => {
 
               <p className="text-[18px] text-white my-5">Price: ${offer_price}</p>
 
-              <div className=" flex items-center  mt-5 pb-[30px]">
+              <div className="flex items-center  mt-5 pb-[30px]">
                 <p className="text-[18px] text-white mr-2">Rating: {rating}</p>
-                <div>
+                <div className="flex">
                   <input
                     type="radio"
                     name="rating-2"

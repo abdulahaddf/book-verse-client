@@ -73,17 +73,22 @@ const Navbar = () => {
 
         </NavLink>
       </li>
-      {/* -----------------Dashboard Routes------------ */}
       <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red" : "no-underline"
-          }
-          to="/dashboard/addBook"
-        >
-          Dashboard
-        </NavLink>
+      {
+                  user ? 
+                
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " text-red" : "no-underline"
+                      }
+                      to="/dashboard/addBook"
+                    >
+                      Dashboard
+                    </NavLink>
+                 : ""
+                }
       </li>
+      
     </>
   );
 
@@ -111,7 +116,9 @@ const Navbar = () => {
               <div>
 
                 {navItems}
+                
               </div>
+              
             </ul>
           </div>
         </div>
