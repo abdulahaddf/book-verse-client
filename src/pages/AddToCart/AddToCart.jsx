@@ -19,11 +19,11 @@ const AddToCart = () => {
     setValue("cartItems", updatedCart);
 
     Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'The item deleted successfully',
-        showConfirmButton: false,
-        timer: 1500
+      position: "center",
+      icon: "success",
+      title: "The item deleted successfully",
+      showConfirmButton: false,
+      timer: 1500,
     });
 
     cartRefetch();
@@ -88,7 +88,9 @@ const AddToCart = () => {
   return (
     <div>
       <Navbar></Navbar>
-<h1 className="text-4xl  borer border-b-2 border-red w-fit mx-auto pb-2">My Cart</h1>
+      <h1 className="text-4xl  borer border-b-2 border-red w-fit mx-auto pb-2">
+        My Cart
+      </h1>
       <div className=" w-4/5 mx-auto  lg:flex gap-20">
         <section>
           {addToCartData?.map((data) => (
@@ -103,52 +105,45 @@ const AddToCart = () => {
 
               <div className="space-y-3">
                 <p className=" my-5 ">
-                 <span className="font-semibold">Name: </span> {data?.title}{" "}
+                  <span className="font-semibold">Name: </span> {data?.title}{" "}
                 </p>
                 <p className="  ">
-                <span className="font-semibold">Author: </span> {data?.author}
+                  <span className="font-semibold">Author: </span> {data?.author}
                 </p>
 
-               
-           
+                <div>
+                  <div className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center">
+                    <button
+                      onClick={() => decrementHandler(data?._id)}
+                      type="button"
+                      className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    >
+                      -
+                    </button>
 
-            <div>
-                <div
-                  className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center"
-                >
-                  <button
-                    onClick={() => decrementHandler(data?._id)}
-                    type="button"
-                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
-                  >
-                    -
-                  </button>
+                    <input
+                      type="number"
+                      id="Quantity"
+                      value={data?.count || 1}
+                      className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                    />
 
-                  <input
-                    type="number"
-                    id="Quantity"
-                    value={data?.count || 1}
-                    className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                  />
-
-                  <button
-                    onClick={() => incrementHandler(data?._id)}
-                    type="button"
-                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
-                  >
-                    +
-                  </button>
+                    <button
+                      onClick={() => incrementHandler(data?._id)}
+                      type="button"
+                      className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </div>
               </div>
 
               {/* <div className="w-[70%] mx-auto lg:mt-[30%] md:mt-[30%]">
                             <p className=" text-[20px]"> Amount: $ <span  >{data?.count ? data?.real_price * data?.count
                             : data?.real_price}</span> </p>
                         </div> */}
-              <div
-                className="flex-col my-10 text-center"
-              >
+              <div className="flex-col my-10 text-center">
                 <p className=" text-[20px]">
                   {" "}
                   Amount: $ <span>{data?.real_price2}</span>{" "}

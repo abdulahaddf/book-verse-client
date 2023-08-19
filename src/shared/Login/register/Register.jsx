@@ -47,7 +47,7 @@ const Register = () => {
               if (data.insertedId) {
                 reset();
                 Swal.fire({
-                  position: "top-end",
+                  position: "center",
                   icon: "success",
                   title: "User created successfully.",
                   showConfirmButton: false,
@@ -84,7 +84,7 @@ const Register = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "User created successfully.",
               showConfirmButton: false,
@@ -122,7 +122,7 @@ const Register = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,

@@ -40,7 +40,7 @@ const Login = () => {
         console.log(loggedUser);
         navigate("/");
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Successfully Signed In.",
           showConfirmButton: false,
@@ -55,7 +55,7 @@ const Login = () => {
           errorCode === "auth/wrong-password"
         ) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "eroor",
             title: "Invalid email or password",
             showConfirmButton: false,
@@ -63,7 +63,7 @@ const Login = () => {
           });
         } else {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "eroor",
             title: { errorMessage },
             showConfirmButton: false,
@@ -95,7 +95,7 @@ const Login = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,
@@ -132,7 +132,7 @@ const Login = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,
