@@ -32,7 +32,7 @@ const CategoryCard = ({data}) => {
             <p className="text-teal-50 py-5 text-sm">{author}</p>
 
             <button className="btn border-none  hover:bg-rose-700  bg-[#d71d24] normal-case w-full text-white">
-              <Link to={`details/${_id}`}>Details</Link>
+              <Link to={`/details/${_id}`}>Details</Link>
             </button>
           </div>
         </div>
