@@ -145,7 +145,7 @@ const AddBook = () => {
   
 
   return (
-    <div className="w-full h-full ps-4 md:p-4">
+    <div className="w-full h-full ps-4 md:mt-6">
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -160,6 +160,7 @@ const AddBook = () => {
             required
               type="text"
               name="title"
+              required
               {...register("title")}
               placeholder="Book name"
               className="input input-bordered w-full"
@@ -173,6 +174,7 @@ const AddBook = () => {
             required
               type="text"
               name="author"
+              required
               {...register("author")}
               placeholder="Author name"
               className="input input-bordered w-full"
@@ -188,6 +190,7 @@ const AddBook = () => {
             required
               type="text"
               name="category"
+              required
               {...register("category")}
               placeholder="Select category"
               className="input input-bordered w-full"
@@ -201,6 +204,7 @@ const AddBook = () => {
             required
               type="text"
               name="language"
+              required
               {...register("language")}
               placeholder="Select language"
               className="input input-bordered w-full"
@@ -217,6 +221,7 @@ const AddBook = () => {
             required
               type="number"
               name="real_price"
+              required
               {...register("real_price")}
               placeholder="Real price"
               className="input input-bordered w-full"
@@ -231,6 +236,7 @@ const AddBook = () => {
             required
               type="number"
               name="offer_price"
+              required
               {...register("offer_price")}
               placeholder="Offer price"
               className="input input-bordered w-full"
@@ -246,6 +252,7 @@ const AddBook = () => {
             <input
             required
               type="number"
+              required
               name="page_numbers"
               {...register("page_numbers")}
               placeholder="Page numbers"
@@ -261,6 +268,7 @@ const AddBook = () => {
             required
               type="text"
               name="rating"
+              required
               {...register("rating")}
               placeholder="Rating"
               className="input input-bordered w-full"
@@ -277,8 +285,8 @@ const AddBook = () => {
             required
               type="date"
               name="published"
+              required
               {...register("published")}
-              placeholder="Published date"
               className="input input-bordered w-full"
             />
           </div>
@@ -290,6 +298,7 @@ const AddBook = () => {
             <input
             required
               type="rating"
+              required
               name="about_author"
               {...register("about_author")}
               placeholder="About author"
@@ -304,8 +313,8 @@ const AddBook = () => {
               <span className="label-text font-semibold">Cover image</span>
             </label>
             <input
-            required
-              type="file"
+              type="text"
+              required
               name="cover_image"
               {...register("cover_image")}
               placeholder="Cover image"
@@ -337,6 +346,7 @@ const AddBook = () => {
           required
             className="textarea textarea-bordered h-24"
             name="description"
+            required
             {...register("description")}
             placeholder="Description"
           ></textarea>

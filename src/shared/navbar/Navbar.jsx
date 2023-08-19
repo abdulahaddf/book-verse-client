@@ -73,22 +73,27 @@ const Navbar = () => {
 
         </NavLink>
       </li>
-      {/* -----------------Dashboard Routes------------ */}
       <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red" : "no-underline"
-          }
-          to="/dashboard/addBook"
-        >
-          Dashboard
-        </NavLink>
+      {
+                  user ? 
+                
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " text-red" : "no-underline"
+                      }
+                      to="/dashboard/addBook"
+                    >
+                      Dashboard
+                    </NavLink>
+                 : ""
+                }
       </li>
+      
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-screen-xl mx-auto md:mb-10">
+    <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
       <div className="navbar-start">
         <div className="drawer lg:hidden z-10">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -111,7 +116,9 @@ const Navbar = () => {
               <div>
 
                 {navItems}
+                
               </div>
+              
             </ul>
           </div>
         </div>

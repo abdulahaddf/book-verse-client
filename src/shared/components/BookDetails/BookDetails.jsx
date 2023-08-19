@@ -1,7 +1,7 @@
 
 /* eslint-disable react/no-unescaped-entities */
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Footer from "../../footer/Footer";
 import Navbar from "../../navbar/Navbar";
@@ -10,6 +10,9 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
 const BookDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const singleBookDetails = useLoaderData();
   const {
     title,
@@ -43,6 +46,7 @@ const BookDetails = () => {
   // add to cart by Tonmoy
 
   const handleAddToCart = () => {
+    
     const cartItems = getValue("cartItems", []);
 
     if (cartItems) {
@@ -144,7 +148,7 @@ const BookDetails = () => {
 
             <div className="flex justify-center items-center mt-6">
               <button
-                className="btn btn-primary mr-6 "
+                className="btn-primary w-[200px] mr-6 "
                 onClick={() => window.my_modal_5.showModal()}
               >
                 Rent Now
@@ -197,7 +201,7 @@ const BookDetails = () => {
                   <div className="modal-action">
                     <button
                       disabled={!agree}
-                      className="btn btn-primary"
+                      className="btn-primary w-[250px]"
                       onClick={handleAddToCart}
                     >
                       Add to Cart
@@ -206,7 +210,7 @@ const BookDetails = () => {
                   </div>
                 </form>
               </dialog>
-              <button className="btn btn-primary" onClick={handleAddToCart}>
+              <button className="btn-primary w-[200px]" onClick={handleAddToCart}>
                 Add to Cart
               </button>
             </div>

@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { FaBars, FaBook, FaBookOpen, FaHome, FaUsers } from "react-icons/fa";
+import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -26,7 +26,7 @@ const Dashboard = () => {
         <div className="menu p-4 w-80 h-full bg-slate-100">
           <div className="text-center mx-auto">
             <img
-              className="rounded-full w-24 h-24"
+              className="rounded-full w-24 h-24 mx-auto"
               src={user && user.photoURL ? user.photoURL : avatar}
             />
             <h3 className="font-bold text-2xl text-[#d71d24] uppercase">
@@ -38,9 +38,15 @@ const Dashboard = () => {
             {/* Sidebar content here */}
 
             <>
+              
+              <li>
+                <Link to="/dashboard/adminHome">
+                  <FaHome></FaHome>Admin Home
+                </Link>
+              </li>
               <li>
                 <Link to="/dashboard/addBook">
-                  <FaBookOpen></FaBookOpen>Add Book
+                  <FaBookReader></FaBookReader>Add Book
                 </Link>
               </li>
               <li>
