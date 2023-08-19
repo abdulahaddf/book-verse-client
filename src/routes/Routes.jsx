@@ -6,6 +6,7 @@ import BookDetails from "../shared/components/BookDetails/BookDetails";
 import Login from "../shared/Login/login/Login";
 import Register from "../shared/Login/register/Register";
 import ResetForm from "../shared/Login/login/ResetForm";
+import Collections from "../shared/components/Collections/Collections";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
         {
             path: "/forget",
             element: <ResetForm/>
+        },
+        {
+          path: "/All",
+            element: <Collections/>
         }
       ]
     },

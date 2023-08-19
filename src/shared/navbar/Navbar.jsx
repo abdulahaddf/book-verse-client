@@ -1,4 +1,3 @@
-
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
@@ -68,58 +67,52 @@ const Navbar = () => {
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            <div className="flex justify-center">
-
-        <Link to="/" className="w-[83px] h-[63px]  ">
-          <img className="" src={logo} alt="" />
-        </Link>
-</div>
-              {/* Sidebar content here */}
-              <div>
-
-              {navItems}
+              <div className="flex justify-center">
+                <Link to="/" className="w-[83px] h-[63px]  ">
+                  <img className="h-full mx-auto" src={logo} alt="" />
+                </Link>
               </div>
+              {/* Sidebar content here */}
+              <div>{navItems}</div>
             </ul>
           </div>
         </div>
-     
-
 
         <Link to="/" className="w-[83px] h-[63px]  ">
-          <img className="" src={logo} alt="" />
+          <img className="h-full mx-auto" src={logo} alt="" />
         </Link>
-
       </div>
       {/* ... rest of the code */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-xl font-semibold">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1 text-xl font-semibold">
+          {navItems}
+        </ul>
       </div>
       <div className="navbar-end">
-            {user ? (
-              <div className="flex items-center">
-                <div
-                  className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
-                  data-tip={user?.displayName}
-                >
-                  <img
-                    className="rounded-full border-2 border-red "
-                    referrerPolicy="no-referrer"
-                    src={user?.photoURL}
-                    alt="user"
-                  />
-                </div>
+        {user ? (
+          <div className="flex items-center">
+            <div
+              className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
+              data-tip={user?.displayName}
+            >
+              <img
+                className="rounded-full border-2 border-red "
+                referrerPolicy="no-referrer"
+                src={user?.photoURL}
+                alt="user"
+              />
+            </div>
 
-                <button onClick={logOut} className="btn-custom">
-                  Log Out
-                </button>
-              </div>
-            ) : (
-              <Link to="/login" className="btn-custom ">
-                Login
-              </Link>
-            )}
+            <button onClick={logOut} className="btn-custom">
+              Log Out
+            </button>
           </div>
-      
+        ) : (
+          <Link to="/login" className="btn-custom ">
+            Login
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
