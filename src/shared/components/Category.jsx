@@ -5,7 +5,7 @@ import Heading from "./heading/Heading";
 import UseBooks from "../../hooks/UseBooks";
 const Category = () => {
   const {books}=UseBooks();
-  console.log(books)
+  // console.log(books)
   return (
     <div className="section">
       <Heading title={'Categories'}></Heading>
