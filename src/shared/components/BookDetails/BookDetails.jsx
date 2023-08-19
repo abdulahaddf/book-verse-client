@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+
+/* eslint-disable react/no-unescaped-entities */
+
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Footer from "../../footer/Footer";
+import Navbar from "../../navbar/Navbar";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../provider/AuthProvider";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 const BookDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const singleBookDetails = useLoaderData();
   const {
-    _id,
     title,
     cover_image,
     author,
@@ -16,25 +25,60 @@ const BookDetails = () => {
     language,
     description,
     real_price,
+    author_image,
+    about_author,
   } = singleBookDetails;
+
+  const [activeTab, setActiveTab] = useState("description");
+  const { cartRefetch } = useContext(AuthContext);
+  const { getValue, setValue } = useLocalStorage();
   const [agree, setAgree] = useState(false);
   const [readMore, setReadMore] = useState(false);
-
-  const btnHandler = () => {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Add to cart',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  };
 
   const checkboxHandler = () => {
     setAgree(!agree);
   };
 
-  const linkName = readMore ? "Read Less << " : "Read More >> ";
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  // add to cart by Tonmoy
+
+  const handleAddToCart = () => {
+    
+    const cartItems = getValue("cartItems", []);
+
+    if (cartItems) {
+      const find = cartItems.find((a) => a?._id === singleBookDetails?._id);
+
+      if (find) {
+        return Swal.fire({
+          title: "The book is already added to the cart",
+
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      }
+    }
+    singleBookDetails.real_price2 = singleBookDetails?.real_price;
+    const updatedCart = [...cartItems, singleBookDetails];
+    setValue("cartItems", updatedCart);
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "The book is added to the cart",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    cartRefetch();
+  };
+
+  //   add to cart end
+
+  const linkName = readMore ? "Read Less << " : "...Read More >> ";
 
   const extraContent = (
     <div>
@@ -71,17 +115,18 @@ const BookDetails = () => {
       </p>
     </div>
   );
-
   return (
     <div>
-      <div className=" hero min-h-screen bg-base-200">
-        <div className=" hero-content flex-col lg:flex-row">
-          <img src={cover_image} className="max-w-sm rounded-lg shadow-2xl" />
+      <Navbar></Navbar>
+      <div className="hero   ">
+        <div className="hero-content flex-col lg:flex-row">
+          <img
+            src={cover_image}
+            className=" w-[300px] h-[350px] rounded-lg shadow-2xl"
+          />
           <div className="ms-3">
             <h1 className="text-5xl font-bold">{title}</h1>
-            <p className="mt-3">
-              <span className="font-semibold">Author:</span> {author}
-            </p>
+
             <p className="mt-1">
               <span className="font-semibold">Price:</span> ${real_price}
             </p>
@@ -100,12 +145,10 @@ const BookDetails = () => {
             <p className="mt-1">
               <span className="font-semibold">Published:</span> {published}
             </p>
-            <p className="mt-1">
-              <span className="font-semibold">Description:</span> {description}
-            </p>
+
             <div className="flex justify-center items-center mt-6">
               <button
-                className="btn btn-primary mr-6"
+                className="btn-primary w-[200px] mr-6 "
                 onClick={() => window.my_modal_5.showModal()}
               >
                 Rent Now
@@ -158,8 +201,8 @@ const BookDetails = () => {
                   <div className="modal-action">
                     <button
                       disabled={!agree}
-                      className="btn btn-primary"
-                      onClick={btnHandler}
+                      className="btn-primary w-[250px]"
+                      onClick={handleAddToCart}
                     >
                       Add to Cart
                     </button>
@@ -167,12 +210,56 @@ const BookDetails = () => {
                   </div>
                 </form>
               </dialog>
-
-              <button className="btn btn-primary">Add to Cart</button>
+              <button className="btn-primary w-[200px]" onClick={handleAddToCart}>
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <div className="tabs mt-6 mx-auto w-1/2">
+        <button
+          className={`tab tab-lifted ${
+            activeTab === "description" ? "tab-active" : ""
+          }`}
+          onClick={() => handleTabChange("description")}
+        >
+          Description
+        </button>
+        <button
+          className={`tab tab-lifted ${
+            activeTab === "price" ? "tab-active" : ""
+          }`}
+          onClick={() => handleTabChange("price")}
+        >
+          Author
+        </button>
+      </div>
+
+      <div className="tab-content mt-3 mx-auto w-1/2 mb-20">
+        {activeTab === "description" && (
+          <div>
+            {/* <h2>Description</h2> */}
+            <p>{description}</p>
+          </div>
+        )}
+        {activeTab === "price" && (
+          <div className="flex">
+            <img
+              className="w-[250px] h-[250px] rounded-lg shadow-2xl"
+              src={author_image}
+              alt=""
+            />
+
+            <div className="ml-10">
+              <h2 className="font-semibold">{author}</h2>
+              <p>{about_author}</p>
+            </div>
+          </div>
+        )}
+      </div>
+      <Footer></Footer>
     </div>
   );
 };

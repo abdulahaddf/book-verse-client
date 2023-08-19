@@ -3,11 +3,17 @@ import "./Navbar.css";
 
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import logo from "../../assets/image/logo.png";
+import { BsCart3 } from 'react-icons/bs';
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
+
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+
+  const {addToCartData,user, logOut}=useContext(AuthContext);
+
+
+  
   const navItems = (
     <>
       <li>
@@ -50,11 +56,43 @@ const Navbar = () => {
           Old Books
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/addToCart"
+        >
+          
+            <span className="mt-[5px]"><BsCart3  /></span>
+            <span className="indicator-item badge badge-secondary mt-[5px]">{ addToCartData ? addToCartData.length : 0}</span>
+         
+            
+        
+
+        </NavLink>
+      </li>
+      <li>
+      {
+                  user ? 
+                
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " text-red" : "no-underline"
+                      }
+                      to="/dashboard/addBook"
+                    >
+                      Dashboard
+                    </NavLink>
+                 : ""
+                }
+      </li>
+      
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-screen-xl mx-auto md:mb-10">
+    <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
       <div className="navbar-start">
         <div className="drawer lg:hidden z-10">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -77,6 +115,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
+     
+
 
         <Link to="/" className="w-[83px] h-[63px]  ">
           <img className="h-full mx-auto" src={logo} alt="" />

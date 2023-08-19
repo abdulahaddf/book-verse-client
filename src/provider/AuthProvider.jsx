@@ -13,6 +13,8 @@ import {
 } from "firebase/auth";
 
 import { app } from "../firebase/firebase.config";
+import { useQuery } from "@tanstack/react-query";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 
 export const AuthContext = createContext(null);
@@ -22,6 +24,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -75,6 +78,28 @@ const signInFB = () => {
     return () => unSubscribe();
   }, []);
 
+  
+  // add to cart data fetch by Tonmoy
+
+  const { getValue} = useLocalStorage();
+
+  const { refetch: cartRefetch,  data: addToCartData=[] } = useQuery({
+    queryKey: [],
+    
+    queryFn: async ()=>{
+    
+        const res= await getValue("cartItems", []);
+
+        return res
+    } ,
+})
+
+
+
+  //  end
+
+
+
   // console.log(auth, user);
   const authInfo = {
     user,
@@ -87,7 +112,10 @@ const signInFB = () => {
     setLoading,
     profileUpdate,
     signInFB,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    addToCartData,
+    cartRefetch
+    
   };
 
   return (

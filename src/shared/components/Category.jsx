@@ -6,7 +6,7 @@ import UseBooks from "../../hooks/UseBooks";
 import { Link } from "react-router-dom";
 const Category = () => {
   const {books}=UseBooks();
-  console.log(books)
+  // console.log(books)
   return (
     <div className="section">
       {/* <Heading title={'Categories'}/> */}
