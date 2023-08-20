@@ -10,6 +10,8 @@ import ResetForm from "../shared/Login/login/ResetForm";
 import AddBook from "../Dashboard/Admin/AddBook";
 import AddToCart from "../pages/AddToCart/AddToCart";
 import AdminHome from "../Dashboard/Admin/AdminHome";
+import Payment from "../pages/payment/Payment";
+import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
 
 export const router = createBrowserRouter([
@@ -33,6 +35,10 @@ export const router = createBrowserRouter([
         {
             path: "/addToCart",
             element: <AddToCart></AddToCart>
+          },
+        {
+            path: "/payment",
+            element:<PrivateRoute> <Payment/></PrivateRoute>
           },
         {
             path: "/login",
