@@ -179,10 +179,11 @@ const AddToCart = () => {
             </button>
           </section>
         ) : (
-          <section>
+          <section className="flex justify-center items-center w-full  h-[80vh] ">
             <img
               src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
               alt=""
+              className="h-96 "
             />
           </section>
         )}
