@@ -65,7 +65,7 @@ const Navbar = () => {
         >
           
             <span className="mt-[5px]"><BsCart3  /></span>
-            <span className="indicator-item badge badge-secondary mt-[5px]">{ addToCartData ? addToCartData.length : 0}</span>
+            <span className="indicator-item badge bg-[#fc494f] text-white mt-[5px]">{ addToCartData ? addToCartData.length : 0}</span>
          
             
         
