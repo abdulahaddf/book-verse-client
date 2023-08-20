@@ -10,8 +10,12 @@ import ResetForm from "../shared/Login/login/ResetForm";
 import AddBook from "../Dashboard/Admin/AddBook";
 import AddToCart from "../pages/AddToCart/AddToCart";
 import AdminHome from "../Dashboard/Admin/AdminHome";
+<<<<<<< HEAD
 import Payment from "../pages/payment/Payment";
 import PrivateRoute from "./PrivateRoute";
+=======
+import Collections from "../shared/components/Collections/Collections";
+>>>>>>> bebbb9c38c9af77bfa3b8d0add27b6edf7f22e63
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +55,10 @@ export const router = createBrowserRouter([
             path: "/forget",
             element: <ResetForm/>
         },
+        {
+          path: "/All",
+            element: <Collections/>
+        }
       ]
       
     },
