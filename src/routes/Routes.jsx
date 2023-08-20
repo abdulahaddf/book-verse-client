@@ -10,6 +10,7 @@ import ResetForm from "../shared/Login/login/ResetForm";
 import AddBook from "../Dashboard/Admin/AddBook";
 import AddToCart from "../pages/AddToCart/AddToCart";
 import AdminHome from "../Dashboard/Admin/AdminHome";
+import Collections from "../shared/components/Collections/Collections";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
             path: "/forget",
             element: <ResetForm/>
         },
+        {
+          path: "/All",
+            element: <Collections/>
+        }
       ]
       
     },
