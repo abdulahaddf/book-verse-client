@@ -18,6 +18,9 @@
     .section{
         @apply shadow-xl rounded-lg p-5 my-5;
     }
+    .page-heading{
+        @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
+    }
     
     
   }

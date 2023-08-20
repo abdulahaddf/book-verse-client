@@ -3,8 +3,6 @@
 
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Footer from "../../footer/Footer";
-import Navbar from "../../navbar/Navbar";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
@@ -117,7 +115,6 @@ const BookDetails = () => {
   );
   return (
     <div>
-      <Navbar></Navbar>
       <div className="hero   ">
         <div className="hero-content flex-col lg:flex-row">
           <img
@@ -259,7 +256,7 @@ const BookDetails = () => {
           </div>
         )}
       </div>
-      <Footer></Footer>
+
     </div>
   );
 };
