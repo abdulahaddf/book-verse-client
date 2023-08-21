@@ -7,6 +7,7 @@ import useLocalStorage from "../../../hooks/useLocalStorage";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useContext } from "react";
+import moment from "moment/moment";
 
 
 
@@ -15,7 +16,7 @@ import { useContext } from "react";
 
 
 
-const BookCard = ({book}) => {
+const BookCard = ({book,text}) => {
 
   const {cartRefetch}=useContext(AuthContext);
   
@@ -30,7 +31,7 @@ const BookCard = ({book}) => {
 
     if(cartItems){
 
-      const find= cartItems.find(a=> a?._id === book?._id)
+      const find= cartItems.find(a=> a?._id ===  book?._id)
 
       if(find){
         return   Swal.fire({
@@ -61,22 +62,22 @@ const BookCard = ({book}) => {
   };
 
   console.log(book);
-  const {_id,title, author, cover_image, offer_price, rating  } = book;
+  const {_id,title, author, cover_image, offer_price, rating ,count,previous_id,purchase_date } = book;
   return (
     <div className=" mx-auto my-5 py-10  ">
       {/* card 1 start */}
       <div
-        className="group book-card-container relative block bg-black  xl:w-[300px]
+        className="group book-card-container relative block bg-black  w-[300px]
             overflow-hidden "
       > 
         <img
           alt="Developer"
           src={cover_image}
-          className="absolute inset-0 w-[300px] object-cover opacity-75 transition-opacity group-hover:opacity-30  book-card-img "
+          className="absolute inset-0 w-[300px] object-cover opacity-75 transition-opacity group-hover:opacity-30 h-full book-card-img "
         />
 
         <div className="relative px-8 flex justify-between   ">
-          <div className="mt-32 sm:mt-48 lg:mt-[30%]   ">
+          <div className="mt-32 sm:mt-48 lg:mt-[30%] mx-auto  ">
             <div className="translate-y-8 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500  ">
               <h3 className="text-[20px] text-white my-5 h-14 ">
                 Name: {title}
@@ -86,6 +87,9 @@ const BookCard = ({book}) => {
               </p>
 
               <p className="text-[18px] text-white my-5">Price: ${offer_price}</p>
+
+              {text==='bestSelling' &&  <p className="text-[18px] text-white my-5">Sold: {count}</p>}
+              {text==='recentSelling' &&  <p className="text-[18px] text-white my-5">Sold: {moment(purchase_date).format('MMMM Do YYYY, h:mm:ss a')}</p>}
 
               <div className="flex items-center  mt-5 pb-[30px]">
                 <p className="text-[18px] text-white mr-2">Rating: {rating}</p>
@@ -121,11 +125,11 @@ const BookCard = ({book}) => {
               <div>
                 
 
-                <section className=" my-5">
+              { !text  &&   <section className=" my-5">
                   <button onClick={handleAddToCart} className="btn-card w-full ">Add to Cart</button>
-                </section>
+                </section>}
                 <section className=" my-5">
-                  <Link to={`/details/${_id}`}><button className="btn-card w-full ">View Details</button></Link>
+                  <Link to={`/details/${previous_id ||_id}`}><button className="btn-card w-full ">View Details</button></Link>
                 </section>
                 
               </div>

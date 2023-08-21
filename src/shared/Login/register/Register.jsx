@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaFacebookF } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
-import Navbar from "../../navbar/Navbar";
 
 const Register = () => {
   const { createUser, signInGoogle, signInFB, profileUpdate, setLoading } =
@@ -219,7 +218,7 @@ const Register = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+    
       <div className="relative flex flex-col justify-center my-4 overflow-hidden">
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-red uppercase">

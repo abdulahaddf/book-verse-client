@@ -1,6 +1,5 @@
 
 import BookCard from "../../../shared/components/BookCard/BookCard";
-import Navbar from "../../../shared/navbar/Navbar";
 import UseBooks from "../../../hooks/UseBooks";
 import Loader from "../../../shared/components/loader/Loader";
 
@@ -13,7 +12,7 @@ const AllBooks = () => {
     }
     return (
         <div className="">
-<Navbar></Navbar>
+
         <div className="grid grid-cols-4 gap-8 w-11/12 mx-auto">
             {
                 books?.map(book => <BookCard key={book._id} book={book}></BookCard>)
