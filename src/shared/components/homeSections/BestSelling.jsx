@@ -1,10 +1,24 @@
 import Heading from "../heading/Heading";
 import BookCard from "../BookCard/BookCard";
 import { Link } from "react-router-dom";
-import UseBooks from "../../../hooks/UseBooks";
+import { useEffect, useState } from "react";
+
 
 const BestSelling = () => {
-  const { books } = UseBooks();
+  const [books,setBooks]=useState([])
+
+  useEffect(()=>{
+
+
+      fetch('http://localhost:5000/bestSelling')
+      .then(res=> res.json())
+      .then(res=> setBooks(res))
+      .catch(error=> console.log(error))
+
+
+  },[])
+
+  console.log(books,'tonu')
   return (
     <div className="section">
       <div className="flex justify-between items-center">
@@ -12,8 +26,8 @@ const BestSelling = () => {
         <Link className="btn-primary ">See More</Link>
       </div>
       <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-10 content-center">
-        {books?.slice(4, 8).map((book) => (
-          <BookCard key={book._id} book={book}></BookCard>
+        {books?.slice(0, 8).map((book) => (
+          <BookCard key={book._id} book={book} text='bestSelling'></BookCard>
         ))}
       </div>
     </div>

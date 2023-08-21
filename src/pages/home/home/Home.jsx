@@ -9,6 +9,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import './Home.css'
 import SearchResultsList from "../SearchBar/SearchResultsList";
+import RecentSelling from "../../../shared/components/homeSections/RecentSelling";
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
         <Category />
         <FeaturedBooks />
         <BestSelling/>
+        <RecentSelling/>
         <Sponsor></Sponsor>
       </section>
     </div>
