@@ -13,21 +13,26 @@ const CheckOut = ({ books, price }) => {
   console.log(price, books);
   const stripe = useStripe();
   const elements = useElements();
-  const { user } = useContext(AuthContext);
+  const { user,cartRefetch } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [paid, setPaid] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
 
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
         console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
-      });
-    }
+      
+      })
+     }
   }, [price, axiosSecure]);
+
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,7 +76,7 @@ const CheckOut = ({ books, price }) => {
       console.log(confirmError);
       setCardError(confirmError.message);
     }
-
+setTransactionId(paymentIntent.id)
     console.log("payment intent", paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
@@ -87,6 +92,75 @@ const CheckOut = ({ books, price }) => {
         if (res.data.insertedId) {
           setProcessing(false);
 
+            // Post bestSelling && recentSelling  start by Tonmoy
+
+         
+            const array=[]
+    
+    
+            for(let i of books){
+            
+            
+                const a={
+            
+                  about_author: i?.about_author,
+                  author:i?.author,
+                  author_image:i?.author_image,
+                  category:i?.category,
+                  count:i?.count ||1,
+                  cover_image:i?.cover_image,
+                  description:i?.description,
+                  language:i?.language,
+                  offer_price:i?.offer_price,
+                  page_numbers:i?.page_numbers,
+                  published:i?.published,
+                  rating:i?.rating,
+                  real_price:i?.real_price,
+                  review:i?.review,
+                  title:i?.title,
+                  previous_id:i?._id,
+                  purchase_date: new Date().getTime(),
+          
+            
+            
+            
+                  }
+                 
+              array.push(a)
+            
+              console.log(i)
+            }
+            
+            
+            console.log(array)
+          
+          
+          
+              if(array){
+          
+                for(let a of array){
+          
+          
+                  fetch('https://book-verse-server-phi.vercel.app/bestSellingAndRecentSelling',{
+                    method:'POST',
+                    headers:{
+                      'content-type':'application/json'
+                    },
+                    body:JSON.stringify(a)
+                  })
+                  
+                  
+          
+                }
+          
+          
+              }
+              
+             
+
+            // Post bestSelling && recentSelling  end by Tonmoy
+
+
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -96,6 +170,7 @@ const CheckOut = ({ books, price }) => {
           });
           localStorage.removeItem("cartItems");
           setPaid(true);
+          cartRefetch()
         }
       });
     }
@@ -106,23 +181,26 @@ const CheckOut = ({ books, price }) => {
       {paid ? (
         <div className="md:my-40">
           <h1 className="text-3xl text-center mt-10">
-            Congratulations!! You have Paid For All Your Books{" "}
+            Congratulations!! You have Paid For All Your Books{" "}  
           </h1>
+          <h3 className="text-xl text-center my-5">Your Transaction Id : <span className="text-red">{transactionId}</span></h3>
           <h2 className="text-2xl text-center mt-5">
             Please wait for the fastest delivery
           </h2>
         </div>
       ) : (
         <>
-          <h1 className="text-3xl text-center mt-10">
+         
+          <form
+            className="w-1/2 p-20 mt-20 mx-auto text-white border-double border-4 border-red bg-black"
+            onSubmit={handleSubmit}
+          >
+            <h1 className="text-center">Hello, {user?.displayName} </h1>
+            <h1 className="text-3xl text-center my-10">
             You Need to Pay{" "}
             <span className="font-semibold text-red">${price}</span> for{" "}
             <span className="font-semibold text-red">{books.length}</span> Books
           </h1>
-          <form
-            className="w-2/3 mt-20 mx-auto  p-5 border-double border-4 border-red"
-            onSubmit={handleSubmit}
-          >
             <CardElement
               options={{
                 style: {
@@ -154,7 +232,11 @@ const CheckOut = ({ books, price }) => {
               {cardError && <p className="text-red-600 ">{cardError}</p>}
             </div>
           </form>
+
+          
         </>
+
+      
       )}
     </div>
   );

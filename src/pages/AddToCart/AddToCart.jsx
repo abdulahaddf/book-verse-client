@@ -110,8 +110,7 @@ const AddToCart = () => {
               <div
                 key={data?._id}
                 className=" grid lg:grid-cols-3  md:gap-10 p-3 my-10 "
-                style={{ boxShadow: "10px 10px 10px black" }}
-              >
+                style={{ boxShadow: "10px 10px 10px black" }} >
                 <div className=" md:w-1/2 mx-auto flex justify-center items-center ">
                   <img src={data?.cover_image} className="" />
                 </div>
@@ -156,7 +155,6 @@ const AddToCart = () => {
                 </div>
                 <div className=" my-10 text-center">
                   <p className=" text-[20px]">
-                    {" "}
                     Amount: $ <span>{data?.real_price2}</span>{" "}
                   </p>
                   <div
