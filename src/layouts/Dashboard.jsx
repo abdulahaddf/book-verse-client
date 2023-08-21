@@ -1,5 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
+import { ImBooks } from "react-icons/im";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -40,19 +41,24 @@ const Dashboard = () => {
             <>
               
               <li>
-                <Link to="/dashboard/adminHome">
+                <NavLink to="/dashboard/adminHome">
                   <FaHome></FaHome>Admin Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/dashboard/addBook">
+                <NavLink to="/dashboard/addBook">
                   <FaBookReader></FaBookReader>Add Book
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/dashboard/manageUsers">
+                <NavLink to="/dashboard/manageBooks">
+                  <ImBooks></ImBooks>Manage Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageUsers">
                   <FaUsers></FaUsers>Manage Users
-                </Link>
+                </NavLink>
               </li>
             </>
 

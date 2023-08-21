@@ -13,6 +13,8 @@ import AdminHome from "../Dashboard/Admin/AdminHome";
 import Payment from "../pages/payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import ManageBooks from "../Dashboard/Admin/ManageBooks";
 
 export const router = createBrowserRouter([
     {
@@ -70,6 +72,14 @@ export const router = createBrowserRouter([
       {
         path: 'adminHome',
         element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'manageUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: 'manageBooks',
+        element: <ManageBooks></ManageBooks>
       },
      ]
     }
