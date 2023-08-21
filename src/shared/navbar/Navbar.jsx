@@ -81,7 +81,7 @@ const Navbar = () => {
                       className={({ isActive }) =>
                         isActive ? " text-red" : "no-underline"
                       }
-                      to="/dashboard/addBook"
+                      to="/dashboard/adminHome"
                     >
                       Dashboard
                     </NavLink>
