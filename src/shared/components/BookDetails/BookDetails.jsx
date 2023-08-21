@@ -1,9 +1,8 @@
+
 /* eslint-disable react/no-unescaped-entities */
 
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Footer from "../../footer/Footer";
-import Navbar from "../../navbar/Navbar";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
@@ -116,7 +115,6 @@ const BookDetails = () => {
   );
   return (
     <div>
-      <Navbar></Navbar>
       <div className="hero   ">
         <div className="hero-content flex-col lg:flex-row">
           <img
@@ -147,7 +145,7 @@ const BookDetails = () => {
 
             <div className="flex justify-center items-center mt-6">
               <button
-                className="btn btn-primary mr-6 "
+                className="btn-primary w-[200px] mr-6 "
                 onClick={() => window.my_modal_5.showModal()}
               >
                 Rent Now
@@ -200,7 +198,7 @@ const BookDetails = () => {
                   <div className="modal-action">
                     <button
                       disabled={!agree}
-                      className="btn btn-primary"
+                      className="btn-primary w-[250px]"
                       onClick={handleAddToCart}
                     >
                       Add to Cart
@@ -209,7 +207,7 @@ const BookDetails = () => {
                   </div>
                 </form>
               </dialog>
-              <button className="btn btn-primary" onClick={handleAddToCart}>
+              <button className="btn-primary w-[200px]" onClick={handleAddToCart}>
                 Add to Cart
               </button>
             </div>
@@ -258,7 +256,7 @@ const BookDetails = () => {
           </div>
         )}
       </div>
-      <Footer></Footer>
+
     </div>
   );
 };

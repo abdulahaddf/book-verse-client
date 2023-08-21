@@ -4,7 +4,6 @@ import { useContext } from "react";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
-import Navbar from "../../navbar/Navbar";
 
 const ResetForm = () => {
   const { auth, sendPasswordResetEmail } = useContext(AuthContext);
@@ -41,7 +40,7 @@ const ResetForm = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+    
       <h1 className="text-xl text-center my-5 ">Reset Your Password</h1>
       <div className="flex justify-center items-center">
         <form

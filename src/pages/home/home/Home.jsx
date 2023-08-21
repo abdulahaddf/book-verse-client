@@ -1,7 +1,6 @@
-import Footer from "../../../shared/footer/Footer";
+
 import Category from "../../../shared/components/Category";
 import "react-tabs/style/react-tabs.css";
-import Navbar from "../../../shared/navbar/Navbar";
 import FeaturedBooks from "../../../shared/components/homeSections/FeaturedBooks";
 import BestSelling from "../../../shared/components/homeSections/BestSelling";
 import Banner from "../Banner/Banner";
@@ -10,6 +9,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import './Home.css'
 import SearchResultsList from "../SearchBar/SearchResultsList";
+import RecentSelling from "../../../shared/components/homeSections/RecentSelling";
 
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div>
       {/* All Components of home will be shown here */}
-      <Navbar></Navbar>
+  
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
         {results && results.length > 0 && <SearchResultsList results={results} />}
@@ -28,9 +28,9 @@ const Home = () => {
         <Category />
         <FeaturedBooks />
         <BestSelling/>
+        <RecentSelling/>
         <Sponsor></Sponsor>
       </section>
-      <Footer></Footer>
     </div>
   );
 };

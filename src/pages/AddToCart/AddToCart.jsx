@@ -1,17 +1,19 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import Navbar from "../../shared/navbar/Navbar";
 import { MdDeleteForever } from "react-icons/md";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Swal from "sweetalert2";
-import Footer from "../../shared/footer/Footer";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCartData } from "../payment/redux/CartSlice";
 
 const AddToCart = () => {
   const { addToCartData, cartRefetch } = useContext(AuthContext);
   const { getValue, setValue } = useLocalStorage();
-
+  // console.log(addToCartData);
   const deleteAddToCart = (id) => {
     const cartItems = getValue("cartItems", []);
+    // console.log(cartItems)
 
     const filterCart = cartItems.filter((res) => res?._id !== id);
 
@@ -19,7 +21,7 @@ const AddToCart = () => {
     setValue("cartItems", updatedCart);
 
     Swal.fire({
-      position: "center",
+      position: "top-end",
       icon: "success",
       title: "The item deleted successfully",
       showConfirmButton: false,
@@ -73,24 +75,35 @@ const AddToCart = () => {
     totalPrice += i?.real_price2;
   }
 
-  console.log(totalPrice);
+  // console.log(totalPrice);
 
   const tax = totalPrice * 0.05;
 
   const deliveryCharge = 5;
 
-  console.log(tax);
+  // console.log(tax);
 
   const amount = totalPrice + tax + deliveryCharge;
 
   const finalAmount = parseFloat(amount);
+  // console.log(cartItems);
+
+  const dispatch = useDispatch();
+
+  const sendDataToPayment = () => {
+    const cartData = {
+      addToCartData: addToCartData, // Assuming addToCartData is already available here
+      finalAmount: finalAmount, // Assuming finalAmount is already calculated
+    };
+
+    dispatch(setCartData(cartData));
+    // history.push('/payment');
+  };
 
   return (
     <div>
       <Navbar></Navbar>
-      <h1 className="text-4xl  borer border-b-2 border-red w-fit mx-auto pb-2">
-        My Cart
-      </h1>
+<h1 className="text-4xl  borer border-b-2 border-red w-fit mx-auto pb-2">My Cart</h1>
       <div className=" w-4/5 mx-auto  lg:flex gap-20">
         <section>
           {addToCartData?.map((data) => (
@@ -105,45 +118,52 @@ const AddToCart = () => {
 
               <div className="space-y-3">
                 <p className=" my-5 ">
-                  <span className="font-semibold">Name: </span> {data?.title}{" "}
+                 <span className="font-semibold">Name: </span> {data?.title}{" "}
                 </p>
                 <p className="  ">
-                  <span className="font-semibold">Author: </span> {data?.author}
+                <span className="font-semibold">Author: </span> {data?.author}
                 </p>
 
-                <div>
-                  <div className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center">
-                    <button
-                      onClick={() => decrementHandler(data?._id)}
-                      type="button"
-                      className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
-                    >
-                      -
-                    </button>
+               
+           
 
-                    <input
-                      type="number"
-                      id="Quantity"
-                      value={data?.count || 1}
-                      className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                    />
+            <div>
+                <div
+                  className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center"
+                >
+                  <button
+                    onClick={() => decrementHandler(data?._id)}
+                    type="button"
+                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                  >
+                    -
+                  </button>
 
-                    <button
-                      onClick={() => incrementHandler(data?._id)}
-                      type="button"
-                      className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
-                    >
-                      +
-                    </button>
-                  </div>
+                  <input
+                    type="number"
+                    id="Quantity"
+                    value={data?.count || 1}
+                    className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                  />
+
+                  <button
+                    onClick={() => incrementHandler(data?._id)}
+                    type="button"
+                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                  >
+                    +
+                  </button>
                 </div>
+              </div>
               </div>
 
               {/* <div className="w-[70%] mx-auto lg:mt-[30%] md:mt-[30%]">
                             <p className=" text-[20px]"> Amount: $ <span  >{data?.count ? data?.real_price * data?.count
                             : data?.real_price}</span> </p>
                         </div> */}
-              <div className="flex-col my-10 text-center">
+              <div
+                className="flex-col my-10 text-center"
+              >
                 <p className=" text-[20px]">
                   {" "}
                   Amount: $ <span>{data?.real_price2}</span>{" "}
@@ -158,42 +178,41 @@ const AddToCart = () => {
           ))}
         </section>
 
-        {addToCartData[0] ? (
           <section
-            className=" text-center bg-gray-900 py-20 px-10 my-[100px] space-y-10 rounded-[10px] 
-            
-            
-            h-[600px]  "
+            className=" bg-gray-900 text-white my-10 py-10 px-5 md:my-[100px] space-y-5 rounded-[10px] 
+             h-[350px]  md:w-1/3 text-center sticky top-0"
             style={{ boxShadow: "10px 10px 10px black" }}
           >
-            <p className=" text-[30px] text-center text-white">
+            <p className=" text-xl  ">
               Your Total: $ <span className="">{totalPrice}</span>{" "}
             </p>
-            <p className=" text-[25px] text-center text-white">
+            <p className=" text-xl  ">
               Delivery charge: $ <span className="">5</span>{" "}
             </p>
-            <p className=" text-[25px] text-center text-white">
+            <p className=" text-xl  ">
               Tax: <span className="">5%</span>{" "}
             </p>
-            <p className=" text-[35px] text-center text-white">
+            <p className=" text-xl  ">
               Final Amount: $ <span className="">{finalAmount}</span>{" "}
             </p>
-
-            <button className=" btn-primary w-[300px] md:w-[250px] lg:w-[250px] text-[17px] font-[500]">
+            <Link
+              to="/payment"
+              // state={{ price: finalAmount , books : addToCartData  }}
+              onClick={sendDataToPayment}
+              className=" btn-primary w-full md:w-[150px] lg:w-[200px] text-xl font-[500]">
               Buy Now
-            </button>
+            </Link>
           </section>
-        ) : (
-          <section>
-            <img
-              src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
-              alt=""
-            />
-          </section>
-        )}
-      </div>
-
-      <Footer></Footer>
+        </div>
+      ) : (
+        <section className="md:w-4/6 mx-auto">
+          <h1 className="text-3xl text-center mt-5">Add your Desired Books in Cart</h1>
+          <img
+            src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
+            alt=""
+          />
+        </section>
+      )}
     </div>
   );
 };
