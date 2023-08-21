@@ -25,9 +25,13 @@ const CheckOut = ({ books, price }) => {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
         console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
-      });
-    }
+      
+      })
+     }
   }, [price, axiosSecure]);
+
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -114,15 +118,17 @@ const CheckOut = ({ books, price }) => {
         </div>
       ) : (
         <>
-          <h1 className="text-3xl text-center mt-10">
+         
+          <form
+            className="w-1/2 p-20 mt-20 mx-auto text-white border-double border-4 border-red bg-black"
+            onSubmit={handleSubmit}
+          >
+            <h1 className="text-center">Hello, {user?.displayName} </h1>
+            <h1 className="text-3xl text-center my-10">
             You Need to Pay{" "}
             <span className="font-semibold text-red">${price}</span> for{" "}
             <span className="font-semibold text-red">{books.length}</span> Books
           </h1>
-          <form
-            className="w-2/3 mt-20 mx-auto  p-5 border-double border-4 border-red"
-            onSubmit={handleSubmit}
-          >
             <CardElement
               options={{
                 style: {
