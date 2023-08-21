@@ -13,7 +13,7 @@ const CheckOut = ({ books, price }) => {
   console.log(price, books);
   const stripe = useStripe();
   const elements = useElements();
-  const { user } = useContext(AuthContext);
+  const { user,cartRefetch } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -92,6 +92,75 @@ setTransactionId(paymentIntent.id)
         if (res.data.insertedId) {
           setProcessing(false);
 
+            // Post bestSelling && recentSelling  start by Tonmoy
+
+         
+            const array=[]
+    
+    
+            for(let i of books){
+            
+            
+                const a={
+            
+                  about_author: i?.about_author,
+                  author:i?.author,
+                  author_image:i?.author_image,
+                  category:i?.category,
+                  count:i?.count ||1,
+                  cover_image:i?.cover_image,
+                  description:i?.description,
+                  language:i?.language,
+                  offer_price:i?.offer_price,
+                  page_numbers:i?.page_numbers,
+                  published:i?.published,
+                  rating:i?.rating,
+                  real_price:i?.real_price,
+                  review:i?.review,
+                  title:i?.title,
+                  previous_id:i?._id,
+                  purchase_date: new Date().getTime(),
+          
+            
+            
+            
+                  }
+                 
+              array.push(a)
+            
+              console.log(i)
+            }
+            
+            
+            console.log(array)
+          
+          
+          
+              if(array){
+          
+                for(let a of array){
+          
+          
+                  fetch('https://book-verse-server-phi.vercel.app/bestSellingAndRecentSelling',{
+                    method:'POST',
+                    headers:{
+                      'content-type':'application/json'
+                    },
+                    body:JSON.stringify(a)
+                  })
+                  
+                  
+          
+                }
+          
+          
+              }
+              
+             
+
+            // Post bestSelling && recentSelling  end by Tonmoy
+
+
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -101,6 +170,7 @@ setTransactionId(paymentIntent.id)
           });
           localStorage.removeItem("cartItems");
           setPaid(true);
+          cartRefetch()
         }
       });
     }
@@ -162,7 +232,11 @@ setTransactionId(paymentIntent.id)
               {cardError && <p className="text-red-600 ">{cardError}</p>}
             </div>
           </form>
+
+          
         </>
+
+      
       )}
     </div>
   );
