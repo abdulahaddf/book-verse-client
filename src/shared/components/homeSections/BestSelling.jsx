@@ -10,7 +10,7 @@ const BestSelling = () => {
   useEffect(()=>{
 
 
-      fetch('http://localhost:5000/bestSelling')
+      fetch('https://book-verse-server-phi.vercel.app/bestSelling')
       .then(res=> res.json())
       .then(res=> setBooks(res))
       .catch(error=> console.log(error))

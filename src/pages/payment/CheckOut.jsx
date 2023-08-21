@@ -141,7 +141,7 @@ setTransactionId(paymentIntent.id)
                 for(let a of array){
           
           
-                  fetch('http://localhost:5000/bestSellingAndRecentSelling',{
+                  fetch('https://book-verse-server-phi.vercel.app/bestSellingAndRecentSelling',{
                     method:'POST',
                     headers:{
                       'content-type':'application/json'
