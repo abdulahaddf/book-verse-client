@@ -19,6 +19,7 @@ const CheckOut = ({ books, price }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [paid, setPaid] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
 
   useEffect(() => {
     if (price > 0) {
@@ -147,7 +148,7 @@ const tonu=()=>{
       console.log(confirmError);
       setCardError(confirmError.message);
     }
-
+setTransactionId(paymentIntent.id)
     console.log("payment intent", paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
@@ -182,8 +183,9 @@ const tonu=()=>{
       {paid ? (
         <div className="md:my-40">
           <h1 className="text-3xl text-center mt-10">
-            Congratulations!! You have Paid For All Your Books{" "}
+            Congratulations!! You have Paid For All Your Books{" "}  
           </h1>
+          <h3 className="text-xl text-center my-5">Your Transaction Id : <span className="text-red">{transactionId}</span></h3>
           <h2 className="text-2xl text-center mt-5">
             Please wait for the fastest delivery
           </h2>
