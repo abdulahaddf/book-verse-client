@@ -4,6 +4,7 @@ import { ImBooks } from "react-icons/im";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
+import DashboardNavbar from "../Dashboard/DashboardNavbar/DashboardNavbar";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
         >
           <FaBars></FaBars>
         </label>
+        <DashboardNavbar></DashboardNavbar>
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">
@@ -39,7 +41,6 @@ const Dashboard = () => {
             {/* Sidebar content here */}
 
             <>
-              
               <li>
                 <NavLink to="/dashboard/adminHome">
                   <FaHome></FaHome>Admin Home
