@@ -4,9 +4,10 @@ import CategoryCard from "./CategoryCard";
 // import Heading from "./heading/Heading";
 import UseBooks from "../../hooks/UseBooks";
 import { Link } from "react-router-dom";
+import AuthorCard from "./AuthorDetails/AuthorCard";
 const Category = () => {
-  const {books}=UseBooks();
-  // console.log(books)
+  const { books } = UseBooks();
+  console.log(books);
   return (
     <div className="section">
       {/* <Heading title={'Categories'}/> */}
@@ -28,14 +29,13 @@ const Category = () => {
       <div className="md:p-10">
         <div className="text-center  md:p-5">
           <Tabs>
-            <TabList  className='text-xs md:text-base py-2 '>
+            <TabList className="text-xs md:text-base py-2 ">
               <Tab>All Books</Tab>
               <Tab>Author's choice</Tab>
               <Tab>Offers and Rewards</Tab>
               <Tab>Book Fair</Tab>
               <Tab>New Arrival Books</Tab>
               <Tab>E-books</Tab>
-              
             </TabList>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
@@ -45,19 +45,24 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-              <button className="button-52 text-white font-bold">
-                <Link to={`/All`}>See more</Link>
-              </button>
+                <button className="button-52 text-white font-bold">
+                  <Link to={`/All/Category`}>See more</Link>
+                </button>
               </div>
             </TabPanel>
-            {/* <TabPanel>
+            <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books
-                  .filter((card) => card?.category === "Comics")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
+                  .map((card) => <AuthorCard key={card._id} card={card} />)
                   .slice(0, 4)}
               </div>
+              <div className="flex justify-center py-3">
+                <button className="button-52 text-white font-bold">
+                  <Link to={`/All/Authors`}>See All</Link>
+                </button>
+              </div>
             </TabPanel>
+            {/* 
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books

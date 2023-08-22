@@ -197,13 +197,13 @@ const AddToCart = () => {
           </section>
         </div>
       ) : (
-        <section className="md:w-4/6 mx-auto">
-          <h1 className="text-3xl text-center mt-5">Add your Desired Books in Cart</h1>
-          <img
-            src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
-            alt=""
-          />
-        </section>
+        <section className="flex justify-center items-center w-full  h-[80vh] ">
+            <img
+              src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
+              alt=""
+              className="h-96 "
+            />
+          </section>
       )}
     </div>
   );

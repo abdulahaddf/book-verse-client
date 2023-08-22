@@ -61,6 +61,11 @@ const Dashboard = () => {
                   <FaUsers></FaUsers>Manage Users
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/purchasedBooks">
+                <ImBooks/>Purchased Books
+                </NavLink>
+              </li>
             </>
 
             <div className="divider"></div>
