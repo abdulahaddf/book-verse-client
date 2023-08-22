@@ -13,6 +13,8 @@ import AdminHome from "../Dashboard/Admin/AdminHome";
 import Payment from "../pages/payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
+import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
+import StripePayment from "../pages/payment/StripePayment";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
         {
             path: "/payment",
             element:<PrivateRoute> <Payment/></PrivateRoute>
+          },
+        {
+            path: "/stripePayment",
+            element:<PrivateRoute> <StripePayment/></PrivateRoute>
+          },
+        {
+            path: "/SSLPaymentSuccess",
+            element:<PrivateRoute> <SSLPaymentSuccess/></PrivateRoute>
           },
         {
             path: "/login",
