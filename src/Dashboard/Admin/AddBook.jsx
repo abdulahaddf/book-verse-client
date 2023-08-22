@@ -1,9 +1,7 @@
-
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const AddBook = () => {
-
   const {
     register,
     handleSubmit,
@@ -14,34 +12,6 @@ const AddBook = () => {
     formState: { errors },
   } = useForm();
   console.log(watch("example"));
-
-
-
-    
-    // fetch("https://book-verse-server-phi.vercel.app/allBooks", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: "Success!",
-    //         text: "class added successfully",
-    //         icon: "success",
-    //         confirmButtonText: "Cool",
-    //       });
-    //     }
-    //   });
-
-  
-
-
-  // };
-
 
 // tonmoy start
   const onSubmit = async (allData) => {
@@ -133,7 +103,7 @@ const AddBook = () => {
           title: "Success!",
           text: "Book added successfully",
           icon: "success",
-          confirmButtonText: "Cool",
+          confirmButtonText: "Ok",
         });
         reset()
       }
@@ -145,11 +115,11 @@ const AddBook = () => {
   
 
   return (
-    <div className="w-full h-full ps-4 md:mt-6">
+    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-slate-100 rounded-md p-10 mt-10"
+        className="bg-slate-100 rounded-md p-4 md:p-16 mt-10"
       >
         <div className="flex gap-6">
           <div className="form-control w-full">
@@ -353,7 +323,7 @@ const AddBook = () => {
         </div>
 
         <input
-          className="py-2 px-3 mt-4 flex btn btn-sm hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
+          className="py-2 px-3 mt-4 flex btn w-24 hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
           type="submit"
           value="Add Book"
         />

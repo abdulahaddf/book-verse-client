@@ -13,6 +13,9 @@ import AdminHome from "../Dashboard/Admin/AdminHome";
 import Payment from "../pages/payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import ManageBooks from "../Dashboard/Admin/ManageBooks";
+import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
 
@@ -63,7 +66,7 @@ export const router = createBrowserRouter([
             element: <ResetForm/>
         },
         {
-          path: "/All",
+          path: "/All/:category",
             element: <Collections/>
         }
       ]
@@ -80,6 +83,18 @@ export const router = createBrowserRouter([
       {
         path: 'adminHome',
         element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'manageUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: 'manageBooks',
+        element: <ManageBooks></ManageBooks>
+      },
+      {
+        path: 'purchasedBooks',
+        element:<PurchasedBooks></PurchasedBooks>
       },
      ]
     }
