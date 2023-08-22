@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import ManageBooks from "../Dashboard/Admin/ManageBooks";
+import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: 'manageBooks',
         element: <ManageBooks></ManageBooks>
+      },
+      {
+        path: 'purchasedBooks',
+        element:<PurchasedBooks></PurchasedBooks>
       },
      ]
     }
