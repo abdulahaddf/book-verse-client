@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
             element: <ResetForm/>
         },
         {
-          path: "/All",
+          path: "/All/:category",
             element: <Collections/>
         }
       ]
