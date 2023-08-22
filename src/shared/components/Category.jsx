@@ -4,9 +4,10 @@ import CategoryCard from "./CategoryCard";
 // import Heading from "./heading/Heading";
 import UseBooks from "../../hooks/UseBooks";
 import { Link } from "react-router-dom";
+import AuthorCard from "./AuthorDetails/AuthorCard";
 const Category = () => {
   const {books}=UseBooks();
-  // console.log(books)
+  console.log(books)
   return (
     <div className="section">
       {/* <Heading title={'Categories'}/> */}
@@ -50,14 +51,14 @@ const Category = () => {
               </button>
               </div>
             </TabPanel>
-            {/* <TabPanel>
+            <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books
-                  .filter((card) => card?.category === "Comics")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
+                  .map((card) => <AuthorCard key={card._id} card={card} />)
                   .slice(0, 4)}
               </div>
             </TabPanel>
+            {/* 
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books
