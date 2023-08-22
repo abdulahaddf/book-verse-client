@@ -1,7 +1,7 @@
 const AuthorCard = ({ card }) => {
   const { _id, author, author_image } = card;
   return (
-    <div className="p-5 group  relative overflow-hidden bg-[#F1EDFF]">
+    <div className="p-5 group  relative overflow-hidden bg-stone-50 hover:shadow-xl shadow-slate-300">
       <img src={author_image} alt="" className="rounded-full w-48 h-48" />
       <h2 className="text-lg py-3 font-mono">{author}</h2>
       <div className="absolute top-40 w-full px-3 left-0">
