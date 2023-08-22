@@ -13,6 +13,7 @@ import AdminHome from "../Dashboard/Admin/AdminHome";
 import Payment from "../pages/payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
+import UserHome from "../Dashboard/Admin/UserHome";
 
 export const router = createBrowserRouter([
     {
@@ -70,7 +71,11 @@ export const router = createBrowserRouter([
       {
         path: 'adminHome',
         element: <AdminHome></AdminHome>
-      },
+       },
+       {
+         path: 'userHome',
+         element:<UserHome></UserHome>
+       }
      ]
     }
   ]);

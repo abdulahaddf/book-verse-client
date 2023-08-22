@@ -45,6 +45,12 @@ const Dashboard = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/dashboard/userHome">
+                  <FaHome></FaHome>User Home
+                </Link>
+              </li>
+              
+              <li>
                 <Link to="/dashboard/addBook">
                   <FaBookReader></FaBookReader>Add Book
                 </Link>

@@ -102,19 +102,18 @@ const AddToCart = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
-<h1 className="text-4xl  borer border-b-2 border-red w-fit mx-auto pb-2">My Cart</h1>
-      <div className=" w-4/5 mx-auto  lg:flex gap-20">
-        <section>
-          {addToCartData?.map((data) => (
-            <div
-              key={data?._id}
-              className=" grid lg:grid-cols-3  md:gap-10 p-3 my-20 "
-              style={{ boxShadow: "10px 10px 10px black" }}
-            >
-              <div className=" md:w-1/2 ">
-                <img src={data?.cover_image} className="" />
-              </div>
+      <h1 className="page-heading">My Cart</h1>
+      {addToCartData[0] ? (
+        <div className=" w-4/5 mx-auto  lg:flex md:gap-10 lg:gap-20">
+          <section className="md:w-2/3">
+            {addToCartData?.map((data) => (
+              <div
+                key={data?._id}
+                className=" grid lg:grid-cols-3  md:gap-10 p-3 my-10 "
+                style={{ boxShadow: "10px 10px 10px black" }} >
+                <div className=" md:w-1/2 mx-auto flex justify-center items-center ">
+                  <img src={data?.cover_image} className="" />
+                </div>
 
               <div className="space-y-3">
                 <p className=" my-5 ">
@@ -146,37 +145,33 @@ const AddToCart = () => {
                     className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
 
-                  <button
-                    onClick={() => incrementHandler(data?._id)}
-                    type="button"
-                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                      <button
+                        onClick={() => incrementHandler(data?._id)}
+                        type="button"
+                        className="w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"
+                        data-tip="Increase Item"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className=" my-10 text-center">
+                  <p className=" text-[20px]">
+                    Amount: $ <span>{data?.real_price2}</span>{" "}
+                  </p>
+                  <div
+                    className="tooltip tooltip-bottom"
+                    data-tip="Delete from Cart"
                   >
-                    +
-                  </button>
+                    <button onClick={() => deleteAddToCart(data?._id)}>
+                      <MdDeleteForever className=" text-4xl mt-10  text-red hover:text-blue-500" />
+                    </button>
+                  </div>
                 </div>
               </div>
-              </div>
-
-              {/* <div className="w-[70%] mx-auto lg:mt-[30%] md:mt-[30%]">
-                            <p className=" text-[20px]"> Amount: $ <span  >{data?.count ? data?.real_price * data?.count
-                            : data?.real_price}</span> </p>
-                        </div> */}
-              <div
-                className="flex-col my-10 text-center"
-              >
-                <p className=" text-[20px]">
-                  {" "}
-                  Amount: $ <span>{data?.real_price2}</span>{" "}
-                </p>
-                <div className="">
-                  <button onClick={() => deleteAddToCart(data?._id)}>
-                    <MdDeleteForever className=" text-5xl mt-10  text-red hover:text-blue-500" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
 
           <section
             className=" bg-gray-900 text-white my-10 py-10 px-5 md:my-[100px] space-y-5 rounded-[10px] 
