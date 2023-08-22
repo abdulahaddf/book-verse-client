@@ -11,6 +11,7 @@ const UseBooks = () => {
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
+        
             return res.json();
         })
         .then(data => {
@@ -21,6 +22,7 @@ const UseBooks = () => {
             setError(error);
             setLoading(false);
         });
+        
     }, []);
 
     return { books, loading, error };
