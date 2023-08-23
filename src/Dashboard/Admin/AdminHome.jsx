@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 const AdminHome = () => {
   const [paymentHistory, setPaymentHistory] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/paymentHistory")
+    fetch("https://book-verse-server-phi.vercel.app/paymentHistory")
       .then((res) => res.json())
       .then((data) => {
         setPaymentHistory(data);
