@@ -6,7 +6,7 @@ const AuthorCard = ({ card }) => {
       <h2 className="text-lg py-3 font-mono">{author}</h2>
       <div className="absolute top-40 w-full px-3 left-0">
         <div className="translate-y-8 transform opacity-0 transition-all w-full group-hover:translate-y-0 group-hover:opacity-100">
-          <button className="btn border-none  hover:bg-[#d71d24] hover:opacity-90  btn-ghost normal-case w-full text-white">
+          <button className="btn border-none hover:bg-[#d71d24] opacity-90  bg-cyan-200  normal-case w-full hover:text-white">
             Details
           </button>
         </div>
