@@ -1,6 +1,6 @@
 // import { useLocation } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -27,7 +27,7 @@ const Payment = () => {
   const sslCommerce = () => {
 
     // const info = { books: [...books], price, name: user?.displayName, email: user?.email, date: new Date(), }
-    
+
     const info = { books: [...books], price, name: user?.displayName, email: user?.email, date: new Date(), }
 
     fetch('https://book-verse-server-phi.vercel.app/order', {

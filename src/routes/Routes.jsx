@@ -19,6 +19,10 @@ import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
 
+import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
+
+import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
+
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -40,6 +44,14 @@ export const router = createBrowserRouter([
         {
             path: "/addToCart",
             element: <AddToCart></AddToCart>
+          },
+        {
+            path: "/allBestSelling",
+            element: <AllBestSelling/>
+          },
+        {
+            path: "/allRecentSelling",
+            element: <AllRecentSelling/>
           },
         {
             path: "/payment",
