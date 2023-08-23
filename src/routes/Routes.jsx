@@ -22,6 +22,7 @@ import StripePayment from "../pages/payment/StripePayment";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
+import UserHome from "../Dashboard/User/UserHome";
 
 export const router = createBrowserRouter([
     {
@@ -115,6 +116,10 @@ export const router = createBrowserRouter([
         path: "purchasedBooks",
         element: <PurchasedBooks></PurchasedBooks>,
       },
+      {
+        path: 'userHome',
+        element:<UserHome></UserHome>
+      }
     ],
   },
 ]);

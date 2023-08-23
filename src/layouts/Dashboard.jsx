@@ -47,17 +47,13 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-<<<<<<< HEAD
                 <Link to="/dashboard/userHome">
                   <FaHome></FaHome>User Home
                 </Link>
               </li>
               
               <li>
-                <Link to="/dashboard/addBook">
-=======
                 <NavLink to="/dashboard/addBook">
->>>>>>> 3e4e198e59cdde8c13f43abff96465588c13fb35
                   <FaBookReader></FaBookReader>Add Book
                 </NavLink>
               </li>
