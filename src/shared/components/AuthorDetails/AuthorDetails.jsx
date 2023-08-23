@@ -26,7 +26,7 @@ const AuthorDetails = () => {
               {authorDetails?.author} <FcApproval className="text-2xl" />
             </h2>
           <p className="mt-3">{authorDetails?.about_author}</p>
-          <h2 className="text-sm"> <BsBookFill className="inline text-lg" /> BOOKS {authorBooks?.length}</h2>
+          <h2 className="text-sm"> <BsBookFill className="inline text-lg text-teal-400" /> {authorBooks?.length} Books</h2>
         </div>
       </div>
       <div className="bg-base-100 shadow-xl my-10 md:p-10 rounded-xl">
