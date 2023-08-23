@@ -13,69 +13,93 @@ import AdminHome from "../Dashboard/Admin/AdminHome";
 import Payment from "../pages/payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import Collections from "../shared/components/Collections/Collections";
-import UserHome from "../Dashboard/Admin/UserHome";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import ManageBooks from "../Dashboard/Admin/ManageBooks";
+import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
+import UpdateBooks from "../Dashboard/Admin/UpdateBooks";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main/>,
-      children: [
-        {
-            path: "/",
-            element: <Home/>
-          },
-        {
-            path: "/all-books",
-            element: <AllBooks/>
-          },
-          {
-            path: 'details/:id',
-            element: <BookDetails></BookDetails>,
-            loader: ({params}) => fetch(`https://book-verse-server-phi.vercel.app/singleBook/${params.id}`)
-          },
-        {
-            path: "/addToCart",
-            element: <AddToCart></AddToCart>
-          },
-        {
-            path: "/payment",
-            element:<PrivateRoute> <Payment/></PrivateRoute>
-          },
-        {
-            path: "/login",
-            element: <Login/>
-          },
-        {
-            path: "/register",
-            element: <Register/>
-          },
-        {
-            path: "/forget",
-            element: <ResetForm/>
-        },
-        {
-          path: "/All",
-            element: <Collections/>
-        }
-      ]
-      
-    },
-    {
-     path: 'dashboard',
-     element: <Dashboard></Dashboard>,
-     children:[
+  {
+    path: "/",
+    element: <Main />,
+    children: [
       {
-        path: 'addBook',
-        element: <AddBook></AddBook>
+        path: "/",
+        element: <Home />,
       },
       {
-        path: 'adminHome',
-        element: <AdminHome></AdminHome>
-       },
-       {
-         path: 'userHome',
-         element:<UserHome></UserHome>
-       }
-     ]
-    }
-  ]);
+        path: "/all-books",
+        element: <AllBooks />,
+      },
+      {
+        path: "details/:id",
+        element: <BookDetails></BookDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/singleBook/${params.id}`
+          ),
+      },
+      {
+        path: "/addToCart",
+        element: <AddToCart></AddToCart>,
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/forget",
+        element: <ResetForm />,
+      },
+      {
+        path: "/All/:category",
+        element: <Collections />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "addBook",
+        element: <AddBook></AddBook>,
+      },
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "updateBook",
+        element: <UpdateBooks></UpdateBooks>,
+        loader: () =>
+          fetch(`https://book-verse-server-phi.vercel.app/allBooks`),
+      },
+      {
+        path: "manageBooks",
+        element: <ManageBooks></ManageBooks>,
+      },
+      {
+        path: "purchasedBooks",
+        element: <PurchasedBooks></PurchasedBooks>,
+      },
+    ],
+  },
+]);

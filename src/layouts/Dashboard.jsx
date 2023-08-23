@@ -1,8 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
+import { ImBooks } from "react-icons/im";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
+import DashboardNavbar from "../Dashboard/DashboardNavbar/DashboardNavbar";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
@@ -16,20 +18,21 @@ const Dashboard = () => {
         >
           <FaBars></FaBars>
         </label>
+        <DashboardNavbar></DashboardNavbar>
         <Outlet></Outlet>
       </div>
-      <div className="drawer-side shadow-xl">
+      <div className="drawer-side">
         <label
           htmlFor="my-drawer-2"
           className="drawer-overlay shadow-xl"
         ></label>
-        <div className="menu p-4 w-80 h-full bg-slate-100">
+        <div className="menu p-4 w-60 h-full bg-slate-100">
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
               src={user && user.photoURL ? user.photoURL : avatar}
             />
-            <h3 className="font-bold text-2xl text-[#d71d24] uppercase">
+            <h3 className="font-bold text-2xl uppercase">
               {user?.displayName}
             </h3>
           </div>
@@ -38,13 +41,13 @@ const Dashboard = () => {
             {/* Sidebar content here */}
 
             <>
-              
               <li>
-                <Link to="/dashboard/adminHome">
+                <NavLink to="/dashboard/adminHome">
                   <FaHome></FaHome>Admin Home
-                </Link>
+                </NavLink>
               </li>
               <li>
+<<<<<<< HEAD
                 <Link to="/dashboard/userHome">
                   <FaHome></FaHome>User Home
                 </Link>
@@ -52,13 +55,27 @@ const Dashboard = () => {
               
               <li>
                 <Link to="/dashboard/addBook">
+=======
+                <NavLink to="/dashboard/addBook">
+>>>>>>> 3e4e198e59cdde8c13f43abff96465588c13fb35
                   <FaBookReader></FaBookReader>Add Book
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/dashboard/manageUsers">
+                <NavLink to="/dashboard/manageBooks">
+                  <ImBooks></ImBooks>Manage Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageUsers">
                   <FaUsers></FaUsers>Manage Users
-                </Link>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/purchasedBooks">
+                  <ImBooks />
+                  Purchased Books
+                </NavLink>
               </li>
             </>
 
