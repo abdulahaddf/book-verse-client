@@ -16,6 +16,7 @@ import Collections from "../shared/components/Collections/Collections";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import ManageBooks from "../Dashboard/Admin/ManageBooks";
 import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
+import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
         {
           path: "/All/:category",
             element: <Collections/>
+        },
+        {
+          path: "/Author/:name",
+          element: <AuthorDetails/>
         }
       ]
       

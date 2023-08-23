@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const AuthorCard = ({ card }) => {
   const { _id, author, author_image } = card;
   return (
@@ -7,7 +8,7 @@ const AuthorCard = ({ card }) => {
       <div className="absolute top-40 w-full px-3 left-0">
         <div className="translate-y-8 transform opacity-0 transition-all w-full group-hover:translate-y-0 group-hover:opacity-100">
           <button className="btn border-none hover:bg-[#d71d24] opacity-90  bg-cyan-200  normal-case w-full hover:text-white">
-            Details
+            <Link to={`/Author/${author}`}>Details</Link>
           </button>
         </div>
       </div>
