@@ -14,8 +14,18 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useEffect, useState } from "react";
 
 const AdminHome = () => {
+  const [paymentHistory, setPaymentHistory] = useState([]);
+  useEffect(() => {
+    fetch("https://book-verse-server-phi.vercel.app/paymentHistory")
+      .then((res) => res.json())
+      .then((data) => {
+        setPaymentHistory(data);
+      });
+  }, []);
+
   const data = [
     {
       name: "Page A",
@@ -154,8 +164,36 @@ const AdminHome = () => {
       {/* ----------------Revenue end-------------- */}
 
       {/* customer info start */}
-      <div>
-        <h3>TODO</h3>
+      <div className="flex flex-col md:flex-row justify-between mt-10 gap-6">
+        <div className="w-full overflow-x-auto rounded-md shadow-xl">
+          <table className="table table-zebra w-full text-center">
+            {/* head */}
+            <thead className="bg-slate-100">
+              <tr className="">
+                <th >#</th>
+                <th >User Id</th>
+                <th >transactionId</th>
+                <th >Email</th>
+                <th >Time</th>
+              </tr>
+            </thead>
+            <tbody className="bg-slate-100 divide-y divide-gray-200">
+              {paymentHistory.map((userDetails, index) => (
+                <tr key={userDetails._id}>
+                  <th>{index}</th>
+
+                  <td>{userDetails._id}</td>
+                  <td>{userDetails.transactionId}</td>
+                  <td>{userDetails.mail}</td>
+                  <td>{userDetails.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {/* <div className="w-full md:w-1/3 bg-green-900">
+          <h3>Pie chart</h3>
+        </div> */}
       </div>
 
       {/* customer info end */}

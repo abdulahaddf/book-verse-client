@@ -84,30 +84,37 @@ export const router = createBrowserRouter([
       ]
       
     },
-    {
-     path: 'dashboard',
-     element: <Dashboard></Dashboard>,
-     children:[
+  
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
       {
-        path: 'addBook',
-        element: <AddBook></AddBook>
+        path: "addBook",
+        element: <AddBook></AddBook>,
       },
       {
-        path: 'adminHome',
-        element: <AdminHome></AdminHome>
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
       },
       {
-        path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      // {
+      //   path: "updateBook",
+      //   element: <UpdateBooks></UpdateBooks>,
+      //   loader: () =>
+      //     fetch(`https://book-verse-server-phi.vercel.app/allBooks`),
+      // },
+      {
+        path: "manageBooks",
+        element: <ManageBooks></ManageBooks>,
       },
       {
-        path: 'manageBooks',
-        element: <ManageBooks></ManageBooks>
+        path: "purchasedBooks",
+        element: <PurchasedBooks></PurchasedBooks>,
       },
-      {
-        path: 'purchasedBooks',
-        element:<PurchasedBooks></PurchasedBooks>
-      },
-     ]
-    }
-  ]);
+    ],
+  },
+]);
