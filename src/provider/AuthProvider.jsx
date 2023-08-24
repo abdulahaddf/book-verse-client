@@ -81,6 +81,8 @@ const signInFB = () => {
   
   // add to cart data fetch by Tonmoy
 
+ 
+
   const { getValue} = useLocalStorage();
 
   const { refetch: cartRefetch,  data: addToCartData=[] } = useQuery({
@@ -114,7 +116,8 @@ const signInFB = () => {
     signInFB,
     sendPasswordResetEmail,
     addToCartData,
-    cartRefetch
+    cartRefetch,
+   
     
   };
 

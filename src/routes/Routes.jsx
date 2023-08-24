@@ -16,6 +16,12 @@ import Collections from "../shared/components/Collections/Collections";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import ManageBooks from "../Dashboard/Admin/ManageBooks";
 import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
+import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
+import StripePayment from "../pages/payment/StripePayment";
+
+import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
+
+import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 
 export const router = createBrowserRouter([
@@ -41,8 +47,24 @@ export const router = createBrowserRouter([
             element: <AddToCart></AddToCart>
           },
         {
+            path: "/allBestSelling",
+            element: <AllBestSelling/>
+          },
+        {
+            path: "/allRecentSelling",
+            element: <AllRecentSelling/>
+          },
+        {
             path: "/payment",
             element:<PrivateRoute> <Payment/></PrivateRoute>
+          },
+        {
+            path: "/stripePayment",
+            element:<PrivateRoute> <StripePayment/></PrivateRoute>
+          },
+        {
+            path: "/SSLPaymentSuccess",
+            element:<PrivateRoute> <SSLPaymentSuccess/></PrivateRoute>
           },
         {
             path: "/login",
@@ -67,30 +89,37 @@ export const router = createBrowserRouter([
       ]
       
     },
-    {
-     path: 'dashboard',
-     element: <Dashboard></Dashboard>,
-     children:[
+  
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
       {
-        path: 'addBook',
-        element: <AddBook></AddBook>
+        path: "addBook",
+        element: <AddBook></AddBook>,
       },
       {
-        path: 'adminHome',
-        element: <AdminHome></AdminHome>
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
       },
       {
-        path: 'manageUsers',
-        element: <ManageUsers></ManageUsers>
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      // {
+      //   path: "updateBook",
+      //   element: <UpdateBooks></UpdateBooks>,
+      //   loader: () =>
+      //     fetch(`https://book-verse-server-phi.vercel.app/allBooks`),
+      // },
+      {
+        path: "manageBooks",
+        element: <ManageBooks></ManageBooks>,
       },
       {
-        path: 'manageBooks',
-        element: <ManageBooks></ManageBooks>
+        path: "purchasedBooks",
+        element: <PurchasedBooks></PurchasedBooks>,
       },
-      {
-        path: 'purchasedBooks',
-        element:<PurchasedBooks></PurchasedBooks>
-      },
-     ]
-    }
-  ]);
+    ],
+  },
+]);

@@ -88,6 +88,10 @@ const AddToCart = () => {
   const finalAmount = parseFloat(amount);
   // console.log(cartItems);
 
+  
+
+  localStorage.setItem('totalPrice', JSON.stringify(finalAmount));
+
   const dispatch = useDispatch();
 
   const sendDataToPayment = () => {

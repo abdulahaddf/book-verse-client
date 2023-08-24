@@ -169,6 +169,7 @@ setTransactionId(paymentIntent.id)
             timer: 1500,
           });
           localStorage.removeItem("cartItems");
+          localStorage.removeItem("totalPrice");
           setPaid(true);
           cartRefetch()
         }

@@ -4,6 +4,8 @@ import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import EditModal from "./EditModal";
 
 const ManageBooksCard = ({ book, books, setBooks }) => {
   const { _id, title, author, rating, description } = book;
@@ -47,13 +49,18 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
     });
   };
 
+  
   return (
     <div className="card shadow-lg bg-slate-100 rounded-md">
       <div className="card-body">
         <div className="card-actions justify-end">
-          <button className="btn btn-sm text-xl hover:bg-accent hover:text-white rounded-sm btn-outline hover:border-accent text-accent">
+          <Link
+            to={`/dashboard/updateBook/${_id}`}
+            className="btn btn-sm text-xl hover:bg-accent hover:text-white rounded-sm btn-outline hover:border-accent text-accent"
+          >
             <FiEdit></FiEdit>
-          </button>
+          </Link>
+          
         </div>
         <h2 className="card-title text-xl font-bold">
           {showFullTitle ? title : title.slice(0, 12)}
