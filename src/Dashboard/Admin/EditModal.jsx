@@ -35,9 +35,9 @@ const EditModal = ({ isOpen, book, onClose }) => {
   } = useForm();
   console.log(watch("example"));
 
-  const onSubmit = async (book) => {
+  // tonmoy start
+  const onSubmit = async (allData) => {
     const {
-      // _id: _id,
       title,
       author,
       category,
@@ -51,7 +51,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
       description,
       cover_image,
       author_image,
-    } = book; //allData
+    } = allData;
 
     console.log(_id);
 
@@ -60,11 +60,12 @@ const EditModal = ({ isOpen, book, onClose }) => {
     }`;
 
     try {
+      // real code
       const coverForm = new FormData();
-      coverForm.append("image", cover_image[0]);
+      coverForm.append("image", cover_image[0] || cover_image);
 
       const authorForm = new FormData();
-      authorForm.append("image", author_image[0]);
+      authorForm.append("image", author_image[0] || author_image);
 
       // Upload Cover Image
       const coverResponse = await fetch(imageUploadUrl, {
@@ -109,7 +110,6 @@ const EditModal = ({ isOpen, book, onClose }) => {
         cover_image: cover_image_url,
         author_image: author_image_url,
       };
-      // console.log(_id)
       // Send Book Data to API
       const apiResponse = await fetch(`http://localhost:5000/allBooks/${_id}`, {
         method: "PUT",
@@ -141,6 +141,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
       console.error("Error:", error);
     }
   };
+  // tonmoy end
 
   return (
     <div className="w-full h-full">
@@ -162,6 +163,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
               onClick={onClose}
               className="text-[#d71d24] text-4xl"
             >
+              {/* <ImCross></ImCross> */}
               <RxCross2></RxCross2>
             </button>
           </div>
@@ -330,7 +332,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
               </label>
               <input
                 type="file"
-                required
+                // required
                 name="cover_image"
                 {...register("cover_image")}
                 placeholder="Cover image"
@@ -344,7 +346,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 <span className="label-text font-semibold">Author image</span>
               </label>
               <input
-                required
+                // required
                 type="file"
                 name="author_image"
                 {...register("author_image")}
