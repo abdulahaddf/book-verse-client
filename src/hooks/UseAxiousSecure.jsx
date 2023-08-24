@@ -1,10 +1,12 @@
+
+
 import { useContext, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "https://book-verse-server-phi.vercel.app",
+  baseURL: "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {
@@ -34,7 +36,7 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [logOut, navigate, axiosSecure]);
 
   return [axiosSecure];
 };

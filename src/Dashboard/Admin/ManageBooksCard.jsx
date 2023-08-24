@@ -4,7 +4,6 @@ import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import EditModal from "./EditModal";
 
 const ManageBooksCard = ({ book, books, setBooks }) => {
@@ -12,6 +11,8 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
 
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [showFullTitle, setShowFullTitle] = useState(false);
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false); //modal--------
 
   const toggleTitle = () => {
     setShowFullTitle(!showFullTitle);
@@ -49,22 +50,26 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
     });
   };
 
-  
+  const toggleModal = (_id) => {
+    console.log("Toggling modal", _id); //modal-----------------
+    setIsEditModalOpen(!isEditModalOpen);
+  };
   return (
     <div className="card shadow-lg bg-slate-100 rounded-md">
       <div className="card-body">
         <div className="card-actions justify-end">
-          <Link
-            to={`/dashboard/updateBook/${_id}`}
+          <button
+            // onClick={toggleModal} // modal----------------
+            onClick={() => toggleModal(_id)}
             className="btn btn-sm text-xl hover:bg-accent hover:text-white rounded-sm btn-outline hover:border-accent text-accent"
           >
             <FiEdit></FiEdit>
-          </Link>
-          
+          </button>
+          <div></div>
         </div>
         <h2 className="card-title text-xl font-bold">
           {showFullTitle ? title : title.slice(0, 12)}
-          {title.length > 20 && (
+          {title.length > 12 && (
             <span
               onClick={toggleTitle}
               className="cursor-pointer text-accent font-semibold text-sm underline"
@@ -77,7 +82,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
         <p>
           {showFullDescription ? description : description.slice(0, 50)}.....{" "}
           <br />
-          {description.length > 100 && (
+          {description.length > 50 && (
             <span
               onClick={toggleDescription}
               className="cursor-pointer text-[#d71d24] text-sm underline font-semibold"
@@ -94,6 +99,17 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           >
             <MdDelete></MdDelete>
           </button>
+        </div>
+        <div>
+          {/*----------------- modal body start-------------- */}
+          {isEditModalOpen && (
+            <EditModal
+              isOpen={isEditModalOpen}
+              book={{ ...book, _id: _id }}
+              onClose={() => setIsEditModalOpen(false)}
+            />
+          )} 
+          {/*----------------- modal body end-------------- */}
         </div>
       </div>
     </div>
