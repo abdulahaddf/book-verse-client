@@ -69,7 +69,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
         </div>
         <h2 className="card-title text-xl font-bold">
           {showFullTitle ? title : title.slice(0, 12)}
-          {title.length > 20 && (
+          {title.length > 12 && (
             <span
               onClick={toggleTitle}
               className="cursor-pointer text-accent font-semibold text-sm underline"
@@ -82,7 +82,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
         <p>
           {showFullDescription ? description : description.slice(0, 50)}.....{" "}
           <br />
-          {description.length > 100 && (
+          {description.length > 50 && (
             <span
               onClick={toggleDescription}
               className="cursor-pointer text-[#d71d24] text-sm underline font-semibold"

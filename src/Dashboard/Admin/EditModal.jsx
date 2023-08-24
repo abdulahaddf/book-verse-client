@@ -162,7 +162,6 @@ const EditModal = ({ isOpen, book, onClose }) => {
               onClick={onClose}
               className="text-[#d71d24] text-4xl"
             >
-              {/* <ImCross></ImCross> */}
               <RxCross2></RxCross2>
             </button>
           </div>
