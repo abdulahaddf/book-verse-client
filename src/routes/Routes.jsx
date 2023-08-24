@@ -22,6 +22,8 @@ import StripePayment from "../pages/payment/StripePayment";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
+import UserHome from "../Dashboard/User/UserHome";
+import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +82,10 @@ export const router = createBrowserRouter([
         {
           path: "/All/:category",
             element: <Collections/>
+        },
+        {
+          path: "/Author/:name",
+          element: <AuthorDetails/>
         }
       ]
       
@@ -106,9 +112,13 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
-        path: "purchasedBooks",
-        element: <PurchasedBooks></PurchasedBooks>,
+        path: 'purchasedBooks',
+        element:<PrivateRoute><PurchasedBooks></PurchasedBooks> </PrivateRoute> 
       },
+      {
+        path: 'userHome',
+        element:<UserHome></UserHome>
+      }
     ],
   },
 ]);

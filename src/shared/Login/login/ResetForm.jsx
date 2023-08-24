@@ -17,7 +17,7 @@ const ResetForm = () => {
       .then((data) => {
         console.log(data);
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Sent Password Reset mail",
           showConfirmButton: false,
@@ -29,7 +29,7 @@ const ResetForm = () => {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Check Your Mail ",
           showConfirmButton: false,

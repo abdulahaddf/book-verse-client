@@ -5,8 +5,13 @@ import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
 import DashboardNavbar from "../Dashboard/DashboardNavbar/DashboardNavbar";
+import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
-  const { user } = useContext(AuthContext);
+const { user } = useContext(AuthContext);
+
+
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer lg:drawer-open">
@@ -40,12 +45,15 @@ const Dashboard = () => {
           <ul className="font-semibold text-black mt-8">
             {/* Sidebar content here */}
 
-            <>
+            {
+              isAdmin ? <>
+              
               <li>
                 <NavLink to="/dashboard/adminHome">
                   <FaHome></FaHome>Admin Home
                 </NavLink>
               </li>
+            
               <li>
                 <NavLink to="/dashboard/addBook">
                   <FaBookReader></FaBookReader>Add Book
@@ -61,13 +69,27 @@ const Dashboard = () => {
                   <FaUsers></FaUsers>Manage Users
                 </NavLink>
               </li>
+              
+              </> : <>
+
+              <li>
+                <Link to="/dashboard/userHome">
+                  <FaHome></FaHome>User Home
+                </Link>
+              </li>
+              
+              
               <li>
                 <NavLink to="/dashboard/purchasedBooks">
                   <ImBooks />
                   Purchased Books
                 </NavLink>
               </li>
-            </>
+              
+              </>
+            }
+
+            
 
             <div className="divider"></div>
             <li>
