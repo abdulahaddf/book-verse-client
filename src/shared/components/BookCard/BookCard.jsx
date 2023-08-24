@@ -61,7 +61,7 @@ const BookCard = ({book,text}) => {
     cartRefetch()
   };
 
-  console.log(book);
+  // console.log(book);
   const {_id,title, author, cover_image, offer_price, rating ,count,previous_id,purchase_date } = book;
   return (
     <div className=" mx-auto my-5 py-10  ">

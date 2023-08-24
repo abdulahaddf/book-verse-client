@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'purchasedBooks',
-        element:<PurchasedBooks></PurchasedBooks>
+        element:<PrivateRoute><PurchasedBooks></PurchasedBooks> </PrivateRoute> 
       },
      ]
     }

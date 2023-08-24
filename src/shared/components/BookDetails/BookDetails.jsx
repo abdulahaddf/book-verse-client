@@ -6,12 +6,14 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { Rating } from "@smastrom/react-rating";
 
 const BookDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const singleBookDetails = useLoaderData();
+  console.log(singleBookDetails);
   const {
     title,
     cover_image,
@@ -25,6 +27,7 @@ const BookDetails = () => {
     real_price,
     author_image,
     about_author,
+    review,
   } = singleBookDetails;
 
   const [activeTab, setActiveTab] = useState("description");
@@ -114,42 +117,37 @@ const BookDetails = () => {
     </div>
   );
   return (
-    <div>
-      <div className="hero   ">
-        <div className="hero-content flex-col lg:flex-row">
+    <div className="w-11/12 mx-auto">
+      <div className="my-10 ">
+        <div className="md:flex justify-center gap-10 w-11/12 mx-auto ">
           <img
             src={cover_image}
-            className=" w-[300px] h-[350px] rounded-lg shadow-2xl"
+            className=" md:w-2/12 my-5 rounded-lg shadow-2xl"
           />
-          <div className="ms-3">
-            <h1 className="text-5xl font-bold">{title}</h1>
+          <div className="ms-3 space-y-3">
+            <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
 
-            <p className="mt-1">
+            <p >
               <span className="font-semibold">Price:</span> ${real_price}
             </p>
-            <p className="mt-1">
+            <p >
               <span className="font-semibold">Rating:</span> {rating}
             </p>
-            <p className="mt-1">
+            <p >
               <span className="font-semibold">Total Page:</span> {page_numbers}
             </p>
-            <p className="mt-1">
+            <p >
               <span className="font-semibold">Category:</span> {category}
             </p>
-            <p className="mt-1">
+            <p >
               <span className="font-semibold">Language:</span> {language}
             </p>
-            <p className="mt-1">
+            <p >
               <span className="font-semibold">Published:</span> {published}
             </p>
 
             <div className="flex justify-center items-center mt-6">
-              <button
-                className="btn-primary w-[200px] mr-6 "
-                onClick={() => window.my_modal_5.showModal()}
-              >
-                Rent Now
-              </button>
+             
               <dialog
                 id="my_modal_5"
                 className="modal modal-bottom sm:modal-middle"
@@ -198,7 +196,7 @@ const BookDetails = () => {
                   <div className="modal-action">
                     <button
                       disabled={!agree}
-                      className="btn-primary w-[250px]"
+                      className="btn-primary w-[250px] "
                       onClick={handleAddToCart}
                     >
                       Add to Cart
@@ -207,11 +205,21 @@ const BookDetails = () => {
                   </div>
                 </form>
               </dialog>
-              <button className="btn-primary w-[200px]" onClick={handleAddToCart}>
+            </div>
+             
+          </div>
+          
+        </div>
+        <div className="w-11/12 mx-auto md:flex justify-center gap-10">
+        <button className="btn-primary w-[200px] md:mt-10" onClick={handleAddToCart}>
                 Add to Cart
               </button>
-            </div>
-          </div>
+              <button
+                className="btn-primary w-[200px] mr-6 mt-5 md:mt-10"
+                onClick={() => window.my_modal_5.showModal()}
+              >
+                Rent Now
+              </button>
         </div>
       </div>
 
@@ -234,7 +242,7 @@ const BookDetails = () => {
         </button>
       </div>
 
-      <div className="tab-content mt-3 mx-auto w-1/2 mb-20">
+      <div className="tab-content mt-3 mx-auto p-5 md:w-1/2 mb-20">
         {activeTab === "description" && (
           <div>
             {/* <h2>Description</h2> */}
@@ -256,6 +264,57 @@ const BookDetails = () => {
           </div>
         )}
       </div>
+
+{/* Review Section---------------------------------------- */}
+<div className="my-10 shadow-xl ">
+<h2 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
+      Read trusted reviews from our customers
+    </h2>
+    {/* {
+      review.length > 0   : <p>No Reviews Has Been Given Yet</p> 
+    } */}
+<div className=" grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+  {
+    review.map(r => <div key={r.postDate}>
+      {/* <p>{r.name}</p> */}
+      <div className="rounded-lg bg-gray-100 p-8">
+        <div className="flex  gap-4">
+          <img
+            alt="Reviewer"
+            src={r.photo}
+            className="h-16 w-16 rounded-full object-cover"
+          />
+
+          <div className="">
+            <p className="mt-1 text-md font-medium text-gray-800">By - {r.name}  </p>
+
+            {
+              r.postDate ? <span className="text-gray-500">{new Date(r.postDate).toISOString().split('T')[0]}</span> : ""
+            }
+
+            <Rating value={r.rating} readOnly />
+             <p >Rating : {r.rating}</p>
+           
+
+          </div>
+        </div>
+
+        <p className="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
+         {r.review}
+        </p>
+      </div>
+
+      
+   
+ 
+
+      </div>)
+  }
+</div>
+</div>
+
+
+
 
     </div>
   );
