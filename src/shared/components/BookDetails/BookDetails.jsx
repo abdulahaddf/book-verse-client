@@ -146,6 +146,7 @@ const BookDetails = () => {
               <span className="font-semibold">Published:</span> {published}
             </p>
 
+
             <div className="flex justify-center items-center mt-6">
              
               <dialog
