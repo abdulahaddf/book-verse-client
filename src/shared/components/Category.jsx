@@ -5,6 +5,7 @@ import CategoryCard from "./CategoryCard";
 import UseBooks from "../../hooks/UseBooks";
 import { Link } from "react-router-dom";
 import AuthorCard from "./AuthorDetails/AuthorCard";
+import OfferBanner from "./Offer&Rewards/OfferBanner";
 const Category = () => {
   const { books } = UseBooks();
   console.log(books);
@@ -62,15 +63,13 @@ const Category = () => {
                 </button>
               </div>
             </TabPanel>
-            {/* 
             <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Mystery and Thriller")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
+              <div className="md:p-5">
+                <OfferBanner/>
               </div>
             </TabPanel>
+            {/* 
+            
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books
