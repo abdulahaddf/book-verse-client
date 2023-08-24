@@ -26,15 +26,40 @@ const Register = () => {
   const handleReg = (data) => {
     const { name, email, password, url } = data;
 
-    
-
-    if(!url[0]){
-     return  Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Please add a image",
-        showConfirmButton: false,
-        timer: 1500,
+    createUser(email, password)
+      .then(() => {
+        profileUpdate({ displayName: name, photoURL: url }).then(() => {
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photoURL: data.url,
+          };
+          fetch("https://book-verse-server-phi.vercel.app/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "User created successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate(from, { replace: true });
+              }
+            });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
     }
 
@@ -138,7 +163,7 @@ const Register = () => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-  };
+  
 
   const handleGoogleSignIn = () => {
     signInGoogle()
@@ -162,7 +187,7 @@ const Register = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "User created successfully.",
               showConfirmButton: false,
@@ -200,7 +225,7 @@ const Register = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,

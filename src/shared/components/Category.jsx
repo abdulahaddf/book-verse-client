@@ -4,9 +4,12 @@ import CategoryCard from "./CategoryCard";
 // import Heading from "./heading/Heading";
 import UseBooks from "../../hooks/UseBooks";
 import { Link } from "react-router-dom";
+import AuthorCard from "./AuthorDetails/AuthorCard";
+import OfferBanner from "./Offer&Rewards/OfferBanner";
 const Category = () => {
-  const {books}=UseBooks();
-  // console.log(books)
+  const { books } = UseBooks();
+  console.log(books);
+  const newArival = [...books];
   return (
     <div className="section">
       {/* <Heading title={'Categories'}/> */}
@@ -28,14 +31,13 @@ const Category = () => {
       <div className="md:p-10">
         <div className="text-center  md:p-5">
           <Tabs>
-            <TabList  className='text-xs md:text-base py-2 '>
+            <TabList className="text-xs md:text-base py-2 ">
               <Tab>All Books</Tab>
               <Tab>Author's choice</Tab>
               <Tab>Offers and Rewards</Tab>
               <Tab>Book Fair</Tab>
               <Tab>New Arrival Books</Tab>
               <Tab>E-books</Tab>
-              
             </TabList>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
@@ -45,135 +47,38 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-              <button className="button-52 text-white font-bold">
-                <Link to={`/All`}>See more</Link>
-              </button>
-              </div>
-            </TabPanel>
-            {/* <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Comics")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
+                <button className="button-52 text-white font-bold">
+                  <Link to={`/All/Category`}>See more</Link>
+                </button>
               </div>
             </TabPanel>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books
-                  .filter((card) => card?.category === "Mystery and Thriller")
+                  .map((card) => <AuthorCard key={card._id} card={card} />)
+                  .slice(0, 4)}
+              </div>
+              <div className="flex justify-center py-3">
+                <button className="button-52 text-white font-bold">
+                  <Link to={`/All/Authors`}>See All</Link>
+                </button>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="md:p-5">
+                <OfferBanner />
+              </div>
+            </TabPanel>
+            <TabPanel />
+            <TabPanel>
+              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+                {newArival
+                  .reverse()
                   .map((card) => <CategoryCard key={card._id} data={card} />)
                   .slice(0, 4)}
               </div>
             </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Romance")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Science Fiction")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Biography and Memoir")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Sports")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter(
-                    (card) => card?.category === "History Science and Nature"
-                  )
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Art and Photography")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter(
-                    (card) => card?.category === "Cookbooks and Food Travel"
-                  )
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Travel")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Business and Economics")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Children")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Young Adult")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Horror")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="md:p-5 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
-                {books
-                  .filter((card) => card?.category === "Classics")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
-                  .slice(0, 4)}
-              </div>
-            </TabPanel> */}
+            <TabPanel />
           </Tabs>
         </div>
       </div>

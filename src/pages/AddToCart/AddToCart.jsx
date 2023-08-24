@@ -88,6 +88,10 @@ const AddToCart = () => {
   const finalAmount = parseFloat(amount);
   // console.log(cartItems);
 
+  
+
+  localStorage.setItem('totalPrice', JSON.stringify(finalAmount));
+
   const dispatch = useDispatch();
 
   const sendDataToPayment = () => {
@@ -115,32 +119,35 @@ const AddToCart = () => {
                   <img src={data?.cover_image} className="" />
                 </div>
 
-                <div className="space-y-2 ">
-                  <p className=" mt-5 ">
-                    <span className="font-semibold">Name: </span> {data?.title}{" "}
-                  </p>
-                  <p className="  ">
-                    <span className="font-semibold">Author: </span>{" "}
-                    {data?.author}
-                  </p>
+              <div className="space-y-3">
+                <p className=" my-5 ">
+                 <span className="font-semibold">Name: </span> {data?.title}{" "}
+                </p>
+                <p className="  ">
+                <span className="font-semibold">Author: </span> {data?.author}
+                </p>
 
-                  <div>
-                    <div className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-5 text-center ">
-                      <button
-                        onClick={() => decrementHandler(data?._id)}
-                        type="button"
-                        className="w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"
-                        data-tip="Decrease Item"
-                      >
-                        -
-                      </button>
+               
+           
 
-                      <input
-                        type="text"
-                        // id="Quantity"
-                        value={data?.count || 1}
-                        className="h-10  no-underline text-center  sm:text-sm "
-                      />
+            <div>
+                <div
+                  className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center"
+                >
+                  <button
+                    onClick={() => decrementHandler(data?._id)}
+                    type="button"
+                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                  >
+                    -
+                  </button>
+
+                  <input
+                    type="number"
+                    id="Quantity"
+                    value={data?.count || 1}
+                    className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                  />
 
                       <button
                         onClick={() => incrementHandler(data?._id)}
@@ -197,13 +204,13 @@ const AddToCart = () => {
           </section>
         </div>
       ) : (
-        <section className="md:w-4/6 mx-auto">
-          <h1 className="text-3xl text-center mt-5">Add your Desired Books in Cart</h1>
-          <img
-            src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
-            alt=""
-          />
-        </section>
+        <section className="flex justify-center items-center w-full  h-[80vh] ">
+            <img
+              src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
+              alt=""
+              className="h-96 "
+            />
+          </section>
       )}
     </div>
   );

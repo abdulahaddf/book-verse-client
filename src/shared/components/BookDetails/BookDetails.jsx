@@ -143,6 +143,7 @@ const BookDetails = () => {
               <span className="font-semibold">Published:</span> {published}
             </p>
 
+
             <div className="flex justify-center items-center mt-6">
               <button
                 className="btn-primary w-[200px] mr-6 "
@@ -211,6 +212,10 @@ const BookDetails = () => {
                 Add to Cart
               </button>
             </div>
+            
+
+
+
           </div>
         </div>
       </div>
