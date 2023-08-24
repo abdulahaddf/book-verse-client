@@ -5,6 +5,10 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { useEffect } from "react";
+import UseUser from "../../hooks/UseUser";
+import { useQuery } from "@tanstack/react-query";
 
 const UserHome = () => {
   const { user, profileUpdate } = useContext(AuthContext);
@@ -17,9 +21,22 @@ const UserHome = () => {
     watch,
   } = useForm();
 
+  const { data: userinfo = [] } = useQuery(["userinfo"], async () => {
+    const res = await fetch(`http://localhost:5000/userinfo/?email=${user?.email}`);
+    return res.json();
+  });
+
   const from = location?.state?.from?.pathname || "/dashboard/userHome";
 
+
   const updateProfile = (data) => {
+
+    // ----------------------
+  
+    
+  
+  // ----------------------
+
     if (data !== "null") {
       const { name, url } = data;
       const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
@@ -115,7 +132,22 @@ const UserHome = () => {
                     className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
-                {/* {errors.email && <span className="error">Email is required</span>} */}
+                <div className="mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-gray-800"
+                  >
+                    Address
+                  </label>
+                  <input
+                    type="address"
+                    id="address"
+                    placeholder="Enter your address"
+                    {...register("email", { required: true })}
+                    className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
+                  />
+                </div>
+              
                 <div className="mb-2">
                   <label
                     htmlFor="url"
@@ -131,55 +163,7 @@ const UserHome = () => {
                   input file-input file-input-bordered w-full "
                   />
                 </div>
-                {/* <div className="mb-2">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-semibold text-gray-800"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters long",
-                    },
-                    pattern: {
-                      value:
-                        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{6,}$/,
-                      message:
-                        "Password must contain an uppercase letter, a lowercase letter, a number, and a special character",
-                    },
-                  })}
-                  className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
-                />
-              </div>
-              {errors.password && (
-                <span className="error">{errors.password.message}</span>
-              )}
-              <div className="mb-2">
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-sm font-semibold text-gray-800"
-                >
-                  Confirm Password
-                </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  {...register("confirmPassword", {
-                    validate: (value) =>
-                      value === passwordValue || "Passwords do not match",
-                  })}
-                  className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
-                />
-              </div>
-              {errors.confirmPassword && (
-                <span className="error">{errors.confirmPassword.message}</span>
-              )} */}
+              
 
                 <div className="mt-6">
                   <button

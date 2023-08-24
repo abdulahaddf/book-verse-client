@@ -23,6 +23,7 @@ import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
 import UserHome from "../Dashboard/User/UserHome";
+import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 
 export const router = createBrowserRouter([
     {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
         {
           path: "/All/:category",
             element: <Collections/>
+        },
+        {
+          path: "/Author/:name",
+          element: <AuthorDetails/>
         }
       ]
       
@@ -102,12 +107,6 @@ export const router = createBrowserRouter([
         path: "manageUsers",
         element: <ManageUsers></ManageUsers>,
       },
-      // {
-      //   path: "updateBook",
-      //   element: <UpdateBooks></UpdateBooks>,
-      //   loader: () =>
-      //     fetch(`https://book-verse-server-phi.vercel.app/allBooks`),
-      // },
       {
         path: "manageBooks",
         element: <ManageBooks></ManageBooks>,
