@@ -22,6 +22,7 @@ import StripePayment from "../pages/payment/StripePayment";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
+import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
         {
           path: "/All/:category",
             element: <Collections/>
+        },
+        {
+          path: "/Author/:name",
+          element: <AuthorDetails/>
         }
       ]
       
