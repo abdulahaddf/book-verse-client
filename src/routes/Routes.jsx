@@ -101,12 +101,6 @@ export const router = createBrowserRouter([
         path: "manageUsers",
         element: <ManageUsers></ManageUsers>,
       },
-      // {
-      //   path: "updateBook",
-      //   element: <UpdateBooks></UpdateBooks>,
-      //   loader: () =>
-      //     fetch(`https://book-verse-server-phi.vercel.app/allBooks`),
-      // },
       {
         path: "manageBooks",
         element: <ManageBooks></ManageBooks>,
