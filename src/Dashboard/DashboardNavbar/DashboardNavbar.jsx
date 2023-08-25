@@ -12,7 +12,7 @@ const DashboardNavbar = () => {
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
-          <a className="normal-case text-xl">Admin</a>
+          {/* <a className="normal-case text-xl">Admin</a> */}
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
