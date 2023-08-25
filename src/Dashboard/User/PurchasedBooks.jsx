@@ -18,7 +18,9 @@ const PurchasedBooks = () => {
   //   console.log(tId);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/purchased?email=${user.email}`)
+      .get(
+        `https://book-verse-server-phi.vercel.app/purchased?email=${user.email}`
+      )
       .then((data) => setBooks(data.data));
   }, [user]);
 
@@ -52,7 +54,7 @@ const PurchasedBooks = () => {
       postDate: new Date().toISOString(),
     };
     console.log(review);
-    fetch("http://localhost:5000/add-review", {
+    fetch("https://book-verse-server-phi.vercel.app/add-review", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(review),

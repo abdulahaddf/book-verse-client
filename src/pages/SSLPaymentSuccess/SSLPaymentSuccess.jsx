@@ -20,7 +20,7 @@ const SSLPaymentSuccess = () => {
 
 
 
-    if (!books) {
+    if (!books ) {
         return
     }
 
@@ -104,7 +104,7 @@ const SSLPaymentSuccess = () => {
     return (
         <div className="my-[150px]">
 
-            <div className=" text-center w-[50%] mx-auto  bg-green-500 p-[20px] rounded-[30px] "
+            <div className=" text-center w-[50%] mx-auto  bg-blue-500 p-[20px] rounded-[30px] "
                 style={{ boxShadow: '10px 10px 10px black' }} >
                 <h2 className="text-[35px] font-[500] text-white mt-[20px]"> Your payment successfully done </h2>
 

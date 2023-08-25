@@ -22,20 +22,18 @@ const UserHome = () => {
   } = useForm();
 
   const { data: userinfo = [] } = useQuery(["userinfo"], async () => {
-    const res = await fetch(`http://localhost:5000/userinfo/?email=${user?.email}`);
+    const res = await fetch(
+      `https://book-verse-server-phi.vercel.app/userinfo/?email=${user?.email}`
+    );
     return res.json();
   });
 
   const from = location?.state?.from?.pathname || "/dashboard/userHome";
 
-
   const updateProfile = (data) => {
+    // ----------------------
 
     // ----------------------
-  
-    
-  
-  // ----------------------
 
     if (data !== "null") {
       const { name, url } = data;
@@ -147,7 +145,7 @@ const UserHome = () => {
                     className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
-              
+
                 <div className="mb-2">
                   <label
                     htmlFor="url"
@@ -163,7 +161,6 @@ const UserHome = () => {
                   input file-input file-input-bordered w-full "
                   />
                 </div>
-              
 
                 <div className="mt-6">
                   <button
@@ -173,7 +170,6 @@ const UserHome = () => {
                     Submit
                   </button>
                 </div>
-                
               </form>
             </div>
           </div>

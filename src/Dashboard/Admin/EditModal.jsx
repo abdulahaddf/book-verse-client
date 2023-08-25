@@ -111,13 +111,16 @@ const EditModal = ({ isOpen, book, onClose }) => {
         author_image: author_image_url,
       };
       // Send Book Data to API
-      const apiResponse = await fetch(`http://localhost:5000/allBooks/${_id}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(bookData),
-      });
+      const apiResponse = await fetch(
+        `https://book-verse-server-phi.vercel.app/allBooks/${_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(bookData),
+        }
+      );
 
       if (!apiResponse.ok) {
         throw new Error("Book insertion failed");
