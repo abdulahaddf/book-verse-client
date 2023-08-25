@@ -18,6 +18,24 @@ import { useEffect, useState } from "react";
 
 const AdminHome = () => {
   const [paymentHistory, setPaymentHistory] = useState([]);
+
+  const [revenueSummary, setRevenueSummary] = useState({
+    dailyRevenue: 0,
+    totalRevenue: 0,
+  });
+
+  useEffect(() => {
+    // Fetch revenue summary using the fetch API
+    fetch("http://localhost:5000/revenueSummary") // Relative URL
+      .then((response) => response.json())
+      .then((data) => {
+        setRevenueSummary(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
   useEffect(() => {
     fetch("https://book-verse-server-phi.vercel.app/paymentHistory")
       .then((res) => res.json())
@@ -85,7 +103,9 @@ const AdminHome = () => {
                 <FaInbox></FaInbox>
               </p>
             </li>
-            <h3 className="text-3xl font-semibold my-6">5000</h3>
+            <h3 className="text-3xl font-semibold my-6">
+              {paymentHistory.length}
+            </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+14%</p>
               <p>last month</p>
@@ -99,7 +119,9 @@ const AdminHome = () => {
                 <MdOutlinePointOfSale></MdOutlinePointOfSale>
               </p>
             </li>
-            <h3 className="text-3xl font-semibold my-6">34500</h3>
+            <h3 className="text-3xl font-semibold my-6">
+              ${revenueSummary.dailyRevenue.toFixed(2)}
+            </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+14%</p>
               <p>last month</p>
@@ -113,23 +135,28 @@ const AdminHome = () => {
                 <MdOutlineChildFriendly></MdOutlineChildFriendly>
               </p>
             </li>
-            <h3 className="text-3xl font-semibold my-6">3400</h3>
+            <h3 className="text-3xl font-semibold my-6">
+              {" "}
+              ${revenueSummary.totalRevenue.toFixed(2)}
+            </h3>
             <li className="flex justify-between items-center">
-              <p className="text-green-600">+14%</p>
+              <p className="text-green-600">+06%</p>
               <p>last month</p>
             </li>
           </div>
 
           <div className="w-full h-full shadow-xl p-5 rounded-md bg-slate-100">
             <li className="flex justify-between items-center">
-              <h5>Sales/year</h5>
+              <h5>Sales/total</h5>
               <p className="text-2xl">
                 <MdCalendarMonth></MdCalendarMonth>
               </p>
             </li>
-            <h3 className="text-3xl font-semibold my-6">5000</h3>
+            <h3 className="text-3xl font-semibold my-6">
+              ${revenueSummary.totalRevenue.toFixed(2)}
+            </h3>
             <li className="flex justify-between items-center">
-              <p className="text-green-600">+14%</p>
+              <p className="text-green-600">+26%</p>
               <p>last month</p>
             </li>
           </div>
@@ -170,22 +197,22 @@ const AdminHome = () => {
             {/* head */}
             <thead className="bg-slate-100">
               <tr className="">
-                <th >#</th>
-                <th >User Id</th>
-                <th >transactionId</th>
-                <th >Email</th>
-                <th >Time</th>
+                <th>#</th>
+                <th>User Id</th>
+                <th>transactionId</th>
+                <th>Email</th>
+                <th>Time</th>
               </tr>
             </thead>
             <tbody className="bg-slate-100 divide-y divide-gray-200">
-              {paymentHistory.map((userDetails, index) => (
-                <tr key={userDetails._id}>
+              {paymentHistory.map((paymentHistory, index) => (
+                <tr key={paymentHistory._id}>
                   <th>{index}</th>
 
-                  <td>{userDetails._id}</td>
-                  <td>{userDetails.transactionId}</td>
-                  <td>{userDetails.mail}</td>
-                  <td>{userDetails.date}</td>
+                  <td>{paymentHistory._id}</td>
+                  <td>{paymentHistory.transactionId}</td>
+                  <td>{paymentHistory.mail}</td>
+                  <td>{paymentHistory.date}</td>
                 </tr>
               ))}
             </tbody>

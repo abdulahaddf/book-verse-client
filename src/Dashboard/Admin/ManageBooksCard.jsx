@@ -111,6 +111,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           )}
           {/*----------------- modal body end-------------- */}
         </div>
+        
       </div>
     </div>
   );
