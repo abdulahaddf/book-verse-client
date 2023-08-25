@@ -37,7 +37,7 @@ const Dashboard = () => {
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
-              src={user && userinfo.photoURL ? userinfo.photoURL : avatar}
+              src={user && userinfo?.photoURL ? userinfo?.photoURL : avatar}
             />
             <h3 className="font-bold text-2xl uppercase">
               {userinfo?.displayName}
