@@ -7,6 +7,7 @@ import AuthProvider from "./provider/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import store from "./pages/payment/redux/Store";
+import '@smastrom/react-rating/style.css'
 
 const queryClient = new QueryClient();
 
