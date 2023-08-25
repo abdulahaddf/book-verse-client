@@ -1,17 +1,20 @@
-import React from "react";
+
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useEffect } from "react";
-import UseUser from "../../hooks/UseUser";
+
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../../shared/components/loader/Loader";
+import UseUser from "../../hooks/UseUser";
+
 
 const UserHome = () => {
-  const { user, profileUpdate } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const {
     register,
@@ -21,24 +24,21 @@ const UserHome = () => {
     watch,
   } = useForm();
 
-  const { data: userinfo = [] } = useQuery(["userinfo"], async () => {
-    const res = await fetch(`http://localhost:5000/userinfo/?email=${user?.email}`);
-    return res.json();
-  });
+  const [userinfo,isLoading]=UseUser()
 
-  const from = location?.state?.from?.pathname || "/dashboard/userHome";
+  console.log(userinfo);
 
+  // const from = location?.state?.from?.pathname || "/dashboard/userHome";
 
   const updateProfile = (data) => {
+    console.log(data);
+    // ----------------------
 
     // ----------------------
-  
-    
-  
-  // ----------------------
 
     if (data !== "null") {
-      const { name, url } = data;
+      const { name, url, address, gender, bday } = data;
+      console.log(data);
       const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
         import.meta.env.VITE_Image_Upload_token
       }`;
@@ -54,35 +54,67 @@ const UserHome = () => {
         .then((imageResponse) => {
           if (imageResponse.success) {
             const imageURL = imageResponse.data.display_url;
-            const profile = { displayName: name, photoURL: imageURL };
-            console.log(profile);
-            profileUpdate(profile)
-              .then(() => {
-                reset();
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "User updated successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate(from, { replace: true });
+            const profile = {
+              displayName: name,
+              photoURL: imageURL,
+              address: address,
+              gender: gender,
+              birthday: bday,
+            };
+            axios
+              .patch(
+                `http://localhost:5000/userinfoupdate/?email=${user?.email}`,
+                profile
+              )
+              .then((res) => {
+                
+                if (res.data.modifiedCount > 0) {
+                  reset();
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: `Userinfo updated successfully.`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate(from, { replace: true });
+                }
+                else if (res.data.modifiedCount == 0 || res.data.matchedCount>1){
+                  Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Userinfo already updated.",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                }
               })
-              .catch();
+              .catch((err) => console.log(err));
           }
         });
     }
   };
 
-  console.log(user);
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
   return (
-    <div className=" bg-slate-50 w-3/4 h-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
-      <img className="rounded-full w-32 h-32" src={user?.photoURL} alt="" />
+    <div className=" bg-slate-50 w-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
+      <img className="rounded-full w-32 h-32" src={userinfo?.photoURL} alt="" />
       <p className="font-bold text-xl text-[#d71d24] uppercase my-4">
-        Name: <span className="font-normal">{user?.displayName}</span>
+        Name: <span className="font-normal">{userinfo?.displayName}</span>
       </p>
       <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
-        Email: <span className="lowercase font-normal">{user?.email}</span>
+        Email: <span className="lowercase font-normal">{userinfo?.email}</span>
+      </p>
+      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+        Address: <span className="lowercase font-normal">{userinfo?.address}</span>
+      </p>
+      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+        Gender: <span className="lowercase font-normal">{userinfo?.gender}</span>
+      </p>
+      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+        Birth Date: <span className="lowercase font-normal">{userinfo?.birthday}</span>
       </p>
 
       <label
@@ -111,7 +143,7 @@ const UserHome = () => {
                   <input
                     type="text"
                     id="name"
-                    placeholder={user?.displayName}
+                    defaultValue={userinfo?.displayName}
                     {...register("name", { required: true })}
                     className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                   />
@@ -127,27 +159,60 @@ const UserHome = () => {
                   <input
                     type="email"
                     id="email"
-                    placeholder={user?.email}
+                    defaultValue={userinfo?.email}
                     {...register("email", { disabled: true })}
                     className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
                 <div className="mb-2">
                   <label
-                    htmlFor="email"
+                    htmlFor="address"
                     className="block text-sm font-semibold text-gray-800"
                   >
                     Address
                   </label>
                   <input
-                    type="address"
+                    type="text"
                     id="address"
-                    placeholder="Enter your address"
-                    {...register("email", { required: true })}
+                    defaultValue={userinfo?.address}
+                    {...register("address", { required: true })}
                     className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
-              
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                  <div className="">
+                    <label
+                      htmlFor="date"
+                      className="block text-sm font-semibold text-gray-800"
+                    >
+                      Birthday
+                    </label>
+                    <input
+                      type="date"
+                      id="bday"
+                    defaultValue={userinfo?.birthday}
+                      {...register("bday", { required: true })}
+                      className="w-full px-4 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
+                  </div>
+                  <div className="">
+                    <label
+                      htmlFor="select"
+                      className="block text-sm font-semibold text-gray-800"
+                    >
+                      Gender
+                    </label>
+                    <select
+                    defaultValue={userinfo?.gender}
+                      {...register("gender")}
+                      className="w-full px-4 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
+                    >
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
                 <div className="mb-2">
                   <label
                     htmlFor="url"
@@ -163,7 +228,6 @@ const UserHome = () => {
                   input file-input file-input-bordered w-full "
                   />
                 </div>
-              
 
                 <div className="mt-6">
                   <button
@@ -173,7 +237,6 @@ const UserHome = () => {
                     Submit
                   </button>
                 </div>
-                
               </form>
             </div>
           </div>
