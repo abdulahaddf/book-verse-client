@@ -1,12 +1,10 @@
-
-
 import { useContext, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://book-verse-server-phi.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -25,7 +23,7 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.response.use(
       (response) => response,
       async (error) => {
-        console.log(error)
+        console.log(error);
         if (
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
