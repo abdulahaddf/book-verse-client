@@ -26,42 +26,7 @@ const Register = () => {
   const handleReg = (data) => {
     const { name, email, password, url } = data;
 
-    createUser(email, password)
-      .then(() => {
-        profileUpdate({ displayName: name, photoURL: url }).then(() => {
-          const saveUser = {
-            name: data.name,
-            email: data.email,
-            photoURL: data.url,
-          };
-          fetch("https://book-verse-server-phi.vercel.app/users", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(saveUser),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              if (data.insertedId) {
-                reset();
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "User created successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate(from, { replace: true });
-              }
-            });
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
+
 
 
     const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`;
@@ -89,7 +54,7 @@ const Register = () => {
               name: data.name,
               email: data.email,
               photoURL: imageURL,
-              user_roll:'user'
+              role:'user'
             };
             fetch("https://book-verse-server-phi.vercel.app/users", {
               method: "POST",
@@ -125,6 +90,7 @@ const Register = () => {
     
     })
     .catch(error=> console.log(error))
+  }
 
     //  tonmoy end
 
@@ -240,7 +206,7 @@ const Register = () => {
         console.log(err.message);
       });
   };
-
+  
   return (
     <div>
     
@@ -290,6 +256,7 @@ const Register = () => {
               <input
                 type="file"
                 id="url"
+                required
                 {...register("url")}
                 className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
                 input file-input file-input-bordered w-full "
