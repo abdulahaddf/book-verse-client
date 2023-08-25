@@ -6,8 +6,10 @@ import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
 import DashboardNavbar from "../Dashboard/DashboardNavbar/DashboardNavbar";
 import useAdmin from "../hooks/useAdmin";
+import UseUser from "../hooks/UseUser";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+  const[userinfo]=UseUser()
 
 
   // const isAdmin = true;
@@ -35,10 +37,10 @@ const Dashboard = () => {
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
-              src={user && user.photoURL ? user.photoURL : avatar}
+              src={user && userinfo.photoURL ? userinfo.photoURL : avatar}
             />
             <h3 className="font-bold text-2xl uppercase">
-              {user?.displayName}
+              {userinfo?.displayName}
             </h3>
           </div>
 
@@ -52,13 +54,13 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/adminHome">
                   <FaHome></FaHome>Admin Home
                 </NavLink>
-              </li>
-              <li>
+                </li>
+                <li>
                 <Link to="/dashboard/userHome">
                   <FaHome></FaHome>User Home
                 </Link>
               </li>
-              
+            
               <li>
                 <NavLink to="/dashboard/addBook">
                   <FaBookReader></FaBookReader>Add Book
@@ -73,9 +75,17 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/manageUsers">
                   <FaUsers></FaUsers>Manage Users
                 </NavLink>
-              </li>
+                </li>
+                
               
               </> : <>
+
+              <li>
+                <Link to="/dashboard/userHome">
+                  <FaHome></FaHome>User Home
+                </Link>
+              </li>
+              
               
               <li>
                 <NavLink to="/dashboard/purchasedBooks">

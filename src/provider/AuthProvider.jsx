@@ -9,14 +9,13 @@ import {
   signInWithPopup,
   updateProfile,
   FacebookAuthProvider,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { app } from "../firebase/firebase.config";
 import { useQuery } from "@tanstack/react-query";
 import useLocalStorage from "../hooks/useLocalStorage";
 import axios from "axios";
-
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -25,7 +24,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -55,15 +53,12 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-//LOGIN WITH FB
-const fbProvider = new FacebookAuthProvider();
-const signInFB = () => {
-  setLoading(true);
-  return signInWithPopup(auth, fbProvider);
-};
-
-
-
+  //LOGIN WITH FB
+  const fbProvider = new FacebookAuthProvider();
+  const signInFB = () => {
+    setLoading(true);
+    return signInWithPopup(auth, fbProvider);
+  };
 
   const profileUpdate = (profile) => {
     return updateProfile(auth.currentUser, profile);
@@ -73,51 +68,40 @@ const signInFB = () => {
       setUser(currentUser);
 
       if (currentUser) {
-        axios.post(
-            'http://localhost:5000/jwt',
-            { email: currentUser.email }
-          )
+        axios
+          .post("https://book-verse-server-phi.vercel.app/jwt", {
+            email: currentUser.email,
+          })
           .then((data) => {
             console.log(data.data.token);
-            localStorage.setItem('access-token', data.data.token);
+            localStorage.setItem("access-token", data?.data?.token);
             setLoading(false);
           });
       } else {
-        localStorage.removeItem('access-token');
+        localStorage.removeItem("access-token");
       }
 
-
       // setLoading(false);
-
-      
     });
 
     return () => unSubscribe();
   }, []);
 
-  
   // add to cart data fetch by Tonmoy
 
- 
+  const { getValue } = useLocalStorage();
 
-  const { getValue} = useLocalStorage();
-
-  const { refetch: cartRefetch,  data: addToCartData=[] } = useQuery({
+  const { refetch: cartRefetch, data: addToCartData = [] } = useQuery({
     queryKey: [],
-    
-    queryFn: async ()=>{
-    
-        const res= await getValue("cartItems", []);
 
-        return res
-    } ,
-})
+    queryFn: async () => {
+      const res = await getValue("cartItems", []);
 
-
+      return res;
+    },
+  });
 
   // add to cart data fetch  end by Tonmoy
-
-
 
   // console.log(auth, user);
   const authInfo = {
@@ -134,8 +118,6 @@ const signInFB = () => {
     sendPasswordResetEmail,
     addToCartData,
     cartRefetch,
-   
-    
   };
 
   return (

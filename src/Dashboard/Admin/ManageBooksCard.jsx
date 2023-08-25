@@ -34,7 +34,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allBooks/${_id}`, {
+        fetch(`https://book-verse-server-phi.vercel.app/allBooks/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -108,9 +108,10 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
               book={{ ...book, _id: _id }}
               onClose={() => setIsEditModalOpen(false)}
             />
-          )} 
+          )}
           {/*----------------- modal body end-------------- */}
         </div>
+        
       </div>
     </div>
   );

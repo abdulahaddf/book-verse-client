@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-import { useQuery } from "@tanstack/react-query";
 import Loader from "../../shared/components/loader/Loader";
 import UseUser from "../../hooks/UseUser";
 

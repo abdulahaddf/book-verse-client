@@ -86,6 +86,8 @@ setTransactionId(paymentIntent.id)
         transactionId: paymentIntent.id,
         mail: user?.email,
         date: new Date(),
+        name: user?.displayName ,
+        total_price: price
       };
       axiosSecure.post("/payments", paymentInfo).then((res) => {
         console.log(res.data);

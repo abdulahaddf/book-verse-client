@@ -112,8 +112,8 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
-        path: "purchasedBooks",
-        element: <PurchasedBooks></PurchasedBooks>,
+        path: 'purchasedBooks',
+        element:<PrivateRoute><PurchasedBooks></PurchasedBooks> </PrivateRoute> 
       },
       {
         path: 'userHome',
