@@ -9,10 +9,17 @@
         @apply btn-sm btn btn-outline btn-secondary text-white hover:text-red border-red  hover:border-b-red hover:bg-white  px-4 py-1 rounded-lg border-b-4 hover:scale-105 duration-300;
     }
     .btn-primary{
-        @apply btn w-24 text-black  bg-white hover:text-white border-red  hover:border-b-white hover:bg-red  px-2 py-1 rounded-3xl border-b-4 hover:scale-105 duration-300;
+        @apply btn w-24 text-black  bg-white hover:text-white border-red normal-case hover:bg-red  px-2 py-1 rounded-lg border-b-4 hover:scale-105 duration-300 hover:shadow-rose-400 shadow-lg;
+    }
+    .btn-custom{
+        @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white
+         hover:bg-red  rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
     }
     .section{
         @apply shadow-xl rounded-lg p-5 my-5;
+    }
+    .page-heading{
+        @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
     }
     
     

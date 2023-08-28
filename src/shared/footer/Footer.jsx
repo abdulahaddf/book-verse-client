@@ -37,7 +37,7 @@ const Footer = () => {
             <FaLocationArrow className="mr-3"></FaLocationArrow>No 45, Season
             Street,,
           </p>
-          <p className="ms-6">Livingstone LA Inc - 4502</p>
+          <p className="ms-[25px]">Livingstone LA Inc - 4502</p>
           <p className="flex items-center my-2">
             <FaEnvelope className="mr-3"></FaEnvelope>bookverse@gmail.com
           </p>
@@ -162,7 +162,7 @@ const Footer = () => {
               />
             </div>
             <input
-              className="py-2 px-3 btn btn-sm hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:bordered:[#d71d24] text-[#d71d24]"
+              className="py-2 px-3 btn btn-sm hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
               type="submit"
               value="Subscribe"
             />

@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash, FaFacebookF } from "react-icons/fa";
-import Navbar from "../../navbar/Navbar";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Lottie from "react-lottie";
 import animationData from "../../../assets/animations/login.json";
@@ -40,7 +39,7 @@ const Login = () => {
         console.log(loggedUser);
         navigate("/");
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Successfully Signed In.",
           showConfirmButton: false,
@@ -55,7 +54,7 @@ const Login = () => {
           errorCode === "auth/wrong-password"
         ) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "eroor",
             title: "Invalid email or password",
             showConfirmButton: false,
@@ -63,7 +62,7 @@ const Login = () => {
           });
         } else {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "eroor",
             title: { errorMessage },
             showConfirmButton: false,
@@ -95,7 +94,7 @@ const Login = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,
@@ -132,7 +131,7 @@ const Login = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,
@@ -150,7 +149,7 @@ const Login = () => {
 
   return (
     <>
-      <Navbar></Navbar>
+  
       <div className=" md:flex justify-center my-10 ">
         <div className="w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-red uppercase">

@@ -4,7 +4,6 @@ import { useContext } from "react";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
-import Navbar from "../../navbar/Navbar";
 
 const ResetForm = () => {
   const { auth, sendPasswordResetEmail } = useContext(AuthContext);
@@ -18,7 +17,7 @@ const ResetForm = () => {
       .then((data) => {
         console.log(data);
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Sent Password Reset mail",
           showConfirmButton: false,
@@ -30,7 +29,7 @@ const ResetForm = () => {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Check Your Mail ",
           showConfirmButton: false,
@@ -41,7 +40,7 @@ const ResetForm = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+    
       <h1 className="text-xl text-center my-5 ">Reset Your Password</h1>
       <div className="flex justify-center items-center">
         <form

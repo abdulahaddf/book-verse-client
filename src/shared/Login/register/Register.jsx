@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaFacebookF } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
-import Navbar from "../../navbar/Navbar";
 
 const Register = () => {
   const { createUser, signInGoogle, signInFB, profileUpdate, setLoading } =
@@ -23,45 +22,114 @@ const Register = () => {
   const from = location?.state?.from?.pathname || "/";
   const passwordValue = watch("password", "");
 
+//  tonmoy start
   const handleReg = (data) => {
     const { name, email, password, url } = data;
 
-    createUser(email, password)
-      .then(() => {
-        profileUpdate({ displayName: name, photoURL: url }).then(() => {
-          const saveUser = {
-            name: data.name,
-            email: data.email,
-            photoURL: data.url,
-          };
-          fetch("https://book-verse-server-phi.vercel.app/users", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(saveUser),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              if (data.insertedId) {
-                reset();
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "User created successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate(from, { replace: true });
-              }
-            });
+
+
+
+    const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`;
+
+    const coverForm = new FormData();
+    coverForm.append("image", url[0]);
+
+
+    fetch(imageUploadUrl, {
+      method: "POST",
+      body: coverForm,
+    })
+    .then(res=> res.json())
+    .then(imageResponse=>{
+
+      if(imageResponse.success){
+        const imageURL= imageResponse.data.display_url;
+
+
+
+        createUser(email, password)
+        .then(() => {
+          profileUpdate({ displayName: name, photoURL: imageURL }).then(() => {
+            const saveUser = {
+              name: data.name,
+              email: data.email,
+              photoURL: imageURL,
+              role:'user'
+            };
+            fetch("https://book-verse-server-phi.vercel.app/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created successfully.",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate(from, { replace: true });
+                }
+              });
+          });
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
+
+      }
+        
+    
+    })
+    .catch(error=> console.log(error))
+  }
+
+    //  tonmoy end
+
+    // createUser(email, password)
+    //   .then(() => {
+    //     profileUpdate({ displayName: name, photoURL: url }).then(() => {
+    //       const saveUser = {
+    //         name: data.name,
+    //         email: data.email,
+    //         photoURL: data.url,
+    //       };
+    //       fetch("https://book-verse-server-phi.vercel.app/users", {
+    //         method: "POST",
+    //         headers: {
+    //           "content-type": "application/json",
+    //         },
+    //         body: JSON.stringify(saveUser),
+    //       })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //           console.log(data);
+    //           if (data.insertedId) {
+    //             reset();
+    //             Swal.fire({
+    //               position: "top-end",
+    //               icon: "success",
+    //               title: "User created successfully.",
+    //               showConfirmButton: false,
+    //               timer: 1500,
+    //             });
+    //             navigate(from, { replace: true });
+    //           }
+    //         });
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  
 
   const handleGoogleSignIn = () => {
     signInGoogle()
@@ -72,6 +140,7 @@ const Register = () => {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
+          user_roll:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
@@ -84,7 +153,7 @@ const Register = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "User created successfully.",
               showConfirmButton: false,
@@ -122,7 +191,7 @@ const Register = () => {
           .then(() => {
             console.log(result.user);
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Successfully Signed In",
               showConfirmButton: false,
@@ -137,10 +206,10 @@ const Register = () => {
         console.log(err.message);
       });
   };
-
+  
   return (
     <div>
-      <Navbar></Navbar>
+    
       <div className="relative flex flex-col justify-center my-4 overflow-hidden">
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-red uppercase">
@@ -185,10 +254,12 @@ const Register = () => {
                 Photo Url
               </label>
               <input
-                type="text"
+                type="file"
                 id="url"
+                required
                 {...register("url")}
-                className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
+                input file-input file-input-bordered w-full "
               />
             </div>
             <div className="mb-2">
