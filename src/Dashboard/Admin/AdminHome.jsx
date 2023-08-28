@@ -26,7 +26,7 @@ const AdminHome = () => {
 
   useEffect(() => {
     // Fetch revenue summary using the fetch API
-    fetch("http://localhost:5000/revenueSummary") // Relative URL
+    fetch("https://book-verse-server-phi.vercel.app/revenueSummary") // Relative URL
       .then((response) => response.json())
       .then((data) => {
         setRevenueSummary(data);
