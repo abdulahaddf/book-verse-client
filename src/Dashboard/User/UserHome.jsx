@@ -100,19 +100,19 @@ const UserHome = () => {
   return (
     <div className=" bg-slate-50 w-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
       <img className="rounded-full w-32 h-32" src={userinfo?.photoURL} alt="" />
-      <p className="font-bold text-xl text-[#d71d24] uppercase my-4">
+      <p className="font-bold text-xl  uppercase my-4">
         Name: <span className="font-normal">{userinfo?.displayName}</span>
       </p>
-      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+      <p className="font-bold text-xl  uppercase mb-4">
         Email: <span className="lowercase font-normal">{userinfo?.email}</span>
       </p>
-      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+      <p className="font-bold text-xl  uppercase mb-4">
         Address: <span className="lowercase font-normal">{userinfo?.address}</span>
       </p>
-      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+      <p className="font-bold text-xl uppercase mb-4">
         Gender: <span className="lowercase font-normal">{userinfo?.gender}</span>
       </p>
-      <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
+      <p className="font-bold text-xl uppercase mb-4">
         Birth Date: <span className="lowercase font-normal">{userinfo?.birthday}</span>
       </p>
 

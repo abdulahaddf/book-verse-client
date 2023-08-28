@@ -24,6 +24,7 @@ import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
 import UserHome from "../Dashboard/User/UserHome";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
+import Error from "../pages/Error/Error";
 
 export const router = createBrowserRouter([
     {
@@ -120,5 +121,10 @@ export const router = createBrowserRouter([
         element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
       }
     ],
+    
   },
+  {
+    path:'*',
+    element:<Error></Error>
+  }
 ]);
