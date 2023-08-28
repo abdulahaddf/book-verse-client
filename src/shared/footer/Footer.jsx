@@ -16,13 +16,13 @@ import {
 } from "react-icons/fa";
 import { SiAmericanexpress } from "react-icons/si";
 import { Link } from "react-router-dom";
-import appleStore from "../../assets/store/apple.png";
-import googlePlay from "../../assets/store/google.png";
+import appleStore from "../../assets/store/apple2.png";
+import googlePlay from "../../assets/store/google2.png";
 import logo from "../../assets/image/logo.png";
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">
-      <div className="footer p-10 flex-row md:flex-col justify-between">
+      <div className="footer p-10 flex-row md:flex-col justify-center md:justify-between">
         <div>
           <div className=" flex items-center gap-4">
             <img className="w-12 h-12 rounded-sm" src={logo} alt="" />
@@ -113,7 +113,7 @@ const Footer = () => {
             <Link>Search Terms</Link>
           </p>
           <p className="hover:text-[#d71d24] duration-300 transition hover:translate-x-1 ease-in relative">
-            <Link>Login</Link>
+            <Link to='/login'>Login</Link>
           </p>
         </div>
 
@@ -167,27 +167,27 @@ const Footer = () => {
               value="Subscribe"
             />
           </form>
-          <div className="flex -mt-6">
-            <a href="">
-              <img className="w-24 h-24 -ms-1" src={appleStore} alt="" />
-            </a>
-            <a href="">
-              <img className="w-24 h-24" src={googlePlay} alt="" />
-            </a>
+          <div className="flex">
+            <Link to='https://www.apple.com/store'>
+              <img className="w-24 -ms-1" src={appleStore} alt="" />
+            </Link>
+            <Link to='https://play.google.com/store/games?device=windows&pli=1'>
+              <img className="w-24 " src={googlePlay} alt="" />
+            </Link>
           </div>
         </div>
       </div>
 
-      <hr />
+      <hr className="mx-10"/>
 
-      <div className="footer items-center py-6 px-10 text-base-content">
+      <div className="footer items-center py-6 px-10  text-center text-base-content">
         <div className="items-center">
           <p>Copyright © 2023 Book verse- All right reserved</p>
-          <p>
+          <p className="mx-auto">
             Designed by <span className="text-[#d71d24]">Team EndCoders</span>
           </p>
         </div>
-        <div className="grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center md:justify-self-end text-center">
+        <div className="grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center justify-self-center md:justify-self-end text-center">
           <a
             className="text-3xl text-[#002f86] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
