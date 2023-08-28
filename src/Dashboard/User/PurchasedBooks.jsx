@@ -9,9 +9,11 @@ import { Rating } from "@smastrom/react-rating";
 import { Controller, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Loader from "../../shared/components/loader/Loader";
+import UseUser from "../../hooks/UseUser";
 
 const PurchasedBooks = () => {
   const { user, loading } = useContext(AuthContext);
+  const [userinfo] = UseUser();
   const [books, setBooks] = useState([]);
   const [openModalIndex, setOpenModalIndex] = useState("");
   const [tId, setTId] = useState("");
@@ -46,8 +48,8 @@ const PurchasedBooks = () => {
     const review = {
       bookId: tId,
       transactionId: data?.transactionId,
-      name: user?.displayName,
-      photo: user?.photoURL,
+      name: userinfo?.displayName,
+      photo: userinfo?.photoURL,
       review: data?.review,
       rating: data?.rating,
       identifier: user?.email,

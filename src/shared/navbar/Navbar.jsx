@@ -49,7 +49,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? " text-red" : "no-underline"
           }
-          to="/fd"
+          to="/old-books"
         >
           Old Books
         </NavLink>
