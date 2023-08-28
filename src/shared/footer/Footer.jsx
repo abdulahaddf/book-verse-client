@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import appleStore from "../../assets/store/apple2.png";
 import googlePlay from "../../assets/store/google2.png";
 import logo from "../../assets/image/logo.png";
+import { FcLock } from "react-icons/fc";
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">
@@ -171,7 +172,7 @@ const Footer = () => {
             <Link to='https://www.apple.com/store'>
               <img className="w-24 -ms-1" src={appleStore} alt="" />
             </Link>
-            <Link to='https://play.google.com/store/games?device=windows&pli=1'>
+            <Link to='https://play.google.com/store'>
               <img className="w-24 " src={googlePlay} alt="" />
             </Link>
           </div>
@@ -181,13 +182,13 @@ const Footer = () => {
       <hr className="mx-10"/>
 
       <div className="footer items-center py-6 px-10  text-center text-base-content">
-        <div className="items-center">
+        <div className="items-center order-2 md:order-1 mx-auto md:mx-0">
           <p>Copyright © 2023 Book verse- All right reserved</p>
           <p className="mx-auto">
-            Designed by <span className="text-[#d71d24]">Team EndCoders</span>
+            Designed by <Link><span className="text-white px-1 bg-[#78CA42]"><FcLock className="inline" /> Team EndCoders</span></Link>
           </p>
         </div>
-        <div className="grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center justify-self-center md:justify-self-end text-center">
+        <div className="order-1 md:order-2 grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center justify-self-center md:justify-self-end text-center">
           <a
             className="text-3xl text-[#002f86] bg-white px-4 py-2 rounded-md inline-block hover:bg-[#d71d24] hover:scale-105 hover:text-white duration-1000"
             href=""
