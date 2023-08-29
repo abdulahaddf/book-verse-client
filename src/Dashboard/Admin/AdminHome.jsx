@@ -32,7 +32,7 @@ const AdminHome = () => {
   });
 
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/revenueSummary")
+    fetch("http://localhost:5000/revenueSummary")
       .then((response) => response.json())
       .then((data) => {
         setRevenueSummary(data);
@@ -41,6 +41,7 @@ const AdminHome = () => {
         console.error("Error:", error);
       });
   }, []);
+  
 
   useEffect(() => {
     fetch("https://book-verse-server-phi.vercel.app/paymentHistory")
@@ -131,7 +132,7 @@ const AdminHome = () => {
           <div style={{ width: "100%", height: 330 }}>
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart
-                data={Object.entries(revenueSummary.weeklyRevenue).map(
+                data={Object.entries(revenueSummary.weeklyRevenue ||{}).map(
                   ([day, weekly]) => ({
                     day,
                     weekly,
