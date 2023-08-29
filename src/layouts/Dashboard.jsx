@@ -100,6 +100,12 @@ const Dashboard = () => {
                   Sell Your Old Books
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/my-books">
+                  <ImBooks />
+                  Selling Books
+                </NavLink>
+              </li>
               
               </>
             }
