@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import BookCard from "../../shared/components/BookCard/BookCard";
+import OldBookCard from "../../shared/components/OldBookCard/OldBookCard";
 
 
 const AllOldBooks = () => {
@@ -15,7 +15,7 @@ const AllOldBooks = () => {
             <h1 className="text-3xl text-center font-semibold my-10">All Old Books</h1>
             <div className="grid md:grid-cols-4 gap-8 w-11/12 mx-auto my-20">
             {
-                books?.map(book => <BookCard key={book._id} book={book}></BookCard>)
+                books?.map(book => <OldBookCard key={book._id} book={book}></OldBookCard>)
             }
         </div>
         </div>

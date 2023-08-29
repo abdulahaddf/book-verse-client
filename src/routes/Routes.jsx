@@ -27,6 +27,7 @@ import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 import SellBook from "../Dashboard/User/SellBook";
 import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
 import MyBooks from "../Dashboard/User/MyBooks";
+import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 
 export const router = createBrowserRouter([
     {
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
         {
           path: "/old-books",
           element: <AllOldBooks/>
+        },
+        {
+          path: "/old-books-details",
+          element: <OldBookDetails/>
         },
         
       ]
