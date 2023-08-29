@@ -185,7 +185,7 @@ const Footer = () => {
         <div className="items-center order-2 md:order-1 mx-auto md:mx-0">
           <p>Copyright © 2023 Book verse- All right reserved</p>
           <p className="mx-auto">
-            Designed by <Link><span className="text-white px-1 bg-[#78CA42]"><FcLock className="inline" /> Team EndCoders</span></Link>
+            Designed by <Link to='/dev'><span className="text-white px-1 bg-[#78CA42]"><FcLock className="inline" /> Team EndCoders</span></Link>
           </p>
         </div>
         <div className="order-1 md:order-2 grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center justify-self-center md:justify-self-end text-center">

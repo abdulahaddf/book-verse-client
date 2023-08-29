@@ -24,6 +24,7 @@ import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
 import UserHome from "../Dashboard/User/UserHome";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
+import Team from "../shared/components/team/Team";
 
 export const router = createBrowserRouter([
     {
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
         {
           path: "/Author/:name",
           element: <AuthorDetails />
+        },
+        {
+          path: '/dev',
+          element: <Team/>
         }
       ]
       
