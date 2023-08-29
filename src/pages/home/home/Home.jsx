@@ -18,7 +18,7 @@ const Home = () => {
     <div>
       {/* All Components of home will be shown here */}
   
-      <div className="search-bar-container">
+      <div className="search-bar-container relative z-10">
         <SearchBar setResults={setResults} />
         {results && results.length > 0 && <SearchResultsList results={results} />}
       </div>

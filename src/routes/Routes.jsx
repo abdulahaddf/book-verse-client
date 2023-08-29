@@ -85,7 +85,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "/Author/:name",
-          element: <AuthorDetails/>
+          element: <AuthorDetails />
         }
       ]
       
@@ -117,7 +117,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'userHome',
-        element:<UserHome></UserHome>
+        element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
       }
     ],
   },
