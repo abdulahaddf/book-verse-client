@@ -21,7 +21,7 @@ const OldBookCard = ({book}) => {
             <p className="text-teal-50 py-5 text-sm">Posted on : {new Date(postDate).toISOString().split("T")[0]}</p>
 
             <button className="btn border-none  hover:bg-rose-700  bg-[#d71d24] normal-case w-full text-white">
-              <Link to="/old-books-details" state={book}>Details</Link>
+              <Link to={`/old-books-details/${_id}`}>Details</Link>
             </button>
           </div>
         </div>

@@ -96,8 +96,9 @@ export const router = createBrowserRouter([
           element: <AllOldBooks/>
         },
         {
-          path: "/old-books-details",
-          element: <OldBookDetails/>
+          path: "/old-books-details/:id",
+          element: <OldBookDetails/>,
+          loader: ({params}) => fetch(`http://localhost:5000/oldBook/${params.id}`)
         },
         
       ]

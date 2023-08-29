@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const MyBooks = () => {
     const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
-  console.log(books);
+  // console.log(books);
   useEffect(() => {
     fetch(
       `http://localhost:5000/myBooks?email=${user.email}`

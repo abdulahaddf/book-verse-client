@@ -108,6 +108,7 @@ const PurchasedBooks = () => {
                     <tr>
                       <th>#</th>
                       <th>Books</th>
+                      <th>Delivery Status</th>
                       <th>Purchase Time</th>
                       <th>Transection ID</th>
                     </tr>
@@ -212,24 +213,7 @@ const PurchasedBooks = () => {
                                       Your Review
                                     </p>
 
-                                    {/* <input
-//   type="hidden"
-  name="id"
-  defaultValue={sBook._id} 
-  value={sBook._id} 
-  {...register("id")}
-/> */}
-                                    {/* <Controller
-  control={control}
-  name="id"
-  defaultValue={sBook._id}
-  render={({ field }) => (
-    <input
-    //   type="hidden"
-      {...field}
-    />
-  )}
-/> */}
+                                   
 
                                     <input
                                       type="hidden"

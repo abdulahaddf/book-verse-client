@@ -62,6 +62,8 @@ const SellBook = () => {
             seller : userinfo.displayName,
             sellerMail : userinfo?.email,
             sellerPhoto : userinfo?.photoURL,
+            sellerAddress : userinfo?.address,
+            sellerPhone : userinfo?.phoneNumber,
             postDate: new Date().toISOString(),
           };
     
