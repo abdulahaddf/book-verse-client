@@ -9,9 +9,11 @@ import { Rating } from "@smastrom/react-rating";
 import { Controller, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Loader from "../../shared/components/loader/Loader";
+import UseUser from "../../hooks/UseUser";
 
 const PurchasedBooks = () => {
   const { user, loading } = useContext(AuthContext);
+  const [userinfo] = UseUser();
   const [books, setBooks] = useState([]);
   const [openModalIndex, setOpenModalIndex] = useState("");
   const [tId, setTId] = useState("");
@@ -46,8 +48,8 @@ const PurchasedBooks = () => {
     const review = {
       bookId: tId,
       transactionId: data?.transactionId,
-      name: user?.displayName,
-      photo: user?.photoURL,
+      name: userinfo?.displayName,
+      photo: userinfo?.photoURL,
       review: data?.review,
       rating: data?.rating,
       identifier: user?.email,
@@ -106,6 +108,7 @@ const PurchasedBooks = () => {
                     <tr>
                       <th>#</th>
                       <th>Books</th>
+                      <th>Delivery Status</th>
                       <th>Purchase Time</th>
                       <th>Transection ID</th>
                     </tr>
@@ -210,24 +213,7 @@ const PurchasedBooks = () => {
                                       Your Review
                                     </p>
 
-                                    {/* <input
-//   type="hidden"
-  name="id"
-  defaultValue={sBook._id} 
-  value={sBook._id} 
-  {...register("id")}
-/> */}
-                                    {/* <Controller
-  control={control}
-  name="id"
-  defaultValue={sBook._id}
-  render={({ field }) => (
-    <input
-    //   type="hidden"
-      {...field}
-    />
-  )}
-/> */}
+                                   
 
                                     <input
                                       type="hidden"

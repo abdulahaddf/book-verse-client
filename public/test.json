@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Abdul Ahad",
+      "role": "MERN Developer",
+      "image": "https://lh3.googleusercontent.com/a/AAcHTteJgK3c253W7AgB8joqIVNk4pp5TJkvXowAuP-USM-AZQ=s96-c",
+      "github": "https://github.com/abdulahaddf",
+      "color": "#FFE33A"
+    },
+    {
+      "id": 2,
+      "name": "Nafiul Hasan Hasib",
+      "role": "MERN Developer",
+      "image": "https://i.ibb.co/XySHJJS/Nafiul-Hasan-Hasib-Image.jpg",
+      "github": "https://github.com/nhhasib",
+      "color": "#01A38E"
+    },
+    {
+      "id": 3,
+      "name": "Md. Nahid Mursaline",
+      "role": "MERN Developer",
+      "image": "https://lh3.googleusercontent.com/a/AAcHTtfaKk1yXz4mSh9wBZZ_y1srV5e5mvp5F6BAhyFm6n7G=s96-c",
+      "github": "https://github.com/nahidmursaline",
+      "color": "#3D9BE9"
+    },
+    {
+      "id": 4,
+      "name": "Nur Zihad",
+      "role": "MERN Developer",
+      "image": "https://lh3.googleusercontent.com/a/AAcHTteUsq30UK2xndCZpGZSGNzxd78UaAMtdij232aOkpu-Dg=s96-c",
+      "github": "https://github.com/Zihadx",
+      "color": "#FC9D6A"
+    },
+    {
+      "id": 5,
+      "name": "Showmic Arefin Tonmoy",
+      "role": "MERN Developer",
+      "image": "https://i.ibb.co/NyMfqBB/DSC06888.jpg",
+      "github": "https://github.com/tonutonmoy",
+      "color": "#C9C8FB"
+    },
+    {
+      "id": 6,
+      "name": "Foisal Ahmmed Shagor",
+      "role": "Front-End Developer",
+      "image": "https://lh3.googleusercontent.com/a/AAcHTteVFF4RoMRuIFm6quTqam-ZwHuyPYMkOSbklon5rGo6EgE=s96-c",
+      "github": "https://github.com/foisal404",
+      "color": "#95D45B"
+    }
+  ]
+  

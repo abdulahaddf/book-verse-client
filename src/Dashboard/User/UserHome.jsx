@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
@@ -9,7 +8,6 @@ import axios from "axios";
 
 import Loader from "../../shared/components/loader/Loader";
 import UseUser from "../../hooks/UseUser";
-
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
@@ -23,7 +21,7 @@ const UserHome = () => {
     watch,
   } = useForm();
 
-  const [userinfo,isLoading]=UseUser()
+  const [userinfo, isLoading] = UseUser();
 
   console.log(userinfo);
 
@@ -62,11 +60,10 @@ const UserHome = () => {
             };
             axios
               .patch(
-                `http://localhost:5000/userinfoupdate/?email=${user?.email}`,
+                `https://book-verse-server-phi.vercel.app/userinfoupdate/?email=${user?.email}`,
                 profile
               )
               .then((res) => {
-                
                 if (res.data.modifiedCount > 0) {
                   reset();
                   Swal.fire({
@@ -77,8 +74,10 @@ const UserHome = () => {
                     timer: 1500,
                   });
                   navigate(from, { replace: true });
-                }
-                else if (res.data.modifiedCount == 0 || res.data.matchedCount>1){
+                } else if (
+                  res.data.modifiedCount == 0 ||
+                  res.data.matchedCount > 1
+                ) {
                   Swal.fire({
                     position: "center",
                     icon: "error",
@@ -107,13 +106,16 @@ const UserHome = () => {
         Email: <span className="lowercase font-normal">{userinfo?.email}</span>
       </p>
       <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
-        Address: <span className="lowercase font-normal">{userinfo?.address}</span>
+        Address:{" "}
+        <span className="lowercase font-normal">{userinfo?.address}</span>
       </p>
       <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
-        Gender: <span className="lowercase font-normal">{userinfo?.gender}</span>
+        Gender:{" "}
+        <span className="lowercase font-normal">{userinfo?.gender}</span>
       </p>
       <p className="font-bold text-xl text-[#d71d24] uppercase mb-4">
-        Birth Date: <span className="lowercase font-normal">{userinfo?.birthday}</span>
+        Birth Date:{" "}
+        <span className="lowercase font-normal">{userinfo?.birthday}</span>
       </p>
 
       <label
@@ -189,7 +191,7 @@ const UserHome = () => {
                     <input
                       type="date"
                       id="bday"
-                    defaultValue={userinfo?.birthday}
+                      defaultValue={userinfo?.birthday}
                       {...register("bday", { required: true })}
                       className="w-full px-4 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -202,7 +204,7 @@ const UserHome = () => {
                       Gender
                     </label>
                     <select
-                    defaultValue={userinfo?.gender}
+                      defaultValue={userinfo?.gender}
                       {...register("gender")}
                       className="w-full px-4 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                     >
