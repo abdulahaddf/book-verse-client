@@ -22,9 +22,9 @@ import StripePayment from "../pages/payment/StripePayment";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
-import UserHome from "../Dashboard/User/UserHome";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 import Error from "../pages/Error/Error";
+import UserHome from "../Dashboard/User/UserHome/UserHome";
 
 export const router = createBrowserRouter([
     {
