@@ -9,6 +9,7 @@ import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+  // console.log(user)
   const[userinfo]=UseUser()
 
 
@@ -91,6 +92,18 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/purchasedBooks">
                   <ImBooks />
                   Purchased Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/sell">
+                  <ImBooks />
+                  Sell Your Old Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/my-books">
+                  <ImBooks />
+                  Selling Books
                 </NavLink>
               </li>
               

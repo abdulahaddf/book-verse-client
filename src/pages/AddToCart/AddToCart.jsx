@@ -113,8 +113,9 @@ const AddToCart = () => {
             {addToCartData?.map((data) => (
               <div
                 key={data?._id}
-                className=" grid lg:grid-cols-3  md:gap-10 p-3 my-10 "
-                style={{ boxShadow: "10px 10px 10px black" }} >
+                className=" grid lg:grid-cols-3  md:gap-10 p-3 my-10 shadow-md rounded-md"
+                // style={{ boxShadow: "10px 10px 10px black" }}
+                 >
                 <div className=" md:w-1/2 mx-auto flex justify-center items-center ">
                   <img src={data?.cover_image} className="" />
                 </div>
@@ -179,8 +180,8 @@ const AddToCart = () => {
 
           <section
             className=" bg-gray-900 text-white my-10 py-10 px-5 md:my-[100px] space-y-5 rounded-[10px] 
-             h-[350px]  md:w-1/3 text-center sticky top-0"
-            style={{ boxShadow: "10px 10px 10px black" }}
+             h-[350px]  md:w-1/3 text-center sticky top-0 shadow-md"
+            // style={{ boxShadow: "10px 10px 10px black" }}
           >
             <p className=" text-xl  ">
               Your Total: $ <span className="">{totalPrice}</span>{" "}

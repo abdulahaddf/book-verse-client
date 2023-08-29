@@ -64,7 +64,7 @@ const BookCard = ({book,text}) => {
   console.log(book);
   const {_id,title, author, cover_image, offer_price, rating ,count,previous_id,purchase_date } = book;
   return (
-    <div className=" mx-auto my-5 py-10  ">
+    <div className=" mx-auto    ">
       {/* card 1 start */}
       <div
         className="group book-card-container relative block bg-black  w-[300px]

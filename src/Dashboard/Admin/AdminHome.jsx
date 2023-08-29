@@ -20,13 +20,13 @@ const AdminHome = () => {
   const [paymentHistory, setPaymentHistory] = useState([]);
 
   const [revenueSummary, setRevenueSummary] = useState({
-    dailyRevenue: 0,
+    totalRevenueToday: 0,
+    totalRevenueCurrentMonth: 0,
     totalRevenue: 0,
   });
 
   useEffect(() => {
-    // Fetch revenue summary using the fetch API
-    fetch("https://book-verse-server-phi.vercel.app/revenueSummary") // Relative URL
+    fetch("https://book-verse-server-phi.vercel.app/revenueSummary")
       .then((response) => response.json())
       .then((data) => {
         setRevenueSummary(data);
@@ -120,7 +120,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              ${revenueSummary.dailyRevenue.toFixed(2)}
+              ${revenueSummary.totalRevenueToday}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+14%</p>
@@ -137,7 +137,7 @@ const AdminHome = () => {
             </li>
             <h3 className="text-3xl font-semibold my-6">
               {" "}
-              ${revenueSummary.totalRevenue.toFixed(2)}
+              ${revenueSummary.totalRevenueCurrentMonth}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+06%</p>
@@ -153,7 +153,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              ${revenueSummary.totalRevenue.toFixed(2)}
+              ${revenueSummary.totalRevenue}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+26%</p>
@@ -207,7 +207,7 @@ const AdminHome = () => {
             <tbody className="bg-slate-100 divide-y divide-gray-200">
               {paymentHistory.map((paymentHistory, index) => (
                 <tr key={paymentHistory._id}>
-                  <th>{index}</th>
+                  <th>{index + 1}</th>
 
                   <td>{paymentHistory._id}</td>
                   <td>{paymentHistory.transactionId}</td>

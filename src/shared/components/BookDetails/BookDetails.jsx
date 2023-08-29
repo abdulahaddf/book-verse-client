@@ -13,7 +13,7 @@ const BookDetails = () => {
     window.scrollTo(0, 0);
   }, []);
   const singleBookDetails = useLoaderData();
-  console.log(singleBookDetails);
+  // console.log(singleBookDetails);
   const {
     title,
     cover_image,
