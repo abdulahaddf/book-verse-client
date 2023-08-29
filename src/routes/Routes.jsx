@@ -31,85 +31,104 @@ import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main/>,
-      children: [
-        {
-            path: "/",
-            element: <Home/>
-          },
-        {
-            path: "/all-books",
-            element: <AllBooks/>
-          },
-          {
-            path: 'details/:id',
-            element: <BookDetails></BookDetails>,
-            loader: ({params}) => fetch(`https://book-verse-server-phi.vercel.app/singleBook/${params.id}`)
-          },
-        {
-            path: "/addToCart",
-            element: <AddToCart></AddToCart>
-          },
-        {
-            path: "/allBestSelling",
-            element: <AllBestSelling/>
-          },
-        {
-            path: "/allRecentSelling",
-            element: <AllRecentSelling/>
-          },
-        {
-            path: "/payment",
-            element:<PrivateRoute> <Payment/></PrivateRoute>
-          },
-        {
-            path: "/stripePayment",
-            element:<PrivateRoute> <StripePayment/></PrivateRoute>
-          },
-        {
-            path: "/SSLPaymentSuccess",
-            element:<PrivateRoute> <SSLPaymentSuccess/></PrivateRoute>
-          },
-        {
-            path: "/login",
-            element: <Login/>
-          },
-        {
-            path: "/register",
-            element: <Register/>
-          },
-        {
-            path: "/forget",
-            element: <ResetForm/>
-        },
-        {
-          path: "/All/:category",
-            element: <Collections/>
-        },
-        {
-          path: "/Author/:name",
-          element: <AuthorDetails />
-        },
-        {
-          path: '/dev',
-          element: <Team/>
-        },
-        {
-          path: "/old-books",
-          element: <AllOldBooks/>
-        },
-        {
-          path: "/old-books-details/:id",
-          element: <OldBookDetails/>,
-          loader: ({params}) => fetch(`http://localhost:5000/oldBook/${params.id}`)
-        },
-        
-      ]
-      
-    },
-  
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/all-books",
+        element: <AllBooks />,
+      },
+      {
+        path: "details/:id",
+        element: <BookDetails></BookDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/singleBook/${params.id}`
+          ),
+      },
+      {
+        path: "/addToCart",
+        element: <AddToCart></AddToCart>,
+      },
+      {
+        path: "/allBestSelling",
+        element: <AllBestSelling />,
+      },
+      {
+        path: "/allRecentSelling",
+        element: <AllRecentSelling />,
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/stripePayment",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <StripePayment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/SSLPaymentSuccess",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <SSLPaymentSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/forget",
+        element: <ResetForm />,
+      },
+      {
+        path: "/All/:category",
+        element: <Collections />,
+      },
+      {
+        path: "/Author/:name",
+        element: <AuthorDetails />,
+      },
+      {
+        path: "/dev",
+        element: <Team />,
+      },
+      {
+        path: "/old-books",
+        element: <AllOldBooks />,
+      },
+      {
+        path: "/old-books-details/:id",
+        element: <OldBookDetails />,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
+          ),
+      },
+    ],
+  },
+
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
@@ -131,20 +150,36 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
-        path: 'purchasedBooks',
-        element:<PrivateRoute><PurchasedBooks></PurchasedBooks> </PrivateRoute> 
+        path: "purchasedBooks",
+        element: (
+          <PrivateRoute>
+            <PurchasedBooks></PurchasedBooks>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'userHome',
-        element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
+        path: "userHome",
+        element: (
+          <PrivateRoute>
+            <UserHome></UserHome>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'sell',
-        element:<PrivateRoute><SellBook></SellBook></PrivateRoute>
+        path: "sell",
+        element: (
+          <PrivateRoute>
+            <SellBook></SellBook>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'my-books',
-        element:<PrivateRoute><MyBooks/></PrivateRoute>
+        path: "my-books",
+        element: (
+          <PrivateRoute>
+            <MyBooks />
+          </PrivateRoute>
+        ),
       },
     ],
   },

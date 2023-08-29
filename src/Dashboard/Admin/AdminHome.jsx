@@ -26,7 +26,7 @@ const AdminHome = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/revenueSummary")
+    fetch("https://book-verse-server-phi.vercel.app/revenueSummary")
       .then((response) => response.json())
       .then((data) => {
         setRevenueSummary(data);
