@@ -109,7 +109,6 @@ const OldBookDetails = () => {
               src={sellerPhoto}
               alt=""
             />
-
             <div className="my-3">
               <h2 className="font-semibold">{seller}</h2>
               <p>{sellerMail}</p>
