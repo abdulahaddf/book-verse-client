@@ -100,7 +100,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
       <div className="navbar-start">
-        <div className="drawer lg:hidden z-10">
+        <div className="drawer lg:hidden w-8 z-20">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {/* Page content here */}
@@ -110,11 +110,13 @@ const Navbar = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-              <div className="flex justify-center">
-                <Link to="/" className="w-[83px] h-[63px]  ">
-                  <img className="" src={logo} alt="" />
-                </Link>
+            <ul className="menu z-20 relative p-4 w-80 h-full bg-base-200 text-base-content">
+              <div className="flex justify-start">
+                <div className="w-[90px] h-[50px] \">
+                  <Link to="/">
+                    <img className="h-full" src={logo} alt="" /> 
+                  </Link>
+                </div>
               </div>
               {/* Sidebar content here */}
               <div>{navItems}</div>
@@ -122,13 +124,15 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Link to="/" className="w-[83px] h-[63px]  ">
-          <img className="" src={logo} alt="" />
-        </Link>
+        <div className="w-[90px] h-[50px]">
+          <Link to="/">
+            <img className="h-full" src={logo} alt="" />
+          </Link>
+        </div>
       </div>
       {/* ... rest of the code */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-xl font-semibold">
+        <ul className="menu  menu-horizontal px-1 text-xl font-semibold">
           {navItems}
         </ul>
       </div>

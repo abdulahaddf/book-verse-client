@@ -18,6 +18,7 @@ const Banner = () => {
       className="mySwiper"
       autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto play configuration
     >
+<<<<<<< HEAD
       <LazyLoad>
         <SwiperSlide>
           {" "}
@@ -36,6 +37,14 @@ const Banner = () => {
       </LazyLoad>
     </Swiper>
   );
+=======
+        <SwiperSlide><img src={banner3} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
+        
+      </Swiper>
+    );
+>>>>>>> e54d453e350289ed2321e3992df656ee03f864d3
 };
 
 export default Banner;

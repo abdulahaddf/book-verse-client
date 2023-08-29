@@ -23,7 +23,7 @@ import { FcLock } from "react-icons/fc";
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">
-      <div className="footer p-10 flex-row md:flex-col justify-center md:justify-between">
+      <div className="footer w-11/12 mx-auto py-10 flex-row md:flex-col justify-between">
         <div>
           <div className=" flex items-center gap-4">
             <img className="w-12 h-12 rounded-sm" src={logo} alt="" />
@@ -181,11 +181,11 @@ const Footer = () => {
 
       <hr className="mx-10"/>
 
-      <div className="footer items-center py-6 px-10  text-center text-base-content">
-        <div className="items-center order-2 md:order-1 mx-auto md:mx-0">
+      <div className="footer items-center py-6 w-11/12 mx-auto text-base-content">
+        <div className="items-center">
           <p>Copyright © 2023 Book verse- All right reserved</p>
           <p className="mx-auto">
-            Designed by <Link><span className="text-white px-1 bg-[#78CA42]"><FcLock className="inline" /> Team EndCoders</span></Link>
+            Designed by <Link to='/dev'><span className="text-white px-1 bg-[#78CA42]"><FcLock className="inline" /> Team EndCoders</span></Link>
           </p>
         </div>
         <div className="order-1 md:order-2 grid grid-cols-3 md:grid-flow-col gap-4 md:place-self-center justify-self-center md:justify-self-end text-center">

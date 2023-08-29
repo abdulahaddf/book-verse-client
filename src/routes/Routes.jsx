@@ -28,6 +28,7 @@ import SellBook from "../Dashboard/User/SellBook";
 import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
 import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
+import Team from "../shared/components/team/Team";
 
 export const router = createBrowserRouter([
     {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
         {
           path: "/Author/:name",
           element: <AuthorDetails />
+        },
+        {
+          path: '/dev',
+          element: <Team/>
         },
         {
           path: "/old-books",
