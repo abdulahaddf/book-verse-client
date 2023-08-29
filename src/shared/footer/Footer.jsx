@@ -22,7 +22,7 @@ import logo from "../../assets/image/logo.png";
 const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">
-      <div className="footer p-10 flex-row md:flex-col justify-between">
+      <div className="footer w-11/12 mx-auto py-10 flex-row md:flex-col justify-between">
         <div>
           <div className=" flex items-center gap-4">
             <img className="w-12 h-12 rounded-sm" src={logo} alt="" />
@@ -180,7 +180,7 @@ const Footer = () => {
 
       <hr />
 
-      <div className="footer items-center py-6 px-10 text-base-content">
+      <div className="footer items-center py-6 w-11/12 mx-auto text-base-content">
         <div className="items-center">
           <p>Copyright © 2023 Book verse- All right reserved</p>
           <p>
