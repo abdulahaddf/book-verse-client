@@ -18,9 +18,9 @@ const Banner = () => {
       className="mySwiper"
       autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto play configuration
     >
+        <SwiperSlide><img src={banner3} alt="" /></SwiperSlide>
         <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
         <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={banner3} alt="" /></SwiperSlide>
         
       </Swiper>
     );
