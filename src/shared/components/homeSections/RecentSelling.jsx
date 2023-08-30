@@ -7,20 +7,7 @@ import { setRecentSelling } from "../../../pages/payment/redux/RecentSellingSlic
 
 
 const RecentSelling = () => {
-    // const [books,setBooks]=useState([])
-
-    // useEffect(()=>{
-  
-  
-    //     fetch('https://book-verse-server-phi.vercel.app/recentSelling')
-    //     .then(res=> res.json())
-    //     .then(res=> setBooks(res))
-    //     .catch(error=> console.log(error))
-  
-  
-    // },[])
-
-
+    
 
     const dispatch = useDispatch();
 
@@ -43,7 +30,7 @@ const RecentSelling = () => {
           <Heading title={"Recent Selling"}></Heading>
           <Link to='/allRecentSelling' className="btn-primary ">See More</Link>
         </div>
-        <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-10 content-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 content-center my-5">
           {recentSellingData?.slice(0, 8).map((book) => (
             <BookCard key={book._id} book={book} text='recentSelling'></BookCard>
           ))}
