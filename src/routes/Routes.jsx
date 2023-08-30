@@ -29,6 +29,7 @@ import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
 import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
+import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
 
 export const router = createBrowserRouter([
   {
@@ -126,6 +127,10 @@ export const router = createBrowserRouter([
             `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
           ),
       },
+      {
+        path:'/terms&conditions',
+        element:<TermsCondition/>,
+      }
     ],
   },
 
