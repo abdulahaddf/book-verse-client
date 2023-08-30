@@ -22,7 +22,6 @@ import StripePayment from "../pages/payment/StripePayment";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
-import UserHome from "../Dashboard/User/UserHome";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 import SellBook from "../Dashboard/User/SellBook";
 import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
@@ -182,5 +181,10 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+    
   },
+  {
+    path:'*',
+    element:<Error></Error>
+  }
 ]);

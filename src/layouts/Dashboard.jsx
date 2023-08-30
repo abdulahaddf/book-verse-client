@@ -4,7 +4,6 @@ import { ImBooks } from "react-icons/im";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
-import DashboardNavbar from "../Dashboard/DashboardNavbar/DashboardNavbar";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 const Dashboard = () => {
@@ -26,7 +25,7 @@ const Dashboard = () => {
         >
           <FaBars></FaBars>
         </label>
-        <DashboardNavbar></DashboardNavbar>
+        {/* <DashboardNavbar></DashboardNavbar> */}
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">
