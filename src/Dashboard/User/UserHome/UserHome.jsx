@@ -14,8 +14,15 @@ import { useState } from "react";
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isModalOpen, setModalOpen] = useState(false);
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const {
     register,
@@ -50,7 +57,7 @@ const UserHome = () => {
         if (res.data.modifiedCount > 0) {
           document.getElementById('my_modal_2').checked = false;
           reset();
-       
+       closeModal();
           
           Swal.fire({
             position: "center",
@@ -60,7 +67,7 @@ const UserHome = () => {
             timer: 1500,
           });
         } else if (res.data.modifiedCount == 0 || res.data.matchedCount > 1) {
-          setIsOpen(false)
+          closeModal();
           Swal.fire({
             position: "center",
             icon: "error",
@@ -164,12 +171,18 @@ const UserHome = () => {
           alt=""
         />
         <button
-          onClick={() =>window.my_modal_2.showModal()}
+          onClick={() => {
+            openModal()
+            window.my_modal_2.showModal()
+          }}
           className="modal-open edit-button px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
         >
           <FaCamera></FaCamera>
         </button>
-        <dialog id="my_modal_2" className="modal">
+
+        {
+          isModalOpen && (
+<dialog id="my_modal_2" className="modal">
   <form method="dialog" className="modal-box" onSubmit={handleSubmit(updatePicture)}>
             <h3 className="font-bold text-lg">Change Your Picture</h3>
               <div className="mb-2">
@@ -196,6 +209,10 @@ const UserHome = () => {
     <button>close</button>
   </form>
 </dialog>
+          )
+        }
+
+        
   
       </div>
       <p className="font-bold text-xl  uppercase my-4">

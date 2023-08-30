@@ -7,10 +7,12 @@ import { BsCart3 } from "react-icons/bs";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
+import UseUser from "../../hooks/UseUser";
 
 const Navbar = () => {
   const { addToCartData, user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
+  const [userinfo]=UseUser()
 
   const navItems = (
     <>
@@ -140,15 +142,17 @@ const Navbar = () => {
         {user ? (
           <div className="flex items-center">
             <div
-              className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
+              className="relative mr-3 rounded-full tooltip tooltip-left "
               data-tip={user?.displayName}
             >
+              <Link to="/dashboard/userhome">
               <img
-                className="rounded-full border-2 border-red "
+                className="rounded-full w-12 h-12 border-2 border-red "
                 referrerPolicy="no-referrer"
-                src={user?.photoURL}
+                src={userinfo?.photoURL}
                 alt="user"
               />
+              </Link>
             </div>
 
             <button onClick={logOut} className="btn-custom">

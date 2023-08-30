@@ -18,7 +18,7 @@ import ManageBooks from "../Dashboard/Admin/ManageBooks";
 import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
-
+import UserHome from "../Dashboard/User/UserHome/UserHome"
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
@@ -28,6 +28,7 @@ import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
 import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
+import Error from "../pages/Error/Error";
 
 export const router = createBrowserRouter([
   {
