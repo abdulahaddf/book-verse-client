@@ -12,8 +12,8 @@ const AllBooks = () => {
     }
     return (
         <div className="">
-
-        <div className="grid grid-cols-4 gap-8 w-11/12 mx-auto">
+<h1 className="text-3xl text-center font-semibold my-5" >All Your Books</h1>
+        <div className="grid md:grid-cols-4 gap-8 w-11/12 mx-auto my-20">
             {
                 books?.map(book => <BookCard key={book._id} book={book}></BookCard>)
             }

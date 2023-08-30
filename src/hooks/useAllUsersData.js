@@ -9,7 +9,7 @@ export const useAllUsersData = () => {
 
     queryFn: async () => {
 
-      const res = await   fetch(`http://localhost:5000/allUserData`)
+      const res = await   fetch(`https://book-verse-server-phi.vercel.app/allUserData`)
 
       return res.json()
     },

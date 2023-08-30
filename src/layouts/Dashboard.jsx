@@ -4,11 +4,11 @@ import { ImBooks } from "react-icons/im";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
-import DashboardNavbar from "../Dashboard/DashboardNavbar/DashboardNavbar";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+  // console.log(user)
   const[userinfo]=UseUser()
 
 
@@ -25,8 +25,7 @@ const Dashboard = () => {
         >
           <FaBars></FaBars>
         </label>
-        <DashboardNavbar></DashboardNavbar>
-
+        {/* <DashboardNavbar></DashboardNavbar> */}
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">
@@ -97,6 +96,18 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/purchasedBooks">
                   <ImBooks />
                   Purchased Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/sell">
+                  <ImBooks />
+                  Sell Your Old Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/my-books">
+                  <ImBooks />
+                  Selling Books
                 </NavLink>
               </li>
               

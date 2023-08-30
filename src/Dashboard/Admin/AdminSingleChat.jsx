@@ -22,7 +22,7 @@ const AdminSingleChat = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/singleUserData/${id}`)
+    fetch(`https://book-verse-server-phi.vercel.app/singleUserData/${id}`)
       .then(res => res.json())
       .then(res => setSingleUser(res))
       .catch(error => console.log(error))
@@ -32,7 +32,7 @@ const AdminSingleChat = () => {
 
   //  useEffect(() => {
 
-  //     fetch(`http://localhost:5000/singleUserDataByEmail/${user?.email}`)
+  //     fetch(`https://book-verse-server-phi.vercel.app/singleUserDataByEmail/${user?.email}`)
   //         .then(res => res.json())
   //         .then(res => setAdminDetail(res))
   //         .catch(error => console.log(error))
@@ -80,7 +80,7 @@ const AdminSingleChat = () => {
 
 
 
-    fetch(`http://localhost:5000/postChat?email=${messages?.email}`, {
+    fetch(`https://book-verse-server-phi.vercel.app/postChat?email=${messages?.email}`, {
 
 
       method: "POST",

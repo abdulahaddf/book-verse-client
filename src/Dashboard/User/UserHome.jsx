@@ -62,7 +62,7 @@ const UserHome = () => {
             };
             axios
               .patch(
-                `http://localhost:5000/userinfoupdate/?email=${user?.email}`,
+                `https://book-verse-server-phi.vercel.app/userinfoupdate/?email=${user?.email}`,
                 profile
               )
               .then((res) => {

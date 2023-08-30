@@ -9,7 +9,7 @@ export const useAdminMessage = (id) => {
 
     queryFn: async () => {
 
-      const res = await   fetch(`http://localhost:5000/singleUserData/${id}`)
+      const res = await   fetch(`https://book-verse-server-phi.vercel.app/singleUserData/${id}`)
 
       return res.json()
     },
