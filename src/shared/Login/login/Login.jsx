@@ -82,6 +82,7 @@ const Login = () => {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
+          role:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
@@ -119,6 +120,7 @@ const Login = () => {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
+          role:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",

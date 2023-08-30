@@ -52,7 +52,7 @@ const UserHome = () => {
         .then((res) => res.json())
         .then((imageResponse) => {
           if (imageResponse.success) {
-            const imageURL = imageResponse.data.display_url;
+            const imageURL = imageResponse?.data?.display_url;
             const profile = {
               displayName: name,
               photoURL: imageURL,

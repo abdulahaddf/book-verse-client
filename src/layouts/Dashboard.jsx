@@ -26,6 +26,7 @@ const Dashboard = () => {
           <FaBars></FaBars>
         </label>
         <DashboardNavbar></DashboardNavbar>
+
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">
@@ -74,6 +75,11 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/manageUsers">
                   <FaUsers></FaUsers>Manage Users
+                </NavLink>
+                </li>
+              <li>
+                <NavLink to="/dashboard/manageChats">
+                  <FaUsers></FaUsers>Manage Chats
                 </NavLink>
                 </li>
                 
