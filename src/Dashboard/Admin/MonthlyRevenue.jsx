@@ -18,6 +18,8 @@ const MonthlyRevenue = () => {
     "#FF8042",
     "#FF9A8B",
     "#B98EFF",
+    "#C31D93",
+    "#34AA8C",
   ];
 
   const [monthlyRevenue, setMonthlyRevenue] = useState([]);
@@ -25,7 +27,9 @@ const MonthlyRevenue = () => {
   useEffect(() => {
     async function fetchMonthlyRevenue() {
       try {
-        const response = await fetch("https://book-verse-server-phi.vercel.app/monthlyRevenue");
+        const response = await fetch(
+          "https://book-verse-server-phi.vercel.app/monthlyRevenue"
+        );
         if (response.ok) {
           const data = await response.json();
           setMonthlyRevenue(data);
@@ -40,13 +44,18 @@ const MonthlyRevenue = () => {
     fetchMonthlyRevenue();
   }, []);
 
+  // Calculate the min and max revenue for Y-axis domain
+  const revenueValues = monthlyRevenue.map((entry) => entry.revenue);
+  const minY = Math.min(...revenueValues);
+  const maxY = Math.max(...revenueValues);
+
   return (
-    <div className="w-full mt-6 h-full p-4">
+    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
       <h3 className="text-4xl font-bold text-center">Monthly Revenue</h3>
       <p className="text-center text-gray-600 mt-2">
         Revenue data for the current months.
       </p>
-      <div className="w-full bg-slate-100 border rounded-md my-4 p-6">
+      <div className="w-full bg-slate-50 border rounded-md my-4 p-6">
         <ResponsiveContainer width="100%" height={500}>
           <BarChart
             data={monthlyRevenue}
@@ -54,14 +63,18 @@ const MonthlyRevenue = () => {
               top: 20,
               right: 30,
               left: 20,
-              bottom: 20,
+              bottom: 40,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
-            <YAxis />
+            <YAxis domain={[minY, maxY]} /> {/* Set Y-axis domain */}
             <Tooltip />
-            <Bar dataKey="revenue" label={{ position: "top" }}>
+            <Bar
+              dataKey="revenue"
+              label={{ position: "top", fill: "white" }} // Display label on top of bars
+              barSize={30} // Adjust bar width
+            >
               {monthlyRevenue.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
