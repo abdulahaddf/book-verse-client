@@ -17,7 +17,7 @@ const DailyRevenue = () => {
     async function fetchDailyData() {
       try {
         const response = await fetch(
-          "http://localhost:5000/dailyRevenue"
+          "https://book-verse-server-phi.vercel.app/dailyRevenue"
         );
         if (response.ok) {
           const data = await response.json();

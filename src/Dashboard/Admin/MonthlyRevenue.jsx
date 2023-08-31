@@ -25,7 +25,7 @@ const MonthlyRevenue = () => {
   useEffect(() => {
     async function fetchMonthlyRevenue() {
       try {
-        const response = await fetch("http://localhost:5000/monthlyRevenue");
+        const response = await fetch("https://book-verse-server-phi.vercel.app/monthlyRevenue");
         if (response.ok) {
           const data = await response.json();
           setMonthlyRevenue(data);
