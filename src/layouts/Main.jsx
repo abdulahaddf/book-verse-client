@@ -15,9 +15,11 @@ const Main = () => {
     return (
         <div>
             <Navbar></Navbar>
-            { messages?.role !=='admin' || !messages?.chat && <UserHandleRoute>
-                <Alert />
-            </UserHandleRoute>}
+            {(messages?.role !== 'admin' && messages.chat) && (
+                <UserHandleRoute>
+                    <Alert />
+                </UserHandleRoute>
+            )}
             <Outlet></Outlet>
             <ChatIcon></ChatIcon>
             <Footer></Footer>
