@@ -3,7 +3,7 @@ import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { ImBooks, ImEarth } from "react-icons/im";
 import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
-import { BsCalendarDate, BsCalendarDayFill} from "react-icons/bs";
+import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -99,6 +99,11 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/manageUsers">
                     <FaUsers></FaUsers>Manage Users
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageChats">
+                    <FaUsers></FaUsers>Manage Chats
                   </NavLink>
                 </li>
               </>
