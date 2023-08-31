@@ -18,6 +18,7 @@ const Alert = () => {
 
     const [messages, userRefetch] = useUserMessage(user?.email);
 
+     
 
     const buttonHandler = (e) => {
 
@@ -39,7 +40,7 @@ const Alert = () => {
         }
         ]
     
-    
+         
     
     
     
@@ -70,12 +71,6 @@ const Alert = () => {
     
               userRefetch()
     
-              adminRefetch()
-    
-              allUsersRefetch()
-    
-              setShowAlert(true)
-    
     
     
     
@@ -88,7 +83,65 @@ const Alert = () => {
     
     
     
-      }
+      };
+
+
+
+       const cancelHandler=()=>{
+
+        
+
+         fetch(`https://book-verse-server-phi.vercel.app/chatAction?email=${user?.email}`, {
+    
+    
+        method: "POST",
+  
+        headers: {
+  
+          'content-type': "application/json"
+        },
+  
+  
+        body: JSON.stringify({})
+  
+  
+      })
+        .then(res => res.json())
+        .then((res) => {
+  
+          if (res?.modifiedCount > 0) {
+  
+  
+           console.log('cancel')
+  
+  
+  
+  
+  
+          }
+  
+        })
+  
+
+       };
+
+
+
+
+
+      useEffect(() => {
+        const refetchInterval = setInterval(() => {
+
+            userRefetch()
+            setShowAlert(true)
+
+
+        }, 1000); // Check every 3 seconds
+
+        return () => {
+            clearInterval(refetchInterval);
+        };
+    }, []);
 
 
 
@@ -96,8 +149,16 @@ const Alert = () => {
 
 
 
-    if (messages.chat && messages.chat.length > 0) {
+    if (messages?.chat && messages?.chat?.length > 0) {
         // console.log(messages.chat[messages.chat.length - 1].text);
+
+        if(messages.chat[messages.chat.length - 1]?.action ==='cancel'){
+           return setShowAlert(false)
+        }
+
+        if(messages.chat[messages.chat.length - 1]?.name !=='Admin'){
+           return setShowAlert(false)
+        }
 
         data = messages.chat[messages.chat.length - 1]
     } else {
@@ -107,19 +168,7 @@ const Alert = () => {
 
 
 
-    useEffect(() => {
-        const refetchInterval = setInterval(() => {
 
-            userRefetch()
-            setShowAlert(true)
-
-
-        }, 3000); // Check every 3 seconds
-
-        return () => {
-            clearInterval(refetchInterval);
-        };
-    }, []);
 
 
     //   console.log(messages,'tonu')
@@ -128,7 +177,8 @@ const Alert = () => {
     return (
         <div className="App">
             {showAlert && (
-                <MessageNotification data={data} replay={replay} setReply={setReply} buttonHandler={buttonHandler} />
+                <MessageNotification data={data} replay={replay} setReply={setReply} buttonHandler={buttonHandler}
+                cancelHandler={cancelHandler} />
             )}
 
         </div>

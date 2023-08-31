@@ -6,6 +6,7 @@ import { useUserMessage } from '../../hooks/useUserMessage';
 import logo from '../../../public/logo.png'
 import { useRef } from 'react';
 import { useAllUsersData } from '../../hooks/useAllUsersData';
+import moment from 'moment';
 
 const UserChat = () => {
 
@@ -167,7 +168,8 @@ const UserChat = () => {
                 <div className="flex items-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                     <div>
-                      <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
+                      <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600
+                      tooltip  tooltip-right" data-tip={moment(message?.time).format('MMMM Do YYYY, h:mm:ss a')}>
                         {message?.text}
                       </span>
                     </div>
@@ -180,7 +182,8 @@ const UserChat = () => {
                 <div className="flex items-end justify-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
                     <div>
-                      <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
+                      <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white 
+                         tooltip  tooltip-left" data-tip={moment(message?.time).format('MMMM Do YYYY, h:mm:ss a')}>
                         {message?.text}
                       </span>
 
@@ -188,7 +191,7 @@ const UserChat = () => {
                   </div>
 
 
-                  <img src={message?.img} className='w-[30px] h-[30px] rounded-[100%]' />
+                  {/* <img src={message?.img} className='w-[30px] h-[30px] rounded-[100%]' /> */}
 
                 </div>
               </div>
