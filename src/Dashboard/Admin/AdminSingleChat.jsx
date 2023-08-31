@@ -49,7 +49,7 @@ const AdminSingleChat = () => {
 
 
 
-  localStorage.setItem('adminData',JSON.stringify(messages))
+ 
 
 
 

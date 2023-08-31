@@ -11,32 +11,84 @@ const Alert = () => {
 
     const { showAlert, setShowAlert, user } = useContext(AuthContext);
 
-    // const [adminData, setAdminData] = useState([])
-    // const [userData, setUserData] = useState([])
+    const [replay, setReply] = useState(false)
 
 
 
 
-    // const [messages, userRefetch] = useUserMessage(user?.email);
-
-    const userDataByLocalStorage = localStorage.getItem('userData');
-
-    const userData = JSON.parse(userDataByLocalStorage)
-
-    const adminDataByLocalStorage = localStorage.getItem('adminData')
-
-    const adminData = JSON.parse(adminDataByLocalStorage)
-
-    // setUserData(userDatas)
-
-    // setAdminData(adminDatas)
+    const [messages, userRefetch] = useUserMessage(user?.email);
 
 
-    console.log(adminData, 'admin')
-    console.log(userData, 'user')
+    const buttonHandler = (e) => {
 
-    const messages = adminData || userData;
-
+        event.preventDefault();
+    
+    
+        let filter = messages?.chat?.filter(a => a) || []
+    
+    
+        const text = e.target.name.value
+    
+        const chat = [...filter,
+        {
+          name: user?.displayName,
+          email: user.email,
+          text: text,
+          img: messages?.photoURL,
+          time: new Date().getTime()
+        }
+        ]
+    
+    
+    
+    
+    
+    
+        fetch(`https://book-verse-server-phi.vercel.app/postChat?email=${user?.email}`, {
+    
+    
+          method: "POST",
+    
+          headers: {
+    
+            'content-type': "application/json"
+          },
+    
+    
+          body: JSON.stringify(chat)
+    
+    
+        })
+          .then(res => res.json())
+          .then((res) => {
+    
+            if (res?.modifiedCount > 0) {
+    
+    
+    
+              e.target.reset()
+    
+              userRefetch()
+    
+              adminRefetch()
+    
+              allUsersRefetch()
+    
+              setShowAlert(true)
+    
+    
+    
+    
+    
+    
+            }
+    
+          })
+    
+    
+    
+    
+      }
 
 
 
@@ -55,19 +107,19 @@ const Alert = () => {
 
 
 
-    // useEffect(() => {
-    //     const refetchInterval = setInterval(() => {
+    useEffect(() => {
+        const refetchInterval = setInterval(() => {
+
+            userRefetch()
+            setShowAlert(true)
 
 
-         
+        }, 3000); // Check every 3 seconds
 
-
-    //     }, 3000); // Check every 5 seconds
-
-    //     return () => {
-    //         clearInterval(refetchInterval);
-    //     };
-    // }, []);
+        return () => {
+            clearInterval(refetchInterval);
+        };
+    }, []);
 
 
     //   console.log(messages,'tonu')
@@ -76,7 +128,7 @@ const Alert = () => {
     return (
         <div className="App">
             {showAlert && (
-                <MessageNotification data={data} />
+                <MessageNotification data={data} replay={replay} setReply={setReply} buttonHandler={buttonHandler} />
             )}
 
         </div>

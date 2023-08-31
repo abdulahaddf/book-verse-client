@@ -2,17 +2,17 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../shared/navbar/Navbar";
 import Footer from "../shared/footer/Footer";
 import ChatIcon from "../shared/ChatIcon/ChatIcon";
-// import Alert from "../shared/Alert/Alert";
-// import UserHandleRoute from "../routes/UserHandleRoute";
+import Alert from "../shared/Alert/Alert";
+import UserHandleRoute from "../routes/UserHandleRoute";
 
 
 const Main = () => {
     return (
         <div>
             <Navbar></Navbar>
-            {/* <UserHandleRoute>
+            <UserHandleRoute>
                 <Alert />
-            </UserHandleRoute> */}
+            </UserHandleRoute>
             <Outlet></Outlet>
             <ChatIcon></ChatIcon>
             <Footer></Footer>
