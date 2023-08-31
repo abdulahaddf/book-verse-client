@@ -41,7 +41,6 @@ const AdminHome = () => {
         console.error("Error:", error);
       });
   }, []);
-  
 
   useEffect(() => {
     fetch("https://book-verse-server-phi.vercel.app/paymentHistory")
@@ -56,7 +55,7 @@ const AdminHome = () => {
   };
   return (
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
-      <h1 className="text-4xl font-bold text-center">Admin home</h1>
+      <h1 className="text-4xl font-bold text-center">Revenue Calculation</h1>
 
       {/* ----------------Revenue start------------- */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
@@ -132,7 +131,7 @@ const AdminHome = () => {
           <div style={{ width: "100%", height: 330 }}>
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart
-                data={Object.entries(revenueSummary.weeklyRevenue ||{}).map(
+                data={Object.entries(revenueSummary.weeklyRevenue || {}).map(
                   ([day, weekly]) => ({
                     day,
                     weekly,
@@ -168,9 +167,11 @@ const AdminHome = () => {
         {/* weekly revenue chart end */}
       </div>
       {/* ----------------Revenue end-------------- */}
-
+      <h1 className="text-4xl font-bold text-center mt-12 mb-3">
+        Transactions Information
+      </h1>
       {/* customer info with table start  */}
-      <div className="flex flex-col md:flex-row justify-between mt-10 gap-6">
+      <div className="flex flex-col md:flex-row justify-between gap-6">
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
             <thead className="bg-slate-100">
@@ -180,6 +181,7 @@ const AdminHome = () => {
                 <th>Transaction ID</th>
                 <th>Email</th>
                 <th>Time</th>
+                <th>Amount</th>
               </tr>
             </thead>
             <tbody className="bg-slate-100 divide-y divide-gray-200">
@@ -195,6 +197,7 @@ const AdminHome = () => {
                     <td>{payment.transactionId}</td>
                     <td>{payment.mail}</td>
                     <td>{payment.date}</td>
+                    <td>{payment.total_price}</td>
                   </tr>
                 ))}
             </tbody>

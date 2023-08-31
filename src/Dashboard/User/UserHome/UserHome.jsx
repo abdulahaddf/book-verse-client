@@ -144,23 +144,6 @@ const UserHome = () => {
     return <Loader></Loader>;
   }
 
-  {
-    /* <div className="mb-2">
-                  <label
-                    htmlFor="url"
-                    className="block text-sm font-semibold text-gray-800"
-                  >
-                    Photo Url
-                  </label>
-                  <input
-                    type="file"
-                    id="url"
-                    {...register("url")}
-                    className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
-                  />
-                </div> */
-  }
 
   return (
     <div className=" bg-slate-50 w-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
