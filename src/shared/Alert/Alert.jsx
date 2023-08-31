@@ -11,32 +11,137 @@ const Alert = () => {
 
     const { showAlert, setShowAlert, user } = useContext(AuthContext);
 
-    // const [adminData, setAdminData] = useState([])
-    // const [userData, setUserData] = useState([])
+    const [replay, setReply] = useState(false)
 
 
 
 
-    // const [messages, userRefetch] = useUserMessage(user?.email);
+    const [messages, userRefetch] = useUserMessage(user?.email);
 
-    const userDataByLocalStorage = localStorage.getItem('userData');
+     
 
-    const userData = JSON.parse(userDataByLocalStorage)
+    const buttonHandler = (e) => {
 
-    const adminDataByLocalStorage = localStorage.getItem('adminData')
+        event.preventDefault();
+    
+    
+        let filter = messages?.chat?.filter(a => a) || []
+    
+    
+        const text = e.target.name.value
+    
+        const chat = [...filter,
+        {
+          name: user?.displayName,
+          email: user.email,
+          text: text,
+          img: messages?.photoURL,
+          time: new Date().getTime()
+        }
+        ]
+    
+         
+    
+    
+    
+    
+        fetch(`https://book-verse-server-phi.vercel.app/postChat?email=${user?.email}`, {
+    
+    
+          method: "POST",
+    
+          headers: {
+    
+            'content-type': "application/json"
+          },
+    
+    
+          body: JSON.stringify(chat)
+    
+    
+        })
+          .then(res => res.json())
+          .then((res) => {
+    
+            if (res?.modifiedCount > 0) {
+    
+    
+    
+              e.target.reset()
+    
+              userRefetch()
+    
+    
+    
+    
+    
+    
+            }
+    
+          })
+    
+    
+    
+    
+      };
 
-    const adminData = JSON.parse(adminDataByLocalStorage)
-
-    // setUserData(userDatas)
-
-    // setAdminData(adminDatas)
 
 
-    console.log(adminData, 'admin')
-    console.log(userData, 'user')
+       const cancelHandler=()=>{
 
-    const messages = adminData || userData;
+        
 
+         fetch(`https://book-verse-server-phi.vercel.app/chatAction?email=${user?.email}`, {
+    
+    
+        method: "POST",
+  
+        headers: {
+  
+          'content-type': "application/json"
+        },
+  
+  
+        body: JSON.stringify({})
+  
+  
+      })
+        .then(res => res.json())
+        .then((res) => {
+  
+          if (res?.modifiedCount > 0) {
+  
+  
+           console.log('cancel')
+  
+  
+  
+  
+  
+          }
+  
+        })
+  
+
+       };
+
+
+
+
+
+      useEffect(() => {
+        const refetchInterval = setInterval(() => {
+
+            userRefetch()
+            setShowAlert(true)
+
+
+        }, 1000); // Check every 3 seconds
+
+        return () => {
+            clearInterval(refetchInterval);
+        };
+    }, []);
 
 
 
@@ -44,8 +149,16 @@ const Alert = () => {
 
 
 
-    if (messages.chat && messages.chat.length > 0) {
+    if (messages?.chat && messages?.chat?.length > 0) {
         // console.log(messages.chat[messages.chat.length - 1].text);
+
+        if(messages.chat[messages.chat.length - 1]?.action ==='cancel'){
+           return setShowAlert(false)
+        }
+
+        if(messages.chat[messages.chat.length - 1]?.name !=='Admin'){
+           return setShowAlert(false)
+        }
 
         data = messages.chat[messages.chat.length - 1]
     } else {
@@ -55,19 +168,7 @@ const Alert = () => {
 
 
 
-    // useEffect(() => {
-    //     const refetchInterval = setInterval(() => {
 
-
-         
-
-
-    //     }, 3000); // Check every 5 seconds
-
-    //     return () => {
-    //         clearInterval(refetchInterval);
-    //     };
-    // }, []);
 
 
     //   console.log(messages,'tonu')
@@ -76,7 +177,8 @@ const Alert = () => {
     return (
         <div className="App">
             {showAlert && (
-                <MessageNotification data={data} />
+                <MessageNotification data={data} replay={replay} setReply={setReply} buttonHandler={buttonHandler}
+                cancelHandler={cancelHandler} />
             )}
 
         </div>

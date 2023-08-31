@@ -117,7 +117,7 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         const saveUser = {
-          name: loggedInUser.displayName,
+          displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
           role:'user'

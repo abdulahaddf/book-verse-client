@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
-import { ImBooks, ImEarth } from "react-icons/im";
+import { ImBook, ImBooks, ImEarth } from "react-icons/im";
 // import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
@@ -9,6 +9,7 @@ import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
+import { MdSell } from "react-icons/md";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
@@ -117,13 +118,13 @@ const Dashboard = () => {
 
                 <li>
                   <NavLink to="/dashboard/purchasedBooks">
-                    <ImBooks />
+                    <ImBook />
                     Purchased Books
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/sell">
-                    <ImBooks />
+                    <MdSell/>
                     Sell Your Old Books
                   </NavLink>
                 </li>
