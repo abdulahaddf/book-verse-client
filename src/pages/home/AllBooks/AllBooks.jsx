@@ -6,7 +6,7 @@ import Loader from "../../../shared/components/loader/Loader";
 
 const AllBooks = () => {
     const {books, loading} = UseBooks();
-    console.log(books);
+    // console.log(books);
     if (loading) {
         return <Loader/>
     }

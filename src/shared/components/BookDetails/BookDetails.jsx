@@ -7,13 +7,14 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import { Rating } from "@smastrom/react-rating";
+import { FaCheckCircle, FaStar } from "react-icons/fa";
 
 const BookDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const singleBookDetails = useLoaderData();
-  // console.log(singleBookDetails);
+  console.log(singleBookDetails);
   const {
     title,
     cover_image,
@@ -25,10 +26,15 @@ const BookDetails = () => {
     language,
     description,
     real_price,
+    offer_price,
     author_image,
     about_author,
     review,
   } = singleBookDetails;
+
+const saved = real_price - offer_price ;
+const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(2);
+
 
   const [activeTab, setActiveTab] = useState("description");
   const { cartRefetch } = useContext(AuthContext);
@@ -126,12 +132,15 @@ const BookDetails = () => {
           />
           <div className="ms-3 space-y-3">
             <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
-
-            <p >
-              <span className="font-semibold">Price:</span> ${real_price}
+              <h2>by <span className="text-md font-medium">{author}</span> </h2>
+            <p className="text-3xl">
+              <span className="line-through mr-3 text-slate-500">$ {real_price}</span> 
+              <span className="font-semibold ">${offer_price}</span> 
+              <span className="text-sm ml-3 text-slate-400">You saved $ {saved} ({savedPer} %)</span>
             </p>
-            <p >
-              <span className="font-semibold">Rating:</span> {rating}
+            <p className="flex gap-2 items-center">
+              <span className="font-semibold flex items-center gap-3">Rating: </span> {rating} <FaStar/> 
+             ( { review ? <>{review.length}</> : ""} reviews)
             </p>
             <p >
               <span className="font-semibold">Total Page:</span> {page_numbers}
@@ -145,7 +154,7 @@ const BookDetails = () => {
             <p >
               <span className="font-semibold">Published:</span> {published}
             </p>
-
+            <p className="flex items-center gap-2 text-lg "><FaCheckCircle className="text-red"/> <span className="">In Stock</span> </p>
 
             <div className="flex justify-center items-center mt-6">
              
@@ -271,11 +280,10 @@ const BookDetails = () => {
 <h2 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
       Read trusted reviews from our customers
     </h2>
-    {/* {
-      review.length > 0   : <p>No Reviews Has Been Given Yet</p> 
-    } */}
-<div className=" grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-  {
+    
+<div className="py-5 md:py-10">
+ {
+  review.length > 0 ? <div className=" grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8"> {
     review.map(r => <div key={r.postDate}>
       {/* <p>{r.name}</p> */}
       <div className="rounded-lg bg-gray-100 p-8">
@@ -310,8 +318,10 @@ const BookDetails = () => {
  
 
       </div>)
-  }
+  }</div> : <p className="text-center my-10 flex justify-center items-center">No Reviews given yet</p>
+ }
 </div>
+
 </div>
 
 
