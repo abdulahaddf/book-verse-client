@@ -6,6 +6,7 @@ import { useUserMessage } from '../../hooks/useUserMessage';
 import logo from '../../../public/logo.png'
 import { useRef } from 'react';
 import { useAllUsersData } from '../../hooks/useAllUsersData';
+import moment from 'moment';
 
 const AdminSingleChat = () => {
   const { user, setShowAlert, showAlert } = useContext(AuthContext);
@@ -49,7 +50,7 @@ const AdminSingleChat = () => {
 
 
 
-  localStorage.setItem('adminData',JSON.stringify(messages))
+
 
 
 
@@ -164,7 +165,7 @@ const AdminSingleChat = () => {
             </div>
             <div className="flex flex-col leading-tight">
               <div className="text-2xl mt-1 flex items-center">
-                <span className="text-gray-700 mr-3">{messages?.name}</span>
+                <span className="text-gray-700 mr-3">{messages?.displayName}</span>
               </div>
 
             </div>
@@ -181,7 +182,8 @@ const AdminSingleChat = () => {
                   <div className="flex items-end">
                     <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                       <div>
-                        <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
+                        <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600
+                           tooltip  tooltip-right" data-tip={moment(message?.time).format('MMMM Do YYYY, h:mm:ss a')}>
                           {message?.text}
                         </span>
                       </div>
@@ -191,10 +193,19 @@ const AdminSingleChat = () => {
                 </div>
                 :
                 <div className="chat-message">
-                  <div className="flex items-end justify-end">
+                  <div className="flex items-end justify-end  ">
+
+
+                    {/* <div>
+                      <img src={logo} className='w-[30px] h-[30px] rounded-[100%]' />
+                    </div> */}
+
+
+
                     <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
                       <div>
-                        <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
+                        <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white 
+                           tooltip  tooltip-left" data-tip={moment(message?.time).format('MMMM Do YYYY, h:mm:ss a')}>
                           {message?.text}
                         </span>
 
@@ -202,7 +213,6 @@ const AdminSingleChat = () => {
                     </div>
 
 
-                    <img src={logo} className='w-[30px] h-[30px] rounded-[100%]' />
 
                   </div>
                 </div>

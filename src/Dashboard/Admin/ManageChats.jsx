@@ -75,7 +75,7 @@ const ManageChats = () => {
           <div className=" flex justify-center mb-5">
             <img src={a?.photoURL} className=" rounded-[100%] h-[100px] w-[100px]" alt="" />
           </div>
-          <p className="text-20px font-400   font-[500]">Name: {a?.name.slice(0,30)}</p>
+          <p className="text-20px font-400   font-[500]">Name: {a?.displayName?.slice(0,30)}</p>
 
           {a?.role === 'Admin' ? (
             a?.chat && a?.chat.length > 0 ? (
