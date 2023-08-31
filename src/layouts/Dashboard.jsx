@@ -1,6 +1,9 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
-import { ImBooks } from "react-icons/im";
+import { ImBooks, ImEarth } from "react-icons/im";
+import { GrOverview } from "react-icons/gr";
+import { CgProfile } from "react-icons/cg";
+import { BsCalendarDate, BsCalendarDayFill} from "react-icons/bs";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -9,8 +12,7 @@ import UseUser from "../hooks/UseUser";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
-  const[userinfo]=UseUser()
-
+  const [userinfo] = UseUser();
 
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
@@ -33,7 +35,7 @@ const Dashboard = () => {
           htmlFor="my-drawer-2"
           className="drawer-overlay shadow-xl"
         ></label>
-        <div className="menu p-4 w-60 h-full bg-slate-100">
+        <div className="menu p-4 w-60 bg-slate-100">
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
@@ -44,72 +46,90 @@ const Dashboard = () => {
             </h3>
           </div>
 
-          <ul className="font-semibold text-black mt-8">
+          <ul className="font-medium text-black mt-8">
             {/* Sidebar content here */}
 
-            {
-              isAdmin ? <>
-              
-              <li>
-                <NavLink to="/dashboard/adminHome">
-                  <FaHome></FaHome>Admin Home
-                </NavLink>
+            {isAdmin ? (
+              <>
+                <h2 className="text-lg px-4 font-bold">Admin</h2>
+                <li>
+                  <NavLink to="/dashboard/adminHome">
+                    <FaHome></FaHome>Admin Home
+                  </NavLink>
                 </li>
                 <li>
-                <Link to="/dashboard/userHome">
-                  <FaHome></FaHome>User Home
-                </Link>
-              </li>
-            
-              <li>
-                <NavLink to="/dashboard/addBook">
-                  <FaBookReader></FaBookReader>Add Book
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageBooks">
-                  <ImBooks></ImBooks>Manage Books
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageUsers">
-                  <FaUsers></FaUsers>Manage Users
-                </NavLink>
+                  <Link to="/dashboard/userHome">
+                    <CgProfile></CgProfile>Profile
+                  </Link>
                 </li>
-                
-              
-              </> : <>
 
-              <li>
-                <Link to="/dashboard/userHome">
-                  <FaHome></FaHome>User Home
-                </Link>
-              </li>
-              
-              
-              <li>
-                <NavLink to="/dashboard/purchasedBooks">
-                  <ImBooks />
-                  Purchased Books
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/sell">
-                  <ImBooks />
-                  Sell Your Old Books
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/my-books">
-                  <ImBooks />
-                  Selling Books
-                </NavLink>
-              </li>
-              
+                <h2 className="text-lg px-4 mt-5 font-bold">Sales</h2>
+                <li>
+                  <NavLink to="/dashboard/overview">
+                    <GrOverview></GrOverview>Overview
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/daily">
+                    <BsCalendarDayFill></BsCalendarDayFill>Daily
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/monthly">
+                    <BsCalendarDate></BsCalendarDate>Monthly
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/geography">
+                    <ImEarth></ImEarth>Geography
+                  </NavLink>
+                </li>
+
+                <h2 className="text-lg px-4 mt-5 font-bold">Management</h2>
+                <li>
+                  <NavLink to="/dashboard/addBook">
+                    <FaBookReader></FaBookReader>Add Book
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageBooks">
+                    <ImBooks></ImBooks>Manage Books
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageUsers">
+                    <FaUsers></FaUsers>Manage Users
+                  </NavLink>
+                </li>
               </>
-            }
+            ) : (
+              <>
+                <li>
+                  <Link to="/dashboard/userHome">
+                    <FaHome></FaHome>User Home
+                  </Link>
+                </li>
 
-            
+                <li>
+                  <NavLink to="/dashboard/purchasedBooks">
+                    <ImBooks />
+                    Purchased Books
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/sell">
+                    <ImBooks />
+                    Sell Your Old Books
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/my-books">
+                    <ImBooks />
+                    Selling Books
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             <div className="divider"></div>
             <li>
