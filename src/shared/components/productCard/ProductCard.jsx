@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
-  const { author, title, cover_image, _id,real_price,offer_price } = data;
+  const { author, title, cover_image, _id,real_price,offer_price,previous_id } = data;
   const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(0);
   return (
     <div className="w-48 p-2  hover:shadow-slate-300 hover:shadow-sm overflow-hidden">
@@ -30,7 +30,8 @@ const ProductCard = ({ data }) => {
           <div className="-translate-y-8 transform opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           {/* bg-gradient-to-r from-[#3cf671] via-[#1dd752]  to-teal-400  hover:bg-[#1dd752]  */}
             <button className="btn btn-sm border-none w-full  bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%text-sm normal-case font-light font-mono text-white">
-              <Link to={`/details/${_id}`}>Details</Link>
+              {/* issue to redirect link privious_id/_id  */}
+              <Link to={`/details/${previous_id ? previous_id : _id}`}>Details</Link>
             </button>
           </div>
         </div>
