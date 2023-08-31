@@ -1,5 +1,4 @@
 import Heading from "../heading/Heading";
-import BookCard from "../BookCard/BookCard";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';

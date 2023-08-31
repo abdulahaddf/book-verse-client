@@ -8,20 +8,7 @@ import ProductCard from "../productCard/ProductCard";
 
 
 const RecentSelling = () => {
-    // const [books,setBooks]=useState([])
-
-    // useEffect(()=>{
-  
-  
-    //     fetch('https://book-verse-server-phi.vercel.app/recentSelling')
-    //     .then(res=> res.json())
-    //     .then(res=> setBooks(res))
-    //     .catch(error=> console.log(error))
-  
-  
-    // },[])
-
-
+    
 
     const dispatch = useDispatch();
 

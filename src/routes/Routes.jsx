@@ -18,17 +18,24 @@ import ManageBooks from "../Dashboard/Admin/ManageBooks";
 import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
-
+import UserHome from "../Dashboard/User/UserHome/UserHome";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
-import UserHome from "../Dashboard/User/UserHome";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 import SellBook from "../Dashboard/User/SellBook";
 import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
 import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
+import Error from "../pages/Error/Error";
+import ManageChats from "../Dashboard/Admin/ManageChats";
+import AdminSingleChat from "../Dashboard/Admin/AdminSingleChat";
+import UserChat from "../pages/UserChat/UserChat";
+import Overview from "../Dashboard/Admin/Overview";
+import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
+import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
+import Geography from "../Dashboard/Admin/Geography";
 import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
 
 export const router = createBrowserRouter([
@@ -128,6 +135,12 @@ export const router = createBrowserRouter([
           ),
       },
       {
+        path: "/userChat",
+        element: <PrivateRoute>
+          <UserChat />
+        </PrivateRoute>
+      },
+      {
         path:'/terms&conditions',
         element:<TermsCondition/>,
       }
@@ -155,6 +168,34 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
+        path: "manageChats",
+        element: <ManageChats />,
+      },
+      {
+        path: 'manageChats/singleChat/:id',
+        element: <PrivateRoute>
+          <AdminSingleChat />
+
+        </PrivateRoute>
+      },
+      {
+        path: "overview",
+        element: <Overview></Overview>,
+      },
+      {
+        path: "daily",
+        element: <DailyRevenue></DailyRevenue>,
+      },
+      {
+        path: "monthly",
+        element: <MonthlyRevenue></MonthlyRevenue>,
+      },
+      {
+        path: "geography",
+        element: <Geography></Geography>,
+      },
+
+      {
         path: "purchasedBooks",
         element: (
           <PrivateRoute>
@@ -181,11 +222,15 @@ export const router = createBrowserRouter([
       {
         path: "my-books",
         element: (
-          <PrivateRoute>
+           <PrivateRoute>
             <MyBooks />
           </PrivateRoute>
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error></Error>,
   },
 ]);
