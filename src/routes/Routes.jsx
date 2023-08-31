@@ -18,7 +18,7 @@ import ManageBooks from "../Dashboard/Admin/ManageBooks";
 import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
-import UserHome from "../Dashboard/User/UserHome/UserHome"
+import UserHome from "../Dashboard/User/UserHome/UserHome";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
@@ -32,6 +32,10 @@ import Error from "../pages/Error/Error";
 import ManageChats from "../Dashboard/Admin/ManageChats";
 import AdminSingleChat from "../Dashboard/Admin/AdminSingleChat";
 import UserChat from "../pages/UserChat/UserChat";
+import Overview from "../Dashboard/Admin/Overview";
+import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
+import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
+import Geography from "../Dashboard/Admin/Geography";
 
 export const router = createBrowserRouter([
   {
@@ -170,6 +174,23 @@ export const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
+        path: "overview",
+        element: <Overview></Overview>,
+      },
+      {
+        path: "daily",
+        element: <DailyRevenue></DailyRevenue>,
+      },
+      {
+        path: "monthly",
+        element: <MonthlyRevenue></MonthlyRevenue>,
+      },
+      {
+        path: "geography",
+        element: <Geography></Geography>,
+      },
+
+      {
         path: "purchasedBooks",
         element: (
           <PrivateRoute>
@@ -202,10 +223,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
-    
   },
   {
-    path:'*',
-    element:<Error></Error>
-  }
+    path: "*",
+    element: <Error></Error>,
+  },
 ]);
