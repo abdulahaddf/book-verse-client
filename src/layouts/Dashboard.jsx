@@ -76,6 +76,11 @@ const Dashboard = () => {
                   <FaUsers></FaUsers>Manage Users
                 </NavLink>
                 </li>
+              <li>
+                <NavLink to="/dashboard/manageChats">
+                  <FaUsers></FaUsers>Manage Chats
+                </NavLink>
+                </li>
                 
               
               </> : <>

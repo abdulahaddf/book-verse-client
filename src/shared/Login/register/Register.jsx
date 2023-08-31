@@ -140,7 +140,7 @@ const Register = () => {
           displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
-          user_roll:'user'
+         role:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
@@ -179,6 +179,7 @@ const Register = () => {
           displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
+          role:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",

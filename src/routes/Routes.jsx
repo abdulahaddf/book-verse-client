@@ -29,6 +29,9 @@ import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
 import Error from "../pages/Error/Error";
+import ManageChats from "../Dashboard/Admin/ManageChats";
+import AdminSingleChat from "../Dashboard/Admin/AdminSingleChat";
+import UserChat from "../pages/UserChat/UserChat";
 
 export const router = createBrowserRouter([
   {
@@ -126,6 +129,12 @@ export const router = createBrowserRouter([
             `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
           ),
       },
+      {
+        path: "/userChat",
+        element: <PrivateRoute>
+          <UserChat />
+        </PrivateRoute>
+      },
     ],
   },
 
@@ -148,6 +157,17 @@ export const router = createBrowserRouter([
       {
         path: "manageBooks",
         element: <ManageBooks></ManageBooks>,
+      },
+      {
+        path: "manageChats",
+        element: <ManageChats />,
+      },
+      {
+        path: 'manageChats/singleChat/:id',
+        element: <PrivateRoute>
+          <AdminSingleChat />
+
+        </PrivateRoute>
       },
       {
         path: "purchasedBooks",
@@ -176,7 +196,7 @@ export const router = createBrowserRouter([
       {
         path: "my-books",
         element: (
-          <PrivateRoute>
+           <PrivateRoute>
             <MyBooks />
           </PrivateRoute>
         ),
