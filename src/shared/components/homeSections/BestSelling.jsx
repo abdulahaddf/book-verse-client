@@ -29,7 +29,7 @@ const BestSelling = () => {
         <Heading title={"Best Selling"}></Heading>
         <Link to='/allBestSelling' className="btn-primary ">See More</Link>
       </div>
-      <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-10 content-center">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 content-center my-5">
         {bestSellingData?.slice(0, 8).map((book) => (
           <BookCard key={book._id} book={book} text='bestSelling'></BookCard>
         ))}
