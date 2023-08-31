@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { ImBooks, ImEarth } from "react-icons/im";
-import { GrOverview } from "react-icons/gr";
+// import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
 import { useContext } from "react";
@@ -64,11 +64,11 @@ const Dashboard = () => {
                 </li>
 
                 <h2 className="text-lg px-4 mt-5 font-bold">Sales</h2>
-                <li>
+                {/* <li>
                   <NavLink to="/dashboard/overview">
                     <GrOverview></GrOverview>Overview
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/dashboard/daily">
                     <BsCalendarDayFill></BsCalendarDayFill>Daily
