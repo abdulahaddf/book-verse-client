@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import BookCard from "../BookCard/BookCard";
 import { useDispatch, useSelector } from 'react-redux';
 import { setRecentSelling } from "../../../pages/payment/redux/RecentSellingSlice";
+import ProductCard from "../productCard/ProductCard";
 
 
 const RecentSelling = () => {
@@ -30,9 +31,9 @@ const RecentSelling = () => {
           <Heading title={"Recent Selling"}></Heading>
           <Link to='/allRecentSelling' className="btn-primary ">See More</Link>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 content-center my-5">
-          {recentSellingData?.slice(0, 8).map((book) => (
-            <BookCard key={book._id} book={book} text='recentSelling'></BookCard>
+        <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 place-items-center py-5">
+          {recentSellingData?.slice(0, 10).map((book) => (
+            <ProductCard key={book._id} data={book} text='recentSelling'></ProductCard>
           ))}
         </div>
       </div>

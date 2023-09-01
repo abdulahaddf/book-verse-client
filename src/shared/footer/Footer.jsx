@@ -121,7 +121,7 @@ const Footer = () => {
         <div>
           <h3 className="font-bold uppercase">Information</h3>
           <p className="hover:text-[#d71d24] duration-300 transition hover:translate-x-1 ease-in relative">
-            <Link>Terms And Condition</Link>
+            <Link to='/terms&conditions'>Terms & Condition</Link>
           </p>
           <p className="hover:text-[#d71d24] duration-300 transition hover:translate-x-1 ease-in relative">
             <Link>Privacy Policy</Link>
