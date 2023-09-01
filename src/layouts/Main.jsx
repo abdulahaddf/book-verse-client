@@ -7,6 +7,8 @@ import UserHandleRoute from "../routes/UserHandleRoute";
 import { useUserMessage } from "../hooks/useUserMessage";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import NavbarTwo from "../shared/NavbarTwo/NavbarTwo";
+import CategoryNav from "../shared/CategoryNav/CategoryNav";
 
 
 const Main = () => {
@@ -14,7 +16,9 @@ const Main = () => {
     const [messages, userRefetch] = useUserMessage(user?.email);
     return (
         <div>
-            <Navbar></Navbar>
+            <NavbarTwo></NavbarTwo>
+            <CategoryNav></CategoryNav>
+            {/* <Navbar></Navbar> */}
             {(messages?.role !== 'admin' && messages.chat) && (
                 <UserHandleRoute>
                     <Alert />
