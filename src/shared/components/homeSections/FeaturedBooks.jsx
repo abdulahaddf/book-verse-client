@@ -16,7 +16,7 @@ const FeaturedBooks = () => {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-10 place-items-center my-5 py-5">
       {
-                books?.slice(0,5).map(book => <ProductCard key={book._id} data={book} ></ProductCard>)
+                books?.slice(30,35).map(book => <ProductCard key={book._id} data={book} ></ProductCard>)
             }
        
      

@@ -29,7 +29,7 @@ const ProductCard = ({ data }) => {
         <div className="absolute top-52  w-full ">
           <div className="-translate-y-8 transform opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           {/* bg-gradient-to-r from-[#3cf671] via-[#1dd752]  to-teal-400  hover:bg-[#1dd752]  */}
-            <button className="btn btn-sm border-none w-full  bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%text-sm normal-case font-light font-mono text-white">
+            <button className="btn btn-sm border-none w-full  bg-gradient-to-r from-[#3cf671] via-[#1dd752]  to-teal-400  hover:bg-[#1dd752] text-sm normal-case font-light font-mono text-white">
               {/* issue to redirect link privious_id/_id  */}
               <Link to={`/details/${previous_id ? previous_id : _id}`}>Details</Link>
             </button>

@@ -95,7 +95,7 @@ const OldBookDetails = () => {
         </div>
       </div>
 
-      <div className="  flex justify-around mt-6 mx-auto w-4/5">
+      <div className="  flex justify-around mt-6 mx-auto w-4/5 gap-20">
       <div>
             <h2 className="text-2xl font-semibold my-3">Book Description</h2>
             <p>{description}</p>

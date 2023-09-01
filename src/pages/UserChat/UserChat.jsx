@@ -142,7 +142,8 @@ const UserChat = () => {
 
     <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-[700px] 
 
-  md:h-[730px] lg:h-[730px]   mx-auto my-[100px] ">
+  md:h-[730px] lg:h-[730px]  w-2/4 mx-auto bg-slate-300 my-5 p-20 ">
+    <h1 className='text-center text-3xl font-semibold'>Chat With Seller for any query</h1>
       <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
         <div className="relative flex items-center space-x-4">
           <div className="relative">
