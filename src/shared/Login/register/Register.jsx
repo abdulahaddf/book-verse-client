@@ -51,7 +51,7 @@ const Register = () => {
         .then(() => {
           profileUpdate({ displayName: name, photoURL: imageURL }).then(() => {
             const saveUser = {
-              name: data.name,
+              displayName: data.name,
               email: data.email,
               photoURL: imageURL,
               role:'user'
@@ -137,10 +137,10 @@ const Register = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         const saveUser = {
-          name: loggedInUser.displayName,
+          displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
-          user_roll:'user'
+         role:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
@@ -176,9 +176,10 @@ const Register = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         const saveUser = {
-          name: loggedInUser.displayName,
+          displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
+          role:'user'
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",

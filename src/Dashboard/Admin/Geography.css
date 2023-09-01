@@ -1,0 +1,12 @@
+/* Assuming you have a CSS file named Geography.css */
+.geography-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.geography-chart {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f5f5f5;
+}

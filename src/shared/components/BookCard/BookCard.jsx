@@ -61,37 +61,37 @@ const BookCard = ({book,text}) => {
     cartRefetch()
   };
 
-  console.log(book);
+  // console.log(book);
   const {_id,title, author, cover_image, offer_price, rating ,count,previous_id,purchase_date } = book;
   return (
-    <div className=" mx-auto my-5 py-10  ">
+    <div className=" mx-auto    ">
       {/* card 1 start */}
       <div
-        className="group book-card-container relative block bg-black  w-[300px]
+        className="group book-card-container relative block bg-black h-[390px]  w-[270px]
             overflow-hidden "
       > 
         <img
           alt="Developer"
           src={cover_image}
-          className="absolute inset-0 w-[300px] object-cover opacity-75 transition-opacity group-hover:opacity-30 h-full book-card-img "
+          className="absolute inset-0 w-[270px] object-cover opacity-75 transition-opacity group-hover:opacity-30 h-full book-card-img "
         />
 
         <div className="relative px-8 flex justify-between   ">
-          <div className="mt-32 sm:mt-48 lg:mt-[30%] mx-auto  ">
-            <div className="translate-y-8 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500  ">
-              <h3 className="text-[20px] text-white my-5 h-14 ">
+          <div className="  lg:mt-[3%] mx-auto  ">
+            <div className="translate-y-8 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100  duration-500 space-y-2 ">
+              <h3 className="text-[20px] text-white  h-10 my-5 ">
                 Name: {title}
               </h3>
-              <p className="text-[18px] text-white my-5 ">
+              <p className="text-[18px] text-white ">
                 Author:{author}
               </p>
 
-              <p className="text-[18px] text-white my-5">Price: ${offer_price}</p>
+              <p className="text-[18px] text-white">Price: ${offer_price}</p>
 
-              {text==='bestSelling' &&  <p className="text-[18px] text-white my-5">Sold: {count}</p>}
-              {text==='recentSelling' &&  <p className="text-[18px] text-white my-5">Sold: {moment(purchase_date).format('MMMM Do YYYY, h:mm:ss a')}</p>}
+              {text==='bestSelling' &&  <p className="text-[18px] text-white">Sold: {count}</p>}
+              {text==='recentSelling' &&  <p className="text-[18px] text-white">Sold: {moment(purchase_date).format('MMMM Do YYYY, h:mm:ss a')}</p>}
 
-              <div className="flex items-center  mt-5 pb-[30px]">
+              <div className="flex items-center pb-[30px]">
                 <p className="text-[18px] text-white mr-2">Rating: {rating}</p>
                 <div className="flex">
                   <input

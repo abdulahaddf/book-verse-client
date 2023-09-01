@@ -3,6 +3,7 @@ import Dropdown from 'rsuite/Dropdown';
 import ButtonToolbar from 'rsuite/ButtonToolbar';
 import 'rsuite/dist/rsuite.min.css';
 import './CategoryNav.css';
+import { Link } from 'react-router-dom';
 
 const CategoryNav = () => {
     return (
@@ -28,7 +29,7 @@ const CategoryNav = () => {
       </Dropdown.Menu>
       </Dropdown>
       </ButtonToolbar>
-      <li className="list-none pt-2 ">Old Book</li>
+      <Link to='/old-books'><li className="list-none pt-2 ">Old Book</li></Link>
       </div>
 </div>
         </div>

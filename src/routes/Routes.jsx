@@ -18,79 +18,135 @@ import ManageBooks from "../Dashboard/Admin/ManageBooks";
 import PurchasedBooks from "../Dashboard/User/PurchasedBooks";
 import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
-
+import UserHome from "../Dashboard/User/UserHome/UserHome";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
 
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
-import UserHome from "../Dashboard/User/UserHome";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
+import SellBook from "../Dashboard/User/SellBook";
+import AllOldBooks from "../pages/AllOldBooks/AllOldBooks";
+import MyBooks from "../Dashboard/User/MyBooks";
+import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
+import Team from "../shared/components/team/Team";
+import Error from "../pages/Error/Error";
+import ManageChats from "../Dashboard/Admin/ManageChats";
+import AdminSingleChat from "../Dashboard/Admin/AdminSingleChat";
+import UserChat from "../pages/UserChat/UserChat";
+import Overview from "../Dashboard/Admin/Overview";
+import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
+import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
+import Geography from "../Dashboard/Admin/Geography";
+import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main/>,
-      children: [
-        {
-            path: "/",
-            element: <Home/>
-          },
-        {
-            path: "/all-books",
-            element: <AllBooks/>
-          },
-          {
-            path: 'details/:id',
-            element: <BookDetails></BookDetails>,
-            loader: ({params}) => fetch(`https://book-verse-server-phi.vercel.app/singleBook/${params.id}`)
-          },
-        {
-            path: "/addToCart",
-            element: <AddToCart></AddToCart>
-          },
-        {
-            path: "/allBestSelling",
-            element: <AllBestSelling/>
-          },
-        {
-            path: "/allRecentSelling",
-            element: <AllRecentSelling/>
-          },
-        {
-            path: "/payment",
-            element:<PrivateRoute> <Payment/></PrivateRoute>
-          },
-        {
-            path: "/stripePayment",
-            element:<PrivateRoute> <StripePayment/></PrivateRoute>
-          },
-        {
-            path: "/SSLPaymentSuccess",
-            element:<PrivateRoute> <SSLPaymentSuccess/></PrivateRoute>
-          },
-        {
-            path: "/login",
-            element: <Login/>
-          },
-        {
-            path: "/register",
-            element: <Register/>
-          },
-        {
-            path: "/forget",
-            element: <ResetForm/>
-        },
-        {
-          path: "/All/:category",
-            element: <Collections/>
-        },
-        {
-          path: "/Author/:name",
-          element: <AuthorDetails />
-        }
-      ]
-      
-    },
-  
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/all-books",
+        element: <AllBooks />,
+      },
+      {
+        path: "details/:id",
+        element: <BookDetails></BookDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/singleBook/${params.id}`
+          ),
+      },
+      {
+        path: "/addToCart",
+        element: <AddToCart></AddToCart>,
+      },
+      {
+        path: "/allBestSelling",
+        element: <AllBestSelling />,
+      },
+      {
+        path: "/allRecentSelling",
+        element: <AllRecentSelling />,
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/stripePayment",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <StripePayment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/SSLPaymentSuccess",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <SSLPaymentSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/forget",
+        element: <ResetForm />,
+      },
+      {
+        path: "/All/:category",
+        element: <Collections />,
+      },
+      {
+        path: "/Author/:name",
+        element: <AuthorDetails />,
+      },
+      {
+        path: "/dev",
+        element: <Team />,
+      },
+      {
+        path: "/old-books",
+        element: <AllOldBooks />,
+      },
+      {
+        path: "/old-books-details/:id",
+        element: <OldBookDetails />,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
+          ),
+      },
+      {
+        path: "/userChat",
+        element: <PrivateRoute>
+          <UserChat />
+        </PrivateRoute>
+      },
+      {
+        path:'/terms&conditions',
+        element:<TermsCondition/>,
+      }
+    ],
+  },
+
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
@@ -112,13 +168,69 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
-        path: 'purchasedBooks',
-        element:<PrivateRoute><PurchasedBooks></PurchasedBooks> </PrivateRoute> 
+        path: "manageChats",
+        element: <ManageChats />,
       },
       {
-        path: 'userHome',
-        element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
-      }
+        path: 'manageChats/singleChat/:id',
+        element: <PrivateRoute>
+          <AdminSingleChat />
+
+        </PrivateRoute>
+      },
+      {
+        path: "overview",
+        element: <Overview></Overview>,
+      },
+      {
+        path: "daily",
+        element: <DailyRevenue></DailyRevenue>,
+      },
+      {
+        path: "monthly",
+        element: <MonthlyRevenue></MonthlyRevenue>,
+      },
+      {
+        path: "geography",
+        element: <Geography></Geography>,
+      },
+
+      {
+        path: "purchasedBooks",
+        element: (
+          <PrivateRoute>
+            <PurchasedBooks></PurchasedBooks>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "userHome",
+        element: (
+          <PrivateRoute>
+            <UserHome></UserHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "sell",
+        element: (
+          <PrivateRoute>
+            <SellBook></SellBook>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-books",
+        element: (
+           <PrivateRoute>
+            <MyBooks />
+          </PrivateRoute>
+        ),
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <Error></Error>,
   },
 ]);

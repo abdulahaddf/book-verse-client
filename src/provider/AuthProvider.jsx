@@ -17,6 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import useLocalStorage from "../hooks/useLocalStorage";
 import axios from "axios";
 
+
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
@@ -24,6 +25,11 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  // Tonmoy alert start
+  const [showAlert, setShowAlert] = useState(false);
+  // Tonmoy alert end
+
+
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -66,6 +72,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser)
 
       if (currentUser) {
         axios
@@ -103,6 +110,10 @@ const AuthProvider = ({ children }) => {
 
   // add to cart data fetch  end by Tonmoy
 
+
+
+
+
   // console.log(auth, user);
   const authInfo = {
     user,
@@ -118,6 +129,8 @@ const AuthProvider = ({ children }) => {
     sendPasswordResetEmail,
     addToCartData,
     cartRefetch,
+    showAlert,
+    setShowAlert
   };
 
   return (
