@@ -6,7 +6,7 @@ const SearchResult = ({ result, id }) => {
     
     return (
         <Link to={`details/${id}`}
-      className="search-result"
+      className="search-result "
     >
       {result}
     </Link>

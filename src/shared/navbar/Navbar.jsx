@@ -1,3 +1,5 @@
+
+
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
@@ -98,15 +100,22 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 max-w-screen-xl mx-auto">
+    <div className="navbar bg-base-100 w-11/12 mx-auto inset-0 z-20 sticky">
       <div className="navbar-start">
-        <div className="drawer lg:hidden z-10">
-          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <div className="drawer lg:hidden">
+          <input id="my-drawer" type="checkbox" className="drawer-toggle " />
           <div className="drawer-content">
             {/* Page content here */}
+        
+
+
             <label htmlFor="my-drawer" className="">
               <Bars3Icon className="w-[24px]"></Bars3Icon>
             </label>
+
+           
+
+
           </div>
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
