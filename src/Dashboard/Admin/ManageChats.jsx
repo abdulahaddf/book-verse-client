@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { useAllUsersData } from "../../hooks/useAllUsersData";
 import { useEffect } from "react";
+import moment from "moment";
 
 
 const ManageChats = () => {
@@ -61,51 +62,61 @@ const ManageChats = () => {
 
   return (
 
+    // rounded-tr-[50px] rounded-bl-[50px]
 
-    <div className="px-20  grid md:grid-cols-3 lg:grid-cols-3 gap-10 w-full   ">
+    <div className=" px-5  md:px-20 lg:px-20  w-full   ">
       {allChats?.map((a) => (
-        <div style={{ boxShadow: '10px 10px 10px black' }}
-          key={a?._id}
-          className="my-10 p-[20px] space-y-3  rounded-tr-[50px] rounded-bl-[50px] overflow-hidden  
+       <div key={a?._id}>
+
+         <Link to={`singleChat/${a?._id}`} 
+          
+          className="my-10 p-[5px] py-[15px]  space-y-3    overflow-hidden 
          
-          outline  hover:scale-105 duration-[1s]  hover:rounded-tr-[0px] hover:rounded-bl-[0px] 
-          "
+               hover:rounded-[0px]  border-b-[2px]  border-r-[2px] hover:bg-gray-200
+          flex   "
         >
 
-          <div className=" flex justify-center mb-5">
-            <img src={a?.photoURL} className=" rounded-[100%] h-[100px] w-[100px]" alt="" />
-          </div>
-          <p className="text-20px font-400   font-[500]">Name: {a?.displayName?.slice(0,30)}</p>
+          <section className=" w-[15%] mt-2 pl-2 "
+          >
+            <img src={a?.photoURL} className=" rounded-[100%] h-[60px] w-[60px]" alt="" />
+          </section>
 
-          {a?.role === 'Admin' ? (
-            a?.chat && a?.chat.length > 0 ? (
-              <p className="text-25px font-500  text-[500] font-[500]">
-                Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0,27)}
-              </p>
+          <section className="w-[60%] md:w-[70%] lg:w-[70%]  pl-[15px] md:pl-0 lg:p-0 space-y-1">
+            <p className="text-[17px]  font-400   font-[500]  text-gray-600"> {a?.displayName?.slice(0, 30)}</p>
+
+            {a?.role === 'Admin' ? (
+              a?.chat && a?.chat.length > 0 ? (
+                <p className="text-25px font-500  text-[500] font-[500]">
+                  Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                </p>
+              ) : (
+                <p className="text-[25px] font-500 ">No reply available</p>
+              )
             ) : (
-              <p className="text-25px font-500 ">No reply available</p>
-            )
-          ) : (
-            a?.chat && a?.chat.length > 0 ? (
-              <p className="text-15px font-700 font-[500]">
-                {a?.chat[a?.chat.length - 1]?.name === 'Admin' ? 'You' : 'New text'} : {a?.chat[a?.chat.length - 1]?.text.slice(0,27)}
-              </p>
-            ) : (
-              <p className="text-15px font-700 ">No new text available</p>
-            )
-          )}
+              a?.chat && a?.chat.length > 0 ? (
+                <p className="text-[15px] font-700 font-[500] text-gray-500">
+                  {a?.chat[a?.chat.length - 1]?.name === 'Admin' ? 'You' : 'New Message'} : {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                </p>
+              ) : (
+                <p className="text-[15px] font-700 ">No new text available</p>
+              )
+            )}
+          </section>
+{/* 
 
-          <div className="mb-5 mt-20  w-full">
-            <Link to={`singleChat/${a?._id}`} className=" w-full text-center rounded-[10px]  font-[500]
-            group relative inline-block overflow-hidden border border-gray-900 px-8 py-1 focus:outline-none focus:ring">
-
+          <section className=" w-[30%] md:w-[20%] lg:w-[20%]  mx-auto px-5 ">
+            <Link to={`singleChat/${a?._id}`} className=" w-full text-center   font-[500] mt-3
+            group relative inline-block overflow-hidden  px-0 py-1 focus:outline-none focus:ring  rounded-br-[100px] rounded-tl-[100px]  
+         " 
+            >
+             
 
               <span
-                className="absolute inset-y-0 left-0 w-[50px] bg-gray-900 transition-all group-hover:w-full group-active:bg-indigo-500  duration-[1s] "
+                className="absolute inset-y-0 left-0 w-[0px] md:w-[0px] lg:w-[0px]  bg-gray-700 transition-all group-hover:w-full group-active:bg-indigo-500 duration-[1s]  "
               ></span>
 
               <span
-                className="relative text-sm font-medium text-gray-900 transition-colors group-hover:text-white"
+                className="relative text-sm font-medium  transition-colors group-hover:text-white "
               >
                 View
               </span>
@@ -113,10 +124,20 @@ const ManageChats = () => {
 
 
             </Link>
-          </div>
+          </section> */}
 
 
-        </div>
+          <section  >
+            
+          {a?.chat && a?.chat?.length > 0 && <p className="text-[12px] font-[500] text-gray-500 pt-[25px] "
+          > {moment(a?.chat[a?.chat?.length -1]?.time).format('h:mm:ss a')}</p>}
+     
+               
+          </section>
+
+
+        </Link>
+       </div>
       ))}
     </div>
 

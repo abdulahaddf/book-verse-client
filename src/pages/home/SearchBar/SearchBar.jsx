@@ -26,10 +26,10 @@ export const SearchBar = ({ setResults }) => {
   };
 
   return (
-    <div className="input-wrapper">
-      <FaSearch id="search-icon" />
-      <input
-        placeholder="Type to search..."
+    <div className="input-wrapper relative z-10">
+      <FaSearch className="text-sm " id="search-icon " />
+      <input className="text-sm font-normal"
+        placeholder=" Search in Book Verse"
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
@@ -37,3 +37,9 @@ export const SearchBar = ({ setResults }) => {
   );
 };
 export default SearchBar;
+
+
+
+
+
+
