@@ -177,7 +177,7 @@ console.log(openDrawer)
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
               <div className="flex justify-center">
-                <Link to="/" className="w-[83px] h-[63px]  ">
+                <Link to="/" className="w-[150px]  ">
                   <img className="" src={logo} alt="" />
                 </Link>
               </div>
@@ -195,7 +195,7 @@ console.log(openDrawer)
 
 <div className="  mx-auto ">
  <Link to="/" >
-   <img className=" h-[73px] "  src={logo} alt="" />
+   <img className=" w-[200px] "  src={logo} alt="" />
  </Link>
  </div>
 

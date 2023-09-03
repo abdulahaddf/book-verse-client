@@ -11,8 +11,11 @@ const Loader = () => {
     },
   };
   return (
-    <div className='w-1/3 mx-auto text-center'>
+    <div className='w-1/3 h-full mx-auto text-center'>
+      <div className=' flex justify-center items-center'>
+
     <Lottie options={defaultOptions}></Lottie>
+      </div>
     </div>
   )
 }
