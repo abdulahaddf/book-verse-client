@@ -13,7 +13,6 @@ const Loader = () => {
   return (
     <div className='w-1/3 mx-auto text-center'>
     <Lottie options={defaultOptions}></Lottie>
-   
     </div>
   )
 }
