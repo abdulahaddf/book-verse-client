@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import logo from "../../assets/image/logo.png";
+import logo from "../../../public/main-logo.png"
 import { BsCart3 } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -247,7 +247,7 @@ console.log(openDrawer)
             <span className='lg:mr-1 text-base'>Hello, {user?.displayName}</span>
             <div
               className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
-              data-tip={user?.displayName}
+              // data-tip={user?.displayName}
             >
 
 
