@@ -21,7 +21,7 @@ const Dashboard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content  flex flex-col items-center justify-center">
+      <div className="drawer-content  flex flex-col items-center justify-center h-full">
         <label
           htmlFor="my-drawer-2"
           className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
@@ -31,7 +31,7 @@ const Dashboard = () => {
         {/* <DashboardNavbar></DashboardNavbar> */}
         <Outlet></Outlet>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side ">
         <label
           htmlFor="my-drawer-2"
           className="drawer-overlay shadow-xl"
