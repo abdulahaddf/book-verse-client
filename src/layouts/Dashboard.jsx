@@ -10,6 +10,8 @@ import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 import { MdSell } from "react-icons/md";
+import { CiDiscount1 } from "react-icons/ci";
+import { AiFillWechat } from "react-icons/ai";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
@@ -47,7 +49,7 @@ const Dashboard = () => {
             </h3>
           </div>
 
-          <ul className="font-medium text-black mt-8">
+          <ul className="font-medium text-black mt-1">
             {/* Sidebar content here */}
 
             {isAdmin ? (
@@ -64,7 +66,7 @@ const Dashboard = () => {
                   </Link>
                 </li>
 
-                <h2 className="text-lg px-4 mt-5 font-bold">Sales</h2>
+                <h2 className="text-lg px-4 mt-2 font-bold">Sales</h2>
                 {/* <li>
                   <NavLink to="/dashboard/overview">
                     <GrOverview></GrOverview>Overview
@@ -104,7 +106,12 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageChats">
-                    <FaUsers></FaUsers>Manage Chats
+                    <AiFillWechat/> Manage Chats
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/promo">
+                   <CiDiscount1 className="font-semibold"/> Add Promo Codes
                   </NavLink>
                 </li>
               </>
