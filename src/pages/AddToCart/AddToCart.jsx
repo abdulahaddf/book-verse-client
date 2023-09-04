@@ -180,29 +180,39 @@ const AddToCart = () => {
           </section>
 
           <section
-            className="text-slate-900 font-semibold my-10 py-10 px-5 md:my-[100px] space-y-5 rounded-[10px] 
-             h-[350px]  md:w-1/3  sticky top-0 shadow-2xl"
+            className="text-slate-900 font-semibold my-10 py-10 px-5 md:my-[100px] space-y-6  rounded-[10px] 
+             h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
           
           >
-            <p className=" text-xl  ">
+            <p className=" text-xl flex justify-between border-b-2">
               Subtotal: <span className="font-normal"> $ {totalPrice} ({addToCartData.length} items)</span>{" "}
             </p>
-            <p className=" text-xl  ">
+            <p className=" text-xl flex justify-between border-b-2">
               Shipping Fee: <span className="font-normal">$ 5</span>{" "}
             </p>
-            <p className=" text-xl  ">
+            <p className=" text-xl flex justify-between border-b-2 ">
               Tax: <span className="font-normal">5%</span>{" "}
             </p>
-            <p className=" text-xl  ">
-              Final Amount: <span className="font-normal">${finalAmount}</span>{" "}
+            <p className=" text-xl flex justify-between border-b-2">
+              Total: <span className="font-normal">${finalAmount}</span>{" "}
             </p>
+          <div className="flex items-center gap-3 justify-center">  <input type="text" placeholder="Enter Promo Code" className="input input-bordered border-primary rounded-none input-sm w-full max-w-[150px]" /> 
+          <button className="btn-custom rounded-none">Apply</button>
+          </div>
+          {/* TODO _________ change the final amount by fetching the dis count */}
+            <p className=" text-xl flex justify-between border-b-2">
+             Payable Total: <span className="font-normal">${finalAmount}</span>{" "}
+            </p>
+            <div className="text-center">
+
             <Link
               to="/payment"
               // state={{ price: finalAmount , books : addToCartData  }}
               onClick={sendDataToPayment}
-              className=" btn-primary w-full md:w-[150px] lg:w-[250px] text-xl font-[500]">
+              className=" btn-primary w-full md:w-[150px] lg:w-[250px]  text-xl font-[500]">
               Proceed to Checkout
             </Link>
+                </div>
           </section>
         </div>
       ) : (
