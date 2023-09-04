@@ -61,7 +61,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           <button
             // onClick={toggleModal} // modal----------------
             onClick={() => toggleModal(_id)}
-            className="btn btn-sm text-xl hover:bg-accent hover:text-white rounded-sm btn-outline hover:border-accent text-accent"
+            className="btn btn-sm text-xl hover:bg-accent hover:text-white rounded-sm btn-outline hover:border-accent text-accent duration-500"
           >
             <FiEdit></FiEdit>
           </button>
@@ -95,7 +95,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => handleDelete(_id)}
-            className="btn btn-sm text-2xl hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
+            className="btn btn-sm text-2xl hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24] duration-500"
           >
             <MdDelete></MdDelete>
           </button>

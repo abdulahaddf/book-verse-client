@@ -36,7 +36,7 @@ const Dashboard = () => {
           htmlFor="my-drawer-2"
           className="drawer-overlay shadow-xl"
         ></label>
-        <div className="menu p-4 w-60 bg-slate-100 h-full">
+        <div className="menu p-4 w-60 bg-slate-100">
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
