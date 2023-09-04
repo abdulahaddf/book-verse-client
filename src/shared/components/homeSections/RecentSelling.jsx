@@ -34,7 +34,7 @@ const RecentSelling = () => {
           <Heading title={"Recent Selling"}></Heading>
           <Link to='/allRecentSelling' className="btn-primary ">See More</Link>
         </div>
-        <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 place-items-center py-5">
+        <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 place-items-center items-start py-5">
           {recentSellingData?.slice(0, 10).map((book) => (
             <ProductCard key={book._id} data={book} text='recentSelling' loading={loading}></ProductCard>
           ))}
