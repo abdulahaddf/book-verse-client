@@ -10,6 +10,7 @@ import { FaCheckCircle, FaStar } from "react-icons/fa";
 import UseBooks from "../../../hooks/UseBooks";
 import RecommendedCard from "./RecommendedCard";
 import Loader from "../loader/Loader";
+import './BookDetails.css'
 
 const BookDetails = () => {
   useEffect(() => {
@@ -129,10 +130,12 @@ const BookDetails = () => {
       <div className="lg:flex justify-center gap-8 my-10">
         <div className=" md:w-4/6 shadow-md p-5">
           <div className="md:flex justify-center gap-10  ">
-            <img
+           <div className="bg-slate-300 box">
+             <img
               src={cover_image}
-              className="max-h-96  rounded-lg shadow-2xl "
+              className="max-h-96   shadow-2xl imgBox"
             />
+           </div>
             <div className="ms-3 space-y-3">
               <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
               <h2>
