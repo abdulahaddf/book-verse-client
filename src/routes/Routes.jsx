@@ -37,6 +37,7 @@ import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
 import Geography from "../Dashboard/Admin/Geography";
 import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
+import AddPromo from "../Dashboard/Admin/AddPromo";
 
 export const router = createBrowserRouter([
   {
@@ -224,6 +225,14 @@ export const router = createBrowserRouter([
         element: (
            <PrivateRoute>
             <MyBooks />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "promo",
+        element: (
+           <PrivateRoute>
+            <AddPromo/>
           </PrivateRoute>
         ),
       },
