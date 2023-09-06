@@ -9,10 +9,12 @@ import { Provider } from "react-redux";
 import store from "./pages/payment/redux/Store";
 import '@smastrom/react-rating/style.css'
 
+
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
@@ -20,5 +22,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </AuthProvider>
       </QueryClientProvider>
     </Provider>
+    
   </React.StrictMode>
 );
