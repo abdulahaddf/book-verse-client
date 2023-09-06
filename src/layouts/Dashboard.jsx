@@ -6,6 +6,7 @@ import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
+
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
@@ -74,6 +75,11 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/manageUsers">
                   <FaUsers></FaUsers>Manage Users
+                </NavLink>
+                </li>
+                <li>
+                <NavLink to="/dashboard/manageBanner">
+                  <FaUsers></FaUsers>Manage Banners
                 </NavLink>
                 </li>
                 

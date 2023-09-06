@@ -134,10 +134,12 @@ const EditModal = ({ isOpen, book, onClose }) => {
           text: "Book updated successfully",
           icon: "success",
           confirmButtonText: "Ok",
-        }).then(() => {
+        })
+          .then(() => {
           onClose(); // Close the modal
         });
-      } else {
+      }
+      else {
         throw new Error("Book update failed");
       }
     } catch (error) {

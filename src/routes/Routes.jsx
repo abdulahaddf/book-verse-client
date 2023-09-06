@@ -29,6 +29,7 @@ import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
 import Error from "../pages/Error/Error";
+import ManageBanner from "../Dashboard/Admin/ManageBanner/ManageBanner";
 
 export const router = createBrowserRouter([
   {
@@ -148,6 +149,10 @@ export const router = createBrowserRouter([
       {
         path: "manageBooks",
         element: <ManageBooks></ManageBooks>,
+      },
+      {
+        path: "manageBanner",
+        element:<ManageBanner></ManageBanner>
       },
       {
         path: "purchasedBooks",
