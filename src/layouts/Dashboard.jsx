@@ -4,6 +4,7 @@ import { ImBook, ImBooks, ImEarth } from "react-icons/im";
 // import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
+import { GrMapLocation } from "react-icons/gr";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -38,7 +39,7 @@ const Dashboard = () => {
           htmlFor="my-drawer-2"
           className="drawer-overlay shadow-xl"
         ></label>
-        <div className="menu p-4 w-60 bg-slate-100 h-full">
+        <div className="menu p-4 w-60 bg-slate-100 ">
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
@@ -107,6 +108,11 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/manageChats">
                     <AiFillWechat/> Manage Chats
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/OrderStatus">
+                    <GrMapLocation/> Order Status
                   </NavLink>
                 </li>
                 <li>
