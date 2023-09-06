@@ -150,7 +150,7 @@ const AdminSingleChat = () => {
 
 
     <div className='w-full'>
-      <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-[700px]  md:h-[750px] lg:h-[750px] w-full mt-[100px] ">
+      <div className="flex-1 sm:p-6 justify-between flex flex-col h-[700px]  md:h-[750px] lg:h-[750px] w-full">
         <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
           <div className="relative flex items-center space-x-4">
             <div className="relative">
@@ -158,8 +158,9 @@ const AdminSingleChat = () => {
               <img src={messages?.photoURL} className='w-[100px] h-[100px] rounded-[100%]' />
             </div>
             <div className="flex flex-col leading-tight">
-              <div className="text-2xl mt-1 flex items-center">
-                <span className="text-gray-700 mr-3">{messages?.displayName}</span>
+              <div className="text-2xl mt-1  items-center">
+                <p className="text-gray-700 mr-3">{messages?.displayName}</p>
+                <p className="text-gray-700 text-sm mr-3">{messages?.email}</p>
               </div>
 
             </div>
@@ -167,7 +168,8 @@ const AdminSingleChat = () => {
 
         </div>
 
-        <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+        <div className='flex flex-col'>
+        <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-[500px]">
           {messages?.chat?.map((message, index) => (
             <div key={index}>
 
@@ -224,7 +226,7 @@ const AdminSingleChat = () => {
 
 
         <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-          <form onSubmit={buttonHandler} className="relative flex">
+          <form onSubmit={buttonHandler} className="relative flex gap-3 items-center">
             <span className="absolute inset-y-0 flex items-center">
 
             </span>
@@ -242,6 +244,7 @@ const AdminSingleChat = () => {
             </button>
             {/* </div> */}
           </form>
+        </div>
         </div>
       </div>
     </div>

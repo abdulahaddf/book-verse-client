@@ -1,15 +1,18 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { ImBook, ImBooks, ImEarth } from "react-icons/im";
-import { GrOverview } from "react-icons/gr";
+// import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
+import { GrMapLocation } from "react-icons/gr";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 import { MdSell } from "react-icons/md";
+import { CiDiscount1 } from "react-icons/ci";
+import { AiFillWechat } from "react-icons/ai";
 import Loader from "../shared/components/loader/Loader";
 import UseSingleUser from "../hooks/useSingleUser";
 const Dashboard = () => {
@@ -59,8 +62,8 @@ const Dashboard = () => {
               </h3>
             </div>
 
-            <ul className="font-medium text-black mt-8">
-              {/* Sidebar content here */}
+          <ul className="font-medium text-black mt-1">
+            {/* Sidebar content here */}
 
               {singleUser?.role === 'admin' && (
                 <>
@@ -76,27 +79,27 @@ const Dashboard = () => {
                     </Link>
                   </li>
 
-                  <h2 className="text-lg px-4 mt-5 font-bold">Sales</h2>
-                  <li>
-                    <NavLink to="/dashboard/overview">
-                      <GrOverview></GrOverview>Overview
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/daily">
-                      <BsCalendarDayFill></BsCalendarDayFill>Daily
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/monthly">
-                      <BsCalendarDate></BsCalendarDate>Monthly
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/geography">
-                      <ImEarth></ImEarth>Geography
-                    </NavLink>
-                  </li>
+                <h2 className="text-lg px-4 mt-2 font-bold">Sales</h2>
+                {/* <li>
+                  <NavLink to="/dashboard/overview">
+                    <GrOverview></GrOverview>Overview
+                  </NavLink>
+                </li> */}
+                <li>
+                  <NavLink to="/dashboard/daily">
+                    <BsCalendarDayFill></BsCalendarDayFill>Daily
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/monthly">
+                    <BsCalendarDate></BsCalendarDate>Monthly
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/geography">
+                    <ImEarth></ImEarth>Geography
+                  </NavLink>
+                </li>
 
                   <h2 className="text-lg px-4 mt-5 font-bold">Management</h2>
                   <li>
@@ -116,8 +119,18 @@ const Dashboard = () => {
                   </li>
                   <li>
                     <NavLink to="/dashboard/manageChats">
-                      <FaUsers></FaUsers>Manage Chats
+                      <AiFillWechat/> Manage Chats
                     </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/OrderStatus">
+                    <GrMapLocation/> Order Status
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/promo">
+                   <CiDiscount1 className="font-semibold"/> Add Promo Codes
+                  </NavLink>
                   </li>
                 </>
               )}

@@ -36,6 +36,9 @@ import Overview from "../Dashboard/Admin/Overview";
 import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
 import Geography from "../Dashboard/Admin/Geography";
+import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
+import AddPromo from "../Dashboard/Admin/AddPromo";
+import ManageOrder from "../Dashboard/Admin/ManageOrder";
 import ContactWithSeller from "../pages/AllOldBooks/ContactWithSeller";
 import UserChats from "../Dashboard/User/UserChats";
 import UserToUserChat from "../Dashboard/User/UserToUserChat";
@@ -137,8 +140,16 @@ export const router = createBrowserRouter([
             `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
           ),
       },
-   
-    
+      {
+        path: "/userChat",
+        element: <PrivateRoute>
+          <UserChat />
+        </PrivateRoute>
+      },
+      {
+        path:'/terms&conditions',
+        element:<TermsCondition/>,
+      }
     ],
   },
 
@@ -258,6 +269,18 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "promo",
+        element: (
+           <PrivateRoute>
+            <AddPromo/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path:'OrderStatus',
+        element:<ManageOrder/>
+      }
     ],
   },
   {

@@ -8,9 +8,9 @@ const DevCard = ({data}) => {
       };
     
     return (
-        <div className="px-10 p-5 flex justify-between border-2 shadow-lg">
-            <div className="px-5">
-            <h2 className="text-2xl font-semibold">{name}</h2>
+        <div className="md:px-10 md:p-5 flex justify-between items-center border-2 shadow-lg">
+            <div className="p-2 md:px-5">
+            <h2 className="md:text-2xl font-semibold">{name}</h2>
             <h2 >{role} <Link to={`${github}`}><BsGithub className="inline text-xl" /></Link></h2>
             </div>
             <div>
