@@ -3,17 +3,17 @@
 import { Link, NavLink } from "react-router-dom";
 
 import { TbBooks, TbDashboard } from "react-icons/tb";
-import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
-import { Bars3Icon , XCircleIcon} from "@heroicons/react/24/solid";
-import logo from "../../assets/image/logo.png";
-import { BsCart3} from "react-icons/bs";
-import { useContext, useEffect, useState } from "react";
+import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/solid";
+import logo from "../../../public/main-logo.png"
+import { BsCart3 } from "react-icons/bs";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
 import SearchBar from "../../pages/home/SearchBar/SearchBar";
 import SearchResultsList from "../../pages/home/SearchBar/SearchResultsList";
 import './NavbarTwo.css';
 import Headroom from "react-headroom";
+import { FaBook, FaBookReader, FaHome } from "react-icons/fa";
 
 
 
@@ -146,21 +146,7 @@ console.log(openDrawer)
           <TbBooks></TbBooks>Old Books
         </NavLink>
       </li>
-      {/* <li className=" text-base font-bold">
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red" : "no-underline"
-          }
-          to="/addToCart"
-        >
-          <span className="mt-[5px]">
-            <BsCart3 />
-          </span>
-          <span className="indicator-item badge bg-[#fc494f] text-white mt-[5px]">
-            {addToCartData ? addToCartData.length : 0}
-          </span>
-        </NavLink>
-      </li> */}
+     
       <li className=" text-base font-bold">
         {user ? (
           isAdmin ? (
@@ -234,8 +220,8 @@ console.log(openDrawer)
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-              <div className="flex justify-center mb-9">
-                <Link to="/" className="w-[83px] h-[63px]  ">
+              <div className="flex justify-center">
+                <Link to="/" className="w-[150px]  ">
                   <img className="" src={logo} alt="" />
                 </Link>
               </div>
@@ -253,7 +239,7 @@ console.log(openDrawer)
 
 <div className="  mx-auto ">
  <Link to="/" >
-   <img className=" h-[73px] "  src={logo} alt="" />
+   <img className=" w-[200px] "  src={logo} alt="" />
  </Link>
  </div>
 
@@ -415,76 +401,7 @@ console.log(openDrawer)
 
      
 
-        {/* {user ? (
-          <div className="flex items-center">
-            <span className='lg:mr-1 text-base'>Hello, {user?.displayName}</span>
-            <div
-              // className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
-              // data-tip={user?.displayName}
-            >
-
-
-<div className="dropdown dropdown-end">
-  
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        
-        
-        <div className="w-10 rounded-full">
        
-          <img src= {user?.photoURL}/>
-         
-        </div>
-      </label>
-      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className=""></span>
-          </a>
-        </li>
-
-        <li>
-        {user ? (
-          isAdmin ? (
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? " text-red" : "no-underline"
-              }
-              to="/dashboard/adminHome"
-            >
-              Dashboard
-            </NavLink>
-          ) : (
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? " text-red" : "no-underline"
-              }
-              to="/dashboard/userHome"
-            >
-              Dashboard
-            </NavLink>
-          )
-        ) : (
-          ""
-        )}
-      </li>
-
-
-        <li><a>Settings</a></li>
-        <li><a onClick={logOut}>Logout</a></li>
-      </ul>
-    </div>
-
-
-            </div>
-
-            
-          </div>
-        ) : (
-          <Link to="/login" className="btn-custom ">
-            Login
-          </Link>
-        )} */}
 
 
         <NavLink

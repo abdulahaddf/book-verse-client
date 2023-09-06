@@ -4,12 +4,15 @@ import { ImBook, ImBooks, ImEarth } from "react-icons/im";
 // import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
+import { GrMapLocation } from "react-icons/gr";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 import { MdSell } from "react-icons/md";
+import { CiDiscount1 } from "react-icons/ci";
+import { AiFillWechat } from "react-icons/ai";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
@@ -21,7 +24,7 @@ const Dashboard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content  flex flex-col items-center justify-center">
+      <div className="drawer-content  flex flex-col items-center justify-center h-full">
         <label
           htmlFor="my-drawer-2"
           className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
@@ -31,12 +34,12 @@ const Dashboard = () => {
         {/* <DashboardNavbar></DashboardNavbar> */}
         <Outlet></Outlet>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side ">
         <label
           htmlFor="my-drawer-2"
           className="drawer-overlay shadow-xl"
         ></label>
-        <div className="menu p-4 w-60 bg-slate-100">
+        <div className="menu p-4 w-60 bg-slate-100 ">
           <div className="text-center mx-auto">
             <img
               className="rounded-full w-24 h-24 mx-auto"
@@ -47,7 +50,7 @@ const Dashboard = () => {
             </h3>
           </div>
 
-          <ul className="font-medium text-black mt-8">
+          <ul className="font-medium text-black mt-1">
             {/* Sidebar content here */}
 
             {isAdmin ? (
@@ -64,7 +67,7 @@ const Dashboard = () => {
                   </Link>
                 </li>
 
-                <h2 className="text-lg px-4 mt-5 font-bold">Sales</h2>
+                <h2 className="text-lg px-4 mt-2 font-bold">Sales</h2>
                 {/* <li>
                   <NavLink to="/dashboard/overview">
                     <GrOverview></GrOverview>Overview
@@ -104,7 +107,17 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageChats">
-                    <FaUsers></FaUsers>Manage Chats
+                    <AiFillWechat/> Manage Chats
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/OrderStatus">
+                    <GrMapLocation/> Order Status
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/promo">
+                   <CiDiscount1 className="font-semibold"/> Add Promo Codes
                   </NavLink>
                 </li>
               </>

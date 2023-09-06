@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import logo from "../../assets/image/logo.png";
+import logo from "../../../public/main-logo.png"
 import { BsCart3 } from "react-icons/bs";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";

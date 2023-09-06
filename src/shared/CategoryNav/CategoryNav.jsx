@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const CategoryNav = () => {
     return (
-        <div className="navbar bg-base-100 h-[15px]">
+        <div className="navbar bg-base-100 h-[15px] relative z-0">
  
   <div className="flex-none mx-auto">
     <ul className="menu menu-horizontal ">

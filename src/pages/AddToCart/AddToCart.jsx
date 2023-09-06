@@ -131,14 +131,15 @@ const AddToCart = () => {
                
            
 
-            <div>
+            <div >
                 <div
-                  className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center"
+                  className="flex items-center justify-center border border-gray-200 rounded w-1/2 md:mt-10 text-center "
                 >
                   <button
                     onClick={() => decrementHandler(data?._id)}
                     type="button"
-                    className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    className="w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"
+                    data-tip="Decrease Item"
                   >
                     -
                   </button>
@@ -147,7 +148,7 @@ const AddToCart = () => {
                     type="number"
                     id="Quantity"
                     value={data?.count || 1}
-                    className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                    className="h-10 w-6 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
 
                       <button
@@ -179,29 +180,39 @@ const AddToCart = () => {
           </section>
 
           <section
-            className=" bg-gray-900 text-white my-10 py-10 px-5 md:my-[100px] space-y-5 rounded-[10px] 
-             h-[350px]  md:w-1/3 text-center sticky top-0 shadow-md"
-            // style={{ boxShadow: "10px 10px 10px black" }}
+            className="text-slate-900 font-semibold my-10 py-10 px-5 md:my-[100px] space-y-6  rounded-[10px] 
+             h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
+          
           >
-            <p className=" text-xl  ">
-              Your Total: $ <span className="">{totalPrice}</span>{" "}
+            <p className=" text-xl flex justify-between border-b-2">
+              Subtotal: <span className="font-normal"> $ {totalPrice} ({addToCartData.length} items)</span>{" "}
             </p>
-            <p className=" text-xl  ">
-              Delivery charge: $ <span className="">5</span>{" "}
+            <p className=" text-xl flex justify-between border-b-2">
+              Shipping Fee: <span className="font-normal">$ 5</span>{" "}
             </p>
-            <p className=" text-xl  ">
-              Tax: <span className="">5%</span>{" "}
+            <p className=" text-xl flex justify-between border-b-2 ">
+              Tax: <span className="font-normal">5%</span>{" "}
             </p>
-            <p className=" text-xl  ">
-              Final Amount: $ <span className="">{finalAmount}</span>{" "}
+            <p className=" text-xl flex justify-between border-b-2">
+              Total: <span className="font-normal">${finalAmount}</span>{" "}
             </p>
+          <div className="flex items-center gap-3 justify-center">  <input type="text" placeholder="Enter Promo Code" className="input input-bordered border-primary rounded-none input-sm w-full max-w-[150px]" /> 
+          <button className="btn-custom rounded-none">Apply</button>
+          </div>
+          {/* TODO _________ change the final amount by fetching the dis count */}
+            <p className=" text-xl flex justify-between border-b-2">
+             Payable Total: <span className="font-normal">${finalAmount}</span>{" "}
+            </p>
+            <div className="text-center">
+
             <Link
               to="/payment"
               // state={{ price: finalAmount , books : addToCartData  }}
               onClick={sendDataToPayment}
-              className=" btn-primary w-full md:w-[150px] lg:w-[200px] text-xl font-[500]">
-              Buy Now
+              className=" btn-primary w-full md:w-[150px] lg:w-[250px]  text-xl font-[500]">
+              Proceed to Checkout
             </Link>
+                </div>
           </section>
         </div>
       ) : (

@@ -15,7 +15,7 @@ const Payment = () => {
 
 
   //sslCommerce start by Tonmoy
-  const { user } = useContext(AuthContext);
+  const { user,  } = useContext(AuthContext);
   const { getValue } = useLocalStorage();
 
      const totalPrice= localStorage.getItem('totalPrice');
@@ -51,20 +51,21 @@ const Payment = () => {
   // sslCommerce end by  Tonmoy
 
   return (
-    <div className="my-10">
-      <h1 className="page-heading">Payment System</h1>
+    <div className="my-5">
+      <h1 className="page-heading">Checkout</h1>
+      <h2 className="text-center text-2xl font-serif my-2">You need to pay : {totalPrice}</h2>
 
-      <div className="flex  gap-10 w-[50%] mx-auto justify-center py-[100px]">
-        <div>
+      <div className="flex   w-11/12  mx-auto justify-center items-center py-10">
+        <div >
           <Link className="" to="/stripePayment" >
 
-            <img className="w-[100px] h-[100px] border-[5px] rounded-[10px]" src="https://download.logo.wine/logo/Stripe_(company)/Stripe_(company)-Logo.wine.png" alt="" />
+            <img className="w-[250px] mx-auto  border-[5px] rounded-[10px]" src="https://download.logo.wine/logo/Stripe_(company)/Stripe_(company)-Logo.wine.png" alt="" />
           </Link >
         </div>
 
-        <div>
+        <div >
           <button className="" onClick={sslCommerce} >
-            <img className="w-[100px] h-[100px] border-[5px] p-2 rounded-[10px]" src="https://scontent.fdac31-1.fna.fbcdn.net/v/t39.30808-6/352511138_1446861699422076_8741241725393318128_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeF66sraQ7E1JKXwb_GLwC61qIgfnad76oeoiB-dp3vqhy5DZ5cm73ehCk8ivIQfE-xBOYarSFT47fStRm12uj7o&_nc_ohc=b-V59alSj_wAX_pDj8e&_nc_ht=scontent.fdac31-1.fna&oh=00_AfBb_ZZ9CJD9nVXfSbtfbS3BQFqtCxPwWFRPdChWxLaW_w&oe=64EA5219" alt="" />
+            <img className="w-[600px] mx-auto  border-[5px] p-2 rounded-[10px]" src="https://i.ibb.co/Lhwv66n/SSLCommerz-01.png" alt="" />
           </button>
         </div>
       </div>
