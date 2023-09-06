@@ -4,17 +4,17 @@ import { AuthContext } from "../provider/AuthProvider";
 
 import { useQuery } from "@tanstack/react-query";
 
-const UseUser = () => {
+const UseSingleUser = (email) => {
   const { user } = useContext(AuthContext);
-  const { data: userinfo = null, isLoading } = useQuery(
-    [user,'userinfo'],
+  const { data: singleUser =[] , refetch : singleUserRefetch } = useQuery(
+    [email],
     async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/userinfo/?email=${user?.email}`
+        `https://book-verse-server-phi.vercel.app/singleUserDataByEmail/${email}`
       );
       return res.json();
     }
   );
-  return [userinfo, isLoading];
+  return [singleUser, singleUserRefetch];
 };
-export default UseUser;
+export default UseSingleUser;

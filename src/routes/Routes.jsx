@@ -36,6 +36,10 @@ import Overview from "../Dashboard/Admin/Overview";
 import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
 import Geography from "../Dashboard/Admin/Geography";
+import ContactWithSeller from "../pages/AllOldBooks/ContactWithSeller";
+import UserChats from "../Dashboard/User/UserChats";
+import UserToUserChat from "../Dashboard/User/UserToUserChat";
+
 
 export const router = createBrowserRouter([
   {
@@ -133,18 +137,16 @@ export const router = createBrowserRouter([
             `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
           ),
       },
-      {
-        path: "/userChat",
-        element: <PrivateRoute>
-          <UserChat />
-        </PrivateRoute>
-      },
+   
+    
     ],
   },
 
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     children: [
       {
         path: "addBook",
@@ -172,6 +174,40 @@ export const router = createBrowserRouter([
           <AdminSingleChat />
 
         </PrivateRoute>
+      },
+      {
+        path: "userChat",
+        element: <PrivateRoute>
+          <UserChat />
+        </PrivateRoute>
+      },
+      {
+        path: "userChats",
+        element: <PrivateRoute>
+          <UserChats />
+
+        </PrivateRoute>
+
+
+
+
+      },
+      {
+        path: 'userChats/userToUserChat/:id',
+        element: <PrivateRoute>
+          <UserToUserChat />
+
+        </PrivateRoute>
+      },
+      {
+        path: "ContactWithSeller/:id",
+        element: <PrivateRoute>
+          <ContactWithSeller />
+        </PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
+          ),
       },
       {
         path: "overview",
@@ -217,7 +253,7 @@ export const router = createBrowserRouter([
       {
         path: "my-books",
         element: (
-           <PrivateRoute>
+          <PrivateRoute>
             <MyBooks />
           </PrivateRoute>
         ),

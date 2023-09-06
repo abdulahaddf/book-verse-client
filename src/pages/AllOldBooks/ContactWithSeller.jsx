@@ -1,43 +1,70 @@
-import { useContext, useEffect } from 'react';
-import { AuthContext } from '../../provider/AuthProvider';
-import { useAdminMessage } from '../../hooks/useAdminMessage';
-import { useUserMessage } from '../../hooks/useUserMessage';
-
-import logo from '../../../public/logo.png'
-import { useRef } from 'react';
-import { useAllUsersData } from '../../hooks/useAllUsersData';
-import moment from 'moment';
-
-const UserChat = () => {
-
-  const { user, setShowAlert, showAlert } = useContext(AuthContext);
+import { useContext, useEffect, useRef } from "react";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import UseSellerAndBuyer from "../../hooks/useSellerAndBuyer";
+import moment from "moment";
 
 
+import UseSingleUser from "../../hooks/useSingleUser";
 
 
-  const [messages, userRefetch] = useUserMessage(user?.email)
+const ContactWithSeller = () => {
+
+    const { user } = useContext(AuthContext);
+
+    const book = useLoaderData();
+    const {sellerMail} = book;
+
+    // console.log(book)
+
+     
+    
+
+    const info = {
+        seller: sellerMail,
+        buyer: user?.email,
+        array: [sellerMail, user?.email],
+        chat: []
 
 
+    }
 
-  const [, adminRefetch] = useAdminMessage(messages?._id);
-
-  const [, allUsersRefetch] = useAllUsersData()
-
-
-
-
-
-
- 
-
-
-
+    
 
 
 
 
+    fetch(`https://book-verse-server-phi.vercel.app/sellerAndBuyerCollections`, {
 
 
+    method: "POST",
+
+    headers: {
+
+        'content-type': "application/json"
+    },
+
+
+    body: JSON.stringify(info)
+
+
+})
+.then(res=>res.json())
+.then(res=>console.log(res))
+.catch(error=> console.log(error))
+
+
+
+  const [messages,sellerAndBuyerDataRefetch] = UseSellerAndBuyer(sellerMail,user?.email);
+
+  
+
+  const [buyerSingleData, buyerSingleDataRefetch]=UseSingleUser(user?.email);
+  const [sellerSingleData, sellerSingleDataRefetch]=UseSingleUser(sellerMail);
+
+  
+
+  console.log(messages);
 
 
   const buttonHandler = (e) => {
@@ -52,10 +79,10 @@ const UserChat = () => {
 
     const chat = [...filter,
     {
-      name: user?.displayName,
-      email: user.email,
+      name: buyerSingleData?.displayName,
+      email: buyerSingleData?.email,
       text: text,
-      img: messages?.photoURL,
+      img: buyerSingleData?.photoURL,
       time: new Date().getTime()
     }
     ]
@@ -65,7 +92,7 @@ const UserChat = () => {
 
 
 
-    fetch(`https://book-verse-server-phi.vercel.app/postChat?email=${user?.email}`, {
+    fetch(`https://book-verse-server-phi.vercel.app/postChatUserToUser?id=${messages?._id}`, {
 
 
       method: "POST",
@@ -89,37 +116,29 @@ const UserChat = () => {
 
           e.target.reset()
 
-          userRefetch()
+       
 
-          adminRefetch()
-
-          allUsersRefetch()
-
-          setShowAlert(true)
+        //   setShowAlert(true)
 
 
-
+        sellerAndBuyerDataRefetch()
 
 
 
         }
 
       })
+      .catch(error=> console.log(error))
 
 
 
 
-  }
-
-
-
+  };
 
   useEffect(() => {
     const refetchInterval = setInterval(() => {
-      userRefetch()
-      adminRefetch()
-      allUsersRefetch()
-
+      
+        sellerAndBuyerDataRefetch()
     }, 3000); // Check every 3 seconds
 
     return () => {
@@ -137,21 +156,19 @@ const UserChat = () => {
 
   return (
   
+ <div className=" w-full">
+  <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-[700px] 
 
-
-  <div className='w-full'>
-      <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-[700px] 
-
-md:h-[730px] lg:h-[730px]  w-[90%] mx-auto my-[100px]">
-    <div className="lex sm:items-center justify-between py-3 border-b-2 border-gray-200">
+md:h-[730px] lg:h-[730px]  w-[90%] mx-auto my-[100px] ">
+    <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
       <div className="relative flex items-center space-x-4">
         <div className="relative">
 
-          <img src={logo} className='w-[100px] h-[100px] rounded-[100%]' />
+          <img src={sellerSingleData?.photoURL} className='w-[100px] h-[100px] rounded-[100%]' />
         </div>
         <div className="flex flex-col leading-tight">
           <div className="text-2xl mt-1 flex items-center">
-            <span className="text-gray-700 mr-3">Book Verse</span>
+            <span className="text-gray-700 mr-3">{sellerSingleData?.displayName}</span>
           </div>
 
         </div>
@@ -159,11 +176,11 @@ md:h-[730px] lg:h-[730px]  w-[90%] mx-auto my-[100px]">
 
     </div>
 
-    <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch h-[450px]">
-      {messages?.chat?.map((message) => (
-        <div key={message?._id}>
+    <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+      {messages?.chat?.map((message, index) => (
+        <div key={index}>
 
-          {message?.name === 'Admin' ?
+          {user?.email !== message?.email ?
             <div className="chat-message">
               <div className="flex items-end">
                 <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
@@ -174,7 +191,7 @@ md:h-[730px] lg:h-[730px]  w-[90%] mx-auto my-[100px]">
                     </span>
                   </div>
                 </div>
-                <img src={logo} className='w-[30px] h-[30px] rounded-[100%]' />
+                <img src={message?.img} className='w-[30px] h-[30px] rounded-[100%]' />
               </div>
             </div>
             :
@@ -230,9 +247,7 @@ md:h-[730px] lg:h-[730px]  w-[90%] mx-auto my-[100px]">
     </div>
   </div>
 
-  </div>
-
-
+ </div>
 
 
 
@@ -241,4 +256,4 @@ md:h-[730px] lg:h-[730px]  w-[90%] mx-auto my-[100px]">
   );
 };
 
-export default UserChat;
+export default ContactWithSeller;

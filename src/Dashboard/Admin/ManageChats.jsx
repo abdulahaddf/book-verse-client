@@ -8,13 +8,7 @@ import moment from "moment";
 const ManageChats = () => {
 
 
-  // useEffect(() => {
-  //   fetch(`https://book-verse-server-phi.vercel.app/allUserData`)
-  //     .then((res) => res.json())
-  //     .then((res) => setAllData(res))
-  //     .catch((error) => console.log(error));
-  // }, []);
-
+ 
 
   const [allUsersData, allUsersRefetch] = useAllUsersData()
 
