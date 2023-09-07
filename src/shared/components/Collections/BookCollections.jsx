@@ -1,8 +1,12 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import UseBooks from "../../../hooks/UseBooks";
 import CategoryCard from "../CategoryCard";
+import { useEffect } from "react";
 
 const BookCollections = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { books } = UseBooks();
   console.log(books);
   return (

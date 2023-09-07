@@ -32,7 +32,7 @@ const RecentSelling = () => {
       <div className="section">
         <div className="flex justify-between items-center">
           <Heading title={"Recent Selling"}></Heading>
-          <Link to='/allRecentSelling' className="btn-fifth ">See More</Link>
+          <Link to='/allRecentSelling' className="btn-fifth hover:text-white hover:no-underline">See More</Link>
         </div>
         <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 place-items-center items-start py-5">
           {recentSellingData?.slice(0, 10).map((book) => (

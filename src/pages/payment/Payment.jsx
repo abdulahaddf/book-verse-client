@@ -265,7 +265,7 @@ const Payment = () => {
                 sslCommerce();
               }
             }}
-            className={`btn btn-primary ${buttonDisabled ? "disabled" : ""}`}
+            className={`btn-fifth ${buttonDisabled ? "disabled text-slate-400 hover:text-slate-400" : ""}`}
             disabled={buttonDisabled}
           >
             Pay Now

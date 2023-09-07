@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 
 const CategoryNav = () => {
     return (
-        <div className="navbar bg-base-100 h-[15px] relative z-0">
+        <div className="navbar bg-base-100 h-[15px] relative">
  
   <div className="flex-none mx-auto">
     <ul className="menu menu-horizontal ">
       
       <li>
-      <details className="dropdown z-10">
+      <details className="dropdown">
   <summary className="font-semibold text-base">Category</summary>
   <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-64">
     <li><a className="hover:no-underline" href='/all-books'>All Books</a></li>
