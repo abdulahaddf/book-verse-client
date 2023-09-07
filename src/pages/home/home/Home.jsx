@@ -3,10 +3,12 @@ import Category from "../../../shared/components/Category";
 import "react-tabs/style/react-tabs.css";
 import FeaturedBooks from "../../../shared/components/homeSections/FeaturedBooks";
 import BestSelling from "../../../shared/components/homeSections/BestSelling";
-import SearchBar from "../SearchBar/SearchBar";
+import Banner from "../Banner/Banner";
+import Sponsor from "../../../shared/components/Sponsor/Sponsor";
+// import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import './Home.css'
-import SearchResultsList from "../SearchBar/SearchResultsList";
+// import SearchResultsList from "../SearchBar/SearchResultsList";
 import RecentSelling from "../../../shared/components/homeSections/RecentSelling";
 import Publications from "../../../shared/components/homeSections/Publications";
 

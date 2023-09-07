@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import AuthorCard from "./AuthorDetails/AuthorCard";
 import OfferBanner from "./Offer&Rewards/OfferBanner";
 const Category = () => {
-  const { books } = UseBooks();
+  const { books , loading } = UseBooks();
   console.log(books);
   const newArival = [...books];
   return (
@@ -47,7 +47,7 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="button-52 text-white font-bold">
+                <button className="btn-primary">
                   <Link to={`/All/Category`}>See more</Link>
                 </button>
               </div>
