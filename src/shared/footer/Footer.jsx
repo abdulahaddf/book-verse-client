@@ -20,7 +20,35 @@ import appleStore from "../../assets/store/apple2.png";
 import googlePlay from "../../assets/store/google2.png";
 import logo from "../../assets/image/logo.png";
 import { FcLock } from "react-icons/fc";
+
+import emailjs from '@emailjs/browser';
+import { useRef } from "react";
+import Swal from "sweetalert2";
 const Footer = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+   
+    e.preventDefault();
+
+    emailjs.sendForm('service_uiykfvf', 'template_861sgkd', form.current, 'Q7f4le_L-54TGc7Xk')
+      .then((result) => {
+          console.log(result.text);
+          if(result.text === 'OK'){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your Email has been Sent',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
+
+
   return (
     <footer className="bg-base-200 text-base-content">
       <div className="footer w-11/12 mx-auto py-10 flex-row md:flex-col justify-between">
@@ -33,7 +61,7 @@ const Footer = () => {
             Your premier source for captivating <br /> books across genres.
             Explore with us!
           </p>
-          <h3 className="font-bold uppercase my-3">Contact Us:</h3>
+          <h3 className="font-bold uppercase my-3">Contacts:</h3>
           <p className="flex items-center">
             <FaLocationArrow className="mr-3"></FaLocationArrow>No 45, Season
             Street,,
@@ -144,28 +172,35 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="font-bold uppercase">NewSeller</h3>
+          <h3 className="font-bold uppercase">Contact Us</h3>
           <p>
-            Subscribe to our mailing list to get <br /> email updates
+            Contact us with any query<br /> through email
           </p>
-          <form>
+          <form ref={form} onSubmit={sendEmail}>
             <div>
               <input
                 type="text"
                 placeholder="Your Name"
+                name="user_name"
                 className="input input-bordered input-sm rounded-sm max-w-xs"
               />
               <br />
               <input
                 type="text"
                 placeholder="Your Email"
+                name="user_email"
                 className="input input-bordered input-sm rounded-sm my-3 max-w-xs"
               />
+              <br />
+              <textarea name="message"
+              placeholder="Write your Message"
+              className="input input-bordered input-sm rounded-sm my-3 max-w-xs"
+               />
             </div>
             <input
               className="py-2 px-3 btn btn-sm hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
               type="submit"
-              value="Subscribe"
+              value="submit"
             />
           </form>
           <div className="flex">
