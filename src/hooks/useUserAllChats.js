@@ -1,11 +1,9 @@
-import { useContext } from "react";
 
-import { AuthContext } from "../provider/AuthProvider";
 
 import { useQuery } from "@tanstack/react-query";
 
 const UseUserAllChats = (email) => {
-  const { user } = useContext(AuthContext);
+ 
   const { data: userAllChats =[] , refetch : userAllChatsRefetch } = useQuery(
     [email,'userAllChats'],
     async () => {

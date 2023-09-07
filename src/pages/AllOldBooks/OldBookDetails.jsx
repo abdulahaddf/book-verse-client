@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Swal from "sweetalert2";
@@ -62,10 +62,24 @@ const OldBookDetails = () => {
 // strat Tonmoy
 
 
-const [singleUser, singleUserRefetch]=UseSingleUser(user?.email)
+const [singleUser, singleUserRefetch]=UseSingleUser(user?.email);
 
-if(!user){
-  return <div>....</div>
+const navigate=useNavigate()
+
+const contactWithSellerHandler=()=>{
+
+  if(!user){
+    return Swal.fire({
+      title: "Please login",
+
+      icon: "error",
+     
+    });
+  }
+
+  navigate(`/dashboard/ContactWithSeller/${_id}` )
+
+
 }
 
 
@@ -96,7 +110,7 @@ console.log(singleUser?.role)
               <span className="font-semibold">Language:</span> {language}
             </p>
             <p >
-              <span className="font-semibold">Posted on : </span> {new Date(postDate)?.toISOString()?.split("T")[0]}
+              <span className="font-semibold">Posted on : </span> {postDate}
             </p>
 
 
@@ -134,7 +148,7 @@ console.log(singleUser?.role)
               <p>{sellerAddress}</p>
             </div>
            </div>
-           { (user?.email !== sellerMail && singleUser?.role !=='admin') &&    <Link to={`/dashboard/ContactWithSeller/${_id}`} className="btn-custom mt-5 flex justify-center">Contact with seller</Link> }
+          { _id &&    <button onClick={contactWithSellerHandler} className="btn-custom mt-5 flex justify-center" disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller</button> }
           </div>
       </div>
 

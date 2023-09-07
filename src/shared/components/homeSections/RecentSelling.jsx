@@ -1,7 +1,7 @@
 import { useEffect} from "react";
 import Heading from "../heading/Heading";
 import { Link } from "react-router-dom";
-import BookCard from "../BookCard/BookCard";
+// import BookCard from "../BookCard/BookCard";
 import { useDispatch, useSelector } from 'react-redux';
 import { setRecentSelling } from "../../../pages/payment/redux/RecentSellingSlice";
 import ProductCard from "../productCard/ProductCard";
