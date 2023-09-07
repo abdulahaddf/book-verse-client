@@ -13,7 +13,7 @@ const FeaturedBooks = () => {
     <div className="section">
       <div className="flex justify-between items-center">
         <Heading title={"Featured Books"}></Heading>
-        <Link className="btn-primary ">See More</Link>
+        <Link className="btn-fifth ">See More</Link>
       </div>
       {/* <Skeleton count={3} className="my-2 h-10" />  */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
