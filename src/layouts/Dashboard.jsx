@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
-import { ImBook, ImBooks, ImEarth } from "react-icons/im";
+import { ImBook, ImBooks } from "react-icons/im";
 // import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
@@ -78,11 +78,6 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/monthly">
                     <BsCalendarDate></BsCalendarDate>Monthly
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/geography">
-                    <ImEarth></ImEarth>Geography
                   </NavLink>
                 </li>
 

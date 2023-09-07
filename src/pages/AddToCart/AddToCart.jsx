@@ -199,7 +199,7 @@ const AddToCart = () => {
               to="/payment"
               // state={{ price: finalAmount , books : addToCartData  }}
               onClick={sendDataToPayment}
-              className=" btn-primary w-full md:w-[150px] lg:w-[200px] text-xl font-[500]">
+              className=" btn-fifth w-full md:w-[150px] lg:w-[200px] text-xl font-[500]">
               Buy Now
             </Link>
           </section>

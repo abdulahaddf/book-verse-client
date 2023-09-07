@@ -36,7 +36,6 @@ import Overview from "../Dashboard/Admin/Overview";
 import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
 import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
-import Geography from "../Dashboard/Admin/GeoGraphyData/Geography";
 
 export const router = createBrowserRouter([
   {
@@ -190,11 +189,6 @@ export const router = createBrowserRouter([
         path: "monthly",
         element: <MonthlyRevenue></MonthlyRevenue>,
       },
-      {
-        path: "geography",
-        element: <Geography></Geography>,
-      },
-
       {
         path: "purchasedBooks",
         element: (

@@ -57,7 +57,6 @@ const AdminHome = () => {
     setShowMore(!showMore);
   };
 
-  
   return (
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
       <h1 className="text-4xl font-bold text-center">Revenue Calculation</h1>
@@ -172,11 +171,17 @@ const AdminHome = () => {
         {/* weekly revenue chart end */}
       </div>
       {/* ----------------Revenue end-------------- */}
-      
+
       <h1 className="text-4xl font-bold text-center mt-12 mb-3">
         Transactions Information
       </h1>
-      <input type="text" placeholder="Find user" className="input input-bordered w-full max-w-xs" />
+
+      <input
+        type="text"
+        placeholder="Find user"
+        className="input input-bordered w-full max-w-xs"
+      />
+
       {/* customer info with table start  */}
       <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
