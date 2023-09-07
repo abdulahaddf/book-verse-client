@@ -12,8 +12,10 @@ import './Home.css'
 import RecentSelling from "../../../shared/components/homeSections/RecentSelling";
 
 
+
 const Home = () => {
   // const [results, setResults] = useState([]);
+  
   return (
     <div>
       {/* All Components of home will be shown here */}

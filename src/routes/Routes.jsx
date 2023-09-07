@@ -36,6 +36,8 @@ import Overview from "../Dashboard/Admin/Overview";
 import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
 import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
+import AddPromo from "../Dashboard/Admin/AddPromo";
+import ManageOrder from "../Dashboard/Admin/ManageOrder";
 
 export const router = createBrowserRouter([
   {
@@ -221,6 +223,18 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "promo",
+        element: (
+           <PrivateRoute>
+            <AddPromo/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path:'OrderStatus',
+        element:<ManageOrder/>
+      }
     ],
   },
   {

@@ -31,7 +31,7 @@ const BestSelling = () => {
         <Heading title={"Best Selling"}></Heading>
         <Link to='/allBestSelling' className="btn-fifth ">See More</Link>
       </div>
-      <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 content-center py-5 place-items-center">
+      <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 items-start  py-5 place-items-center">
         {bestSellingData?.slice(0, 10).map((book) => (
           <ProductCard key={book._id} data={book} text='bestSelling' loading={loading}></ProductCard>
         ))}

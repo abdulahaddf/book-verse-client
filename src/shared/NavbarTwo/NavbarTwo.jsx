@@ -2,8 +2,8 @@
 
 import { Link, NavLink } from "react-router-dom";
 
-
-import { Bars3Icon } from "@heroicons/react/24/solid";
+import { TbBooks, TbDashboard } from "react-icons/tb";
+import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/solid";
 import logo from "../../../public/main-logo.png"
 import { BsCart3 } from "react-icons/bs";
 import { useContext, useState } from "react";
@@ -12,10 +12,36 @@ import useAdmin from "../../hooks/useAdmin";
 import SearchBar from "../../pages/home/SearchBar/SearchBar";
 import SearchResultsList from "../../pages/home/SearchBar/SearchResultsList";
 import './NavbarTwo.css';
+import Headroom from "react-headroom";
+import { FaBook, FaBookReader, FaHome } from "react-icons/fa";
+
 
 
 
 const Navbar = () => {
+
+ 
+
+  // const { theme, toggleTheme } = useTheme();
+
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  // );
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   const localTheme = localStorage.getItem("theme");
+  //   document.querySelector("html").setAttribute("data-theme", localTheme);
+  // }, [theme]);
+
+  // const handleToggle = (e) => {
+  //   if (e.target.checked) {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
+
+
   const { addToCartData, user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [results, setResults] = useState([]);
@@ -52,49 +78,17 @@ console.log(openDrawer)
 
 
 
+
+
+
+
   const navItems = (
     <>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red hover:text-orange-400" : " no-underline"
-          }
-          to="/"
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red" : "no-underline"
-          }
-          to="/all-books"
-        >
-          All Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red" : "no-underline"
-          }
-          to="/fd"
-        >
-          Popular Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? " text-red" : "no-underline"
-          }
-          to="/fd"
-        >
-          Old Books
-        </NavLink>
-      </li>
-      <li>
+    <li className="my-8">
+      <div>
+      <img className="w-[40px] rounded-full " src={user?.photoURL} />
+      <span className=' text-base font-bold'>{user?.displayName}</span>
+      <li className=" text-xl font-bold">
         <NavLink
           className={({ isActive }) =>
             isActive ? " text-red" : "no-underline"
@@ -109,7 +103,51 @@ console.log(openDrawer)
           </span>
         </NavLink>
       </li>
-      <li>
+      </div>
+    </li>
+      <li className=" text-base font-bold ">
+      <NavLink
+  className={({ isActive }) => ({
+    textDecoration: "none",
+    color: isActive ? "red" : "inherit", // Change color accordingly
+  })}
+  to="/"
+>
+<FaHome></FaHome> Home
+</NavLink>
+      </li>
+      <li className=" text-base font-bold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/all-books"
+        >
+         <FaBook></FaBook> All Books
+        </NavLink>
+      </li>
+      <li className=" text-base font-bold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/fd"
+        >
+          <FaBookReader></FaBookReader>Popular Books
+        </NavLink>
+      </li>
+      <li className=" text-base font-bold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/fd"
+        >
+          <TbBooks></TbBooks>Old Books
+        </NavLink>
+      </li>
+     
+      <li className=" text-base font-bold">
         {user ? (
           isAdmin ? (
             <NavLink
@@ -118,7 +156,7 @@ console.log(openDrawer)
               }
               to="/dashboard/adminHome"
             >
-              Dashboard
+             <TbDashboard></TbDashboard> Dashboard
             </NavLink>
           ) : (
             <NavLink
@@ -127,7 +165,7 @@ console.log(openDrawer)
               }
               to="/dashboard/userHome"
             >
-              Dashboard
+             <TbDashboard></TbDashboard> Dashboard
             </NavLink>
           )
         ) : (
@@ -138,10 +176,16 @@ console.log(openDrawer)
   );
 
   return (
-   <div>
+  <Headroom   style={{
+    webkitTransition: 'all .5s ease-in-out',
+    mozTransition: 'all .5s ease-in-out',
+    oTransition: 'all .5s ease-in-out',
+    transition: 'all .5s ease-in-out'
+  }}>
+     <div>
      <div className="navbar  bg-base-100 w-11/12 mx-auto inset-0 z-20 sticky">
       <div className="navbar-start ">
-        <div className="drawer lg:hidden z-20 w-7 ">
+        <div className="drawer lg:hidden z-20 w-7 relative">
           <input id="my-drawer" type="checkbox" className="drawer-toggle " checked={drawerOpen}
             onChange={toggleDrawer}  />
           <div className="drawer-content">
@@ -152,13 +196,13 @@ console.log(openDrawer)
               onClick={closeDrawer}
              
               style={{
-                position: "relative",
+                position: "absolute",
                 top: 0,
-                left: 0,
+                left: 230,
                 zIndex: 30,
               }}
             >
-              close
+             <XCircleIcon className="w-8"></XCircleIcon>
             </button>}
             
           </div>
@@ -205,12 +249,7 @@ console.log(openDrawer)
 </div>
 
 
-
-
-
      </div>
-
-       
 
       </div>
       {/* ... rest of the code */}
@@ -242,76 +281,127 @@ console.log(openDrawer)
         </ul>
       </div>
       <div className="navbar-end ">
-        {user ? (
-          <div className="flex items-center">
-            <span className='lg:mr-1 text-base'>Hello, {user?.displayName}</span>
-            <div
-              className="relative mr-3 w-10 rounded-full tooltip tooltip-left "
-              // data-tip={user?.displayName}
-            >
 
 
-<div className="dropdown dropdown-end">
+      {user ? (
+  <details className=" dropdown cursor-pointer">
   
+   
+     
+      
+      <summary className="flex border rounded-lg px-3 py-1 m-1 justify-center items-center"> <div className="flex items-center">
+      
+      <img className="w-[30px] rounded-full mr-3" src={user?.photoURL}  />
+      <span className=' text-base mr-1'> {user?.displayName}</span>
+      <span className="">▼</span>
+        </div></summary>
+      <ul className="mt-3 z-[1] p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+        <li>
+          <a href="/userHome" className="justify-between hover:no-underline">
+            Profile
+            <span className=""></span>
+          </a>
+        </li>
+        <li >
+          {user ? (
+            isAdmin ? (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " text-red hover:no-underline" : "hover:no-underline"
+                }
+                to="/dashboard/adminHome"
+              >
+                Dashboard
+              </NavLink>
+            ) : (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " text-red hover:no-underline" : "no-underline"
+                }
+                to="/dashboard/userHome"
+              >
+                Dashboard
+              </NavLink>
+            )
+          ) : (
+            ""
+          )}
+        </li>
+        <li><a className="hover:no-underline">Settings</a></li>
+        <li><a className="hover:no-underline" onClick={logOut}>Logout</a></li>
+      </ul>
+    
+   
+  </details>
+) : (
+  <Link to="/login" className="btn-custom">
+    Login
+  </Link>
+)}
+
+
+
+      
+{/* 
+      {user ? (
+  <div className="flex items-center border rounded-lg px-3 ">
+    <span className='lg:mr-1 text-base'> {user?.displayName}</span>
+    <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        
-        
-        <div className="w-10 rounded-full">
-       
-          <img src= {user?.photoURL}/>
-         
+        <div className=" rounded-full ">
+          <img src={user?.photoURL} alt={`${user?.displayName}'s profile`} />
+          <span className="absolute inset-y-0 right-0 flex items-center pr-2">▼</span>
         </div>
+        
       </label>
+      <span >{}</span>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
         <li>
           <a className="justify-between">
             Profile
-            <span className="badge"></span>
+            <span className=""></span>
           </a>
         </li>
-
         <li>
-        {user ? (
-          isAdmin ? (
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? " text-red" : "no-underline"
-              }
-              to="/dashboard/adminHome"
-            >
-              Dashboard
-            </NavLink>
+          {user ? (
+            isAdmin ? (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " text-red" : "no-underline"
+                }
+                to="/dashboard/adminHome"
+              >
+                Dashboard
+              </NavLink>
+            ) : (
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " text-red" : "no-underline"
+                }
+                to="/dashboard/userHome"
+              >
+                Dashboard
+              </NavLink>
+            )
           ) : (
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? " text-red" : "no-underline"
-              }
-              to="/dashboard/userHome"
-            >
-              Dashboard
-            </NavLink>
-          )
-        ) : (
-          ""
-        )}
-      </li>
-
-
+            ""
+          )}
+        </li>
         <li><a>Settings</a></li>
         <li><a onClick={logOut}>Logout</a></li>
       </ul>
     </div>
+   
+  </div>
+) : (
+  <Link to="/login" className="btn-custom">
+    Login
+  </Link>
+)} */}
 
+     
 
-            </div>
-
-            
-          </div>
-        ) : (
-          <Link to="/login" className="btn-fifth h-8 w-16 ">
-            Login
-          </Link>
-        )}
+       
 
 
         <NavLink
@@ -320,8 +410,8 @@ console.log(openDrawer)
           }
           to="/addToCart"
         >
-         <div className="flex">
-         <span className="mt-[5px] ml-[10px] text-3xl">
+         <div className="flex ">
+         <span className=" ml-[15px] text-3xl ">
             <BsCart3 />
           </span>
           <span className="indicator-item badge  bg-[#fc494f] text-white mt-[5px]">
@@ -342,8 +432,10 @@ console.log(openDrawer)
 </div>
     </div>
    </div>
+  </Headroom>
   );
 };
+
 
 
 export default Navbar;
