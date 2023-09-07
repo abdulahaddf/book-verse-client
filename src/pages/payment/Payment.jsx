@@ -233,7 +233,6 @@ const Payment = () => {
             </span>
           </label>
 
-
           {/* Radio button for Stripe payment */}
           <label className="flex items-center text-lg bg-white w-11/12 p-2 rounded-lg">
             <input
