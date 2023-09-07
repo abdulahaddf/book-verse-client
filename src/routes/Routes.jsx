@@ -20,7 +20,6 @@ import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
 import UserHome from "../Dashboard/User/UserHome/UserHome";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
-
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 import SellBook from "../Dashboard/User/SellBook";
