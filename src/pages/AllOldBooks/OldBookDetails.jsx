@@ -120,7 +120,7 @@ console.log(singleUser?.role)
           
         </div>
         <div className="w-11/12 mx-auto md:flex justify-center gap-10">
-        <button className="btn-primary w-[200px] md:mt-10" onClick={handleAddToCart}>
+        <button className="btn-primary md:mt-10" onClick={handleAddToCart}>
                 Add to Cart
               </button>
              

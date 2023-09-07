@@ -224,27 +224,27 @@ const BookDetails = () => {
                     <div className="modal-action">
                       <button
                         disabled={!agree}
-                        className="btn-primary w-[250px] "
+                        className="btn-fifth w-[250px] "
                         onClick={handleAddToCart}
                       >
                         Add to Cart
                       </button>
-                      <button className="btn btn-primary">Close</button>
+                      <button className="btn-primary">Close</button>
                     </div>
                   </form>
                 </dialog>
               </div>
             </div>
           </div>
-          <div className="w-11/12 mx-auto md:flex justify-center gap-10">
+          <div className="w-11/12 mx-auto md:flex justify-center gap-2">
             <button
-              className="btn-primary w-[200px] md:mt-10"
+              className="btn-primary md:mt-10"
               onClick={handleAddToCart}
             >
               Add to Cart
             </button>
             <button
-              className="btn-primary w-[200px] mr-6 mt-5 md:mt-10"
+              className="btn-fifth mr-6 mt-5 md:mt-10"
               onClick={() => window.my_modal_5.showModal()}
             >
               Rent Now

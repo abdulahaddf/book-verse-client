@@ -35,7 +35,6 @@ import UserChat from "../pages/UserChat/UserChat";
 import Overview from "../Dashboard/Admin/Overview";
 import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
-import Geography from "../Dashboard/Admin/Geography";
 import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
 import AddPromo from "../Dashboard/Admin/AddPromo";
 import ManageOrder from "../Dashboard/Admin/ManageOrder";
@@ -232,11 +231,6 @@ export const router = createBrowserRouter([
         path: "monthly",
         element: <MonthlyRevenue></MonthlyRevenue>,
       },
-      {
-        path: "geography",
-        element: <Geography></Geography>,
-      },
-
       {
         path: "purchasedBooks",
         element: (

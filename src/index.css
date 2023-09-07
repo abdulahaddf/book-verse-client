@@ -3,38 +3,185 @@
 @tailwind utilities;
 
 @layer components {
-    
-    
-    .btn-card{
-        @apply btn-sm btn btn-outline btn-secondary text-white hover:text-red border-red  hover:border-b-red hover:bg-white  px-4 py-1 rounded-lg border-b-4 hover:scale-105 duration-300;
-    }
-    .btn-primary{
-        @apply btn w-24 text-black  bg-white hover:text-white border-red normal-case hover:bg-red  px-2 py-1 rounded-lg border-b-4 hover:scale-105 duration-300 hover:shadow-rose-400 shadow-lg;
-    }
-    .btn-custom{
-        @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white
+  .btn-card {
+    @apply btn-sm btn btn-outline btn-secondary text-white hover:text-red border-red  hover:border-b-red hover:bg-white  px-4 py-1 rounded-lg border-b-4 hover:scale-105 duration-300;
+  }
+  /* .btn-fifth {
+    @apply btn w-24 text-black  bg-white hover:text-white border-red normal-case hover:bg-red  px-2 py-1 rounded-lg border-b-4 hover:scale-105 duration-300 hover:shadow-rose-400 shadow-lg;
+  } */
+  .btn-custom {
+    @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white
          hover:bg-red  rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
-    }
-    .section{
-        @apply shadow-xl rounded-lg p-5 my-5;
-    }
-    .page-heading{
-        @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
-    }
-    
-    
   }
 
-  *{
-    font-family: 'Roboto', sans-serif;
-    /* font-family: 'Lato', sans-serif; */
+  /*-------------- Button start -------------------- */
+
+  /*-------------- button primary  btn-fifth ------------ */
+  .btn-primary {
+    width: 140px;
+    height: 42px;
+    background: linear-gradient(to bottom, #126e9d, #10aade);
+    border: 2px solid #126e9d;
+    color: azure;
+    padding: 10px 18px;
+    margin: 6px 4px;
+    text-align: center;
+    display: flex;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
   }
-  
+  .btn-primary:hover {
+    background: linear-gradient(to right, #126e9d, #10aade);
+  }
+
+  /*-------------- button secondary ------------ */
+  .btn-secondary {
+    width: 140px;
+    height: 42px;
+    background: linear-gradient(to bottom, #126e9d, #10aade);
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    margin: 6px 4px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, background 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-secondary:hover {
+    background: linear-gradient(to right, #126e9d, #10aade);
+    transform: translateX(5px);
+  }
+
+  /*-------------- button tertiary ------------ */
+  .btn-tertiary {
+    width: 140px;
+    height: 42px;
+    padding: 10px 18px;
+    margin: 6px 4px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #126e9d;
+    color: white;
+    background: linear-gradient(to right, #126e9d, #10aade);
+    transition: ease-in-out 0.5s;
+    position: relative;
+    font: 18px;
+    z-index: 1;
+  }
+
+  .btn-tertiary:hover {
+    color: #126e9d;
+    cursor: pointer;
+    background: none;
+    border: 2px solid #126e9d;
+  }
+
+  .btn-tertiary:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 0%;
+    right: 0%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background: linear-gradient(to bottom, #126e9d, #10aade);
+  }
+
+  .btn-tertiary:hover::before {
+    transition: 0.5s all ease;
+    left: 50%;
+    right: 50%;
+    opacity: 1;
+    z-index: -1;
+  }
+
+  /*------------------------- button fifth ----------------*/
+  .btn-fifth {
+    width: 140px;
+    height: 42px;
+    padding: 10px 18px;
+    margin: 6px 4px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #126e9d;
+    color: #126e9d;
+    transition: ease-in-out 0.5s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 18px;
+    /* outline: none */
+    z-index: 1;
+  }
+  .btn-fifth:hover {
+    color: white;
+    cursor: pointer;
+  }
+  .btn-fifth:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background: linear-gradient(to right, #126e9d, #10aade);
+  }
+  .btn-fifth:hover::before {
+    transition: 0.3s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+  }
+  /*-------------- Button end-------------------- */
+
+  .section {
+    @apply shadow-xl rounded-lg p-5 my-5;
+  }
+  .page-heading {
+    @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
+  }
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  /* font-family: 'Lato', sans-serif; */
+}
 
 /* button start */
-
-
-
 
 /* CSS */
 .primary-button {
@@ -46,7 +193,8 @@
   color: rgb(42, 42, 42);
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -57,14 +205,12 @@
   padding: 10px 15px;
   text-align: center;
   text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   /* width: 100%; */
   will-change: transform;
-
- 
 }
 
 .primary-button:disabled {
@@ -83,12 +229,6 @@
   transform: translateY(0);
 }
 /* button end */
-
-
-
-
-  
-
 
 /* CSS */
 .button-52 {

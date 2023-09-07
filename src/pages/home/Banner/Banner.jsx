@@ -20,7 +20,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="banner-container">
+    <div className="banner-container relative z-0">
       {loading ? (
         <div className="swiper skeleton">
           <Skeleton height={550} />

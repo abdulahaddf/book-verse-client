@@ -6,7 +6,9 @@ import {render,screen} from '@testing-library/react'
 
 import ContactWithSeller  from '../pages/AllOldBooks/AllOldBooks'
 import SearchBar  from '../pages/home/SearchBar/SearchBar'
-import SearchResultsList  from '../pages/home/SearchBar/SearchBar'
+import Banner  from '../pages/home/Banner/Banner'
+import UserChat  from '../pages/UserChat/UserChat'
+
 
 
 
@@ -27,9 +29,15 @@ const message =screen.queryByText('SearchBar')
 expect(message).toBeDefined()
 });
 
-it('SearchBar',()=>{
-render(<SearchResultsList/>)
-const message =screen.queryByText('SearchResultsList')
+it('Banner',()=>{
+render(<Banner/>)
+const message =screen.queryByText('Banner')
+
+expect(message).toBeDefined()
+});
+it('UserChat',()=>{
+render(<UserChat/>)
+const message =screen.queryByText('UserChat')
 
 expect(message).toBeDefined()
 });
