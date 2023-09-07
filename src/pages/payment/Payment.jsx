@@ -255,7 +255,7 @@ const Payment = () => {
         </div>
 
         {/* Pay Now button */}
-        <div className="text-center mt-10">
+        <div className="text-center w-fit mx-auto mt-10">
           <button
             onClick={() => {
               // Handle payment selection and redirection here
