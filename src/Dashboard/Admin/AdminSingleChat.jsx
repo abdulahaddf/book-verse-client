@@ -31,14 +31,7 @@ const AdminSingleChat = () => {
   }, [id])
 
 
-  //  useEffect(() => {
 
-  //     fetch(`https://book-verse-server-phi.vercel.app/singleUserDataByEmail/${user?.email}`)
-  //         .then(res => res.json())
-  //         .then(res => setAdminDetail(res))
-  //         .catch(error => console.log(error))
-
-  // }, [user])
 
 
   const [messages, adminRefetch] = useAdminMessage(id);
@@ -111,6 +104,7 @@ const AdminSingleChat = () => {
 
           allUsersRefetch()
 
+          
 
 
 

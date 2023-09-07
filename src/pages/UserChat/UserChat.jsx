@@ -110,15 +110,15 @@ const UserChat = () => {
         <div className="relative flex items-center space-x-4">
           <div className="relative">
 
-            <img src={logo} className='w-[100px] h-[100px] rounded-[100%]' />
-          </div>
-          <div className="flex flex-col leading-tight">
-            <div className="text-2xl mt-1 flex items-center">
-              <span className="text-gray-700 mr-3">Book Verse</span>
-            </div>
-
-          </div>
+          <img src={logo} className='w-[100px] h-[100px] rounded-[100%]' />
         </div>
+        <div className="flex flex-col leading-tight">
+          <div className="text-2xl mt-1 flex items-center">
+            <span className="text-gray-700 mr-3">Book Verse</span>
+          </div>
+
+        </div>
+      </div>
 
       </div> */}
 

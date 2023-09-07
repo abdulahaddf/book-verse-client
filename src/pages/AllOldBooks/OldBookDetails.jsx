@@ -1,16 +1,20 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Swal from "sweetalert2";
+import UseSingleUser from "../../hooks/useSingleUser";
 
 const OldBookDetails = () => {
+
+  
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
      
-      const { cartRefetch } = useContext(AuthContext);
+      const {user, cartRefetch } = useContext(AuthContext);
+      
       const { getValue, setValue } = useLocalStorage();
       const [agree, setAgree] = useState(false);
     const book = useLoaderData();
@@ -54,6 +58,34 @@ const OldBookDetails = () => {
     
         cartRefetch();
       };
+
+// strat Tonmoy
+
+
+const [singleUser, singleUserRefetch]=UseSingleUser(user?.email);
+
+const navigate=useNavigate()
+
+const contactWithSellerHandler=()=>{
+
+  if(!user){
+    return Swal.fire({
+      title: "Please login",
+
+      icon: "error",
+     
+    });
+  }
+
+  navigate(`/dashboard/ContactWithSeller/${_id}` )
+
+
+}
+
+
+console.log(singleUser?.role)
+
+// end Tonmoy
     return (
         <div className="h-[100vh] w-full">
         
@@ -78,7 +110,7 @@ const OldBookDetails = () => {
               <span className="font-semibold">Language:</span> {language}
             </p>
             <p >
-              <span className="font-semibold">Posted on : </span> {new Date(postDate).toISOString().split("T")[0]}
+              <span className="font-semibold">Posted on : </span> {postDate}
             </p>
 
 
@@ -116,7 +148,7 @@ const OldBookDetails = () => {
               <p>{sellerAddress}</p>
             </div>
            </div>
-           <Link className="btn-primary w-full mt-5 flex justify-center">Contact with seller</Link>
+          { _id &&    <button onClick={contactWithSellerHandler} className="btn-custom mt-5 flex justify-center" disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller</button> }
           </div>
       </div>
 
