@@ -8,7 +8,7 @@ const UserHandleRoute = ({children}) => {
 
     const location= useLocation()
 
-    console.log(location.pathname,'location')
+    // console.log(location.pathname,'location')
 
     if(!user){
         return <div className=" hidden">Loading...</div>

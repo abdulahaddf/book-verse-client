@@ -10,6 +10,7 @@ import { FaCheckCircle, FaStar } from "react-icons/fa";
 import UseBooks from "../../../hooks/UseBooks";
 import RecommendedCard from "./RecommendedCard";
 import Loader from "../loader/Loader";
+import './BookDetails.css'
 
 const BookDetails = () => {
   useEffect(() => {
@@ -129,10 +130,12 @@ const BookDetails = () => {
       <div className="lg:flex justify-center gap-8 my-10">
         <div className=" md:w-4/6 shadow-md p-5">
           <div className="md:flex justify-center gap-10  ">
-            <img
+           <div className="bg-slate-300 box">
+             <img
               src={cover_image}
-              className="max-h-96  rounded-lg shadow-2xl "
+              className="max-h-96   shadow-2xl imgBox"
             />
+           </div>
             <div className="ms-3 space-y-3">
               <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
               <h2>
@@ -221,27 +224,27 @@ const BookDetails = () => {
                     <div className="modal-action">
                       <button
                         disabled={!agree}
-                        className="btn-primary w-[250px] "
+                        className="btn-fifth w-[250px] "
                         onClick={handleAddToCart}
                       >
                         Add to Cart
                       </button>
-                      <button className="btn btn-primary">Close</button>
+                      <button className="btn-primary">Close</button>
                     </div>
                   </form>
                 </dialog>
               </div>
             </div>
           </div>
-          <div className="w-11/12 mx-auto md:flex justify-center gap-10">
+          <div className="w-11/12 mx-auto md:flex justify-center gap-2">
             <button
-              className="btn-primary w-[200px] md:mt-10"
+              className="btn-primary md:mt-10"
               onClick={handleAddToCart}
             >
               Add to Cart
             </button>
             <button
-              className="btn-primary w-[200px] mr-6 mt-5 md:mt-10"
+              className="btn-fifth mr-6 mt-5 md:mt-10"
               onClick={() => window.my_modal_5.showModal()}
             >
               Rent Now

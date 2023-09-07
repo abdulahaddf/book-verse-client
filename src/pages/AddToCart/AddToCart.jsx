@@ -263,15 +263,15 @@ const AddToCart = () => {
               </span>{" "}
             </p>
             <div className="text-center">
-              <Link
-                to="/payment"
-                // state={{ price: finalAmount , books : addToCartData  }}
-                onClick={sendDataToPayment}
-                className=" btn-primary w-full md:w-[150px] lg:w-[250px]  text-xl font-[500]"
-              >
-                Proceed to Checkout
-              </Link>
-            </div>
+
+            <Link
+              to="/payment"
+              // state={{ price: finalAmount , books : addToCartData  }}
+              onClick={sendDataToPayment}
+              className=" btn-fifth w-full md:w-[150px] lg:w-[250px]  text-xl font-[500]">
+              Proceed to Checkout
+            </Link>
+                </div>
           </section>
         </div>
       ) : (

@@ -8,13 +8,7 @@ import moment from "moment";
 const ManageChats = () => {
 
 
-  // useEffect(() => {
-  //   fetch(`https://book-verse-server-phi.vercel.app/allUserData`)
-  //     .then((res) => res.json())
-  //     .then((res) => setAllData(res))
-  //     .catch((error) => console.log(error));
-  // }, []);
-
+ 
 
   const [allUsersData, allUsersRefetch] = useAllUsersData()
 
@@ -95,7 +89,7 @@ const ManageChats = () => {
             ) : (
               a?.chat && a?.chat.length > 0 ? (
                 <p className="text-[15px] font-700 font-[500] text-gray-500">
-                  {a?.chat[a?.chat.length - 1]?.name === 'Admin' ? 'You' : 'New Message'} : {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                  {a?.chat[a?.chat.length - 1]?.name === 'Admin' ? 'You' : 'New Message'} : {`${a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}${a?.chat[a?.chat.length - 1]?.text.length >26 ? ` ...` :''}`}
                 </p>
               ) : (
                 <p className="text-[15px] font-700 ">No new text available</p>
