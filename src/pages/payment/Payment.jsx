@@ -88,7 +88,7 @@ const Payment = () => {
       
       {/* Checkout form starts here */}
 
-      <div className=" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red">
+      <div className=" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20">
      
    
               <h1 className="text-2xl font-semibold text-center text-red uppercase">
@@ -107,7 +107,7 @@ const Payment = () => {
         type="radio"
         {...register("receive", { required: true })}
         value="home"
-        className="form-radio text-red focus:ring-red focus:ring-opacity-40"
+        className="radio text-red focus:ring-red focus:ring-opacity-40"
       />
       <span className="ml-2">Home</span>
     </label>
@@ -116,7 +116,7 @@ const Payment = () => {
         type="radio"
         {...register("receive")}
         value="office"
-        className="form-radio text-red focus:ring-red focus:ring-opacity-40"
+        className="radio text-red focus:ring-red focus:ring-opacity-40"
       />
       <span className="ml-2">Office</span>
     </label>
@@ -265,7 +265,7 @@ const Payment = () => {
                 sslCommerce();
               }
             }}
-            className={`btn-fifth ${buttonDisabled ? "disabled text-slate-400 hover:text-slate-400" : ""}`}
+            className={`btn-fifth ${buttonDisabled ? "disabled text-slate-400 hover:text-slate-400" : "bg-red text-white"}`}
             disabled={buttonDisabled}
           >
             Pay Now

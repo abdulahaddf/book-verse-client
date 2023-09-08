@@ -175,13 +175,13 @@ console.log(openDrawer)
   );
 
   return (
-  <Headroom style={{
+  <Headroom className="" style={{
     webkitTransition: 'all .5s ease-in-out',
     mozTransition: 'all .5s ease-in-out',
     oTransition: 'all .5s ease-in-out',
     transition: 'all .5s ease-in-out'
   }}>
-     <div>
+     <div className="z-50 bg-white shadow-sm">
      <div className="navbar  bg-base-100 w-11/12 mx-auto inset-0 z-20 sticky">
       <div className="navbar-start ">
         <div className="drawer lg:hidden z-20 w-7 relative ">
