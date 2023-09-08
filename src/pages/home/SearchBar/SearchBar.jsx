@@ -26,9 +26,9 @@ export const SearchBar = ({ setResults }) => {
   };
 
   return (
-    <div className="input-wrapper relative z-10">
+    <div className="input-wrapper border-2 border-red relative z-50">
       <FaSearch className="text-sm " id="search-icon " />
-      <input className="text-sm font-normal"
+      <input className="text-sm font-normal "
         placeholder=" Search in Book Verse"
         value={input}
         onChange={(e) => handleChange(e.target.value)}

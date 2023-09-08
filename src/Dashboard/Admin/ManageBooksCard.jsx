@@ -61,7 +61,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           <button
             // onClick={toggleModal} // modal----------------
             onClick={() => toggleModal(_id)}
-            className="btn btn-sm text-xl hover:bg-accent hover:text-white rounded-sm btn-outline hover:border-accent text-accent"
+            className="btn btn-sm text-xl hover:bg-[#10aade] hover:text-white rounded-sm btn-outline hover:border-[#10aade] text-[#10aade] duration-500"
           >
             <FiEdit></FiEdit>
           </button>
@@ -72,7 +72,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           {title.length > 12 && (
             <span
               onClick={toggleTitle}
-              className="cursor-pointer text-accent font-semibold text-sm underline"
+              className="cursor-pointer text-[#10aade] font-semibold text-sm underline"
             >
               {showFullTitle ? " Show Less" : " Show More"}
             </span>
@@ -85,7 +85,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           {description.length > 50 && (
             <span
               onClick={toggleDescription}
-              className="cursor-pointer text-[#d71d24] text-sm underline font-semibold"
+              className="cursor-pointer text-[#10aade] text-sm underline font-semibold"
             >
               {showFullDescription ? " Show Less" : " Show More"}
             </span>
@@ -95,7 +95,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => handleDelete(_id)}
-            className="btn btn-sm text-2xl hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
+            className="btn btn-sm text-2xl hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24] duration-500"
           >
             <MdDelete></MdDelete>
           </button>

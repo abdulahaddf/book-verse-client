@@ -7,6 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
+
+
+
+
 const ChatIcon = () => {
 
     const [userData,setUserData]=useState()
@@ -46,7 +50,7 @@ const ChatIcon = () => {
   }
  
 
- navigate('/userChat')
+ navigate('/dashboard/userChat')
 
 
  }
@@ -56,6 +60,8 @@ const ChatIcon = () => {
 
     return (
         <div className='fixed z-30 bottom-[30px] right-4'>
+
+           
 
             <div onClick={chatHandler} className='bg-black rounded-full w-16 h-16 flex justify-center items-center'>
                <button>

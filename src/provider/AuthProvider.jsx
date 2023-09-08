@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
   const [showAlert, setShowAlert] = useState(false);
   // Tonmoy alert end
    
-
+  
 
 
   const createUser = (email, password) => {
@@ -131,7 +131,8 @@ const AuthProvider = ({ children }) => {
     addToCartData,
     cartRefetch,
     showAlert,
-    setShowAlert
+    setShowAlert,
+   
   };
 
   return (

@@ -77,7 +77,7 @@ const DailyRevenue = () => {
               yAxisId="left"
               type="monotone"
               dataKey="revenue"
-              stroke="#22b5bf"
+              stroke="#059EB9"
               strokeWidth={2}
               dot={{ fill: "#8884d8", strokeWidth: 2, r: 6 }}
               activeDot={{ fill: "#CD0774", r: 8 }}

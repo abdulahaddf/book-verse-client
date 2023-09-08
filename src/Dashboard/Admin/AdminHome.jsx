@@ -28,6 +28,9 @@ const AdminHome = () => {
     totalRevenueToday: 0,
     totalRevenueCurrentMonth: 0,
     totalRevenue: 0,
+    totalRevenueLastMonth: 0,
+    totalRevenueLastDay: 0,
+    percentageChangeLastMonth: 0,
     weeklyRevenue: {},
   });
 
@@ -53,6 +56,7 @@ const AdminHome = () => {
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
+
   return (
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
       <h1 className="text-4xl font-bold text-center">Revenue Calculation</h1>
@@ -71,7 +75,7 @@ const AdminHome = () => {
               {paymentHistory.length}
             </h3>
             <li className="flex justify-between items-center">
-              <p className="text-green-600">+14%</p>
+              <p className="text-green-600">+04%</p>
               <p>last month</p>
             </li>
           </div>
@@ -88,7 +92,7 @@ const AdminHome = () => {
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+14%</p>
-              <p>last month</p>
+              <p>last day</p>
             </li>
           </div>
 
@@ -121,7 +125,7 @@ const AdminHome = () => {
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+26%</p>
-              <p>last month</p>
+              <p>last year</p>
             </li>
           </div>
         </div>
@@ -167,11 +171,19 @@ const AdminHome = () => {
         {/* weekly revenue chart end */}
       </div>
       {/* ----------------Revenue end-------------- */}
+
       <h1 className="text-4xl font-bold text-center mt-12 mb-3">
         Transactions Information
       </h1>
+
+      <input
+        type="text"
+        placeholder="Find user"
+        className="input input-bordered w-full max-w-xs"
+      />
+
       {/* customer info with table start  */}
-      <div className="flex flex-col md:flex-row justify-between gap-6">
+      <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
             <thead className="bg-slate-100">

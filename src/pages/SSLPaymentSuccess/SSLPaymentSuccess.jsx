@@ -108,7 +108,7 @@ const SSLPaymentSuccess = () => {
                 style={{ boxShadow: '10px 10px 10px black' }} >
                 <h2 className="text-[35px] font-[500] text-white mt-[20px]"> Your payment successfully done </h2>
 
-                <Link className="btn-primary w-[150px] font-[500] text-[20px] mt-[50px] mb-[20px]" to='/'>Back to Home</Link>
+                <Link className="btn-fifth w-[150px] font-[500] text-[20px] mt-[50px] mb-[20px]" to='/'>Back to Home</Link>
             </div>
 
 

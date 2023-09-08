@@ -47,8 +47,8 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="btn-primary">
-                  <Link to={`/All/Category`}>See more</Link>
+                <button className="btn-fifth hover:text-white cursor-pointer">
+                  <Link className="hover:text-white hover:no-underline" to={`/All/Category`}>See more</Link>
                 </button>
               </div>
             </TabPanel>
@@ -59,8 +59,8 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="button-52 text-white font-bold">
-                  <Link to={`/All/Authors`}>See All</Link>
+                <button className="btn-fifth ">
+                  <Link className="hover:text-white hover:no-underline" to={`/All/Authors`}>See All</Link>
                 </button>
               </div>
             </TabPanel>

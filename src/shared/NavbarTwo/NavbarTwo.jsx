@@ -2,6 +2,7 @@
 
 import { Link, NavLink } from "react-router-dom";
 
+import { CgProfile } from "react-icons/cg";
 import { TbBooks, TbDashboard } from "react-icons/tb";
 import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/solid";
 import logo from "../../../public/main-logo.png"
@@ -20,27 +21,9 @@ import { FaBook, FaBookReader, FaHome } from "react-icons/fa";
 
 const Navbar = () => {
 
-  // const [theme, setTheme] = useState(
-  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  // );
-  // useEffect(() => {
-  //   localStorage.setItem("theme", theme);
-  //   const localTheme = localStorage.getItem("theme");
-  //   document.querySelector("html").setAttribute("data-theme", localTheme);
-  // }, [theme]);
-
-  // const handleToggle = (e) => {
-  //   if (e.target.checked) {
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // };
 
 
-
-
-  const { addToCartData, user, logOut  } = useContext(AuthContext);
+  const { addToCartData, user, logOut ,setToggle,toggle } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [results, setResults] = useState([]);
 
@@ -103,17 +86,22 @@ console.log(openDrawer)
       </li>
       </div>
     </li>
+   
       <li className=" text-base font-bold ">
+       
       <NavLink
   className={({ isActive }) => ({
     textDecoration: "none",
+    
     color: isActive ? "red" : "inherit", // Change color accordingly
   })}
   to="/"
 >
-<FaHome></FaHome> Home
+<FaHome></FaHome>Book Verse Home
 </NavLink>
+
       </li>
+      <hr className="mb-2" />
       <li className=" text-base font-bold">
         <NavLink
           className={({ isActive }) =>
@@ -143,8 +131,9 @@ console.log(openDrawer)
         >
           <TbBooks></TbBooks>Old Books
         </NavLink>
+       
       </li>
-     
+      <hr className="m-2"/>
       <li className=" text-base font-bold">
         {user ? (
           isAdmin ? (
@@ -170,11 +159,23 @@ console.log(openDrawer)
           ""
         )}
       </li>
+          <hr className="m-2"/>
+      <li className=" text-base font-bold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? " text-red" : "no-underline"
+          }
+          to="/dashboard/userHome"
+        >
+          <CgProfile></CgProfile>My Profile
+        </NavLink>
+       
+      </li>
     </>
   );
 
   return (
-  <Headroom   style={{
+  <Headroom style={{
     webkitTransition: 'all .5s ease-in-out',
     mozTransition: 'all .5s ease-in-out',
     oTransition: 'all .5s ease-in-out',
@@ -183,7 +184,7 @@ console.log(openDrawer)
      <div>
      <div className="navbar  bg-base-100 w-11/12 mx-auto inset-0 z-20 sticky">
       <div className="navbar-start ">
-        <div className="drawer lg:hidden z-20 w-7 relative">
+        <div className="drawer lg:hidden z-20 w-7 relative ">
           <input id="my-drawer" type="checkbox" className="drawer-toggle " checked={drawerOpen}
             onChange={toggleDrawer}  />
           <div className="drawer-content">
@@ -277,10 +278,7 @@ console.log(openDrawer)
       </div>
       <div className="navbar-end ">
 
-      
-
-
-
+     
 
       {user ? (
   <details className=" dropdown cursor-pointer">
@@ -290,14 +288,14 @@ console.log(openDrawer)
       
       <summary className="flex border rounded-lg px-3 py-1 m-1 justify-center items-center"> <div className="flex items-center">
       
-      <img className="w-[30px] rounded-full mr-3" src={user?.photoURL}  />
-      <span className=' text-base mr-1'> {user?.displayName}</span>
+      <img className="w-[30px] rounded-full mr-3 " src={user?.photoURL}  />
+      <span className=' text-base mr-1  hidden sm:inline md:inline lg:inline'> {user?.displayName}</span>
       <span className="">▼</span>
         </div></summary>
       <ul className="mt-3 z-[1] p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
         <li>
-          <a href="/userHome" className="justify-between hover:no-underline">
-            Profile
+          <a href="/dashboard/userHome" className="justify-between hover:no-underline">
+            My Profile
             <span className=""></span>
           </a>
         </li>
