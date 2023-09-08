@@ -6,7 +6,7 @@ import BestSelling from "../../../shared/components/homeSections/BestSelling";
 import Banner from "../Banner/Banner";
 
 // import SearchBar from "../SearchBar/SearchBar";
-import { useState } from "react";
+// import { useState } from "react";
 import './Home.css'
 // import SearchResultsList from "../SearchBar/SearchResultsList";
 import RecentSelling from "../../../shared/components/homeSections/RecentSelling";
@@ -19,8 +19,10 @@ import SearchResultsList from "../SearchBar/SearchResultsList";
 
 
 
+
 const Home = () => {
-  const [results, setResults] = useState([]);
+  // const [results, setResults] = useState([]);
+  
   return (
     <div>
       {/* All Components of home will be shown here */}

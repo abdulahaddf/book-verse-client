@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const usePaymentHistory = () => {
   const { data: payments = [] , refetch} = useQuery(
-     ['payments'],
+     ['paymentHistory'],
      async () => {
         const res = await fetch(`https://book-verse-server-phi.vercel.app/paymentHistory`)
         return res.json();

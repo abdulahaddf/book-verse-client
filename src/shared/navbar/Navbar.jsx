@@ -169,7 +169,7 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <Link to="/login" className="btn-custom ">
+          <Link to="/login" className="btn-primary">
             Login
           </Link>
         )}
