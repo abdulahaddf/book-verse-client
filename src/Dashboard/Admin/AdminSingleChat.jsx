@@ -162,7 +162,6 @@ const AdminSingleChat = () => {
                 <p className="mr-3 font-bold text-slate-50">{messages?.displayName}</p>
                 <p className="font-mono text-slate-50  text-sm mr-3">{messages?.email}</p>
               </div>
-
             </div>
           </div>
 
