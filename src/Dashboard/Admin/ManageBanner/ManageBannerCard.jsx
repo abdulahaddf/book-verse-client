@@ -40,7 +40,7 @@ console.log(data)
                   bannerURL: imageURL,
                 };
                 console.log(bannerDetails)
-                axios.patch(`http://localhost:5000/banner/${_id}`, bannerDetails)
+                axios.patch(`https://book-verse-server-phi.vercel.app/banner/${_id}`, bannerDetails)
                   .then((res) => {
                     console.log(res.data)
                     if (res.data.modifiedCount>0) {
@@ -77,7 +77,7 @@ console.log(data)
     }).
       then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/banner/${_id}`, {
+          fetch(`https://book-verse-server-phi.vercel.app/banner/${_id}`, {
           method: "DELETE"
           })
           .then((res) => res.json())

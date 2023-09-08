@@ -3,9 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
-import banner1 from "../../../assets/image/banners-01.jpg";
-import banner2 from "../../../assets/image/banners-02.jpg";
-import banner3 from "../../../assets/image/banners-03.jpg";
 import LazyLoad from "react-lazy-load";
 
 import Loader from "../../../shared/components/loader/Loader";
