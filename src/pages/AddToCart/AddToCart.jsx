@@ -8,6 +8,9 @@ import { useDispatch } from "react-redux";
 import { setCartData } from "../payment/redux/CartSlice";
 
 const AddToCart = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { addToCartData, cartRefetch } = useContext(AuthContext);
   const { getValue, setValue } = useLocalStorage();
   // console.log(addToCartData);
@@ -268,7 +271,7 @@ const AddToCart = () => {
               to="/payment"
               // state={{ price: finalAmount , books : addToCartData  }}
               onClick={sendDataToPayment}
-              className=" btn-fifth w-full md:w-[150px] lg:w-[250px]  mx-auto">
+              className=" btn-fifth w-full md:w-[150px] lg:w-[250px]  mx-auto hover:text-white hover:no-underline">
               Proceed to Checkout
             </Link>
                 </div>

@@ -62,7 +62,7 @@ const ProductCard = ({ data, loading }) => {
             <button className="btn btn-sm border-none w-full  bg-gradient-to-r from-[#10aade] via-[#126e9d]  to-[#10aade] text-sm normal-case font-light font-mono text-white">
               {/* issue to redirect link privious_id/_id  */}
 
-              <Link to={`/details/${previous_id ? previous_id : _id}`}>
+              <Link className="hover:text-white hover:no-underline hover:scale-125 duration-300" to={`/details/${previous_id ? previous_id : _id}`}>
                 Details
               </Link>
             </button>

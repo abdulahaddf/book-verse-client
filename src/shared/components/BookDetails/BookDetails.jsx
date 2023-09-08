@@ -133,7 +133,7 @@ const BookDetails = () => {
            <div className="bg-slate-300 box">
              <img
               src={cover_image}
-              className="max-h-96   shadow-2xl imgBox"
+              className="max-h-96 min-h-[383px] min-w-[244px]  shadow-2xl imgBox"
             />
            </div>
             <div className="ms-3 space-y-3">

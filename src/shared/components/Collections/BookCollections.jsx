@@ -4,6 +4,9 @@ import CategoryCard from "../CategoryCard";
 import { useEffect } from "react";
 
 const BookCollections = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { books } = UseBooks();
   console.log(books);
   useEffect(() => {
