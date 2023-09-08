@@ -79,7 +79,7 @@ console.log(openDrawer)
           <span className="mt-[5px]">
             <BsCart3 />
           </span>
-          <span className="indicator-item badge bg-[#fc494f] text-white mt-[5px]">
+          <span className="indicator-item badge bg-red text-white mt-[5px]">
             {addToCartData ? addToCartData.length : 0}
           </span>
         </NavLink>
@@ -411,7 +411,7 @@ console.log(openDrawer)
          <span className=" ml-[15px] text-3xl ">
             <BsCart3 />
           </span>
-          <span className="indicator-item badge  bg-[#fc494f] text-white mt-[5px]">
+          <span className="indicator-item badge  bg-red text-white mt-[5px]">
             {addToCartData ? addToCartData.length : 0}
           </span>
          </div>
