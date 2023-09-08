@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import UseBooks from "../../../hooks/UseBooks";
 import AuthorCard from "./AuthorCard";
 
 const AuthorsCollection = () => {
   const { books } = UseBooks();
   console.log(books);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
   return (
     <div className="p-2">
       <div className="mx-5 md:mx-16  p-6 bg-[#F1EDFF] rounded-md">
