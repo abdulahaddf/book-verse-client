@@ -289,7 +289,10 @@ console.log(openDrawer)
       <summary className="flex border rounded-lg px-3 py-1 m-1 justify-center items-center"> <div className="flex items-center">
       
       <img className="w-[30px] rounded-full mr-3 " src={user?.photoURL}  />
-      <span className='whitespace-nowrap text-base mr-1 truncate hidden sm:inline md:inline lg:inline'> {user?.displayName}</span>
+      {/* <span className='whitespace-nowrap text-base mr-1 truncate hidden sm:inline md:inline lg:inline'> {user?.displayName}</span> */}
+      <span className='whitespace-nowrap text-base mr-1 truncate hidden sm:inline md:inline lg:inline'>
+  {user?.displayName ? user.displayName.split(' ')[0] : ''}
+</span>
       <span className="">▼</span>
         </div></summary>
       <ul className="mt-3 z-[1] p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
