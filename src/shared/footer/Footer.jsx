@@ -36,7 +36,7 @@ const Footer = () => {
           console.log(result.text);
           if(result.text === 'OK'){
             Swal.fire({
-              position: 'top-end',
+              position: 'center',
               icon: 'success',
               title: 'Your Email has been Sent',
               showConfirmButton: false,
