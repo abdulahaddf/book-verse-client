@@ -290,7 +290,7 @@ console.log(openDrawer)
       
       <img className="w-[30px] rounded-full mr-3 " src={user?.photoURL}  />
       {/* <span className='whitespace-nowrap text-base mr-1 truncate hidden sm:inline md:inline lg:inline'> {user?.displayName}</span> */}
-      <span className='whitespace-nowrap text-base mr-1 truncate hidden sm:inline md:inline lg:inline'>
+      <span className='whitespace-nowrap text-base mr-1 hidden sm:inline md:inline lg:inline'>
   {user?.displayName ? user.displayName.split(' ')[0] : ''}
 </span>
       <span className="">▼</span>
