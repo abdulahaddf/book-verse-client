@@ -15,6 +15,7 @@ import { CiDiscount1 } from "react-icons/ci";
 import { AiFillWechat } from "react-icons/ai";
 import Loader from "../shared/components/loader/Loader";
 import UseSingleUser from "../hooks/useSingleUser";
+import { CiSignpostDuo1 } from "react-icons/ci";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   // console.log(user)
@@ -127,6 +128,11 @@ const Dashboard = () => {
                    <CiDiscount1 className="font-semibold"/> Add Promo Codes
                   </NavLink>
                   </li>
+                  <li>
+                  <NavLink to="/dashboard/manageBanner">
+                   <CiSignpostDuo1 className="font-semibold"/> Manage banner
+                  </NavLink>
+                </li>
                 </>
               )}
 
