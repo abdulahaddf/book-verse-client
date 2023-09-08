@@ -119,12 +119,12 @@ console.log(singleUser?.role)
           </div>
           
         </div>
-        <div className="w-11/12 mx-auto md:flex justify-center gap-10">
+        {/* <div className="w-11/12 mx-auto md:flex justify-center gap-10">
         <button className="btn-primary md:mt-10" onClick={handleAddToCart}>
                 Add to Cart
               </button>
              
-        </div>
+        </div> */}
       </div>
 
       <div className="  flex justify-around mt-6 mx-auto w-4/5 gap-20">

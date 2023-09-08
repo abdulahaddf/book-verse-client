@@ -80,7 +80,7 @@ const AddToCart = () => {
     });
 
     setValue("cartItems", updatedCart);
-    // cartRefetch();
+    cartRefetch();
   };
 
   let totalPrice = 0;
