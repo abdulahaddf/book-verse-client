@@ -6,7 +6,7 @@ import { TbBooks, TbDashboard } from "react-icons/tb";
 import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/solid";
 import logo from "../../../public/main-logo.png"
 import { BsCart3 } from "react-icons/bs";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
 import SearchBar from "../../pages/home/SearchBar/SearchBar";
@@ -19,10 +19,6 @@ import { FaBook, FaBookReader, FaHome } from "react-icons/fa";
 
 
 const Navbar = () => {
-
- 
-
-  // const { theme, toggleTheme } = useTheme();
 
   // const [theme, setTheme] = useState(
   //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -42,7 +38,9 @@ const Navbar = () => {
   // };
 
 
-  const { addToCartData, user, logOut } = useContext(AuthContext);
+
+
+  const { addToCartData, user, logOut  } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [results, setResults] = useState([]);
 
@@ -243,9 +241,6 @@ console.log(openDrawer)
  </Link>
  </div>
 
- 
-
-
 </div>
 
 
@@ -281,6 +276,10 @@ console.log(openDrawer)
         </ul>
       </div>
       <div className="navbar-end ">
+
+      
+
+
 
 
       {user ? (
