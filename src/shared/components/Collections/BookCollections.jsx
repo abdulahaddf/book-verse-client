@@ -9,6 +9,9 @@ const BookCollections = () => {
   }, []);
   const { books } = UseBooks();
   console.log(books);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
   return (
     <div className="py-5">
       <div className="mx-5 md:mx-16  p-6 bg-[#F1EDFF] rounded-md">
@@ -19,7 +22,7 @@ const BookCollections = () => {
           <style>
             {`
             .react-tabs__tab--selected{
-              background-color: #d71d24;  
+              background-color: #048ED6;  
               opacity: 90%;
               color: #fff; 
               border-radius: 10px;
