@@ -15,7 +15,7 @@ const CategoryNav = () => {
  
  <div className="flex-none mx-auto">
    <ul className="menu menu-horizontal ">
-     
+  
      <li>
      <details className="dropdown ">
  <summary className="font-semibold text-base ">Category</summary>
@@ -33,6 +33,7 @@ const CategoryNav = () => {
  </ul>
 </details>
      </li>
+     <li className='font-semibold text-base ml-4'><a className="hover:no-underline" href='/all-books'>All Books</a></li>
      <li className='font-semibold text-base ml-4'><a className="hover:no-underline" href='/old-books'>Old Books</a></li>
    </ul>
  </div>
