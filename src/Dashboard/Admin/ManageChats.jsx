@@ -66,21 +66,24 @@ const ManageChats = () => {
           
           className="my-10 p-[5px] py-[15px]  space-y-3    overflow-hidden 
          
-               hover:rounded-[0px]  border-b-[2px]  border-r-[2px] hover:bg-gray-200
+               hover:rounded-[0px] hover:no-underline  border-b-[2px]  border-r-[2px] hover:bg-gray-200
           flex   "
         >
 
           <section className=" w-[15%] mt-2 pl-2 "
           >
+            <span className="indicator">
+            <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 "></span>
             <img src={a?.photoURL} className=" rounded-[100%] h-[60px] w-[60px]" alt="" />
+            </span>
           </section>
 
           <section className="w-[60%] md:w-[70%] lg:w-[70%]  pl-[15px] md:pl-0 lg:p-0 space-y-1">
-            <p className="text-[17px]  font-400   font-[500]  text-gray-600"> {a?.displayName?.slice(0, 30)}</p>
+            <p className="text-lg  font-400   font-[500]  text-gray-800"> {a?.displayName?.slice(0, 30)}</p>
 
             {a?.role === 'Admin' ? (
               a?.chat && a?.chat.length > 0 ? (
-                <p className="text-25px font-500  text-[500] font-[500]">
+                <p className="text-xs font-500  font-[500]">
                   Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
                 </p>
               ) : (
