@@ -21,28 +21,10 @@ const ManageBanner = () => {
   } = useForm();
   
   const { data: banners = [],isLoading, refetch, } = useQuery(["banners"], async () => {
-    const res = await fetch("http://localhost:5000/banners");
+    const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
     return res.json();
   });
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/banners')
-    //         .then(res => {
-    //             if (!res.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return res.json();
-    //         })
-    //         .then(data => {
-    //             setBanners(data);
-    //             setLoading(false);
-    //         })
-    //         .catch(error => {
-    //             setError(error);
-    //             setLoading(false);
-    //         });
-        
-    // }, []);
 
     const AddNewBanner = (data) => {
       if (data!=="null") {
@@ -69,7 +51,7 @@ const ManageBanner = () => {
             };
             axios
               .post(
-              "http://localhost:5000/banners",bannerDetails
+              "https://book-verse-server-phi.vercel.app/banners",bannerDetails
               )
               .then((res) => {
                 console.log(res.data)
