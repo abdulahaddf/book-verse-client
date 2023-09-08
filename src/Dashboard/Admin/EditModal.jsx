@@ -134,10 +134,12 @@ const EditModal = ({ isOpen, book, onClose }) => {
           text: "Book updated successfully",
           icon: "success",
           confirmButtonText: "Ok",
-        }).then(() => {
+        })
+          .then(() => {
           onClose(); // Close the modal
         });
-      } else {
+      }
+      else {
         throw new Error("Book update failed");
       }
     } catch (error) {
@@ -147,16 +149,16 @@ const EditModal = ({ isOpen, book, onClose }) => {
   // tonmoy end
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full ">
       <dialog
         id="my_modal_5"
         open={isOpen}
         onClose={onClose}
-        className="modal modal-middle lg:ml-[120px] mt-6"
+        className="modal modal-middle lg:ml-[120px] mt-6 "
       >
         <form
           method="dialog"
-          className="modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10"
+          className="modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="modal-action -mt-6">
@@ -164,7 +166,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="text-[#d71d24] text-4xl"
+              className="text-[#d71d24] text-3xl hover:bg-[#d71d24] hover:text-white p-2 rounded-full duration-500"
             >
               {/* <ImCross></ImCross> */}
               <RxCross2></RxCross2>

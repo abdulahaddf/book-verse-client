@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import AuthorCard from "./AuthorDetails/AuthorCard";
 import OfferBanner from "./Offer&Rewards/OfferBanner";
 const Category = () => {
-  const { books } = UseBooks();
+  const { books , loading } = UseBooks();
   console.log(books);
   const newArival = [...books];
   return (
@@ -16,7 +16,7 @@ const Category = () => {
       <style>
         {`
             .react-tabs__tab--selected{
-              background-color: #d71d24;  
+              background-color: #048ED6;  
               opacity: 90%;
               color: #fff; 
               border-radius: 10px;
@@ -35,9 +35,9 @@ const Category = () => {
               <Tab>All Books</Tab>
               <Tab>Author's choice</Tab>
               <Tab>Offers and Rewards</Tab>
-              <Tab>Book Fair</Tab>
+              {/* <Tab>Book Fair</Tab> */}
               <Tab>New Arrival Books</Tab>
-              <Tab>E-books</Tab>
+              {/* <Tab>E-books</Tab> */}
             </TabList>
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
@@ -47,8 +47,8 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="button-52 text-white font-bold">
-                  <Link to={`/All/Category`}>See more</Link>
+                <button className="btn-fifth hover:text-white cursor-pointer">
+                  <Link className="hover:text-white hover:no-underline" to={`/All/Category`}>See more</Link>
                 </button>
               </div>
             </TabPanel>
@@ -59,8 +59,8 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="button-52 text-white font-bold">
-                  <Link to={`/All/Authors`}>See All</Link>
+                <button className="btn-fifth">
+                  <Link className="hover:text-white hover:no-underline" to={`/All/Authors`}>See All</Link>
                 </button>
               </div>
             </TabPanel>
@@ -69,7 +69,7 @@ const Category = () => {
                 <OfferBanner />
               </div>
             </TabPanel>
-            <TabPanel />
+            {/* <TabPanel /> */}
             <TabPanel>
               <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {newArival
@@ -78,7 +78,7 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
             </TabPanel>
-            <TabPanel />
+            {/* <TabPanel /> */}
           </Tabs>
         </div>
       </div>

@@ -12,11 +12,13 @@ import moment from "moment/moment";
 
 
 
+
 // 
 
 
 
 const BookCard = ({book,text}) => {
+  
 
   const {cartRefetch}=useContext(AuthContext);
   
@@ -62,7 +64,7 @@ const BookCard = ({book,text}) => {
   };
 
   // console.log(book);
-  const {_id,title, author, cover_image, offer_price, rating ,count,previous_id,purchase_date } = book;
+  const {_id,title, author, cover_image, real_price, rating ,count,previous_id,purchase_date } = book;
   return (
     <div className=" mx-auto    ">
       {/* card 1 start */}
@@ -86,7 +88,7 @@ const BookCard = ({book,text}) => {
                 Author:{author}
               </p>
 
-              <p className="text-[18px] text-white">Price: ${offer_price}</p>
+              <p className="text-[18px] text-white">Price: ${real_price}</p>
 
               {text==='bestSelling' &&  <p className="text-[18px] text-white">Sold: {count}</p>}
               {text==='recentSelling' &&  <p className="text-[18px] text-white">Sold: {moment(purchase_date).format('MMMM Do YYYY, h:mm:ss a')}</p>}
@@ -126,10 +128,10 @@ const BookCard = ({book,text}) => {
                 
 
               { !text  &&   <section className=" my-5">
-                  <button onClick={handleAddToCart} className="btn-card w-full ">Add to Cart</button>
+                  <button  onClick={handleAddToCart} className="btn-card w-full hover:text-white hover:no-underline">Add to Cart</button>
                 </section>}
-                <section className=" my-5">
-                  <Link to={`/details/${previous_id ||_id}`}><button className="btn-card w-full ">View Details</button></Link>
+                <section className=" my-5 hover:no-underline">
+                  <Link to={`/details/${previous_id ||_id}`}><button className="btn-card w-full hover:text-white hover:no-underline">View Details</button></Link>
                 </section>
                 
               </div>

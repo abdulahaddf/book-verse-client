@@ -31,8 +31,8 @@ const CategoryCard = ({data}) => {
             <p className="text-cyan-50 text-lg">{title}</p>
             <p className="text-teal-50 py-5 text-sm">{author}</p>
 
-            <button className="btn border-none  hover:bg-rose-700  bg-[#d71d24] normal-case w-full text-white">
-              <Link to={`/details/${_id}`}>Details</Link>
+            <button className="btn border-none  hover:bg-[#048cd6e6]  bg-[#048ED6] normal-case w-full text-white hover:text-white">
+              <Link className="hover:text-white hover:no-underline hover:scale-125 duration-300" to={`/details/${_id}`}>Details</Link>
             </button>
           </div>
         </div>

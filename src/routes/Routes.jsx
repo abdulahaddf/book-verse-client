@@ -20,7 +20,6 @@ import SSLPaymentSuccess from "../pages/SSLPaymentSuccess/SSLPaymentSuccess";
 import StripePayment from "../pages/payment/StripePayment";
 import UserHome from "../Dashboard/User/UserHome/UserHome";
 import AllBestSelling from "../shared/components/homeSections/AllBestSelling";
-
 import AllRecentSelling from "../shared/components/homeSections/allRecentSelling";
 import AuthorDetails from "../shared/components/AuthorDetails/AuthorDetails";
 import SellBook from "../Dashboard/User/SellBook";
@@ -29,13 +28,20 @@ import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
 import Error from "../pages/Error/Error";
+import ManageBanner from "../Dashboard/Admin/ManageBanner/ManageBanner";
 import ManageChats from "../Dashboard/Admin/ManageChats";
 import AdminSingleChat from "../Dashboard/Admin/AdminSingleChat";
 import UserChat from "../pages/UserChat/UserChat";
 import Overview from "../Dashboard/Admin/Overview";
 import DailyRevenue from "../Dashboard/Admin/DailyRevenue";
 import MonthlyRevenue from "../Dashboard/Admin/MonthlyRevenue";
-import Geography from "../Dashboard/Admin/Geography";
+import TermsCondition from "../shared/components/Terms&Conditions/TermsCondition";
+import AddPromo from "../Dashboard/Admin/AddPromo";
+import ManageOrder from "../Dashboard/Admin/ManageOrder";
+import ContactWithSeller from "../pages/AllOldBooks/ContactWithSeller";
+import UserChats from "../Dashboard/User/UserChats";
+import UserToUserChat from "../Dashboard/User/UserToUserChat";
+
 
 export const router = createBrowserRouter([
   {
@@ -139,12 +145,18 @@ export const router = createBrowserRouter([
           <UserChat />
         </PrivateRoute>
       },
+      {
+        path:'/terms&conditions',
+        element:<TermsCondition/>,
+      }
     ],
   },
 
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     children: [
       {
         path: "addBook",
@@ -163,8 +175,13 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
+        path: "manageBanner",
+        element:<ManageBanner></ManageBanner>
+
+      },
+      {
         path: "manageChats",
-        element: <ManageChats />,
+        element: <ManageChats />
       },
       {
         path: 'manageChats/singleChat/:id',
@@ -172,6 +189,40 @@ export const router = createBrowserRouter([
           <AdminSingleChat />
 
         </PrivateRoute>
+      },
+      {
+        path: "userChat",
+        element: <PrivateRoute>
+          <UserChat />
+        </PrivateRoute>
+      },
+      {
+        path: "userChats",
+        element: <PrivateRoute>
+          <UserChats />
+
+        </PrivateRoute>
+
+
+
+
+      },
+      {
+        path: 'userChats/userToUserChat/:id',
+        element: <PrivateRoute>
+          <UserToUserChat />
+
+        </PrivateRoute>
+      },
+      {
+        path: "ContactWithSeller/:id",
+        element: <PrivateRoute>
+          <ContactWithSeller />
+        </PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(
+            `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
+          ),
       },
       {
         path: "overview",
@@ -185,11 +236,6 @@ export const router = createBrowserRouter([
         path: "monthly",
         element: <MonthlyRevenue></MonthlyRevenue>,
       },
-      {
-        path: "geography",
-        element: <Geography></Geography>,
-      },
-
       {
         path: "purchasedBooks",
         element: (
@@ -217,11 +263,23 @@ export const router = createBrowserRouter([
       {
         path: "my-books",
         element: (
-           <PrivateRoute>
+          <PrivateRoute>
             <MyBooks />
           </PrivateRoute>
         ),
       },
+      {
+        path: "promo",
+        element: (
+           <PrivateRoute>
+            <AddPromo/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path:'OrderStatus',
+        element:<ManageOrder/>
+      }
     ],
   },
   {

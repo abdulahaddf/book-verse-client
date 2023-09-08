@@ -20,8 +20,8 @@ const OldBookCard = ({book}) => {
             <p className="text-teal-50 py-5 text-sm">Author: {author}</p>
             <p className="text-teal-50 py-5 text-sm">Posted on : {new Date(postDate).toISOString().split("T")[0]}</p>
 
-            <button className="btn border-none  hover:bg-rose-700  bg-[#d71d24] normal-case w-full text-white">
-              <Link to={`/old-books-details/${_id}`}>Details</Link>
+            <button className="btn-primary normal-case w-full">
+              <Link className='hover:text-white hover:no-underline' to={`/old-books-details/${_id}`}>Details</Link>
             </button>
           </div>
         </div>
