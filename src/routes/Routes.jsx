@@ -28,6 +28,7 @@ import MyBooks from "../Dashboard/User/MyBooks";
 import OldBookDetails from "../pages/AllOldBooks/OldBookDetails";
 import Team from "../shared/components/team/Team";
 import Error from "../pages/Error/Error";
+import ManageBanner from "../Dashboard/Admin/ManageBanner/ManageBanner";
 import ManageChats from "../Dashboard/Admin/ManageChats";
 import AdminSingleChat from "../Dashboard/Admin/AdminSingleChat";
 import UserChat from "../pages/UserChat/UserChat";
@@ -174,8 +175,13 @@ export const router = createBrowserRouter([
         element: <ManageBooks></ManageBooks>,
       },
       {
+        path: "manageBanner",
+        element:<ManageBanner></ManageBanner>
+
+      },
+      {
         path: "manageChats",
-        element: <ManageChats />,
+        element: <ManageChats />
       },
       {
         path: 'manageChats/singleChat/:id',
