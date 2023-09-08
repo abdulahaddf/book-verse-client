@@ -11,14 +11,14 @@ const CategoryNav = () => {
   
     return (
     
-         <div className="navbar bg-blue-300 text-white h-[15px] relative w-11/12 mx-auto">
+         <div className="navbar   h-[15px] relative w-11/12 mx-auto">
  
  <div className="flex-none mx-auto">
    <ul className="menu menu-horizontal ">
      
      <li>
-     <details className="dropdown">
- <summary className="font-semibold text-base">Category</summary>
+     <details className="dropdown ">
+ <summary className="font-semibold text-base ">Category</summary>
  <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-64">
    <li><a className="hover:no-underline" href='/all-books'>All Books</a></li>
    <li><a className="hover:no-underline" href='/allBestSelling'>Best Selling Books</a></li>
