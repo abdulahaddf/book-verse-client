@@ -13,11 +13,13 @@ import CategoryNav from "../shared/CategoryNav/CategoryNav";
 import PrivateRoute from '../routes/PrivateRoute'
 
 
+
 const Main = () => {
+    
     // const { showAlert, setShowAlert, user } = useContext(AuthContext);
     // const [messages, userRefetch] = useUserMessage(user?.email);
     return (
-        <div>
+        <div >
             <NavbarTwo></NavbarTwo>
             <CategoryNav></CategoryNav>
             {/* <Navbar></Navbar> */}
