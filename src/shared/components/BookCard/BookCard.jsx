@@ -128,10 +128,10 @@ const BookCard = ({book,text}) => {
                 
 
               { !text  &&   <section className=" my-5">
-                  <button onClick={handleAddToCart} className="btn-card w-full ">Add to Cart</button>
+                  <button  onClick={handleAddToCart} className="btn-card w-full hover:text-white hover:no-underline">Add to Cart</button>
                 </section>}
-                <section className=" my-5">
-                  <Link to={`/details/${previous_id ||_id}`}><button className="btn-card w-full ">View Details</button></Link>
+                <section className=" my-5 hover:no-underline">
+                  <Link to={`/details/${previous_id ||_id}`}><button className="btn-card w-full hover:text-white hover:no-underline">View Details</button></Link>
                 </section>
                 
               </div>

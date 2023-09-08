@@ -60,7 +60,7 @@ const Category = () => {
               </div>
               <div className="flex justify-center py-3">
                 <button className="btn-fifth">
-                  <Link to={`/All/Authors`}>See All</Link>
+                  <Link className="hover:text-white hover:no-underline" to={`/All/Authors`}>See All</Link>
                 </button>
               </div>
             </TabPanel>
