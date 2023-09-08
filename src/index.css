@@ -21,7 +21,7 @@
     width: 140px;
     height: 42px;
     background: linear-gradient(to bottom, #126e9d, #10aade);
-    border: 2px solid #126e9d;
+    /* border: 1px solid #126e9d; */
     color: azure;
     padding: 10px 18px;
     margin: 6px 4px;
@@ -142,7 +142,7 @@
     justify-content: center;
     font: 18px;
     /* outline: none */
-    z-index: 1;
+    z-index: 0;
   }
   .btn-fifth:hover {
     color: white;

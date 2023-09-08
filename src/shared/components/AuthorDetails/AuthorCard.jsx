@@ -8,7 +8,7 @@ const AuthorCard = ({ card }) => {
       <div className="absolute top-48 w-full px-3 left-0">
         <div className="translate-y-8 transform opacity-0 transition-all w-full group-hover:translate-y-0 group-hover:opacity-100">
           <button className="btn btn-sm border-none bg-[#048ED6] opacity-90  hover:bg-[#048cd6da]   normal-case w-full text-white">
-            <Link to={`/Author/${author}`}>Details</Link>
+            <Link className="hover:text-white hover:no-underline hover:scale-125 duration-300" to={`/Author/${author}`}>Details</Link>
           </button>
         </div>
       </div>

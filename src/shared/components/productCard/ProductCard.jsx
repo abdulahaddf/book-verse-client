@@ -14,7 +14,7 @@ const ProductCard = ({ data, loading }) => {
   const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(0);
 
   return (
-    <div className="w-48 p-2  hover:shadow-slate-300 hover:shadow-sm overflow-hidden">
+    <Link to={`/details/${previous_id ? previous_id : _id}`} className="w-48 p-2  hover:shadow-slate-300 hover:shadow-sm overflow-hidden">
       <div href="#" className="group relative block w-full">
         <div className="mx-auto w-44 relative">
           {loading ? (
@@ -59,7 +59,7 @@ const ProductCard = ({ data, loading }) => {
         </div>
         <div className="absolute top-52 w-full ">
           <div className="-translate-y-8 transform opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-            <button className="btn btn-sm border-none w-full  bg-gradient-to-r from-[#10aade] via-[#126e9d]  to-[#10aade] text-sm normal-case font-light font-mono text-white">
+            <button className="btn btn-sm border-none w-full  bg-gradient-to-r from-[#10aade] via-[#126e9d]  to-[#10aade] text-sm normal-case font-light font-mono text-white ">
               {/* issue to redirect link privious_id/_id  */}
 
               <Link className="hover:text-white hover:no-underline hover:scale-125 duration-300" to={`/details/${previous_id ? previous_id : _id}`}>
@@ -69,7 +69,7 @@ const ProductCard = ({ data, loading }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

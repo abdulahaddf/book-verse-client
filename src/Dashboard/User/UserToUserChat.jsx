@@ -84,7 +84,7 @@ const UserToUserChat = () => {
   }, [messages]);
 
   return (
-    <div className="w-full">
+    <div className="md:w-2/4 my-10 ">
       <div className="flex-1 sm:p-6 lg:px-32 justify-between flex flex-col h-[500px]  md:h-[600px] lg:h-[750px] w-full">
         <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200 bg-blue-300 sm:ps-5 rounded-t-2xl">
           <div className="relative flex items-center space-x-4">
@@ -94,7 +94,7 @@ const UserToUserChat = () => {
                 className="w-[100px] h-[100px] rounded-[100%]"
               />
             </div>
-            <div className="flex flex-col leading-tight">
+            <div className="flex flex-col leading-tight ">
               <p className="mr-3 font-bold text-2xl text-slate-50">
                 {otherUserData?.displayName}
               </p>
@@ -104,7 +104,7 @@ const UserToUserChat = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-[#CBD5E1] justify-between h-full">
           <div
             ref={chatContainerRef}
             id="messages"
@@ -171,7 +171,7 @@ const UserToUserChat = () => {
               />
               {/* <div className="absolute right-0 items-center inset-y-0 hidden sm:flex"> */}
 
-              <button className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
+              <button className="inline-flex items-center justify-center rounded-lg px-4 py-2 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
                 <span className="font-bold">Send</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
