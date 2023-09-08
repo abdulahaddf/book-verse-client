@@ -150,8 +150,8 @@ const AdminSingleChat = () => {
 
 
     <div className='w-full'>
-      <div className="flex-1 sm:p-6 justify-between flex flex-col h-[700px]  md:h-[750px] lg:h-[750px] w-full">
-        <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
+      <div className="flex-1 sm:p-6 lg:px-32 justify-between flex flex-col h-[500px]  md:h-[600px] lg:h-[750px] w-full">
+        <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200 bg-blue-300 sm:ps-5 rounded-t-2xl">
           <div className="relative flex items-center space-x-4">
             <div className="relative">
 
@@ -159,8 +159,8 @@ const AdminSingleChat = () => {
             </div>
             <div className="flex flex-col leading-tight">
               <div className="text-2xl mt-1  items-center">
-                <p className="text-gray-700 mr-3">{messages?.displayName}</p>
-                <p className="text-gray-700 text-sm mr-3">{messages?.email}</p>
+                <p className="mr-3 font-bold text-slate-50">{messages?.displayName}</p>
+                <p className="font-mono text-slate-50  text-sm mr-3">{messages?.email}</p>
               </div>
 
             </div>
@@ -169,7 +169,7 @@ const AdminSingleChat = () => {
         </div>
 
         <div className='flex flex-col'>
-        <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-[500px]">
+        <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-[400px] sm:max-h-[500px]">
           {messages?.chat?.map((message, index) => (
             <div key={index}>
 
@@ -178,7 +178,7 @@ const AdminSingleChat = () => {
                   <div className="flex items-end">
                     <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                       <div>
-                        <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600
+                        <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-400 text-white
                            tooltip  tooltip-right" data-tip={moment(message?.time).format('MMMM Do YYYY, h:mm:ss a')}>
                           {message?.text}
                         </span>
