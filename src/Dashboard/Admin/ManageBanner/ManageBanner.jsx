@@ -176,7 +176,7 @@ const ManageBanner = () => {
    
 
 
-      <div className="mt-10 w-4/5 mx-auto grid grid-cols-2 gap-6">
+      <div className="mt-10 w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         {banners?.map((banner) => (
           <ManageBannerCard key={banner._id} banner={banner} refetch={refetch}></ManageBannerCard>
         ))}

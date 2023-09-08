@@ -11,7 +11,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 import { MdSell } from "react-icons/md";
-import { CiDiscount1 } from "react-icons/ci";
+import { CiDiscount1, CiSignpostDuo1 } from "react-icons/ci";
 import { AiFillWechat } from "react-icons/ai";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -118,6 +118,11 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/promo">
                    <CiDiscount1 className="font-semibold"/> Add Promo Codes
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageBanner">
+                   <CiSignpostDuo1 className="font-semibold"/> Manage banner
                   </NavLink>
                 </li>
               </>
