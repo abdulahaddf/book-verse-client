@@ -14,11 +14,13 @@ import PrivateRouteWithOutLoading from "../routes/PrivateRouteWithOutLoading";
 
 
 
+
 const Main = () => {
+    
     // const { showAlert, setShowAlert, user } = useContext(AuthContext);
     // const [messages, userRefetch] = useUserMessage(user?.email);
     return (
-        <div>
+        <div >
             <NavbarTwo></NavbarTwo>
             <CategoryNav></CategoryNav>
             {/* <Navbar></Navbar> */}

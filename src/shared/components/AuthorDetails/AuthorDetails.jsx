@@ -4,8 +4,12 @@ import CategoryCard from "../CategoryCard";
 import { FcApproval } from "react-icons/fc";
 import { BsBookFill } from "react-icons/bs";
 import AuthorCard from "./AuthorCard";
+import { useEffect } from "react";
 
 const AuthorDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
   const Author = useParams();
   //   console.log(Author?.name);
   const { books } = UseBooks();
@@ -46,7 +50,7 @@ const AuthorDetails = () => {
       {/* YOU MAY ALSO LIKE…  */}
       <div className="bg-gradient-to-r from-teal-50 via-base-100 to-base-100 bg-opacity-90 shadow-xl my-10 md:p-10 rounded-xl">
         <h2 className="text-xl my-5 p-2 font-serif font-medium">You May Also Like…</h2>
-        <div className="grid justify-items-center gap-3 grid-cols-1 md:grid-cols-3">
+        <div className="grid justify-items-center  gap-3 grid-cols-1 md:grid-cols-3">
           {authorRelated?.map(author=><AuthorCard card={author} key={author?._id} />)}
         </div>
       </div>

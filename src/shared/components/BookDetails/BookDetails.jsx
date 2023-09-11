@@ -170,13 +170,13 @@ const BookDetails = () => {
     <div className="w-11/12 mx-auto">
       <div className="lg:flex justify-center gap-8 my-10">
         <div className=" md:w-4/6 shadow-md p-5">
-          <div className="md:flex justify-center gap-10  ">
-            <div className="bg-slate-300 box">
-              <img
-                src={cover_image}
-                className="max-h-96   shadow-2xl imgBox"
-              />
-            </div>
+          <div className="md:flex justify-center gap-10 items-start ">
+           <div className="bg-slate-300 box">
+             <img
+              src={cover_image}
+              className="max-h-96 min-h-[383px] min-w-[244px]  shadow-2xl imgBox"
+            />
+           </div>
             <div className="ms-3 space-y-3">
               <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
               <h2>
@@ -255,7 +255,7 @@ const BookDetails = () => {
                       extend your rental period for a small fee. <br />
                       3. What You Pay: You'll pay the rental fee we agreed upon
                       when you booked the book. If you bring it back late, there
-                      might be extra charges. <br />
+                      might be extra charges.  <br />
                     </p>
                     <a
                       onClick={() => {
@@ -376,7 +376,7 @@ const BookDetails = () => {
           {review?.length > 0 ? (
             <div className=" grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 mx-auto max-w-screen-xl px-4  sm:px-6 py-2 md:py-10 lg:px-8">
               {" "}
-              {review.map((r) => (
+              {review?.map((r) => (
                 <div key={r.postDate}>
                   <div className="rounded-lg bg-gray-100 p-8">
                     <div className="flex  gap-4">
