@@ -22,6 +22,7 @@ const message =screen.queryByText('ContactWithSeller')
 expect(message).toBeDefined()
 });
 
+
 it('SearchBar',()=>{
 render(<SearchBar/>)
 const message =screen.queryByText('SearchBar')
@@ -35,6 +36,7 @@ const message =screen.queryByText('Banner')
 
 expect(message).toBeDefined()
 });
+
 it('UserChat',()=>{
 render(<UserChat/>)
 const message =screen.queryByText('UserChat')

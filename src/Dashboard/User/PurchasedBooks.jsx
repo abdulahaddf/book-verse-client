@@ -64,18 +64,49 @@ const PurchasedBooks = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.message === "Review added successfully") {
-          reset();
-          if (openModalIndex) {
-            openModalIndex.close();
-          }
+        
+          // tonmoy start
+          fetch("https://book-verse-server-phi.vercel.app/recentCellingAndBestCellingReview", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(review),
+          })
+          .then(res=>res.json())
+          .then(res=>{
 
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Review added successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+            if(res){
+
+                
+              reset();
+              if (openModalIndex) {
+                openModalIndex.close();
+              }
+
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Review added successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
+
+            }
+
+
+
+
+
+          } )             
+       
+          // tonmoy end
+
+          
+
+
+        
+
+         
         } else if (result.message === "You have already reviewed this book") {
           reset();
           if (openModalIndex) {
@@ -86,7 +117,10 @@ const PurchasedBooks = () => {
             icon: "error",
             title: "Sorry",
             text: "You have already reviewed this book",
-          });
+           });
+          
+         
+
         }
       });
   }

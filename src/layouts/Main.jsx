@@ -9,8 +9,9 @@ import ChatIcon from "../shared/ChatIcon/ChatIcon";
 // import { AuthContext } from "../provider/AuthProvider";
 import NavbarTwo from "../shared/NavbarTwo/NavbarTwo";
 import CategoryNav from "../shared/CategoryNav/CategoryNav";
+import PrivateRouteWithOutLoading from "../routes/PrivateRouteWithOutLoading";
 
-import PrivateRoute from '../routes/PrivateRoute'
+
 
 
 const Main = () => {
@@ -27,9 +28,11 @@ const Main = () => {
                 </UserHandleRoute>
             )} */}
             <Outlet></Outlet>
-           <PrivateRoute>
-           <ChatIcon></ChatIcon>
-           </PrivateRoute>
+            <PrivateRouteWithOutLoading>
+                <ChatIcon></ChatIcon>
+            </PrivateRouteWithOutLoading>
+
+
             <Footer></Footer>
         </div>
     );
