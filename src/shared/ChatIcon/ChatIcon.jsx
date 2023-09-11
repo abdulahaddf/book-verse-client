@@ -63,7 +63,7 @@ const ChatIcon = () => {
 
            
 
-            <div onClick={chatHandler} className='bg-black rounded-full w-16 h-16 flex justify-center items-center'>
+            <div onClick={chatHandler} className='bg-black d] rounded-full w-16 h-16 flex justify-center items-center'>
                <button>
                <BsChatSquareDotsFill className='text-white text-xl' />
                </button>
