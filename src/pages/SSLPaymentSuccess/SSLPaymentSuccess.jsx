@@ -49,7 +49,7 @@ const SSLPaymentSuccess = () => {
             published: i?.published,
             rating: i?.rating,
             real_price: i?.real_price,
-            review: i?.review,
+            review: i?.review ,
             title: i?.title,
             previous_id: i?._id,
             purchase_date: new Date().getTime(),
