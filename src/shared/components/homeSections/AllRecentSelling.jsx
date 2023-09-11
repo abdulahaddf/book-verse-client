@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import BookCard from '../BookCard/BookCard';
+
+import ProductCard from '../productCard/ProductCard';
 
 const AllRecentSelling = () => {
     const recentSellingData = useSelector(state => state.recentSelling.recentSelling);
@@ -13,7 +14,7 @@ const AllRecentSelling = () => {
 
             <div className="grid md:grid-cols-3 xl:grid-cols-4 gap-10 content-center w-[90%] mx-auto ">
                 {recentSellingData?.map((book) => (
-                    <BookCard key={book._id} book={book} text='recentSelling'></BookCard>
+                     <ProductCard key={book._id} data={book} text='recentSelling' ></ProductCard>
                 ))}
             </div>
 
