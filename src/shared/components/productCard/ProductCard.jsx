@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { FaStar } from "react-icons/fa";
+
 const ProductCard = ({ data, loading }) => {
   const {
     author,
@@ -10,6 +12,7 @@ const ProductCard = ({ data, loading }) => {
     real_price,
     offer_price,
     previous_id,
+    rating
   } = data;
   const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(0);
 
@@ -31,6 +34,9 @@ const ProductCard = ({ data, loading }) => {
               />
               <p className="bg-[#F23534] h-10 w-10  text-xs font-medium text-slate-50 absolute -top-2 -left-2 inline rounded-full p-2 pt-3">
                 -{savedPer}%
+              </p>
+              <p className={`bg-[#FFA41C] h-6 w-12  text-xs font-medium text-slate-50 absolute top-2 right-0  rounded-s-full pt-1 ${!rating && "hidden"}`}>
+                <span className="ms-2"><FaStar className="inline hover:animate-ping"/> {rating && rating}</span>
               </p>
             </>
           )}
