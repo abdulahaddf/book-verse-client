@@ -55,7 +55,7 @@ const Navbar = () => {
 const close = () =>{
 setOpenDrawer(false);
 }
-console.log(openDrawer)
+// console.log(openDrawer)
 
 
 
