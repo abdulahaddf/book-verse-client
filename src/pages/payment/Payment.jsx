@@ -265,8 +265,8 @@ const Payment = () => {
                 sslCommerce();
               }
             }}
-            className={`btn-fifth ${buttonDisabled ? "disabled text-slate-400 hover:text-slate-400" : "bg-red text-white"}`}
-            disabled={buttonDisabled}
+            className={`btn  ${buttonDisabled ? "disabled px-10 py-1 text-slate-900 hover:text-slate-400" : "btn-card bg-red hover:text-white"}`}
+            disabled={buttonDisabled} 
           >
             Pay Now
           </button>

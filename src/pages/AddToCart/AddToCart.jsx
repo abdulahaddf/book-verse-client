@@ -3,7 +3,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { MdDeleteForever } from "react-icons/md";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCartData } from "../payment/redux/CartSlice";
 
@@ -11,8 +11,15 @@ const AddToCart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { addToCartData, cartRefetch } = useContext(AuthContext);
+  const { user, addToCartData, cartRefetch } = useContext(AuthContext);
   const { getValue, setValue } = useLocalStorage();
+
+  const navigate = useNavigate()
+
+
+
+
+
   // console.log(addToCartData);
   const [promo, setPromo] = useState([]);
   const [appliedPromo, setAppliedPromo] = useState("");
@@ -80,7 +87,7 @@ const AddToCart = () => {
     });
 
     setValue("cartItems", updatedCart);
-    // cartRefetch();
+    cartRefetch();
   };
 
   let totalPrice = 0;
@@ -111,6 +118,21 @@ const AddToCart = () => {
   const dispatch = useDispatch();
 
   const sendDataToPayment = () => {
+     
+    if(!user?.email){
+
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "please login",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+  
+    }
+  
+     
+   
     const cartData = {
       addToCartData: addToCartData, // Assuming addToCartData is already available here
       finalAmount: payable, // Assuming finalAmount is already calculated
@@ -118,6 +140,8 @@ const AddToCart = () => {
 
     dispatch(setCartData(cartData));
     // history.push('/payment');
+
+    navigate("/payment")
   };
 
   //adding promo code functions - AHAD
@@ -154,7 +178,7 @@ const AddToCart = () => {
               <div
                 key={data?._id}
                 className=" grid lg:grid-cols-3  md:gap-10 p-3 my-10 shadow-md rounded-md"
-                // style={{ boxShadow: "10px 10px 10px black" }}
+              // style={{ boxShadow: "10px 10px 10px black" }}
               >
                 <div className=" md:w-1/2 mx-auto flex justify-center items-center ">
                   <img src={data?.cover_image} className="" />
@@ -267,14 +291,14 @@ const AddToCart = () => {
             </p>
             <div className="text-center">
 
-            <Link
-              to="/payment"
-              // state={{ price: finalAmount , books : addToCartData  }}
-              onClick={sendDataToPayment}
-              className=" btn-fifth w-full md:w-[150px] lg:w-[250px]  mx-auto hover:text-white hover:no-underline">
-              Proceed to Checkout
-            </Link>
-                </div>
+              <button
+
+                // state={{ price: finalAmount , books : addToCartData  }}
+                onClick={sendDataToPayment}
+                className=" btn-fifth w-full md:w-[150px] lg:w-[250px]  mx-auto hover:text-white hover:no-underline">
+                Proceed to Checkout
+              </button>
+            </div>
           </section>
         </div>
       ) : (

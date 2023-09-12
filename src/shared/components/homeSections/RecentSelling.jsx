@@ -27,7 +27,7 @@ const RecentSelling = () => {
     const recentSellingData = useSelector(state => state.recentSelling.recentSelling);
 
   
-    // console.log(books,'tonu')
+    console.log(recentSellingData,'tonu')
     return (
       <div className="section">
         <div className="flex justify-between items-center">
