@@ -111,6 +111,13 @@ const AuthProvider = ({ children }) => {
 
   // add to cart data fetch  end by Tonmoy
 
+  // dark mode start Tonmoy
+    
+  const [toggle,setToggle]=useState(true)
+
+
+  //  dark mode end by Tonmoy
+
 
 
 
@@ -132,6 +139,8 @@ const AuthProvider = ({ children }) => {
     cartRefetch,
     showAlert,
     setShowAlert,
+    toggle,
+    setToggle
    
   };
 
