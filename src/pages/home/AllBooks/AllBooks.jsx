@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import BookCard from "../../../shared/components/BookCard/BookCard";
+
 import UseBooks from "../../../hooks/UseBooks";
 import Loader from "../../../shared/components/loader/Loader";
+import ProductCard from "../../../shared/components/productCard/ProductCard";
 
 const AllBooks = () => {
   const { books, loading, } = UseBooks();
@@ -14,8 +15,10 @@ const AllBooks = () => {
   const itemsPerPage = 12;
 
   useEffect(() => {
-    let sortedBooks = [...books];
-
+    // tonmoy start
+    const book = books.reverse()
+    let sortedBooks = [...book];
+    //  tonmoy end
     // ------------Filter by category------------
     if (selectedCategory !== "default") {
       sortedBooks = sortedBooks.filter(
@@ -38,20 +41,22 @@ const AllBooks = () => {
   }, [selectedCategory, sortBy, asc, books]);
 
 
- // ---------- pagination calculated ---------------
+  // ---------- pagination calculated ---------------
   const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedBooks = filteredBooks.slice(startIndex, endIndex);
-  
+
+
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
 
- 
+
   const handleSortChange = (value) => {
     setSortBy(value);
     setAsc((prevAsc) => !prevAsc);
@@ -138,25 +143,40 @@ const AllBooks = () => {
 
       {/*------------ filtering code end by Zihad  --------------*/}
 
-      {/* -----------display all book ---------- */}
+      {/* -----------display all start by Zihad book ---------- */}
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 content-center my-5 w-11/12 mx-auto">
+      {/* <div className="grid lg:grid-cols-4 2xl:grid-cols-4  gap-10 content-center my-5 w-11/12 mx-auto">
         {paginatedBooks.map((book) => (
-          <BookCard key={book._id} book={book}></BookCard>
+          <BookCard key={book._id} book={book} ></BookCard>
+          
+        ))}
+     
+      </div> */}
+
+      {/* tonmoy start */}
+      <div className="grid lg:grid-cols-4 2xl:grid-cols-4  gap-10 content-center my-5 w-10/12 mx-auto justify-center">
+        {paginatedBooks.map((book) => (
+
+
+          <ProductCard key={book._id} data={book} ></ProductCard>
+
+
+
         ))}
       </div>
+      {/* tonmoy end */}
 
-       {/*----------- Pagination started by zihad---------- */}
-       <div className="flex justify-center mt-8">
+      {/* -----------display all end by Zihad book ---------- */}
+      {/*----------- Pagination started by zihad---------- */}
+      <div className="flex justify-center mt-8">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
-            className={`${
-              currentPage === index + 1
-                ? "bg-[#126e9d] text-white"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-            } px-3 py-1 mx-1 rounded-md cursor-pointer`}
+            className={`${currentPage === index + 1
+              ? "bg-[#126e9d] text-white"
+              : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+              } px-3 py-1 mx-1 rounded-md cursor-pointer`}
           >
             {index + 1}
           </button>

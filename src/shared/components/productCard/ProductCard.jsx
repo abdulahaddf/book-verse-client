@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { FaStar } from "react-icons/fa";
 
-const ProductCard = ({ data, loading }) => {
+
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+import moment from "moment";
+
+
+const ProductCard = ({ data, loading, text }) => {
   const {
     author,
     title,
@@ -11,10 +17,46 @@ const ProductCard = ({ data, loading }) => {
     _id,
     real_price,
     offer_price,
-    previous_id,
-    rating
+    previous_id
   } = data;
   const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(0);
+
+  // tonmoy start 
+
+
+
+  const allRating = data?.review?.map((a) => a?.rating)
+
+  const sumOfRating = allRating?.reduce((a, b) => a + b, 0)
+
+  const rating = sumOfRating / data?.review?.length;
+
+  const realRating = parseFloat(rating).toFixed(2)
+
+
+
+
+  const Star = (
+    <path d="M62 25.154H39.082L32 3l-7.082 22.154H2l18.541 13.693L13.459 61L32 47.309L50.541 61l-7.082-22.152L62 25.154z" />
+  )
+
+  const myStyles = {
+    itemShapes: Star,
+
+
+
+
+    activeFillColor: '#10aade',
+
+
+    inactiveFillColor: '#10abde3a',
+
+
+  }
+
+
+
+  // tonmoy end 
 
   return (
     <Link to={`/details/${previous_id ? previous_id : _id}`} className="w-48 p-2  hover:shadow-slate-300 hover:shadow-sm overflow-hidden">
@@ -36,7 +78,7 @@ const ProductCard = ({ data, loading }) => {
                 -{savedPer}%
               </p>
               <p className={`bg-[#FFA41C] h-6 w-12  text-xs font-medium text-slate-50 absolute top-2 right-0  rounded-s-full pt-1 ${!rating && "hidden"}`}>
-                <span className="ms-2"><FaStar className="inline hover:animate-ping"/> {rating && rating}</span>
+                <span className="ms-2 flex items-center gap-0.5"><FaStar className="inline hover:animate-ping pb-0.5"/> {rating && rating}</span>
               </p>
             </>
           )}
@@ -54,6 +96,27 @@ const ProductCard = ({ data, loading }) => {
               <p className="text-xs text-slate-600 font-medium uppercase tracking-widest">
                 {author}
               </p>
+              {/* tonmoy start */}
+              <div className="my-2">
+
+                {text === 'bestSelling' && <p className="text-xs text-slate-500 my-3 font-medium uppercase tracking-widest">
+                  total sold  <span className="text-xs text-blue-500">({data?.count})</span> 
+                </p>}
+
+                {text === 'recentSelling' && <p className="text-xs text-slate-500 my-3 font-medium uppercase tracking-widest">
+                 
+                   <span className="text-xs text-slate-500">
+                     purchase : {/* {moment(data?.purchase_date).format('MMMM Do YYYY, h:mm:ss a')} */}
+                  
+                  {new Date(data?.purchase_date)?.toISOString().split("T")[0]}</span>
+                </p>}
+
+                {/* <Rating readOnly value={realRating > 0 ? realRating : 1} style={{ maxWidth: 100 }} itemStyles={myStyles} /> */}
+
+
+
+              </div>
+              {/* tonmoy end*/}
               <p className="inline-block line-through text-slate-400 me-6">
                 ${real_price}
               </p>
