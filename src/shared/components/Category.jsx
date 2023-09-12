@@ -1,11 +1,10 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import CategoryCard from "./CategoryCard";
-// import Heading from "./heading/Heading";
 import UseBooks from "../../hooks/UseBooks";
 import { Link } from "react-router-dom";
 import AuthorCard from "./AuthorDetails/AuthorCard";
 import OfferBanner from "./Offer&Rewards/OfferBanner";
+import ProductCard from "./productCard/ProductCard";
 const Category = () => {
   const { books , loading } = UseBooks();
   console.log(books);
@@ -33,7 +32,7 @@ const Category = () => {
           <Tabs>
             <TabList className="text-xs md:text-base py-2 ">
               <Tab>All Books</Tab>
-              <Tab>Author's choice</Tab>
+              <Tab>Author&apos;s choice</Tab>
               <Tab>Offers and Rewards</Tab>
               {/* <Tab>Book Fair</Tab> */}
               <Tab>New Arrival Books</Tab>
@@ -43,7 +42,7 @@ const Category = () => {
               <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {books
                   .filter((card) => card?.category === "Fiction")
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
+                  .map((book) => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
@@ -74,7 +73,7 @@ const Category = () => {
               <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
                 {newArival
                   .reverse()
-                  .map((card) => <CategoryCard key={card._id} data={card} />)
+                  .map((book) =><ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
                   .slice(0, 4)}
               </div>
             </TabPanel>

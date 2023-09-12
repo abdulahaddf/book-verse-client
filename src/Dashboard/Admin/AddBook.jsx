@@ -20,8 +20,6 @@ const AddBook = () => {
       author,
       category,
       language,
-      real_price,
-      offer_price,
       page_numbers,
       rating,
       published,
@@ -30,6 +28,10 @@ const AddBook = () => {
       cover_image,
       author_image,
     } = allData;
+
+     // Converting real_price and offer_price to numbers - AHAD
+  const real_price = parseFloat(allData.real_price);
+  const offer_price = parseFloat(allData.offer_price);
 
     const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
       import.meta.env.VITE_Image_Upload_token

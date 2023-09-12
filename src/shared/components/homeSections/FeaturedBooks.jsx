@@ -18,7 +18,7 @@ const FeaturedBooks = () => {
       {/* <Skeleton count={3} className="my-2 h-10" />  */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
       {
-                books?.slice(37,42).map(book => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
+                books?.slice(5,10).map(book => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
             }
        
      

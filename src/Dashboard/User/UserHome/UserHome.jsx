@@ -146,7 +146,8 @@ const UserHome = () => {
 
 
   return (
-    <div className=" bg-slate-50 w-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
+    <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
+      <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">Edit Information</h1>
       <div className="image-container">
         <img
           className="image"
@@ -158,7 +159,7 @@ const UserHome = () => {
             openModal()
             window.my_modal_2.showModal()
           }}
-          className="modal-open edit-button px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
+          className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
         >
           <FaCamera></FaCamera>
         </button>
@@ -198,40 +199,58 @@ const UserHome = () => {
         
   
       </div>
-      <p className="font-bold text-xl  uppercase my-4">
-        Name: <span className="font-normal">{userinfo?.displayName}</span>
+      <div>
+        <h1 className="font-bold uppercase text-xl mt-10">Account Information</h1>
+        <div className="flex gap-10">
+          {/* <div className="">
+          <p className="text-lg mt-4">
+        Name:
+            </p>
+            <p className="border-2 px-2 py-2">{userinfo.displayName}</p>
+          </div> */}
+          <div>
+        <p className="text-lg mt-6">
+        Name:
       </p>
-      <p className="font-bold text-xl  uppercase mb-4">
-        Email: <span className="lowercase font-normal">{userinfo?.email}</span>
-      </p>
-      <p className="font-bold text-xl  uppercase mb-4">
+      
+      <p  className="text-lg mt-6">
         Address:{" "}
-        <span className="lowercase font-normal">{userinfo?.address}</span>
+
       </p>
-      <p className="font-bold text-xl uppercase mb-4">
+      <p className="text-lg mt-6">
         Gender:{" "}
-        <span className="lowercase font-normal">{userinfo?.gender}</span>
       </p>
-      <p className="font-bold text-xl uppercase mb-4">
+      <p className="text-lg mt-6">
         Birth Date:{" "}
-        <span className="lowercase font-normal">{userinfo?.birthday}</span>
+  
       </p>
-      <p className="font-bold text-xl uppercase mb-4">
+      <p className="text-lg mt-6">
         Phone Number:{" "}
-        <span className="lowercase font-normal">{userinfo?.phoneNumber}</span>
+        
       </p>
+        </div>
+          <div className="">
+          <p className="border-2 px-2 py-2 mt-6">{userinfo.displayName}</p>
+          <p className="border-2 px-2 py-2 mt-2">{userinfo.address}</p>
+          <p className="border-2 px-2 py-2 mt-2">{userinfo.gender}</p>
+          <p className="border-2 px-2 py-2 mt-2">{userinfo.birthday}</p>
+          <p className="border-2 px-2 py-2 mt-2">{userinfo.phoneNumber}</p>
+       </div>
+          
+        </div>
+      </div>
 
       <button
         htmlFor="my_modal_8"
         onClick={() => window.my_modal_8.showModal()}
-        className="primary-button"
+        className="btn-home mt-10"
       >
-        Update Profile
+        <FaEdit></FaEdit> <span className="ms-2">Update Profile</span>
       </button>
 
       <dialog id="my_modal_8" className="modal">
   <form method="dialog" className="modal-box" onSubmit={handleSubmit(updateProfile)}>
-    <h3 className="text-3xl font-semibold text-center text-red uppercase">Update Profile </h3>
+    <h3 className="text-3xlllll font-semibold text-center  uppercase">Update Profile </h3>
           <div>
           <div className="mb-2">
                   <label
@@ -322,9 +341,9 @@ const UserHome = () => {
                       {...register("gender")}
                       className="w-full px-4 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
                     >
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>
