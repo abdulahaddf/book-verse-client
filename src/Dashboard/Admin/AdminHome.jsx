@@ -52,7 +52,7 @@ const AdminHome = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/paymentHistory?search=${search}`)
+    fetch(`https://book-verse-server-phi.vercel.app/paymentHistory?search=${search}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length === 0) {
