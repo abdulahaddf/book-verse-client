@@ -15,8 +15,7 @@ import Publications from "../../../shared/components/homeSections/Publications";
 import WebsiteFeature from "../../../shared/components/homeSections/WebsiteFeature";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResultsList from "../SearchBar/SearchResultsList";
-
-
+import KidsZone from "../../../shared/components/homeSections/KidsZone";
 // import Banner from "../Banner/Banner";
 
 
@@ -24,7 +23,6 @@ import SearchResultsList from "../SearchBar/SearchResultsList";
 
 const Home = () => {
   // const [results, setResults] = useState([]);
-
   
   
   return (
@@ -42,7 +40,8 @@ const Home = () => {
         <Category />
         <FeaturedBooks />
         <BestSelling/>
-        <RecentSelling/>
+        <RecentSelling />
+        <KidsZone></KidsZone>
         <Publications></Publications>
         <WebsiteFeature></WebsiteFeature>
       </section>
