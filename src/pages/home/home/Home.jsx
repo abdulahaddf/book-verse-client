@@ -24,8 +24,9 @@ import KidsZone from "../../../shared/components/homeSections/KidsZone";
 const Home = () => {
   // const [results, setResults] = useState([]);
   
+  
   return (
-    <div>
+    <div >
       {/* All Components of home will be shown here */}
   
       {/* <div className="search-bar-container relative z-10">
