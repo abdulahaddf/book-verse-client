@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBestSelling } from '../../../pages/payment/redux/BestSellingSlice';
 import ProductCard from "../productCard/ProductCard";
 import { useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useContext } from "react";
 
 
 const BestSelling = () => {
+  const { darkMode} = useContext(AuthContext);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -29,7 +32,7 @@ const BestSelling = () => {
     <div className="section ">
       <div className="flex justify-between items-center">
         <Heading title={"Best Selling"}></Heading>
-        <Link to='/allBestSelling' className="btn-fifth hover:text-white hover:no-underline">See More</Link>
+        <Link to='/allBestSelling' className={`${darkMode?" btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500]":"btn-fifth hover:text-white hover:no-underline"}`}>See More</Link>
       </div>
       <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 items-start  py-5 place-items-center">
         {bestSellingData?.slice(0, 10).map((book) => (

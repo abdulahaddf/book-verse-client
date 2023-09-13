@@ -11,7 +11,7 @@ const AddToCart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { user, addToCartData, cartRefetch } = useContext(AuthContext);
+  const { user, addToCartData, cartRefetch,darkMode } = useContext(AuthContext);
   const { getValue, setValue } = useLocalStorage();
 
   const navigate = useNavigate()
@@ -177,7 +177,7 @@ const AddToCart = () => {
             {addToCartData?.map((data) => (
               <div
                 key={data?._id}
-                className=" grid lg:grid-cols-3  md:gap-10 p-3 my-10 shadow-md rounded-md"
+                className={darkMode?" grid bg-white/10  lg:grid-cols-3  md:gap-10 p-3 my-10 border-[1px] rounded-md":" grid lg:grid-cols-3  md:gap-10 p-3 my-10 shadow-md rounded-md"}
               // style={{ boxShadow: "10px 10px 10px black" }}
               >
                 <div className=" md:w-1/2 mx-auto flex justify-center items-center ">
@@ -198,7 +198,7 @@ const AddToCart = () => {
                       <button
                         onClick={() => decrementHandler(data?._id)}
                         type="button"
-                        className="w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"
+                        className={darkMode?"w-10 h-10 leading-10 text-white hover:text-black hover:bg-white px-3 transition hover:opacity-75 tooltip tooltip-bottom":"w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"}
                         data-tip="Decrease Item"
                       >
                         -
@@ -214,7 +214,7 @@ const AddToCart = () => {
                       <button
                         onClick={() => incrementHandler(data?._id)}
                         type="button"
-                        className="w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"
+                        className={darkMode?"w-10 h-10 leading-10 text-white hover:text-black hover:bg-white px-3 transition hover:opacity-75 tooltip tooltip-bottom":"w-10 h-10 leading-10 text-gray-600 hover:bg-slate-300 px-3 transition hover:opacity-75 tooltip tooltip-bottom"}
                         data-tip="Increase Item"
                       >
                         +
@@ -231,7 +231,7 @@ const AddToCart = () => {
                     data-tip="Delete from Cart"
                   >
                     <button onClick={() => deleteAddToCart(data?._id)}>
-                      <MdDeleteForever className=" text-4xl mt-10  text-red hover:text-blue-500" />
+                      <MdDeleteForever className={darkMode?" text-4xl mt-10  text-white hover:text-blue-500":" text-4xl mt-10  text-red hover:text-blue-500"} />
                     </button>
                   </div>
                 </div>
@@ -240,8 +240,7 @@ const AddToCart = () => {
           </section>
 
           <section
-            className="text-slate-900 font-semibold my-10 py-10 px-5  space-y-5  rounded-[10px] 
-             h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
+            className={`${darkMode? "text-white bg-white/10  font-semibold my-10 py-10 px-5 border-[1px]   space-y-5  rounded-[10px]  h-[450px]  md:w-1/3  sticky top-0 shadow-2xl":"text-slate-900 font-semibold my-10 py-10 px-5   space-y-5  rounded-[10px]   h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"}`}
           >
             <p className=" text-xl flex justify-between border-b-2">
               Subtotal:{" "}
@@ -266,15 +265,14 @@ const AddToCart = () => {
                 placeholder="Enter Promo Code"
                 value={appliedPromo}
                 onChange={(e) => setAppliedPromo(e.target.value)}
-                className="input input-bordered border-primary rounded-none input-sm w-full max-w-[150px]"
+                className="input input-bordered border-primary rounded-none input-sm w-full max-w-[150px] text-black"
               />
               <button
                 onClick={() => {
                   applyPromoCode();
                   // Update the state or perform any other actions if needed
                 }}
-                className="btn btn-sm text-black bg-white hover:text-white border-red hover:border-b-white
-     hover:bg-red px-5 border-b-4 hover:scale-105 duration-300 rounded-none"
+                className={darkMode?"btn btn-sm  btn-outline text-white hover:text-black border-white hover:border-b-black hover:bg-white px-5 border-b-4 hover:scale-105 duration-300 rounded-none":"btn btn-sm text-black bg-white hover:text-white border-red hover:border-b-white hover:bg-red px-5 border-b-4 hover:scale-105 duration-300 rounded-none"}
               >
                 Apply
               </button>
@@ -295,7 +293,7 @@ const AddToCart = () => {
 
                 // state={{ price: finalAmount , books : addToCartData  }}
                 onClick={sendDataToPayment}
-                className=" btn-fifth w-full md:w-[150px] lg:w-[250px]  mx-auto hover:text-white hover:no-underline">
+                className={darkMode?" btn-fifth-dark w-full md:w-[150px] lg:w-[250px]  mx-auto hover:text-white hover:no-underline":" btn-fifth w-full md:w-[150px] lg:w-[250px]  mx-auto hover:text-white hover:no-underline"}>
                 Proceed to Checkout
               </button>
             </div>

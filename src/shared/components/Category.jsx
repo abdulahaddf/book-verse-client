@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 import AuthorCard from "./AuthorDetails/AuthorCard";
 import OfferBanner from "./Offer&Rewards/OfferBanner";
 import ProductCard from "./productCard/ProductCard";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext } from "react";
 const Category = () => {
   const { books , loading } = UseBooks();
   console.log(books);
   const newArival = [...books];
+
+  // Tonmoy start
+  const { darkMode} = useContext(AuthContext);
+  // Tonmoy end
   return (
     <div className="section">
       {/* <Heading title={'Categories'}/> */}
@@ -30,8 +36,8 @@ const Category = () => {
       <div className="md:p-10">
         <div className="text-center  md:p-5">
           <Tabs>
-            <TabList className="text-xs md:text-base py-2 ">
-              <Tab>All Books</Tab>
+            <TabList className="text-xs md:text-base py-2  ">
+              <Tab  >All Books</Tab>
               <Tab>Author&apos;s choice</Tab>
               <Tab>Offers and Rewards</Tab>
               {/* <Tab>Book Fair</Tab> */}
@@ -46,8 +52,8 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="btn-fifth hover:text-white cursor-pointer">
-                  <Link className="hover:text-white hover:no-underline" to={`/All/Category`}>See more</Link>
+                <button className={`${darkMode?" btn-fifth-dark cursor-pointer hover:font-[500]":"btn-fifth cursor-pointer"}`} >
+                  <Link className={darkMode?"hover:text-black hover:no-underline hover:font-[500]":"hover:text-white hover:no-underline hover:font-[500]"} to={`/All/Category`}>See more</Link>
                 </button>
               </div>
             </TabPanel>
@@ -58,8 +64,8 @@ const Category = () => {
                   .slice(0, 4)}
               </div>
               <div className="flex justify-center py-3">
-                <button className="btn-fifth">
-                  <Link className="hover:text-white hover:no-underline" to={`/All/Authors`}>See All</Link>
+                <button className={`${darkMode?" btn-fifth-dark hover:font-[500]":"btn-fifth "}`}>
+                  <Link className={darkMode?"hover:text-black hover:no-underline hover:font-[500]":"hover:text-white hover:no-underline hover:font-[500]"} to={`/All/Authors`}>See All</Link>
                 </button>
               </div>
             </TabPanel>

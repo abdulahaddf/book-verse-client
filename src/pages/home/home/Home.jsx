@@ -16,6 +16,7 @@ import WebsiteFeature from "../../../shared/components/homeSections/WebsiteFeatu
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResultsList from "../SearchBar/SearchResultsList";
 
+
 // import Banner from "../Banner/Banner";
 
 
@@ -24,10 +25,10 @@ import SearchResultsList from "../SearchBar/SearchResultsList";
 const Home = () => {
   // const [results, setResults] = useState([]);
 
- 
+  
   
   return (
-    <div>
+    <div >
       {/* All Components of home will be shown here */}
   
       {/* <div className="search-bar-container relative z-10">

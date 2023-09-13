@@ -10,8 +10,12 @@
     @apply btn w-24 text-black  bg-white hover:text-white border-red normal-case hover:bg-red  px-2 py-1 rounded-lg border-b-4 hover:scale-105 duration-300 hover:shadow-rose-400 shadow-lg;
   } */
   .btn-custom {
-    @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white
+    @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white hover:no-underline
          hover:bg-red  rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
+  }
+  .btn-custom-dark {
+    @apply btn btn-sm text-white  bg-black/10 hover:text-black border-white  hover:border-b-white hover:no-underline
+         hover:bg-white   rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
   }
 
   /*-------------- Button start -------------------- */
@@ -168,9 +172,64 @@
   }
   /*-------------- Button end-------------------- */
 
+
+/* Button start Tonmoy for dark mode */
+.btn-fifth-dark {
+  width: 140px ;
+  height: 42px ;
+  padding: 10px 18px ;
+  margin: 6px 4px ;
+  text-align: center ;
+  text-decoration: none ;
+  text-transform: uppercase ;
+  display: inline-block ;
+  font-size: 16px ;
+  border-radius: 5px !important;
+  border: 1px solid #ffffff !important ;
+  color: #ffffff  !important;
+  transition: ease-in-out 0.5s ;
+  position: relative ;
+  display: flex ;
+  align-items: center ;
+  justify-content: center ;
+  font: 18px ;
+  /* outline: none */
+  z-index: 0 ;
+  
+}
+.btn-fifth-dark:hover {
+  color: rgb(3, 1, 1)  !important;
+  cursor: pointer;
+ 
+  
+}
+.btn-fifth-dark:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background: linear-gradient(to right, #fdfeff, #ffffff);
+  
+}
+.btn-fifth-dark:hover::before {
+  transition: 0.3s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: -1;
+}
+
+/* Button end Tonmoy for dark mode */
+
   .section {
     @apply shadow-xl rounded-lg p-5 my-5;
   }
+ 
+  
   .page-heading {
     @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
   }
@@ -261,6 +320,11 @@
 .button-52:hover:after {
   top: 0px;
   left: 0px;
+}
+
+.dark-style{
+  background-color: rgba(0, 0, 0, 0.925) !important;
+  color: white !important;
 }
 
 @media (min-width: 768px) {

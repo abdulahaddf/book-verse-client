@@ -15,7 +15,7 @@ const ChatIcon = () => {
 
     const [userData,setUserData]=useState()
 
-    const {user} = useContext(AuthContext);
+    const {user,darkMode} = useContext(AuthContext);
 
     const navigate=useNavigate();
 
@@ -63,9 +63,9 @@ const ChatIcon = () => {
 
            
 
-            <div onClick={chatHandler} className='bg-black d] rounded-full w-16 h-16 flex justify-center items-center'>
+            <div onClick={chatHandler} className={darkMode?'bg-white/90 rounded-full w-16 h-16 flex justify-center items-center':'bg-black  rounded-full w-16 h-16 flex justify-center items-center'}>
                <button>
-               <BsChatSquareDotsFill className='text-white text-xl' />
+               <BsChatSquareDotsFill className={darkMode?'text-black text-xl':'text-white text-xl'} />
                </button>
             </div>
         </div>

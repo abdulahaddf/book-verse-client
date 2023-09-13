@@ -13,7 +13,7 @@ const OldBookDetails = () => {
         window.scrollTo(0, 0);
       }, []);
      
-      const {user, cartRefetch } = useContext(AuthContext);
+      const {user, cartRefetch,darkMode } = useContext(AuthContext);
       
       const { getValue, setValue } = useLocalStorage();
       const [agree, setAgree] = useState(false);
@@ -148,7 +148,7 @@ console.log(singleUser?.role)
               <p>{sellerAddress}</p>
             </div>
            </div>
-          { _id &&    <button onClick={contactWithSellerHandler} className="btn-custom mt-5 flex justify-center" disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller</button> }
+          { _id &&    <button onClick={contactWithSellerHandler} className={`${darkMode?"btn-fifth-dark w-[90%] mt-10 ":" btn-fifth w-[90%] mt-10"}`} disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller </button> }
           </div>
       </div>
 

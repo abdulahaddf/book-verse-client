@@ -12,7 +12,7 @@ const Payment = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [submitText, setSubmitText] = useState("Please Submit all information then pay");
-  const { user } = useContext(AuthContext);
+  const { user,darkMode } = useContext(AuthContext);
   const [userinfo, isLoading] = UseUser();
   const { getValue } = useLocalStorage();
   const totalPrice = localStorage.getItem("totalPrice");
@@ -78,6 +78,8 @@ const Payment = () => {
     setButtonDisabled(false);
 
   };
+
+
   return (
    <div className="my-5">
     <h1 className="page-heading">Checkout</h1>
@@ -88,7 +90,7 @@ const Payment = () => {
       
       {/* Checkout form starts here */}
 
-      <div className=" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20">
+      <div className={darkMode?" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20"}>
      
    
               <h1 className="text-2xl font-semibold text-center text-red uppercase">
@@ -109,7 +111,7 @@ const Payment = () => {
         value="home"
         className="radio text-red focus:ring-red focus:ring-opacity-40"
       />
-      <span className="ml-2">Home</span>
+      <span className="ml-2 text-gray-600">Home</span>
     </label>
     <label className="inline-flex items-center text-lg">
       <input
@@ -118,7 +120,7 @@ const Payment = () => {
         value="office"
         className="radio text-red focus:ring-red focus:ring-opacity-40"
       />
-      <span className="ml-2">Office</span>
+      <span className="ml-2 text-gray-600">Office</span>
     </label>
   </div>
 </div>
@@ -199,7 +201,7 @@ const Payment = () => {
                   >
                     Submit
                   </button>
-                  <p className="text-center my-3">{submitText}</p>
+                  <p className="text-center my-3 text-gray-600">{submitText}</p>
                 </div>
               </form>
             
@@ -213,7 +215,7 @@ const Payment = () => {
       <div className="w-1/2 mx-auto my-5  bg-slate-200 py-10 rounded-lg ">
         {/* Payment method selection */}
         <div className="flex flex-col items-center justify-center gap-10  ">
-          <h1 className="text-xl my-3">Payment Method</h1>
+          <h1 className="text-xl my-3 text-gray-600">Payment Method</h1>
           
           {/* Radio button for SSLCommerz payment */}
           <label className="flex items-center text-lg bg-white w-11/12 p-2 rounded-lg ">
