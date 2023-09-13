@@ -268,3 +268,41 @@
     padding: 13px 50px 13px;
   }
 }
+
+
+/* swipper js styles 
+ */
+ /* .swiper-button-prev{
+  cursor: pointer;
+  border: solid 6px #999;
+  border-radius: 100%;
+  }
+   */
+
+.swiper-slide{
+  width: fit-content !important;
+  margin: 0 60px;
+}
+.swiper-pagination {
+  display: none;
+}
+.swiper-wrapper{
+  transform: translate3d(20.875px, 0px, 0px);
+  
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}

@@ -5,6 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBestSelling } from '../../../pages/payment/redux/BestSellingSlice';
 import ProductCard from "../productCard/ProductCard";
 import { useState } from "react";
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+// import './styles.css';
+
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 
 const BestSelling = () => {
@@ -31,11 +41,46 @@ const BestSelling = () => {
         <Heading title={"Best Selling"}></Heading>
         <Link to='/allBestSelling' className="btn-fifth hover:text-white hover:no-underline">See More</Link>
       </div>
-      <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 items-start  py-5 place-items-center">
+      {/* <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 items-start  py-5 place-items-center">
         {bestSellingData?.slice(0, 10).map((book) => (
           <ProductCard key={book._id} data={book} text='bestSelling' loading={loading}></ProductCard>
         ))}
-      </div>
+      </div> */}
+
+      {/* ----------------------------------
+              Slider added -foisal 
+          ----------------------------*/}
+      <Swiper
+        slidesPerView={1}
+        centeredSlides={true}
+        spaceBetween={30}
+        
+        pagination={{ clickable: true }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        initialSlide={1} 
+        
+        breakpoints={{
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 1,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 3,
+          },
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+        className="mySwiper flex w-full"
+      >
+        {bestSellingData?.slice(0, 20).map((book,idx) => (
+          <SwiperSlide key={idx}  ><ProductCard key={book._id} data={book} text='bestSelling' loading={loading}></ProductCard></SwiperSlide>
+        ))}
+      </Swiper>
+
     </div>
   );
 };

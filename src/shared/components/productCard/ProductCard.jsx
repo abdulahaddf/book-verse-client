@@ -60,7 +60,7 @@ const ProductCard = ({ data, loading, text }) => {
 
   return (
     <Link to={`/details/${previous_id ? previous_id : _id}`} className="w-48 p-2  hover:shadow-slate-300 hover:shadow-sm overflow-hidden">
-      <div href="#" className="group relative block w-full">
+      <div href="#" className="group relative block px-auto w-44">
         <div className="mx-auto w-44 relative">
           {loading ? (
             <Skeleton height={256} width={352} />
