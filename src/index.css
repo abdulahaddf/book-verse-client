@@ -352,6 +352,7 @@
   margin: 0 auto !important;
 }
 .swiper {
+  z-index: 0;
   justify-content: center;
 }
 .swiper-pagination {

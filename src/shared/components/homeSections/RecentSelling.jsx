@@ -42,9 +42,9 @@ const RecentSelling = () => {
         <Heading title={"Recent Selling"}></Heading>
         <Link
           to="/allRecentSelling"
-          className="btn-fifth hover:text-white hover:no-underline"
+          className="btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
         >
-          See More
+          See All
         </Link>
       </div>
       {/* ----------------------------------
