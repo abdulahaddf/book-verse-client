@@ -41,6 +41,7 @@ import ManageOrder from "../Dashboard/Admin/ManageOrder";
 import ContactWithSeller from "../pages/AllOldBooks/ContactWithSeller";
 import UserChats from "../Dashboard/User/UserChats";
 import UserToUserChat from "../Dashboard/User/UserToUserChat";
+import AllKidsBooks from "../shared/components/homeSections/AllKidsBooks";
 
 
 export const router = createBrowserRouter([
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: "/allRecentSelling",
         element: <AllRecentSelling />,
+      },
+      {
+        path: "/allkidsbooks",
+        element:<AllKidsBooks></AllKidsBooks>
       },
       {
         path: "/payment",

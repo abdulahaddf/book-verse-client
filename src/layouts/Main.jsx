@@ -10,6 +10,9 @@ import ChatIcon from "../shared/ChatIcon/ChatIcon";
 import NavbarTwo from "../shared/NavbarTwo/NavbarTwo";
 import CategoryNav from "../shared/CategoryNav/CategoryNav";
 import PrivateRouteWithOutLoading from "../routes/PrivateRouteWithOutLoading";
+import { AuthContext } from "../provider/AuthProvider";
+import { useContext } from "react";
+
 
 
 
@@ -19,8 +22,11 @@ const Main = () => {
     
     // const { showAlert, setShowAlert, user } = useContext(AuthContext);
     // const [messages, userRefetch] = useUserMessage(user?.email);
+    const { darkMode} = useContext(AuthContext);
+
+    
     return (
-        <div >
+        <div className={`${darkMode?'dark-style':''}`} >
             <NavbarTwo></NavbarTwo>
             <CategoryNav></CategoryNav>
             {/* <Navbar></Navbar> */}

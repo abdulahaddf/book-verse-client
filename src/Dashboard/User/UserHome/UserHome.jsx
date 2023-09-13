@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -159,7 +158,7 @@ const UserHome = () => {
             openModal()
             window.my_modal_2.showModal()
           }}
-          className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
+          className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md focus:outline-none "
         >
           <FaCamera></FaCamera>
         </button>
@@ -230,11 +229,11 @@ const UserHome = () => {
       </p>
         </div>
           <div className="">
-          <p className="border-2 px-2 py-2 mt-6">{userinfo.displayName}</p>
-          <p className="border-2 px-2 py-2 mt-2">{userinfo.address}</p>
-          <p className="border-2 px-2 py-2 mt-2">{userinfo.gender}</p>
-          <p className="border-2 px-2 py-2 mt-2">{userinfo.birthday}</p>
-          <p className="border-2 px-2 py-2 mt-2">{userinfo.phoneNumber}</p>
+          <p className="border-2 px-2 py-2 h-10 w-64 mt-6">{userinfo.displayName}</p>
+          <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">{userinfo.address}</p>
+          <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">{userinfo.gender}</p>
+          <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">{userinfo.birthday}</p>
+          <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">{userinfo.phoneNumber}</p>
        </div>
           
         </div>
