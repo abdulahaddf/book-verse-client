@@ -7,19 +7,22 @@ import LazyLoad from "react-lazy-load";
 
 import Loader from "../../../shared/components/loader/Loader";
 import { useQuery } from "@tanstack/react-query";
+import Skeleton from "react-loading-skeleton";
 
 const Banner = () => {
   // const [banners, setBanners] = useState([]);
   // const [loading, setLoading] = useState(true);
 
   const { data: banners = [], isLoading } = useQuery(["banners"], async () => {
-    const res = await fetch("http://localhost:5000/banners");
+    const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
     return res.json();
   });
   console.log(banners);
 
   if (isLoading) {
-    return <Loader />;
+    return <div className="swiper skeleton">
+    <Skeleton height={550} />
+  </div>;
   }
   return (
     <Swiper
@@ -28,7 +31,7 @@ const Banner = () => {
         clickable: true,
       }}
       modules={[Pagination, Autoplay]}
-      className="mySwiper"
+      className="mySwiper z-0"
       autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto play configuration
     >
       {banners.map((banner) => (

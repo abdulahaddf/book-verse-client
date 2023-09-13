@@ -5,12 +5,15 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import { Rating } from "@smastrom/react-rating";
+// import { Rating } from "@smastrom/react-rating";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import UseBooks from "../../../hooks/UseBooks";
 import RecommendedCard from "./RecommendedCard";
 import Loader from "../loader/Loader";
 import './BookDetails.css'
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
 
 const BookDetails = () => {
   useEffect(() => {
@@ -23,7 +26,7 @@ const BookDetails = () => {
     title,
     cover_image,
     author,
-    rating,
+    
     page_numbers,
     category,
     published,
@@ -87,6 +90,44 @@ const BookDetails = () => {
 
   //   add to cart end
 
+
+  // tonmoy start 
+
+   
+
+    const allRating= singleBookDetails?.review?.map((a)=> a?.rating) 
+
+    const sumOfRating= allRating?.reduce((a,b)=> a+b ,0)
+
+    const rating= sumOfRating / singleBookDetails?.review?.length;
+
+    const realRating=parseFloat(rating).toFixed(2)
+
+   
+
+
+    const Star = (
+      <path d="M62 25.154H39.082L32 3l-7.082 22.154H2l18.541 13.693L13.459 61L32 47.309L50.541 61l-7.082-22.152L62 25.154z" />
+    )
+    
+    const myStyles = {
+      itemShapes: Star,
+      
+
+      
+    
+      activeFillColor: '#10aade',
+    
+    
+      inactiveFillColor: '#10abde3a',
+     
+   
+    }
+
+   
+  
+  // tonmoy end 
+
   const linkName = readMore ? "Read Less << " : "...Read More >> ";
 
   const extraContent = (
@@ -124,7 +165,7 @@ const BookDetails = () => {
       </p>
     </div>
   );
-  if (loading) return <Loader/>; 
+  if (loading) return <Loader />;
   return (
     <div className="w-11/12 mx-auto">
       <div className="lg:flex justify-center gap-8 my-10">
@@ -150,13 +191,27 @@ const BookDetails = () => {
                   You saved $ {saved} ({savedPer} %)
                 </span>
               </p>
+              {/* <p className="flex gap-2 items-center">
+                <span className="font-semibold flex items-center gap-3">
+                  Rating:{" "}
+                </span>{" "}
+                {rating} <FaStar />( {review ? <>{review?.length}</> : ""}{" "}
+                reviews)
+              </p> */}
+
+              {/* Tonmoy start  */}
               <p className="flex gap-2 items-center">
                 <span className="font-semibold flex items-center gap-3">
                   Rating:{" "}
                 </span>{" "}
-                {rating} <FaStar />( {review ? <>{review.length}</> : ""}{" "}
+                <Rating readOnly value={realRating > 0 ? realRating : 1} style={{ maxWidth: 150}}  itemStyles={myStyles} />
+                 
+                
+                ( {review ? <>{review?.length}</> : ""}{" "}
                 reviews)
               </p>
+
+              {/* Tonmoy end */}
               <p>
                 <span className="font-semibold">Total Page:</span>{" "}
                 {page_numbers}
@@ -200,7 +255,7 @@ const BookDetails = () => {
                       extend your rental period for a small fee. <br />
                       3. What You Pay: You'll pay the rental fee we agreed upon
                       when you booked the book. If you bring it back late, there
-                      might be extra charges. <br />
+                      might be extra charges.  <br />
                     </p>
                     <a
                       onClick={() => {
@@ -270,48 +325,46 @@ const BookDetails = () => {
         </div>
       </div>
 
-     <section className="md:mx-10 shadow-lg">
-     <div className="tabs mt-6  text-center ">
-        <button
-          className={`tab tab-lifted ${
-            activeTab === "description" ? "tab-active" : ""
-          }`}
-          onClick={() => handleTabChange("description")}
-        >
-          Description
-        </button>
-        <button
-          className={`tab tab-lifted ${
-            activeTab === "price" ? "tab-active" : ""
-          }`}
-          onClick={() => handleTabChange("price")}
-        >
-          Author
-        </button>
-      </div>
+      <section className="md:mx-10 shadow-lg">
+        <div className="tabs mt-6  text-center ">
+          <button
+            className={`tab tab-lifted ${activeTab === "description" ? "tab-active" : ""
+              }`}
+            onClick={() => handleTabChange("description")}
+          >
+            Description
+          </button>
+          <button
+            className={`tab tab-lifted ${activeTab === "price" ? "tab-active" : ""
+              }`}
+            onClick={() => handleTabChange("price")}
+          >
+            Author
+          </button>
+        </div>
 
-      <div className="tab-content mx-auto p-5   mb-20">
-        {activeTab === "description" && (
-          <div>
-            <p>{description}</p>
-          </div>
-        )}
-        {activeTab === "price" && (
-          <div className="md:flex">
-            <img
-              className="w-48 md:w-[250px] md:h-[250px] rounded-lg shadow-2xl"
-              src={author_image}
-              alt=""
-            />
-
-            <div className="md:ml-10">
-              <h2 className="font-semibold">{author}</h2>
-              <p>{about_author}</p>
+        <div className="tab-content mx-auto p-5   mb-20">
+          {activeTab === "description" && (
+            <div>
+              <p>{description}</p>
             </div>
-          </div>
-        )}
-      </div>
-     </section>
+          )}
+          {activeTab === "price" && (
+            <div className="md:flex">
+              <img
+                className="w-48 md:w-[250px] md:h-[250px] rounded-lg shadow-2xl"
+                src={author_image}
+                alt=""
+              />
+
+              <div className="md:ml-10">
+                <h2 className="font-semibold">{author}</h2>
+                <p>{about_author}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* Review Section---------------------------------------- */}
       <div className="my-10 shadow-lg md:mx-10 ">
