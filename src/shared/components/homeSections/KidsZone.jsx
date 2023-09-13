@@ -13,7 +13,7 @@ const KidsZone = () => {
       <div className="section">
         <div className="flex justify-between items-center">
                 <Heading title={"Kids Zone"}></Heading>
-                <Link to='/allkidsbooks' className="btn-fifth hover:text-white hover:no-underline">See More</Link>
+                <Link to='/allkidsbooks' className="btn-fifth  hover:text-white hover:no-underline">See More</Link>
          
         </div>
         {/* <Skeleton count={3} className="my-2 h-10" />  */}

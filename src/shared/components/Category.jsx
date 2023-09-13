@@ -45,11 +45,11 @@ const Category = () => {
               {/* <Tab>E-books</Tab> */}
             </TabList>
             <TabPanel>
-              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-2 gap-5 justify-items-center">
                 {books
                   .filter((card) => card?.category === "Fiction")
                   .map((book) => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
-                  .slice(0, 4)}
+                  .slice(0, 5)}
               </div>
               <div className="flex justify-center py-3">
                 <button className={`${darkMode?" btn-fifth-dark cursor-pointer hover:font-[500]":"btn-fifth cursor-pointer"}`} >
