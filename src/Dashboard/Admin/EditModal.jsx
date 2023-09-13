@@ -377,7 +377,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
           </div>
 
           <input
-            className="py-2 px-3 mt-4 flex btn w-32 hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
+            className="mt-4 flex btn w-32 btn-primary"
             type="submit"
             value="Update Book"
           />
