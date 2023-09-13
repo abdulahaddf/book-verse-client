@@ -1,4 +1,5 @@
-import { FaInbox } from "react-icons/fa";
+import { FaInbox, FaSearch } from "react-icons/fa";
+import { useSpring, animated } from "react-spring";
 import {
   MdCalendarMonth,
   MdOutlineChildFriendly,
@@ -18,11 +19,16 @@ import {
   Line,
 } from "recharts";
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
 const AdminHome = () => {
   const [paymentHistory, setPaymentHistory] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const initialDisplayCount = 10;
+
+  const searchRef = useRef(null);
+  const [search, setSearch] = useState("");
+  const [userNotFound, setUserNotFound] = useState(false);
 
   const [revenueSummary, setRevenueSummary] = useState({
     totalRevenueToday: 0,
@@ -46,16 +52,31 @@ const AdminHome = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/paymentHistory")
+    fetch(`http://localhost:5000/paymentHistory?search=${search}`)
       .then((res) => res.json())
       .then((data) => {
+        if (data.length === 0) {
+          // Set the userNotFound flag when no results are found
+          setUserNotFound(true);
+        }
         setPaymentHistory(data);
       });
-  }, []);
+  }, [search]);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
+
+  const handleSearch = () => {
+    setSearch(searchRef.current.value);
+    setUserNotFound(false);
+    searchRef.current.value = "";
+  };
+
+  const messageSpring = useSpring({
+    opacity: userNotFound ? 1 : 0, // Show the message if userNotFound is true, hide it otherwise
+    transform: userNotFound ? "translateY(0)" : "translateY(-50px)", // Move the message down if shown
+  });
 
   return (
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
@@ -172,15 +193,29 @@ const AdminHome = () => {
       </div>
       {/* ----------------Revenue end-------------- */}
 
+      {/* -----------Transactions Information start----- */}
+
       <h1 className="text-4xl font-bold text-center mt-12 mb-3">
         Transactions Information
       </h1>
 
       <input
         type="text"
-        placeholder="Find user"
-        className="input input-bordered w-full max-w-xs"
+        ref={searchRef}
+        placeholder="Find Transaction"
+        className="input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+          }
+        }}
       />
+      <button
+        onClick={handleSearch}
+        className="btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"
+      >
+        <FaSearch></FaSearch>
+      </button>
 
       {/* customer info with table start  */}
       <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
@@ -224,6 +259,18 @@ const AdminHome = () => {
               </button>
             </div>
           )}
+
+          {/* Animated "User not found" message */}
+          <animated.div
+            style={messageSpring}
+            className="text-5xl font-bold text-[#126e9d] text-center my-10"
+          >
+            User not found.
+            <br />
+            <span className="text-base text-rose-400">
+              please enter the correct value and try again
+            </span>
+          </animated.div>
         </div>
       </div>
 
