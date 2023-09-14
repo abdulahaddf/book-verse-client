@@ -13,12 +13,13 @@ const ManageBanner = () => {
     // const [banners, setBanners] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [userinfo] = UseUser()
+  const [userinfo] = UseUser();
     const {
         register,
         handleSubmit,
         reset
   } = useForm();
+  const [image,setImage]=useState([])
   
   const { data: banners = [],isLoading, refetch, } = useQuery(["banners"], async () => {
     const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
@@ -26,55 +27,72 @@ const ManageBanner = () => {
   });
 
 
-    const AddNewBanner = (data) => {
-      if (data!=="null") {
-        const { title, subtitle, url } = data;
-        console.log(data);
-        const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
-          import.meta.env.VITE_Image_Upload_token
-          }`;
-        
-          const coverForm = new FormData();
-        coverForm.append("image", url[0]);
-        fetch(imageUploadUrl, {
-          method: "POST",
-          body: coverForm,
-        })
-        .then((res) => res.json())
-        .then((imageResponse) => {
-          if (imageResponse.success) {
-            const imageURL = imageResponse.data.display_url;
-            const bannerDetails = {
-              title: title,
-              subtitle: subtitle,
-              bannerURL: imageURL,
-            };
-            axios
-              .post(
-              "https://book-verse-server-phi.vercel.app/banners",bannerDetails
-              )
-              .then((res) => {
-                console.log(res.data)
-                if (res.data.insertedId) {
-                  reset();
-                  document.body.classList.remove('modal-open')
-                  refetch();
-                  Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: `Banner added successfully.`,
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                
-                }
-              })
-              .catch((err) => console.log(err));
-          }
-        });
-        
-        }
+  const AddNewBanner = () => {
+    const data = new FormData();
+    data.append("file", image)
+    data.append('upload_preset',"bookverse")
+data.append("cloud_name","dxq53abxo")
+
+    fetch("https://api.cloudinary.com/v1_1/:bookverse/:action",
+      {
+        method: "post",
+        body:data
+      }
+    )
+      .then(res => res.json())
+      .then(data => console.log(data))
+    // .catch(err=>console.log(err))
     }
+
+    
+      // if (data!=="null") {
+      //   const { title, subtitle, url } = data;
+      //   console.log(data);
+      //   const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+      //     import.meta.env.VITE_Image_Upload_token
+      //     }`;
+        
+      //     const coverForm = new FormData();
+      //   coverForm.append("image", url[0]);
+      //   fetch(imageUploadUrl, {
+      //     method: "POST",
+      //     body: coverForm,
+      //   })
+      //   .then((res) => res.json())
+      //   .then((imageResponse) => {
+      //     if (imageResponse.success) {
+      //       const imageURL = imageResponse.data.display_url;
+      //       const bannerDetails = {
+      //         title: title,
+      //         subtitle: subtitle,
+      //         bannerURL: imageURL,
+      //       };
+      //       axios
+      //         .post(
+      //         "https://book-verse-server-phi.vercel.app/banners",bannerDetails
+      //         )
+      //         .then((res) => {
+      //           console.log(res.data)
+      //           if (res.data.insertedId) {
+      //             reset();
+      //             document.body.classList.remove('modal-open')
+      //             refetch();
+      //             Swal.fire({
+      //               position: "center",
+      //               icon: "success",
+      //               title: `Banner added successfully.`,
+      //               showConfirmButton: false,
+      //               timer: 1500,
+      //             });
+                
+      //           }
+      //         })
+      //         .catch((err) => console.log(err));
+      //     }
+      //   });
+        
+      //   }
+    
 
 
 
@@ -135,7 +153,8 @@ const ManageBanner = () => {
                 <input
                 checked={true}
                   type="file"
-                  id="url"
+                id="url"
+              onChange={(e)=>setImage(e.target.files[0])}
                   {...register("url")}
                   className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
                   input file-input file-input-bordered w-full "
