@@ -23,6 +23,7 @@
     opacity: 75%;
 } */
 .edit-button{
+  background: linear-gradient(to bottom, #126e9d, #10aade);
     position: absolute;
     top: 80%;
     left: 100%;
@@ -33,6 +34,11 @@
 /* .image-container:hover .edit-button:hover{
 opacity: 1;
   } */
+
+  .edit-button:hover{
+      background: linear-gradient(to right, #126e9d, #10aade);
+    
+  }
   .btn-home {
     
     background: linear-gradient(to bottom, #126e9d, #10aade);

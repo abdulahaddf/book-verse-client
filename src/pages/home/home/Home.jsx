@@ -15,6 +15,7 @@ import Publications from "../../../shared/components/homeSections/Publications";
 import WebsiteFeature from "../../../shared/components/homeSections/WebsiteFeature";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResultsList from "../SearchBar/SearchResultsList";
+import KidsZone from "../../../shared/components/homeSections/KidsZone";
 // import Banner from "../Banner/Banner";
 
 
@@ -23,8 +24,9 @@ import SearchResultsList from "../SearchBar/SearchResultsList";
 const Home = () => {
   // const [results, setResults] = useState([]);
   
+  
   return (
-    <div>
+    <div >
       {/* All Components of home will be shown here */}
   
       {/* <div className="search-bar-container relative z-10">
@@ -38,9 +40,10 @@ const Home = () => {
         <Category />
         <FeaturedBooks />
         <BestSelling/>
-        <RecentSelling/>
+        <RecentSelling />
+        <KidsZone></KidsZone>
         <Publications></Publications>
-        <WebsiteFeature></WebsiteFeature>
+        {/* <WebsiteFeature></WebsiteFeature> */}
       </section>
     </div>
   );

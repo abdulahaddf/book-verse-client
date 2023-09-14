@@ -10,10 +10,8 @@ import Swal from "sweetalert2";
 const Payment = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [submitText, setSubmitText] = useState(
-    "Please Submit all information then pay"
-  );
-  const { user } = useContext(AuthContext);
+  const [submitText, setSubmitText] = useState("Please Submit all information then pay");
+  const { user,darkMode } = useContext(AuthContext);
   const [userinfo, isLoading] = UseUser();
   const { getValue } = useLocalStorage();
   const totalPrice = localStorage.getItem("totalPrice");
@@ -107,6 +105,8 @@ const Payment = () => {
     localStorage.setItem("customer", JSON.stringify(profile));
     setButtonDisabled(false);
   };
+
+
   return (
     <div className="my-5">
       <h1 className="page-heading">Checkout</h1>
@@ -116,41 +116,41 @@ const Payment = () => {
       <div className="w-11/12 mx-auto my-5 md:flex gap-10">
         {/* Checkout form starts here */}
 
-        <div className=" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20 h-fit">
-          <h1 className="text-2xl font-semibold text-center text-red uppercase">
-            Shipping Information
-          </h1>
-          <form onSubmit={handleSubmit(updateProfile)} className="mt-6">
-            <div className=" flex items-center gap-5">
-              <label className="block text-sm font-semibold text-gray-800">
-                Pick Up Your Parcel From:
-              </label>
-              <div className=" space-x-4">
-                <label className="inline-flex items-center text-lg">
-                  <input
-                    type="radio"
-                    {...register("receive", { required: true })}
-                    value="home"
-                    className="radio text-red focus:ring-red focus:ring-opacity-40"
-                  />
-                  <span className="ml-2">Home</span>
-                </label>
-                <label className="inline-flex items-center text-lg">
-                  <input
-                    type="radio"
-                    {...register("receive")}
-                    value="office"
-                    className="radio text-red focus:ring-red focus:ring-opacity-40"
-                  />
-                  <span className="ml-2">Office</span>
-                </label>
-              </div>
-            </div>
-            {errors.receive && (
-              <span className="error font-light text-xs">
-                Pick up information is required
-              </span>
-            )}
+      <div className={darkMode?" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20"}>
+     
+   
+              <h1 className="text-2xl font-semibold text-center text-red uppercase">
+              Shipping Information
+              </h1>
+              <form onSubmit={handleSubmit(updateProfile)} className="mt-6">
+              <div className=" flex items-center gap-5">
+  <label
+    className="block text-sm font-semibold text-gray-800"
+  >
+    Pick Up Your Parcel From:
+  </label>
+  <div className=" space-x-4">
+    <label className="inline-flex items-center text-lg">
+      <input
+        type="radio"
+        {...register("receive", { required: true })}
+        value="home"
+        className="radio text-red focus:ring-red focus:ring-opacity-40"
+      />
+      <span className="ml-2 text-gray-600">Home</span>
+    </label>
+    <label className="inline-flex items-center text-lg">
+      <input
+        type="radio"
+        {...register("receive")}
+        value="office"
+        className="radio text-red focus:ring-red focus:ring-opacity-40"
+      />
+      <span className="ml-2 text-gray-600">Office</span>
+    </label>
+  </div>
+</div>
+{errors.receive && <span className="error font-light text-xs">Pick up information is required</span>}
 
             <div className="mb-2">
               <label
@@ -229,17 +229,20 @@ const Payment = () => {
               </span>
             )}
 
-            <div className="mt-6">
-              <button
-                type="submit"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
-              >
-                Submit
-              </button>
-              <p className="text-center my-3">{submitText}</p>
-            </div>
-          </form>
-        </div>
+                <div className="mt-6">
+                  <button
+                    type="submit"
+                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
+                  >
+                    Submit
+                  </button>
+                  <p className="text-center my-3 text-gray-600">{submitText}</p>
+                </div>
+              </form>
+            
+      
+    </div>
+
 
         {/* Checkout form ends here */}
 

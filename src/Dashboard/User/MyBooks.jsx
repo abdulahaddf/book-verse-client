@@ -6,7 +6,7 @@ import { Zoom } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 
 const MyBooks = () => {
-  const { user } = useContext(AuthContext);
+  const { user,darkMode } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
   // console.log(books);
   useEffect(() => {
@@ -51,10 +51,10 @@ const MyBooks = () => {
                 Your Selling Books : {books.length}
               </h1>
             </Zoom>
-            <div className="overflow-x-auto">
+            <div className="max-w-md md:max-w-6xl overflow-x-auto">
               <table className="table table-zebra shadow-xl w-full text-center">
                 {/* head */}
-                <thead className="bg-black text-white">
+                <thead className={darkMode?"bg-white/10 text-white":"bg-black text-white"}>
                   <tr>
                     <th>#</th>
                     <th>Book Cover</th>
@@ -85,7 +85,7 @@ const MyBooks = () => {
                       <td>
                         <button
                           onClick={() => handleDelete(book)}
-                          className="btn-custom"
+                          className={darkMode?" btn-custom-dark bg-[#dc2626]":"btn-custom"}
                         >
                           Delete
                         </button>

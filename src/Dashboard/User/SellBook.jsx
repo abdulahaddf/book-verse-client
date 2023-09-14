@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import UseUser from "../../hooks/UseUser";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext } from "react";
 
 const SellBook = () => {
+  //  Tonmoy start
+
+  const { darkMode } = useContext(AuthContext);
+  // Tonmoy end
   const [userinfo] = UseUser();
   console.log(userinfo);
   const {
@@ -104,12 +110,12 @@ const SellBook = () => {
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-slate-100 rounded-md p-4 md:p-16 mt-10"
+        className={darkMode?"bg-white/10 w-[90%] mx-auto border-[1px] rounded-md p-4 md:p-16 mt-10":"bg-slate-100 rounded-md p-4 md:p-16 mt-10"}
       >
         <div className="flex gap-6">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Book name</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Book name</span>
             </label>
             <input
               required
@@ -117,12 +123,12 @@ const SellBook = () => {
               name="title"
               {...register("title")}
               placeholder="Book name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Author name</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Author name</span>
             </label>
             <input
               required
@@ -130,14 +136,14 @@ const SellBook = () => {
               name="author"
               {...register("author")}
               placeholder="Author name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Language</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Language</span>
             </label>
             <input
               required
@@ -145,12 +151,12 @@ const SellBook = () => {
               name="language"
               {...register("language")}
               placeholder="Select language"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Price</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Price</span>
             </label>
             <input
               required
@@ -158,7 +164,7 @@ const SellBook = () => {
               name="price"
               {...register("price")}
               placeholder="Price"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
@@ -166,19 +172,19 @@ const SellBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Purchased date</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Purchased date</span>
             </label>
             <input
               required
               type="date"
               name="purchased"
               {...register("purchased")}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Book image</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Book image</span>
             </label>
             <input
               type="file"
@@ -186,7 +192,7 @@ const SellBook = () => {
               name="book_image"
               {...register("book_image")}
               placeholder="Book Image"
-              className="input 
+              className="input  text-black
               file-input file-input-bordered w-full "
             />
           </div>
@@ -194,11 +200,11 @@ const SellBook = () => {
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text font-semibold">Description</span>
+            <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Description</span>
           </label>
           <textarea
             required
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24 text-black"
             name="description"
             {...register("description")}
             placeholder="Description"
@@ -206,7 +212,7 @@ const SellBook = () => {
         </div>
 
         <input
-          className="btn-primary"
+          className={darkMode? "py-2 px-3 mt-4 flex btn w-fit bg-gray-500  text-white hover:bg-gray-600 hover:text-white  btn-outline hover:border-red  rounded-md  border-white ":"btn-primary"}
           type="submit"
           value="Post your Book"
         />

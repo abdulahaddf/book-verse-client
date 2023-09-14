@@ -8,9 +8,16 @@ import hachette from '../../../assets/publications/60950d8353a8bf00040ff34c.png'
 import springer from '../../../assets/publications/2560px-Springer_Nature_Logo.svg.png';
 import wiley from "../../../assets/publications/wiley-2-logo-png-transparent.png";
 import Heading from "../heading/Heading";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import WebsiteFeature from "./WebsiteFeature";
 const Publications = () => {
+    // Tonmoy start
+
+    const { darkMode} = useContext(AuthContext);
+    // Tonmoy end
   return (
-    <div className="my-20">
+    <div className={`${darkMode?"section bg-[#3C4043] mt-20":" my-20"}`}>
       <Heading title={"Our Publication Partner"}></Heading>
       <div className="mt-6">
       <Marquee  pauseOnHover>
@@ -72,6 +79,7 @@ const Publications = () => {
         </div>
       </Marquee>
       </div>
+      <WebsiteFeature/>
     </div>
   );
 };

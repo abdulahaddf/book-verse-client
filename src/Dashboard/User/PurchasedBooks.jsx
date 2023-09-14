@@ -12,7 +12,7 @@ import Loader from "../../shared/components/loader/Loader";
 import UseUser from "../../hooks/UseUser";
 
 const PurchasedBooks = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading,darkMode } = useContext(AuthContext);
   const [userinfo] = UseUser();
   const [books, setBooks] = useState([]);
   const [openModalIndex, setOpenModalIndex] = useState("");
@@ -21,7 +21,7 @@ const PurchasedBooks = () => {
   useEffect(() => {
     axios
       .get(
-        `https://book-verse-server-phi.vercel.app/purchased?email=${user.email}`
+        `https://book-verse-server-phi.vercel.app/purchased?email=${user?.email}`
       )
       .then((data) => setBooks(data.data));
   }, [user]);
@@ -118,9 +118,9 @@ const PurchasedBooks = () => {
                 <h1 className=" dashboard-heading">
                   All Your Purchased Books : {books.length}
                 </h1>
-                <table className="table table-zebra shadow-lg  text-center overflow-x-auto  w-[360px]  px-2 md:w-[200px] xl:w-[350px] mx-auto">
+                <table className={darkMode?"table table-zebra shadow-xl w-full bg-black/90  text-center overflow-x-auto ":"table table-zebra shadow-lg  text-center overflow-x-auto    px-2   mx-auto "}>
                   {/* head */}
-                  <thead className="bg-primary text-white mt-10">
+                  <thead className={darkMode?"bg-white/10 text-white":"bg-primary text-white"}>
                     <tr>
                       <th>#</th>
                       <th>Books</th>
@@ -129,14 +129,14 @@ const PurchasedBooks = () => {
                       <th>Transection ID</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                     {books.map((book, index) => (
                       <tr key={book._id}>
-                        <th>{index + 1}</th>
-                        <td>
+                        <th className={darkMode?" bg-black":""}>{index + 1}</th>
+                        <td className={darkMode?" bg-black":""}>
                           {book.books.map((sBook, sIndex) => (
                             <div
-                              className="text-start w-96 mx-auto  flex gap-10 my-5 shadow-lg p-2"
+                              className={darkMode?"text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90":"text-start flex gap-10 my-5 shadow-lg p-2 w-96"}
                               key={sBook._id}
                             >
                               <img
@@ -160,6 +160,7 @@ const PurchasedBooks = () => {
                                       modal.showModal();
                                     }
                                   }}
+                                  // className={darkMode?"btn btn-sm btn-outline text-white hover:bg-white hover:text-black mt-2":"btn-custom"}
                                   className={`btn-custom ${
                                     book.status === "Delivered"
                                       ? ""
@@ -177,7 +178,7 @@ const PurchasedBooks = () => {
                                 <form
                                   onSubmit={handleSubmit(onSubmit)}
                                   method="dialog"
-                                  className="modal-box"
+                                  className="modal-box   text-black "
                                 >
                                   <button
                                     className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -270,19 +271,19 @@ const PurchasedBooks = () => {
                             </div>
                           ))}
                         </td>
-                        <td className="text-xl">
+                        <td className={darkMode?"text-xl bg-black":"text-xl"}>
                           {book?.status == "Cash On Delivery"
                             ? "Pending"
                             : book?.status
                             ? book?.status
                             : "Pending"}{" "}
                         </td>
-                        <td>
+                        <td className={darkMode?" bg-black":""}>
                           <p>
                             {new Date(book.date).toISOString().split("T")[0]}
                           </p>
                         </td>
-                        <td>
+                        <td className={darkMode?" bg-black":""}>
                           {book.transactionId
                             ? book.transactionId
                             : "Cash on Delivery"}

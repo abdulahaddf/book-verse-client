@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const OldBookCard = ({book}) => {
     console.log(book)
-    const {author,title,cover_image,_id, postDate}= book;
+    const {author,title,cover_image,_id, postDate, offer_price}= book;
     return (
-        <div className="w-64 h-96 hover:rounded-sm hover:shadow-red shadow-md overflow-hidden">
+        <div className="h-96 hover:rounded-sm hover:shadow-red shadow-md overflow-hidden">
       <div href="#" className="group relative block bg-black">
         <img
           alt="Developer"
@@ -18,6 +18,7 @@ const OldBookCard = ({book}) => {
            
             <p className="text-cyan-50 text-lg">Book Name: {title}</p>
             <p className="text-teal-50 py-5 text-sm">Author: {author}</p>
+            <p className="text-teal-50 py-5 text-sm">Offer price: {offer_price}</p>
             <p className="text-teal-50 py-5 text-sm">Posted on : {new Date(postDate).toISOString().split("T")[0]}</p>
 
             <button className="btn-primary normal-case w-full">

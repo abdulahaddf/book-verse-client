@@ -10,8 +10,6 @@ import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 
 const Banner = () => {
-  // const [banners, setBanners] = useState([]);
-  // const [loading, setLoading] = useState(true);
 
   const { data: banners = [], isLoading } = useQuery(["banners"], async () => {
     const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
@@ -37,26 +35,10 @@ const Banner = () => {
       {banners.map((banner) => (
         <LazyLoad key={banner._id}>
           <SwiperSlide>
-            <img className="w-full" src={banner.bannerURL} alt="" />
+            <img className="w-[100vw]" src={banner.bannerURL} alt="" />
           </SwiperSlide>
         </LazyLoad>
       ))}
-
-      {/* <LazyLoad>
-        <SwiperSlide>
-          <img src={banner1} alt="" />
-        </SwiperSlide>
-      </LazyLoad>
-      <LazyLoad>
-        <SwiperSlide>
-          <img src={banner2} alt="" />
-        </SwiperSlide>
-      </LazyLoad>
-      <LazyLoad>
-        <SwiperSlide>
-          <img src={banner3} alt="" />
-        </SwiperSlide>
-      </LazyLoad> */}
     </Swiper>
   );
 };

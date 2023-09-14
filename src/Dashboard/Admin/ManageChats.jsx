@@ -1,14 +1,15 @@
 // import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAllUsersData } from "../../hooks/useAllUsersData";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import moment from "moment";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const ManageChats = () => {
 
 
- 
+  const { user,darkMode } = useContext(AuthContext);
 
   const [allUsersData, allUsersRefetch] = useAllUsersData()
 
@@ -58,16 +59,14 @@ const ManageChats = () => {
 
     // rounded-tr-[50px] rounded-bl-[50px]
 
-    <div className=" px-5  md:px-20 lg:px-20  w-full   ">
+    <div className={darkMode?" px-5 md:px-20 lg:px-20 w-full    ":" md:px-20 lg:px-20 w-full   "}>
+        <h1 className="dashboard-heading">All Your Chats</h1>
       {allChats?.map((a) => (
        <div key={a?._id}>
 
          <Link to={`singleChat/${a?._id}`} 
           
-          className="my-10 p-[5px] py-[15px]  space-y-3    overflow-hidden 
-         
-               hover:rounded-[0px] hover:no-underline  border-b-[2px]  border-r-[2px] hover:bg-gray-200
-          flex   "
+          className={darkMode?"my-2 p-[5px] py-[15px]     space-y-3 overflow-hidden   rounded-md   hover:bg-white/10  flex  ":"my-2 p-[5px] py-[15px]  bg-gray-50  space-y-3 overflow-hidden rounded-md hover:rounded-xl  border-b-[5px]  border-r-[2px] hover:bg-gray-200 flex w-4/5 mx-auto"}
         >
 
           <section className=" w-[15%] mt-2 pl-2 "
@@ -78,12 +77,12 @@ const ManageChats = () => {
             </span>
           </section>
 
-          <section className="w-[60%] md:w-[70%] lg:w-[70%]  pl-[15px] md:pl-0 lg:p-0 space-y-1">
-            <p className="text-lg  font-400   font-[500]  text-gray-800"> {a?.displayName?.slice(0, 30)}</p>
+          <section className=" md:w-[70%] lg:w-[70%]  pl-[30px] md:pl-0 lg:p-0 space-y-1">
+            <p className={darkMode?"text-[15px] font-[400] text-white":"text-[15px] font-[400] text-gray-600"}> {a?.displayName?.slice(0, 30)}</p>
 
             {a?.role === 'Admin' ? (
               a?.chat && a?.chat.length > 0 ? (
-                <p className="text-xs font-500  font-[500]">
+                <p className={darkMode?"text-[15px] font-[400] text-white":"text-[15px] font-[400] text-gray-600"}>
                   Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
                 </p>
               ) : (
@@ -91,11 +90,11 @@ const ManageChats = () => {
               )
             ) : (
               a?.chat && a?.chat.length > 0 ? (
-                <p className="text-[15px] font-700 font-[500] text-gray-500">
+                <p className={darkMode?" text-[15px]  font-[600] text-white":" text-[15px]  font-[600] text-gray-600"}>
                   {a?.chat[a?.chat.length - 1]?.name === 'Admin' ? 'You' : 'New Message'} : {`${a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}${a?.chat[a?.chat.length - 1]?.text.length >26 ? ` ...` :''}`}
                 </p>
               ) : (
-                <p className="text-[15px] font-700 ">No new text available</p>
+                <p className={darkMode?" text-[15px]  font-[600] text-white":" text-[15px]  font-[600] text-gray-600"}>No new text available</p>
               )
             )}
           </section>
@@ -126,7 +125,7 @@ const ManageChats = () => {
 
           <section  >
             
-          {a?.chat && a?.chat?.length > 0 && <p className="text-[12px] font-[500] text-gray-500 pt-[25px] "
+          {a?.chat && a?.chat?.length > 0 && <p className={darkMode?"text-[12px] font-[500] text-white pt-[25px]":"text-[12px] font-[500] text-gray-500 pt-[25px]"}
           > {moment(a?.chat[a?.chat?.length -1]?.time).format('h:mm:ss a')}</p>}
      
                

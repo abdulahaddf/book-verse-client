@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useCountUp } from "react-countup";
 // import CountUp from 'react-countup/build/CountUp';
 import { FaBookOpen, FaFeatherAlt, FaStoreAlt, FaUsers } from "react-icons/fa";
 import CountUp from "react-countup";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const WebsiteFeature = () => {
+  const { darkMode} = useContext(AuthContext);
     const delayInSeconds = 10; // Change this to your desired delay duration in seconds
 
   const [shouldStartCounter, setShouldStartCounter] = useState(false);
@@ -18,7 +20,7 @@ const WebsiteFeature = () => {
     return () => clearTimeout(timer);
   }, [delayInSeconds]);
   return (
-    <div className="grid grid-cols-4 w-4/5 mx-auto my-10">
+    <div className={`${darkMode?" bg-[#3C4043] grid grid-cols-2 gap-4 md:grid-cols-4 place-items-center w-4/5 mx-auto my-10 p-5 space-y-5":"grid grid-cols-2 gap-4 md:grid-cols-4 place-items-center w-4/5 mx-auto my-10 p-5 space-y-5"}`}>
       <div className="text-center flex flex-col items-center">
         <FaUsers className="text-6xl text-[#1e97d4]"></FaUsers>
         <h1 className="font-bold text-2xl py-1">

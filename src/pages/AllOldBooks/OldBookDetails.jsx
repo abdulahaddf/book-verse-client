@@ -13,7 +13,7 @@ const OldBookDetails = () => {
         window.scrollTo(0, 0);
       }, []);
      
-      const {user, cartRefetch } = useContext(AuthContext);
+      const {user, cartRefetch,darkMode } = useContext(AuthContext);
       
       const { getValue, setValue } = useLocalStorage();
       const [agree, setAgree] = useState(false);
@@ -90,8 +90,8 @@ console.log(singleUser?.role)
        
         
             <div className="w-11/12 mx-auto">
-      <div className="my-10 ">
-        <div className="md:flex justify-center gap-10 w-11/12 mx-auto ">
+      <div className={darkMode?" bg-white/10 my-10 w-4/5 mx-auto p-5 border-[1px]":" my-10 w-4/5 mx-auto"} >
+        <div className="md:flex justify-center gap-10 w-4/5 mx-auto ">
           <img
             src={cover_image}
             className=" md:w-2/12 my-5 rounded-lg shadow-2xl "
@@ -127,15 +127,15 @@ console.log(singleUser?.role)
         </div> */}
       </div>
 
-      <div className="  md:flex justify-around mt-6 mx-auto w-4/5 gap-20">
+      <div className={darkMode?" bg-white/10  md:flex justify-around mt-6 mx-auto w-4/5 gap-20 section border-[1px]":"  md:flex justify-around mt-6 mx-auto w-4/5 gap-20 section"}>
       <div className="my-5">
-            <h2 className="text-2xl font-semibold my-3">Book Description</h2>
-            <p>{description}</p>
+            <h2 className=" text-2xl font-semibold my-3">Book Description</h2>
+            <p className="max-w-lg">{description}</p>
           </div>
           <div className="">
           <h2 className="text-2xl font-semibold my-3">Seller Information</h2>
 
-           <div className="flex gap-10">
+           <div className=" mx-auto flex gap-10">
            <img
               className="w-[150px] h-[150px] rounded-lg shadow-2xl"
               src={sellerPhoto}
@@ -148,7 +148,7 @@ console.log(singleUser?.role)
               <p>{sellerAddress}</p>
             </div>
            </div>
-          { _id &&    <button onClick={contactWithSellerHandler} className="btn-custom w-full mt-5 flex justify-center" disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller</button> }
+          { _id &&    <button onClick={contactWithSellerHandler} className={`${darkMode?"btn-fifth-dark w-[90%] mt-10 ":" btn-fifth w-[90%] mt-10"}`} disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller </button> }
           </div>
       </div>
 
