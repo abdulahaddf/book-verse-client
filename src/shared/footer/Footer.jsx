@@ -24,6 +24,8 @@ import { FcLock } from "react-icons/fc";
 import emailjs from '@emailjs/browser';
 import { useRef } from "react";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 const Footer = () => {
   const form = useRef();
 
@@ -49,9 +51,13 @@ const Footer = () => {
       });
   };
 
+  // Tonmoy start
+
+  const { darkMode} = useContext(AuthContext);
+  // Tonmoy end
 
   return (
-    <footer className="bg-base-200 text-base-content mt-8">
+    <footer className={`${darkMode?"   bg-black/20 mt-8":"bg-base-200 text-base-content mt-8"}`}>
       <div className="footer w-11/12 mx-auto py-10 flex-row md:flex-col justify-between">
         <div>
           <div className=" flex items-center gap-4">
@@ -82,7 +88,7 @@ const Footer = () => {
               <FaTwitterSquare className="text-[#55acee] hover:bg-[#126e9d] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaTwitterSquare>
             </a>
             <a href="">
-              <FaTumblrSquare className="text-[#001833] hover:bg-[#126e9d] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm  text-3xl"></FaTumblrSquare>
+              <FaTumblrSquare className="text-[#bd403b] hover:bg-[#126e9d] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm  text-3xl"></FaTumblrSquare>
             </a>
             <a href="">
               <FaGooglePlusSquare className="text-[#de4e43] hover:bg-[#126e9d] hover:text-white hover:py-1 hover:px-1 duration-300 rounded-sm text-3xl"></FaGooglePlusSquare>
@@ -199,7 +205,7 @@ const Footer = () => {
                />
             </div>
             <input
-              className="btn-primary rounded-sm h-9"
+              className={`${darkMode?" p-2 rounded-md text-[15px] font-[500]   text-black/80 border-[10px] bg-white  hover:text-black":"btn-primary rounded-sm h-9"}`}
               type="submit"
               value="submit"
             />
@@ -217,7 +223,7 @@ const Footer = () => {
 
       <hr className="mx-10" />
 
-      <div className="footer items-center py-6 w-11/12 mx-auto text-base-content">
+      <div className={`${darkMode?"footer items-center py-6 w-11/12 mx-auto text-white/70":"footer items-center py-6 w-11/12 mx-auto text-base-content"}`}>
         <div className="items-center">
           <p>Copyright © 2023 Book verse- All right reserved</p>
           <p className="mx-auto">
