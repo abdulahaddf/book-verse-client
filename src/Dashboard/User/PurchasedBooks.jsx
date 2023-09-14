@@ -21,7 +21,7 @@ const PurchasedBooks = () => {
   useEffect(() => {
     axios
       .get(
-        `https://book-verse-server-phi.vercel.app/purchased?email=${user.email}`
+        `https://book-verse-server-phi.vercel.app/purchased?email=${user?.email}`
       )
       .then((data) => setBooks(data.data));
   }, [user]);

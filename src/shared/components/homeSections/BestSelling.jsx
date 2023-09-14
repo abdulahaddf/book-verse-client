@@ -82,7 +82,7 @@ const BestSelling = () => {
               slidesPerView: 3,
             },
           }}
-          className="mySwiper flex w-full"
+          className="mySwiper flex w-full z-0"
         >
           {bestSellingData?.slice(0, 20).map((book, idx) => (
             <SwiperSlide key={idx}>

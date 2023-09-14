@@ -3,7 +3,14 @@ import UseBooks from "../../hooks/UseBooks";
 import Loader from "../../shared/components/loader/Loader";
 import ManageBooksCard from "./ManageBooksCard";
 import { useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext } from "react";
 const ManageBooks = () => {
+  // Tonmoy Start
+
+  const {darkMode}=useContext(AuthContext)
+
+  //  Tonmoy end
   const { books, setBooks, loading, searchRef, setSearch, userNotFound } =
     UseBooks();
   const [filteredBooks, setFilteredBooks] = useState(books);
@@ -54,7 +61,7 @@ const ManageBooks = () => {
         />
         <button
           onClick={handleSearch}
-          className="btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"
+          className={darkMode?"btn rounded-sm bg-white text-[#10aade] ml-2 hover:bg-white  hover:text-black":"btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"}
         >
           <FaSearch></FaSearch>
         </button>
