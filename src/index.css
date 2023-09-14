@@ -133,7 +133,6 @@
     margin: 6px 4px;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
@@ -144,6 +143,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: none;
     font: 18px;
     /* outline: none */
     z-index: 0;
@@ -151,12 +151,14 @@
   .btn-fifth:hover {
     color: white;
     cursor: pointer;
+    border: 1px solid #126e9d;
+    border-radius: 5px;
   }
   .btn-fifth:before {
     transition: 0.5s all ease;
     position: absolute;
     top: 0;
-    left: 50%;
+    /* left: 50%; */
     right: 50%;
     bottom: 0;
     opacity: 0;
@@ -350,6 +352,7 @@
   margin: 0 auto !important;
 }
 .swiper {
+  z-index: 0;
   justify-content: center;
 }
 .swiper-pagination {
@@ -378,4 +381,18 @@
 
 .shadow-Card:hover{
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+}
+.coupon .replies {
+  display: none;
+  opacity: 0; 
+}
+
+.coupon:hover .comment {
+  display: none;
+}
+
+
+.coupon:hover .replies {
+  display: inline;
+  opacity: 1; 
 }
