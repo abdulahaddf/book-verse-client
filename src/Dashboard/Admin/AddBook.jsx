@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext } from "react";
 
 const AddBook = () => {
   const {
@@ -14,6 +16,7 @@ const AddBook = () => {
   console.log(watch("example"));
 
   // tonmoy start
+  const {darkMode}=useContext(AuthContext)
   const onSubmit = async (allData) => {
     const {
       title,
@@ -125,12 +128,12 @@ const AddBook = () => {
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-slate-100 rounded-md p-4 md:p-16 mt-10"
+        className={darkMode?"bg-white/10  border-[1px] rounded-md p-4 md:p-16 mt-10":"bg-slate-100 rounded-md p-4 md:p-16 mt-10"}
       >
         <div className="flex gap-6">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Book name</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Book name</span>
             </label>
             <input
               required
@@ -138,12 +141,12 @@ const AddBook = () => {
               name="title"
               {...register("title")}
               placeholder="Book name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Author name</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Author name</span>
             </label>
             <input
               required
@@ -151,14 +154,14 @@ const AddBook = () => {
               name="author"
               {...register("author")}
               placeholder="Author name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Category</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Category</span>
             </label>
             <input
               required
@@ -166,12 +169,12 @@ const AddBook = () => {
               name="category"
               {...register("category")}
               placeholder="Select category"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Language</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Language</span>
             </label>
             <input
               required
@@ -179,7 +182,7 @@ const AddBook = () => {
               name="language"
               {...register("language")}
               placeholder="Select language"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
@@ -187,7 +190,7 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Real Prices</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Real Prices</span>
             </label>
             <input
               required
@@ -195,13 +198,13 @@ const AddBook = () => {
               name="real_price"
               {...register("real_price")}
               placeholder="Real price"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
 
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Offer price*</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Offer price*</span>
             </label>
             <input
               required
@@ -209,7 +212,7 @@ const AddBook = () => {
               name="offer_price"
               {...register("offer_price")}
               placeholder="Offer price"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
@@ -217,7 +220,7 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Page numbers</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Page numbers</span>
             </label>
             <input
               required
@@ -225,13 +228,13 @@ const AddBook = () => {
               name="page_numbers"
               {...register("page_numbers")}
               placeholder="Page numbers"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
 
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Rating*</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Rating*</span>
             </label>
             <input
               required
@@ -239,7 +242,7 @@ const AddBook = () => {
               name="rating"
               {...register("rating")}
               placeholder="Rating"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
@@ -247,20 +250,20 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Published date</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Published date</span>
             </label>
             <input
               required
               type="date"
               name="published"
               {...register("published")}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
 
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">About author</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>About author</span>
             </label>
             <input
               required
@@ -268,7 +271,7 @@ const AddBook = () => {
               name="about_author"
               {...register("about_author")}
               placeholder="About author"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full text-black"
             />
           </div>
         </div>
@@ -276,7 +279,7 @@ const AddBook = () => {
         <div className="md:flex gap-6 justify-between">
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Cover image</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Cover image</span>
             </label>
             <input
               type="file"
@@ -285,12 +288,12 @@ const AddBook = () => {
               {...register("cover_image")}
               placeholder="Cover image"
               className="input 
-              file-input file-input-bordered w-full "
+              file-input file-input-bordered w-full text-black "
             />
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text font-semibold">Author image</span>
+              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Author image</span>
             </label>
             <input
               required
@@ -298,18 +301,18 @@ const AddBook = () => {
               name="author_image"
               {...register("author_image")}
               placeholder="Author image"
-              className="input file-input file-input-bordered w-full"
+              className="input file-input file-input-bordered w-full text-black"
             />
           </div>
         </div>
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text font-semibold">Description</span>
+            <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Description</span>
           </label>
           <textarea
             required
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24 text-black"
             name="description"
             {...register("description")}
             placeholder="Description"
@@ -320,6 +323,7 @@ const AddBook = () => {
           className="btn-primary mt-6 w-28"
           type="submit"
           value="Add Book"
+        
         />
       </form>
     </div>

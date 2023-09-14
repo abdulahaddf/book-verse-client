@@ -1,16 +1,23 @@
-import { async } from "@firebase/util";
+
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ManageUsers = () => {
+     // Tonmoy Start
+
+     const {darkMode}=useContext(AuthContext)
+
+     //  Tonmoy end
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await fetch("https://book-verse-server-phi.vercel.app/users");
     return res.json();
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`https://book-verse-server-phi.vercel.app/users/admin/${user._id}`, {
+    fetch(`https://book-verse-server-phi.vercel.app/users/admin/${user?._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -59,11 +66,11 @@ const ManageUsers = () => {
         Total Users: {users.length}
       </h3>
 
-      <div className="w-2/3 mx-auto">
+      <div className="w-[90%] mx-auto">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead>
+            <thead className={darkMode?" bg-white/10 text-white ":""}>
               <tr>
                 <th>#</th>
                 <th>Photo</th>
@@ -75,7 +82,7 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {users.map((user, index) => (
-                <tr key={user._id}>
+                <tr key={user._id} >
                   <td>{index + 1}</td>
                   <td>
                     <div className="avatar">
@@ -93,7 +100,7 @@ const ManageUsers = () => {
                       ) : (
                         <button
                           onClick={() => handleMakeAdmin(user)}
-                          className="text-black btn btn-fifth bg-red-400 "
+                          className={darkMode?"btn-custom-dark  ":"btn-custom  "}
                         >
                           Make Admin
                         </button>
@@ -105,7 +112,7 @@ const ManageUsers = () => {
                       onClick={() => handleDelete(user)}
                       className="w-full"
                     >
-                      <MdDeleteForever className=" text-4xl  text-red hover:text-blue-500"></MdDeleteForever>
+                      <MdDeleteForever className=" text-4xl  text-[#dc2626] hover:text-[#10aade]"></MdDeleteForever>
                     </button>
                   </td>
                 </tr>

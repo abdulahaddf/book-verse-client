@@ -13,24 +13,28 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
+import { AuthContext } from '../../../provider/AuthProvider';
+import { useContext } from 'react';
 
 const KidsZone = () => {
-  const { books, loading } = UseBooks();
+    const { books, loading } = UseBooks();
 
-  console.log(books);
-  return (
-    <div className="section">
-      <div className="flex justify-between items-center">
-        <Heading title={"Kids Zone"}></Heading>
-        <Link
-          to="/allkidsbooks"
-          className="btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
-        >
-          See All
-        </Link>
-      </div>
-      {/* <Skeleton count={3} className="my-2 h-10" />  */}
-      {/* <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
+    // Tonmoy start
+
+    const { darkMode } = useContext(AuthContext);
+
+    // Tonmoy End
+  
+    console.log(books)
+    return (
+      <div className="section">
+        <div className="flex justify-between items-center">
+                <Heading title={"Kids Zone"}></Heading>
+                <Link to='/allkidsbooks' className={darkMode?"btn-fifth-dark hover:text-white hover:no-underline":"btn-fifth hover:text-white hover:no-underline"}>See More</Link>
+         
+        </div>
+        {/* <Skeleton count={3} className="my-2 h-10" />  */}
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
         {
                     books?.map((book) => {
                         if ((book.category.toLowerCase()) === 'kids') {
