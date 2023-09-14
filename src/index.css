@@ -382,3 +382,17 @@
 .shadow-Card:hover{
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
 }
+.coupon .replies {
+  display: none;
+  opacity: 0; 
+}
+
+.coupon:hover .comment {
+  display: none;
+}
+
+
+.coupon:hover .replies {
+  display: inline;
+  opacity: 1; 
+}
