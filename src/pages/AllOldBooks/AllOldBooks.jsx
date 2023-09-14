@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import OldBookCard from "../../shared/components/OldBookCard/OldBookCard";
+import LazyLoad from "react-lazy-load";
 
 const AllOldBooks = () => {
   const [books, setBook] = useState([]);
@@ -10,7 +11,8 @@ const AllOldBooks = () => {
       .then((data) => setBook(data));
   }, []);
   return (
-    <div>
+   <LazyLoad>
+     <div>
       <h1 className="text-3xl text-center font-semibold my-10">
         All Old Books
       </h1>
@@ -20,6 +22,7 @@ const AllOldBooks = () => {
         ))}
       </div>
     </div>
+   </LazyLoad>
   );
 };
 

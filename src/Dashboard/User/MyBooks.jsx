@@ -40,14 +40,14 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="w-full h-full">
+    <div className="w-4/5 h-full">
       {/* <h1 className="text-3xl text-center font-semibold my-5">Your Selling Books</h1> */}
       <div>
         {books.length > 0 ? (
           <>
             <Zoom>
               {" "}
-              <h1 className="text-3xl text-center font-semibold my-5">
+              <h1 className="dashboard-heading">
                 Your Selling Books : {books.length}
               </h1>
             </Zoom>

@@ -98,8 +98,8 @@ const SellBook = () => {
   };
 
   return (
-    <div className="w-full h-full">
-      <h1 className="text-3xl text-center font-semibold my-5">
+    <div className="w-4/5 h-full">
+      <h1 className="dashboard-heading">
         Post Your Old Books to sell
       </h1>
       <form
@@ -206,7 +206,7 @@ const SellBook = () => {
         </div>
 
         <input
-          className="py-2 px-3 mt-4 flex btn w-fit hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
+          className="btn-primary"
           type="submit"
           value="Post your Book"
         />

@@ -51,7 +51,7 @@ const ManageOrder = () => {
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
             <thead className="bg-slate-100 text-start">
-              <tr>
+              <tr className="text-lg">
                 <th>No</th>
                 <th>Email</th>
                 {/* <th>User Id</th> */}
@@ -72,35 +72,16 @@ const ManageOrder = () => {
                     <td>{index + 1}</td>
                     <td className="text-start">{payment.mail}</td>
                     {/* <td>{payment._id}</td> */}
-                    <td className="text-start">{payment.transactionId}</td>
+                    <td className="text-center">{payment.transactionId ? payment.transactionId : "Cash On Delivery"}</td>
                     <td>{payment.date}</td>
-                    <td className="text-start">${payment.total_price} </td>
+                    <td className="text-start">{payment.total_price ? <>$ {payment.total_price}</> : "COD"} </td>
                     <td className="text-start">
                       <span className={`${payment?.status  ? "bg-green-400" : "bg-[#FF0000]"} rounded text-white badge-sm `}>
                         {payment?.status ? payment?.status : "Pending"}
                       </span>
                     </td>
                     <td>
-                      {/* <form onSubmit={handleSubmit((data) => onSubmit(data, payment?._id))}>
-                        <select {...register("status")} >
-                          <option value="Processing">Processing</option>
-                          <option value="Shipped">Shipped</option>
-                          <option value="In-Transit">In Transit</option>
-                          <option value="Delivered">Delivered</option>
-                        </select>
-                        <button
-                          className="btn btn-success btn-xs normal-case text-white"
-                          type="submit" 
-                        >
-                          update
-                        </button>
-                      </form> */}
-                      {/* <button
-                        className="btn btn-success btn-xs normal-case text-white"
-                        onClick={() => window.my_modal_3.showModal()}
-                      >
-                        update
-                      </button> */}
+                      
                       <form onSubmit={() => handleForm(event, payment?._id)}>
                         <select name="select" defaultValue={payment?.status}>
                           <option value="Processing">Processing</option>

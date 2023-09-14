@@ -26,7 +26,7 @@ const PurchasedBooks = () => {
       .then((data) => setBooks(data.data));
   }, [user]);
 
-  //   console.log(books);
+  console.log(books);
 
   //for review
   const {
@@ -64,49 +64,34 @@ const PurchasedBooks = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.message === "Review added successfully") {
-        
           // tonmoy start
-          fetch("https://book-verse-server-phi.vercel.app/recentCellingAndBestCellingReview", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(review),
-          })
-          .then(res=>res.json())
-          .then(res=>{
-
-            if(res){
-
-                
-              reset();
-              if (openModalIndex) {
-                openModalIndex.close();
-              }
-
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Review added successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-
-
+          fetch(
+            "https://book-verse-server-phi.vercel.app/recentCellingAndBestCellingReview",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(review),
             }
+          )
+            .then((res) => res.json())
+            .then((res) => {
+              if (res) {
+                reset();
+                if (openModalIndex) {
+                  openModalIndex.close();
+                }
 
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Review added successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
 
-
-
-
-          } )             
-       
           // tonmoy end
-
-          
-
-
-        
-
-         
         } else if (result.message === "You have already reviewed this book") {
           reset();
           if (openModalIndex) {
@@ -117,28 +102,25 @@ const PurchasedBooks = () => {
             icon: "error",
             title: "Sorry",
             text: "You have already reviewed this book",
-           });
-          
-         
-
+          });
         }
       });
   }
   if (loading) return <Loader />;
   return (
-    <div className="w-full h-full">
+    <div className="mt-5 w-96 md:w-full h-full ">
       <>
         {books.length > 0 ? (
           <>
             {" "}
             <div>
-              <div className="">
-                <h1 className="text-3xl font-bold text-center my-5">
+              <div className="overflow-x-auto">
+                <h1 className=" dashboard-heading">
                   All Your Purchased Books : {books.length}
                 </h1>
-                <table className="table table-zebra shadow-xl w-full  text-center overflow-x-auto">
+                <table className="table table-zebra shadow-lg  text-center overflow-x-auto  w-[360px]  px-2 md:w-[200px] xl:w-[350px] mx-auto">
                   {/* head */}
-                  <thead className="bg-black text-white mt-10">
+                  <thead className="bg-primary text-white mt-10">
                     <tr>
                       <th>#</th>
                       <th>Books</th>
@@ -154,7 +136,7 @@ const PurchasedBooks = () => {
                         <td>
                           {book.books.map((sBook, sIndex) => (
                             <div
-                              className="text-start flex gap-10 my-5 shadow-lg p-2"
+                              className="text-start w-96 mx-auto  flex gap-10 my-5 shadow-lg p-2"
                               key={sBook._id}
                             >
                               <img
@@ -178,7 +160,12 @@ const PurchasedBooks = () => {
                                       modal.showModal();
                                     }
                                   }}
-                                  className="btn btn-sm btn-outline mt-2"
+                                  className={`btn-custom ${
+                                    book.status === "Delivered"
+                                      ? ""
+                                      : "cursor-not-allowed opacity-50"
+                                  }`}
+                                  disabled={book.status !== "Delivered"}
                                 >
                                   review
                                 </button>
@@ -235,6 +222,9 @@ const PurchasedBooks = () => {
                                             onChange={onChange}
                                             visibleLabelId="rating_label"
                                             onBlur={onBlur}
+                                            emptySymbol="fa fa-star-o fa-2x"
+                                            fullSymbol="fa fa-star fa-2x"
+                                            fractions={2}
                                           />
                                         )}
                                       />
@@ -246,8 +236,6 @@ const PurchasedBooks = () => {
                                     <p className="text-lg font-medium my-2">
                                       Your Review
                                     </p>
-
-                                   
 
                                     <input
                                       type="hidden"
@@ -282,12 +270,23 @@ const PurchasedBooks = () => {
                             </div>
                           ))}
                         </td>
+                        <td className="text-xl">
+                          {book?.status == "Cash On Delivery"
+                            ? "Pending"
+                            : book?.status
+                            ? book?.status
+                            : "Pending"}{" "}
+                        </td>
                         <td>
                           <p>
                             {new Date(book.date).toISOString().split("T")[0]}
                           </p>
                         </td>
-                        <td>{book.transactionId}</td>
+                        <td>
+                          {book.transactionId
+                            ? book.transactionId
+                            : "Cash on Delivery"}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

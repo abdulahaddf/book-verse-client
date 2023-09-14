@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Heading from "../heading/Heading";
 import UseBooks from "../../../hooks/UseBooks";
 import ProductCard from "../productCard/ProductCard";
@@ -15,14 +14,17 @@ const FeaturedBooks = () => {
         <Heading title={"Featured Books"}></Heading>
        
       </div>
-      {/* <Skeleton count={3} className="my-2 h-10" />  */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
       {
-                books?.slice(5,10).map(book => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
-            }
+        loading ? <Skeleton count={3} className="my-4 h-28" /> :  <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
+        {
+                  books?.slice(5,10).map(book => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>
+                  )
+              }
+         
        
+        </div>
+      }
      
-      </div>
     </div>
   );
 };

@@ -174,6 +174,9 @@
   .page-heading {
     @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
   }
+  .dashboard-heading {
+    @apply text-2xl md:text-3xl font-bold text-center my-5 shadow-red py-2 shadow-md w-1/2 mx-auto my-10;
+  }
 }
 
 * {

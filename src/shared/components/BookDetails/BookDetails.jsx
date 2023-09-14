@@ -174,7 +174,7 @@ const BookDetails = () => {
            <div className="bg-slate-300 box">
              <img
               src={cover_image}
-              className="max-h-96 min-h-[383px] min-w-[244px]  shadow-2xl imgBox"
+              className="max-h-96 min-h-[383px] min-w-[244px]  shadow-2xl imgBox duration-500"
             />
            </div>
             <div className="ms-3 space-y-3">
@@ -204,10 +204,10 @@ const BookDetails = () => {
                 <span className="font-semibold flex items-center gap-3">
                   Rating:{" "}
                 </span>{" "}
-                <Rating readOnly value={realRating > 0 ? realRating : 1} style={{ maxWidth: 150}}  itemStyles={myStyles} />
+                <Rating readOnly value={realRating > 0 ? realRating : 0} style={{ maxWidth: 100}}  itemStyles={myStyles} />
                  
                 
-                ( {review ? <>{review?.length}</> : ""}{" "}
+                ( {review ? <>{review?.length}</> : "0"}{" "}
                 reviews)
               </p>
 

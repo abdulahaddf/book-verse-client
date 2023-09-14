@@ -8,7 +8,6 @@ import { GrMapLocation } from "react-icons/gr";
 import { useContext } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
-import useAdmin from "../hooks/useAdmin";
 import UseUser from "../hooks/UseUser";
 import { MdSell } from "react-icons/md";
 import { CiDiscount1 } from "react-icons/ci";
@@ -37,9 +36,12 @@ const Dashboard = () => {
 
   return (
     <div>
+      
       {(user && singleUser && userinfo) && <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content  flex flex-col items-center justify-center">
+        
+        <div className="drawer-content relative flex flex-col items-center justify-center  ">
+          
           <label
             htmlFor="my-drawer-2"
             className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
@@ -47,14 +49,18 @@ const Dashboard = () => {
             <FaBars></FaBars>
           </label>
           {/* <DashboardNavbar></DashboardNavbar> */}
+          <div className="absolute top-2 right-3 bg-white rounded-xl shadow-md p-3">
+            <img  className="w-32 " src="/main-logo.png" alt="" />
+          </div>
+          
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side ">
           <label
             htmlFor="my-drawer-2"
             className="drawer-overlay shadow-xl"
           ></label>
-          <div className="menu p-4 w-60 bg-slate-100">
+          <div className="menu p-4 w-60 bg-slate-100 ">
             <div className="text-center mx-auto">
               <img
                 className="rounded-full w-24 h-24 mx-auto"
@@ -138,7 +144,7 @@ const Dashboard = () => {
                 </>
               )}
 
-
+              
               {singleUser?.role === 'user' && (
                 <>
                   <li>
@@ -148,7 +154,7 @@ const Dashboard = () => {
                   </li>
 
                   <li>
-                    <NavLink to="/dashboard/purchasedBooks">
+                    <NavLink to="/dashboard/purchasedBooks" >
                       <ImBook />
                       Purchased Books
                     </NavLink>
@@ -173,6 +179,7 @@ const Dashboard = () => {
                   </li>
                 </>
               )}
+           
 
               {user && (<> <div className="divider"></div>
                 <li>

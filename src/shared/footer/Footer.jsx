@@ -18,7 +18,7 @@ import { SiAmericanexpress } from "react-icons/si";
 import { Link } from "react-router-dom";
 import appleStore from "../../assets/store/apple2.png";
 import googlePlay from "../../assets/store/google2.png";
-import logo from "../../assets/image/logo.png";
+import logo from "/main-logo.png";
 import { FcLock } from "react-icons/fc";
 
 import emailjs from '@emailjs/browser';
@@ -55,8 +55,8 @@ const Footer = () => {
       <div className="footer w-11/12 mx-auto py-10 flex-row md:flex-col justify-between">
         <div>
           <div className=" flex items-center gap-4">
-            <img className="w-12 h-12 rounded-sm" src={logo} alt="" />
-            <h1 className="font-bold text-2xl text-[#126e9d]">Book verse</h1>
+            <img className="w-44" src={logo} alt="" />
+            {/* <h1 className="font-bold text-2xl text-[#126e9d]">Book verse</h1> */}
           </div>
           <p>
             Your premier source for captivating <br /> books across genres.

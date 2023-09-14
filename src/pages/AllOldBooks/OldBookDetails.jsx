@@ -87,14 +87,14 @@ console.log(singleUser?.role)
 
 // end Tonmoy
     return (
-        <div className="h-[100vh] w-full">
+       
         
             <div className="w-11/12 mx-auto">
       <div className="my-10 ">
         <div className="md:flex justify-center gap-10 w-11/12 mx-auto ">
           <img
             src={cover_image}
-            className=" md:w-2/12 my-5 rounded-lg shadow-2xl"
+            className=" md:w-2/12 my-5 rounded-lg shadow-2xl "
           />
           <div className="ms-3 space-y-3">
             <h1 className="text-2xl md:text-5xl font-bold font-serif">{title}</h1>
@@ -127,8 +127,8 @@ console.log(singleUser?.role)
         </div> */}
       </div>
 
-      <div className="  flex justify-around mt-6 mx-auto w-4/5 gap-20">
-      <div>
+      <div className="  md:flex justify-around mt-6 mx-auto w-4/5 gap-20">
+      <div className="my-5">
             <h2 className="text-2xl font-semibold my-3">Book Description</h2>
             <p>{description}</p>
           </div>
@@ -148,7 +148,7 @@ console.log(singleUser?.role)
               <p>{sellerAddress}</p>
             </div>
            </div>
-          { _id &&    <button onClick={contactWithSellerHandler} className="btn-custom mt-5 flex justify-center" disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller</button> }
+          { _id &&    <button onClick={contactWithSellerHandler} className="btn-custom w-full mt-5 flex justify-center" disabled={(user?.email === sellerMail || singleUser?.role ==='admin')?true : false}>Contact with seller</button> }
           </div>
       </div>
 
@@ -160,7 +160,7 @@ console.log(singleUser?.role)
 
 
     </div>
-        </div>
+      
     );
 };
 
