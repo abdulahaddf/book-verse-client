@@ -26,6 +26,7 @@ const Dashboard = () => {
 
   //  Tonmoy Start
   const [singleUser] = UseSingleUser(user?.email)
+  const isAdmin = singleUser?.role === 'admin';
 
      if(!userinfo || !singleUser || !user){
       return <Loader/>
@@ -54,7 +55,9 @@ const Dashboard = () => {
             htmlFor="my-drawer-2"
             className="drawer-overlay shadow-xl"
           ></label>
-          <div className="menu p-4 w-60 bg-slate-100">
+          <div className={`menu p-4 w-60 ${
+                isAdmin ? 'h-auto' : 'h-full'
+              } bg-slate-100`}>
             <div className="text-center mx-auto">
               <img
                 className="rounded-full w-24 h-24 mx-auto"
