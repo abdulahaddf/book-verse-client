@@ -150,7 +150,7 @@ const AdminSingleChat = () => {
 
 
     <div className='w-full'>
-      <div className="flex-1 sm:p-6 lg:px-32 justify-between flex flex-col h-[500px]  md:h-[600px] lg:h-[750px] w-full">
+      <div className="flex-1  justify-between flex flex-col h-[500px]  md:h-[600px] lg:h-[700px] w-11/12 md:w-2/4 mx-auto bg-[#F1F5F9] border-black rounded-t-2xl">
         <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200 bg-blue-300 sm:ps-5 rounded-t-2xl">
           <div className="relative flex items-center space-x-4">
             <div className="relative">
@@ -168,7 +168,7 @@ const AdminSingleChat = () => {
         </div>
 
         <div className='flex flex-col'>
-        <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-[400px] sm:max-h-[500px]">
+        <div ref={chatContainerRef} id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto overflow-x-hidden scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch max-h-[400px] sm:max-h-[500px]">
           {messages?.chat?.map((message, index) => (
             <div key={index}>
 

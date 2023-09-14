@@ -173,13 +173,13 @@ const BookDetails = () => {
       <div className="lg:flex justify-center gap-8 my-10">
         <div className={darkMode?" md:w-4/6 bg-white/10  border-[1px] rounded-md p-5":" md:w-4/6 shadow-md p-5"}>
           <div className="md:flex justify-center gap-10 items-start ">
-           <div className={darkMode?"bg-slate-300 box rounded-md":"bg-slate-300 box"}>
+           <div className={darkMode?"bg-slate-300 box rounded-md min-w-[244px]":"bg-slate-300 box min-w-[244px]"}>
             {darkMode? <img
               src={cover_image}
-              className="max-h-96 rounded-md min-h-[383px] min-w-[244px]  shadow-2xl imgBox"
+              className="max-h-96 rounded-md min-h-[383px] w-full  shadow-2xl imgBox"
             />: <img
             src={cover_image}
-            className="max-h-96 min-h-[383px] min-w-[244px]  shadow-2xl imgBox"
+            className="max-h-96 min-h-[383px] w-full  shadow-2xl imgBox"
           />}
            </div>
             <div className="ms-3 space-y-3">

@@ -332,3 +332,50 @@
     padding: 13px 50px 13px;
   }
 }
+
+
+/* slider styles 
+ */
+.swiper-button-prev,.swiper-button-next{
+  color: #B9B9B9;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 5px;
+  height: 100px;
+  /* border: .5px solid #B9B9B9; */
+  top: 120px;
+}
+.swiper-slide{
+  width: fit-content !important;
+  margin: 0 auto !important;
+}
+.swiper {
+  justify-content: center;
+}
+.swiper-pagination {
+  display: none;
+}
+.swiper-wrapper{
+  transform: translate3d(20.875px, 0px, 0px);
+  
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+.shadow-Card:hover{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+}
