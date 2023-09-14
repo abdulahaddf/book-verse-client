@@ -96,62 +96,62 @@ const AllBooks = () => {
       {/* ----------filtering code start by Zihad ----------- */}
       <div className={darkMode?"p-5 w-11/12 mx-auto mb-8  border-b-[1px]  rounded-md":"p-5 w-11/12 mx-auto mb-8 shadow rounded-md"}>
         <div className="flex-row md:flex items-center justify-between">
-          <div className="rounded-sm bg-[#126e9d] text-white flex py-3 px-2">
+          <div className={darkMode?"rounded-sm border-[1px] text-white flex py-3 px-2":"rounded-sm bg-[#126e9d] text-white flex py-3 px-2"}>
             <p className="font-semibold">Category:</p>
             <select
-              className={darkMode?"font-semibold max-w-xs border-[1px] rounded-md   text-white  bg-black/90":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none "}
+              className={darkMode?"font-semibold max-w-xs bg-black/10 rounded-md   text-white  ":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none "}
               value={selectedCategory}
               onChange={(e) => handleCategoryChange(e.target.value)}
             >
-              <option  value="default">Default</option>
-              <option  value="Fiction">Fiction</option>
-              <option  value="Comics">Comics</option>
-              <option  value="Mystery and Thriller">Mystery and Thriller</option>
-              <option  value="Romance">Romance</option>
-              <option  value="Science Fiction">Science Fiction</option>
-              <option  value="Biography and Memoir">Biography and Memoir</option>
-              <option  value="Sports">Sports</option>
-              <option  value="History Science and Nature">
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="default">Default</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Fiction">Fiction</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Comics">Comics</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Mystery and Thriller">Mystery and Thriller</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Romance">Romance</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Science Fiction">Science Fiction</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Biography and Memoir">Biography and Memoir</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="Sports">Sports</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="History Science and Nature">
                 History Science and Nature
               </option>
-              <option  value="Art and Photography">Art and Photography</option>
-              <option  value="Cookbooks and Food Travel">
+              <option  className={darkMode?"bg-black/90 hover:to-black/90":""} value="Art and Photography">Art and Photography</option>
+              <option  className={darkMode?"bg-black/90 hover:to-black/90":""} value="Cookbooks and Food Travel">
                 Cookbooks and Food Travel
               </option>
-              <option  value="Travel">Travel</option>
-              <option  value="Business and Economics">
+              <option  className={darkMode?"bg-black/90 hover:to-black/90":""} value="Travel">Travel</option>
+              <option  className={darkMode?"bg-black/90 hover:to-black/90":""} value="Business and Economics">
                 Business and Economics
               </option>
-              <option  value="Young Adult">Young Adult</option>
-              <option  value="Horror">Horror</option>
-              <option  value="Classics">Classics</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="Young Adult">Young Adult</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="Horror">Horror</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="Classics">Classics</option>
             </select>
           </div>
 
           <div className="flex gap-8 mt-8 md:mt-0">
-            <div className="rounded-sm bg-[#126e9d] text-white flex py-3 px-2">
+            <div className={darkMode?"rounded-sm  text-white border-[1px] flex py-3 px-2":"rounded-sm bg-[#126e9d] text-white flex py-3 px-2"}>
               <p className="font-semibold">Price:</p>
               <select
-                className={darkMode?"font-semibold max-w-xs border-[1px] rounded-md  bg-black/90":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none "}
+                className={darkMode?"font-semibold max-w-xs  bg-black/10 rounded-md  ":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none "}
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value)}
               >
-                <option value="default">Default</option>
-                <option value="real_price">Low to High</option>
-                <option value="-real_price">High to Low</option>
+                <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="default">Default</option>
+                <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="real_price">Low to High</option>
+                <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="-real_price">High to Low</option>
               </select>
             </div>
 
-            <div className="rounded-sm bg-[#126e9d] text-white flex py-3 px-2">
+            <div className={darkMode?"rounded-sm  text-white border-[1px] flex py-3 px-2":"rounded-sm bg-[#126e9d] text-white flex py-3 px-2"}>
               <p className="font-semibold">Rating:</p>
               <select
-                className={darkMode?"font-semibold border-[1px] rounded-md  max-w-xs bg-black/90":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none"}
+                className={darkMode?"font-semibold rounded-md  max-w-xs bg-black/10":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none"}
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value)}
               >
-                <option  value="default">Default</option>
-                <option  value="rating">Low to High</option>
-                <option  value="-rating">High to Low</option>
+                <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="default">Default</option>
+                <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="rating">Low to High</option>
+                <option className={darkMode?"bg-black/90 hover:to-black/90":""}  value="-rating">High to Low</option>
               </select>
             </div>
           </div>
