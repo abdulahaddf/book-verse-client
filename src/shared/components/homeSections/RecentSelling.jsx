@@ -48,10 +48,10 @@ const RecentSelling = () => {
           className={
             darkMode
               ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500]"
-              : "btn-fifth hover:text-white hover:no-underline"
+              : "btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
           }
         >
-          See More
+          See All
         </Link>
       </div>
       {/* ----------------------------------

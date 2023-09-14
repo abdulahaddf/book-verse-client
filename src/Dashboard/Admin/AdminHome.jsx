@@ -58,7 +58,9 @@ const AdminHome = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://book-verse-server-phi.vercel.app/paymentHistory?search=${search}`)
+    fetch(
+      `https://book-verse-server-phi.vercel.app/paymentHistory?search=${search}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.length === 0) {
@@ -224,8 +226,10 @@ const AdminHome = () => {
       </button>
 
       {/* customer info with table start  */}
-      <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
-        <div className="w-full overflow-x-auto rounded-md shadow-xl">
+      {/* Conditionally render the table or error message */}
+      {paymentHistory.length > 0 ? ( // Check if paymentHistory is not empty
+        <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
+          <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
             <thead className={darkMode?"bg-white/10 text-white":"bg-slate-100"}>
               <tr className="">
@@ -255,30 +259,27 @@ const AdminHome = () => {
                 ))}
             </tbody>
           </table>
-          {paymentHistory.length > initialDisplayCount && (
-            <div className={darkMode?"flex justify-center mt-4":"text-center mt-4"}>
-              <button
-                onClick={toggleShowMore}
-                className={darkMode?" btn-fifth-dark  hover:no-underline focus:outline-none mb-6 ":"text-[#d71d24] hover:underline focus:outline-none mb-6 "}
-              >
-                {showMore ? "Show Less" : "See More"}
-              </button>
-            </div>
-          )}
-
-          {/* Animated "User not found" message */}
-          <animated.div
-            style={messageSpring}
-            className="text-5xl font-bold text-[#126e9d] text-center my-10"
-          >
-            User not found.
-            <br />
-            <span className="text-base text-rose-400">
-              please enter the correct value and try again
-            </span>
-          </animated.div>
+            {paymentHistory.length > initialDisplayCount && (
+                  <div className={darkMode?"flex justify-center mt-4":"text-center mt-4"}>
+                  <button
+                    onClick={toggleShowMore}
+                    className={darkMode?" btn-fifth-dark  hover:no-underline focus:outline-none mb-6 ":"text-[#d71d24] hover:underline focus:outline-none mb-6 "}
+                  >
+                  {showMore ? "Show Less" : "See More"}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        // Render an error message when no results are found
+        <animated.div style={messageSpring} className="text-center my-10">
+          <h2 className="text-5xl font-bold text-[#126e9d]">User not found.</h2>
+          <p className="text-base text-rose-400">
+            Please enter the correct value and try again.
+          </p>
+        </animated.div>
+      )}
 
       {/* customer info with table end */}
     </div>
