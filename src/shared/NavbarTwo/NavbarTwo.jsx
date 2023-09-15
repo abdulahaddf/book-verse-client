@@ -6,6 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { TbBooks, TbDashboard } from "react-icons/tb";
 import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/solid";
 import logo from "../../../public/main-logo.png"
+import darkLogo from "../../../public/dark.png"
 import { BsCart3 } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -263,7 +264,8 @@ const myProfileHandler=()=>{
             <ul className={darkMode?"menu p-4 w-80 h-full  bg-[#2B2B2B] border-[1px] text-base-content":"menu p-4 w-80 h-full bg-base-200 text-base-content"}>
               <div className="flex justify-center">
                 <Link to="/" className="w-[150px]  ">
-                  <img className="" src={logo} alt="" />
+                {darkMode? <img className="w-32 " src="/dark.png" alt="" />: 
+                <img className="w-32 " src="/main-logo.png" alt="" />}
                 </Link>
               </div>
               {/* Sidebar content here */}
@@ -280,7 +282,8 @@ const myProfileHandler=()=>{
 
 <div className="  mx-auto ">
  <Link to="/" >
-   <img className="w-[99px] h-[30px] lg:w-[200px] lg:h-[50px]"  src={logo} alt="" />
+  {darkMode? <img className="w-[99px] h-[30px] lg:w-[200px] lg:h-[50px]"  src={darkLogo} alt="" />:
+   <img className="w-[99px] h-[30px] lg:w-[200px] lg:h-[50px]"  src={logo} alt="" />}
  </Link>
  </div>
 

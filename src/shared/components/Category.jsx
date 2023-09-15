@@ -17,7 +17,7 @@ const Category = () => {
   const { darkMode } = useContext(AuthContext);
   // Tonmoy end
   return (
-    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
+    <div className={`${darkMode ? "section bg-gray   " : "section"}`}>
       {/* <Heading title={'Categories'}/> */}
       <style>
         {`

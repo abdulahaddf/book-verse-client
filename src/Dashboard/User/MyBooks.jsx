@@ -56,7 +56,7 @@ const MyBooks = () => {
                 {/* head */}
                 <thead
                   className={
-                    darkMode ? "bg-gray text-white" : "bg-black text-white"
+                    darkMode ? "bg-gray text-white" : "bg-red text-white"
                   }
                 >
                   <tr>
