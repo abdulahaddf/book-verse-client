@@ -36,14 +36,14 @@ const BestSelling = () => {
 
   // console.log(books,'tonu')
   return (
-    <div className="section ">
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Best Selling"}></Heading>
         <Link
           to="/allBestSelling"
           className={`${
             darkMode
-              ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500] text-xs w-24 h-7 md:w-36 md:h-10 md:text-base" 
+              ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500] text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
               : "btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base "
           }`}
         >
@@ -62,16 +62,17 @@ const BestSelling = () => {
       <div className="py-5">
         <Swiper
           slidesPerView={1}
-          centeredSlides={true}
+          // centeredSlides={true}
           spaceBetween={30}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Pagination, Navigation]}
           initialSlide={1}
+          loop={true}
           breakpoints={{
             // when window width is >= 480px
-            480: {
-              slidesPerView: 1,
+            300: {
+              slidesPerView: 2,
             },
             // when window width is >= 768px
             768: {
@@ -79,10 +80,10 @@ const BestSelling = () => {
             },
             // when window width is >= 1024px
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 7,
             },
           }}
-          className="mySwiper flex w-full"
+          className="mySwiper flex w-full z-0"
         >
           {bestSellingData?.slice(0, 20).map((book, idx) => (
             <SwiperSlide key={idx}>

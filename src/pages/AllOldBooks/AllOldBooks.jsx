@@ -1,8 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import OldBookCard from "../../shared/components/OldBookCard/OldBookCard";
+import LazyLoad from "react-lazy-load";
 import { FaSearch } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AllOldBooks = () => {
+  //  Tonmoy start
+
+  const { darkMode } = useContext(AuthContext);
+  // Tonmoy end
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [userNotFound, setUserNotFound] = useState(false);
@@ -58,8 +64,9 @@ const AllOldBooks = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
-      <h1 className="text-3xl text-center font-semibold mt-4 ">
+   <LazyLoad>
+     <div>
+      <h1 className="text-3xl text-center font-semibold my-10">
         All Old Books
       </h1>
 
@@ -70,7 +77,7 @@ const AllOldBooks = () => {
             type="text"
             ref={searchRef}
             placeholder="Find Book"
-            className="input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm"
+            className={darkMode?"input input-bordered focus:outline-none text-black border-[#126e9d] max-w-xs rounded-sm":"input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm"}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSearch();
@@ -79,23 +86,23 @@ const AllOldBooks = () => {
           />
           <button
             onClick={handleSearch}
-            className="btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"
+            className={darkMode?"btn rounded-sm bg-white ml-2 text-[#10aade]   hover:text-black":"btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"}
           >
             <FaSearch></FaSearch>
           </button>
         </div>
 
         <div className="text-center ">
-          <button className="rounded-sm bg-[#126e9d] text-white flex py-3 px-2">
+          <button className={darkMode?"rounded-sm  border-[1px] text-white flex py-3 px-2":"rounded-sm bg-[#126e9d] text-white flex py-3 px-2"}>
             <p className="font-semibold">Price:</p>
             <select
-              className="font-semibold max-w-xs bg-[#126e9d] focus:outline-none"
+              className={darkMode?"font-semibold max-w-xs  bg-black/10  rounded-md focus:outline-none ":"font-semibold max-w-xs bg-[#126e9d] focus:outline-none"}
               value={sortByPrice}
               onChange={(e) => setSortByPrice(e.target.value)}
             >
-              <option value="default">Default</option>
-              <option value="desc">High to Low</option>
-              <option value="asc">Low to High</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="default">Default</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="desc">High to Low</option>
+              <option className={darkMode?"bg-black/90 hover:to-black/90":""} value="asc">Low to High</option>
             </select>
           </button>
         </div>
@@ -124,7 +131,7 @@ const AllOldBooks = () => {
           <button
             className={`px-4 py-2 rounded-md mx-2 ${
               currentPage === 1
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                ? "bg-slate-300 text-gray-500 cursor-not-allowed"
                 : "bg-[#126e9d] text-white hover:bg-[#10aade]"
             }`}
             onClick={() => handlePageChange(currentPage - 1)}
@@ -135,7 +142,7 @@ const AllOldBooks = () => {
           <button
             className={`px-4 py-2 rounded-md mx-2 ${
               books.length < perPage
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                ? "bg-slate-300 text-gray-500 cursor-not-allowed"
                 : "bg-[#126e9d] text-white hover:bg-[#10aade]"
             }`}
             onClick={() => handlePageChange(currentPage + 1)}
@@ -147,6 +154,7 @@ const AllOldBooks = () => {
       )}
       {/* -----Pagination calculated end by zihad---*/}
     </div>
+   </LazyLoad>
   );
 };
 

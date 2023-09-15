@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Heading from "../heading/Heading";
 import UseBooks from "../../../hooks/UseBooks";
 import ProductCard from "../productCard/ProductCard";
@@ -13,8 +12,11 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const FeaturedBooks = () => {
+  const { darkMode } = useContext(AuthContext);
   const { books, loading } = UseBooks();
   // console.log(books);
   // const params = {
@@ -33,43 +35,27 @@ const FeaturedBooks = () => {
   //   },
   // };
   return (
-    <div className="section">
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Featured Books"}></Heading>
       </div>
-      {/* <Skeleton count={3} className="my-2 h-10" />  */}
-      {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-10 place-items-center items-start my-5 py-5">
-      {
-                books?.slice(4,10).map(book => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
-            }
-       
-      
-      </div> */}
-
-      {/* <Swiper {...params}>
-        {
-          books?.slice(5,12).map(book =>
-            <ProductCard key={book._id} data={book} loading={loading}></ProductCard>
-            )
-        }
-      </Swiper> */}
-
-      {/* ----------------------------------
-              Slider added -foisal 
-          ----------------------------*/}
-      <div className="py-5">
-        <Swiper
+      {loading ? (
+        <Skeleton count={3} className="my-4 h-28" />
+      ) : (
+        <div className="py-5">
+          <Swiper
           slidesPerView={1}
-          centeredSlides={true}
+          // centeredSlides={true}
           spaceBetween={30}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Pagination, Navigation]}
           initialSlide={1}
+          loop={true}
           breakpoints={{
             // when window width is >= 480px
-            480: {
-              slidesPerView: 1,
+            300: {
+              slidesPerView: 2,
             },
             // when window width is >= 768px
             768: {
@@ -77,7 +63,7 @@ const FeaturedBooks = () => {
             },
             // when window width is >= 1024px
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 7,
             },
           }}
           className="mySwiper flex w-full"
@@ -92,7 +78,12 @@ const FeaturedBooks = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+        </div>
+      )}
+
+      {/* ----------------------------------
+              Slider added -foisal 
+          ----------------------------*/}
     </div>
   );
 };

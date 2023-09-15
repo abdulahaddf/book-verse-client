@@ -16,8 +16,11 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useContext } from "react";
 
 const RecentSelling = () => {
+  const { darkMode } = useContext(AuthContext);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -37,12 +40,16 @@ const RecentSelling = () => {
 
   console.log(recentSellingData, "tonu");
   return (
-    <div className="section">
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center z-0">
         <Heading title={"Recent Selling"}></Heading>
         <Link
           to="/allRecentSelling"
-          className="btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
+          className={
+            darkMode
+              ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500]"
+              : "btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
+          }
         >
           See All
         </Link>
@@ -53,16 +60,17 @@ const RecentSelling = () => {
       <div className="py-5">
         <Swiper
           slidesPerView={1}
-          centeredSlides={true}
+          // centeredSlides={true}
           spaceBetween={30}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Pagination, Navigation]}
           initialSlide={1}
+          loop={true}
           breakpoints={{
             // when window width is >= 480px
-            480: {
-              slidesPerView: 1,
+            300: {
+              slidesPerView: 2,
             },
             // when window width is >= 768px
             768: {
@@ -70,10 +78,10 @@ const RecentSelling = () => {
             },
             // when window width is >= 1024px
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 7,
             },
           }}
-          className="mySwiper flex w-full"
+          className="mySwiper flex w-full z-0"
         >
           {recentSellingData?.slice(0, 20).map((book, idx) => (
             <SwiperSlide key={idx}>

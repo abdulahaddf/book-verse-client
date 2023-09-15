@@ -13,20 +13,32 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useContext } from "react";
 
 const KidsZone = () => {
   const { books, loading } = UseBooks();
 
+  // Tonmoy start
+
+  const { darkMode } = useContext(AuthContext);
+
+  // Tonmoy End
+
   console.log(books);
   return (
-    <div className="section">
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Kids Zone"}></Heading>
         <Link
           to="/allkidsbooks"
-          className="btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
+          className={
+            darkMode
+              ? "btn-fifth-dark hover:text-white hover:no-underline"
+              : "btn-fifth hover:text-white hover:no-underline"
+          }
         >
-          See All
+          See More
         </Link>
       </div>
       {/* <Skeleton count={3} className="my-2 h-10" />  */}
@@ -39,23 +51,24 @@ const KidsZone = () => {
                   } )
               }
        
-        </div> */}
+        </div>  */}
       {/* ----------------------------------
               Slider added -foisal 
           ----------------------------*/}
       <div className="py-5">
         <Swiper
           slidesPerView={1}
-          centeredSlides={true}
+          // centeredSlides={true}
           spaceBetween={30}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Pagination, Navigation]}
           initialSlide={1}
+          loop={true}
           breakpoints={{
             // when window width is >= 480px
-            480: {
-              slidesPerView: 1,
+            300: {
+              slidesPerView: 2,
             },
             // when window width is >= 768px
             768: {
@@ -63,20 +76,25 @@ const KidsZone = () => {
             },
             // when window width is >= 1024px
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 7,
             },
           }}
           className="mySwiper flex w-full"
         >
-          {
-                    books?.map((book,idx) => {
-                        if ((book.category.toLowerCase()) === 'kids') {
-                          return <SwiperSlide key={idx}><ProductCard key={book._id} data={book} loading={loading} ></ProductCard></SwiperSlide>
-                      }
-                  } )
-        }
+          {books?.map((book, idx) => {
+            if (book.category.toLowerCase() === "kids") {
+              return (
+                <SwiperSlide key={idx}>
+                  <ProductCard
+                    key={book._id}
+                    data={book}
+                    loading={loading}
+                  ></ProductCard>
+                </SwiperSlide>
+              );
+            }
+          })}
         </Swiper>
-        
       </div>
     </div>
   );

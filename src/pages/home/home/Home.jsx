@@ -43,7 +43,7 @@ const Home = () => {
         <RecentSelling />
         <KidsZone></KidsZone>
         <Publications></Publications>
-        <WebsiteFeature></WebsiteFeature>
+        {/* <WebsiteFeature></WebsiteFeature> */}
       </section>
     </div>
   );

@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddPromo = () => {
+  // Tonmoy Start
+
+  const { darkMode } = useContext(AuthContext);
+
+  //  Tonmoy end
+
   const [promos, setPromos] = useState([]);
   const { register, handleSubmit, watch, reset } = useForm();
   console.log(watch("example"));
@@ -73,12 +80,24 @@ const AddPromo = () => {
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-slate-100 rounded-md p-4 md:p-5"
+          className={
+            darkMode
+              ? "bg-gray border-[1px] rounded-md p-4 md:p-5"
+              : "bg-slate-100 rounded-md p-4 md:p-5"
+          }
         >
           <div className="flex items-center justify-center gap-5 w-4/5 mx-auto">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text font-semibold">Promo Code</span>
+                <span
+                  className={
+                    darkMode
+                      ? "label-text font-semibold text-white"
+                      : "label-text font-semibold"
+                  }
+                >
+                  Promo Code
+                </span>
               </label>
               <input
                 required
@@ -86,12 +105,20 @@ const AddPromo = () => {
                 name="promo"
                 {...register("promo")}
                 placeholder="Enter Promo Code"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full  text-black/70"
               />
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text font-semibold">Discount</span>
+                <span
+                  className={
+                    darkMode
+                      ? "label-text font-semibold text-white"
+                      : "label-text font-semibold"
+                  }
+                >
+                  Discount
+                </span>
               </label>
               <input
                 required
@@ -99,7 +126,7 @@ const AddPromo = () => {
                 name="discount"
                 {...register("discount")}
                 placeholder="Enter % of Discount"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-black/70"
               />
             </div>
             <div>
@@ -116,7 +143,11 @@ const AddPromo = () => {
       <div className="overflow-x-auto mt-5  md:my-10">
         <table className="table table-zebra shadow-xl w-full text-center">
           {/* head */}
-          <thead className="bg-primary text-white">
+          <thead
+            className={
+              darkMode ? "bg-gray text-white" : "bg-primary text-white"
+            }
+          >
             <tr>
               <th>#</th>
               <th>promo Code</th>
@@ -126,16 +157,18 @@ const AddPromo = () => {
           </thead>
           <tbody>
             {promos.map((promo, index) => (
-              <tr key={promo._id}>
-                <th>{index + 1}</th>
+              <tr className={darkMode ? "bg-black/80" : ""} key={promo._id}>
+                <th className={darkMode ? "bg-black/80" : ""}>{index + 1}</th>
 
-                <td>{promo.promo}</td>
-                <td>{promo.discount}</td>
+                <td className={darkMode ? "bg-black/80" : ""}>{promo.promo}</td>
+                <td className={darkMode ? "bg-black/80" : ""}>
+                  {promo.discount}
+                </td>
 
-                <td>
+                <td className={darkMode ? "bg-black/80" : ""}>
                   <button
                     onClick={() => handleDelete(promo)}
-                    className="btn-custom"
+                    className={darkMode ? "btn-custom-dark bg-[#d71d24]" : "btn-custom"}
                   >
                     Delete
                   </button>

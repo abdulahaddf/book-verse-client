@@ -3,7 +3,14 @@ import UseBooks from "../../hooks/UseBooks";
 import Loader from "../../shared/components/loader/Loader";
 import ManageBooksCard from "./ManageBooksCard";
 import { useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext } from "react";
 const ManageBooks = () => {
+  // Tonmoy Start
+
+  const {darkMode}=useContext(AuthContext)
+
+  //  Tonmoy end
   const { books, setBooks, loading, searchRef, setSearch, userNotFound } =
     UseBooks();
   const [filteredBooks, setFilteredBooks] = useState(books);
@@ -45,7 +52,7 @@ const ManageBooks = () => {
           type="text"
           ref={searchRef}
           placeholder="Find Book"
-          className="input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm"
+          className="input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm text-slate-600"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSearch();
@@ -54,7 +61,7 @@ const ManageBooks = () => {
         />
         <button
           onClick={handleSearch}
-          className="btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"
+          className={darkMode?"btn rounded-sm bg-white text-[#10aade] ml-2 hover:bg-white  hover:text-black":"btn rounded-sm bg-[#126e9d] ml-2 text-white hover:text-black"}
         >
           <FaSearch></FaSearch>
         </button>
@@ -90,7 +97,7 @@ const ManageBooks = () => {
         <button
           className={`px-4 py-2 rounded-md mx-2 ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              ? "bg-slate-300 text-gray-500 cursor-not-allowed"
               : "bg-[#126e9d] text-white hover:bg-[#10aade]"
           }`}
           onClick={() => handlePageChange(currentPage - 1)}
@@ -106,7 +113,7 @@ const ManageBooks = () => {
             className={`${
               currentPage === index + 1
                 ? "bg-[#126e9d] text-white"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                : "bg-slate-200 hover:bg-gray-300 text-gray-700"
             } px-3 py-1 mx-1 rounded-md cursor-pointer`}
           >
             {index + 1}
@@ -116,7 +123,7 @@ const ManageBooks = () => {
         <button
           className={`px-4 py-2 rounded-md mx-2 ${
             currentPage === totalPages
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              ? "bg-slate-300 text-gray-500 cursor-not-allowed"
               : "bg-[#126e9d] text-white hover:bg-[#10aade]"
           }`}
           onClick={() => handlePageChange(currentPage + 1)}
