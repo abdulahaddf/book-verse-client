@@ -145,7 +145,7 @@ const UserHome = () => {
 
 
   return (
-    <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
+    <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-red mt-10 ">
       <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">Edit Information</h1>
       <div className="image-container">
         <img
