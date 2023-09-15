@@ -209,10 +209,10 @@ const BookDetails = () => {
                 <span className="font-semibold flex items-center gap-3">
                   Rating:{" "}
                 </span>{" "}
-                <Rating readOnly value={realRating > 0 ? realRating : 1} style={{ maxWidth: 150}}  itemStyles={myStyles} />
+                <Rating readOnly value={realRating > 0 ? realRating : 0} style={{ maxWidth: 100}}  itemStyles={myStyles} />
                  
                 
-                ( {review ? <>{review?.length}</> : ""}{" "}
+                ( {review ? <>{review?.length}</> : "0"}{" "}
                 reviews)
               </p>
 
@@ -301,7 +301,7 @@ const BookDetails = () => {
               className={darkMode?"btn-fifth-dark md:mt-10":"btn-primary md:mt-10"}
               onClick={handleAddToCart}
             >
-              Add to 
+              Add to Cart
             </button>
             <button
               className={darkMode?"btn-fifth-dark mr-6 mt-5 md:mt-10":"btn-fifth mr-6 mt-5 md:mt-10"}

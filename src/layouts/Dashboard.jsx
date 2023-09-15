@@ -38,7 +38,7 @@ const Dashboard = () => {
       {user && singleUser && userinfo && (
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content  flex flex-col items-center justify-center">
+          <div className="drawer-content w-11/12 md:w-full  flex flex-col items-center justify-center">
             <label
               htmlFor="my-drawer-2"
               className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
@@ -46,6 +46,9 @@ const Dashboard = () => {
               <FaBars></FaBars>
             </label>
             {/* <DashboardNavbar></DashboardNavbar> */}
+            <div className="absolute top-2 right-3 bg-white rounded-xl shadow-md p-3">
+            <img  className="w-32 " src="/main-logo.png" alt="" />
+          </div>
             <Outlet></Outlet>
           </div>
           <div className="drawer-side ">

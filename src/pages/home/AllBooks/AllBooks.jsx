@@ -4,6 +4,7 @@ import UseBooks from "../../../hooks/UseBooks";
 import Loader from "../../../shared/components/loader/Loader";
 import ProductCard from "../../../shared/components/productCard/ProductCard";
 import { AuthContext } from "../../../provider/AuthProvider";
+import LazyLoad from "react-lazy-load";
 
 const AllBooks = () => {
   const { books, loading } = UseBooks();
@@ -88,7 +89,8 @@ const AllBooks = () => {
   }
 
   return (
-    <div>
+   <LazyLoad>
+     <div className={darkMode?" bg-white/10 py-5":""}>
       <h1 className="text-3xl text-center font-semibold my-5">
         All Your Books
       </h1>
@@ -227,6 +229,7 @@ const AllBooks = () => {
       </div>
       {/*----------- Pagination end by zihad---------- */}
     </div>
+   </LazyLoad>
   );
 };
 

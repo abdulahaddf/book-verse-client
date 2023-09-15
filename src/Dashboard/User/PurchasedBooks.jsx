@@ -26,7 +26,7 @@ const PurchasedBooks = () => {
       .then((data) => setBooks(data.data));
   }, [user]);
 
-  //   console.log(books);
+  console.log(books);
 
   //for review
   const {
@@ -64,49 +64,34 @@ const PurchasedBooks = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.message === "Review added successfully") {
-        
           // tonmoy start
-          fetch("https://book-verse-server-phi.vercel.app/recentCellingAndBestCellingReview", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(review),
-          })
-          .then(res=>res.json())
-          .then(res=>{
-
-            if(res){
-
-                
-              reset();
-              if (openModalIndex) {
-                openModalIndex.close();
-              }
-
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Review added successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-
-
+          fetch(
+            "https://book-verse-server-phi.vercel.app/recentCellingAndBestCellingReview",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(review),
             }
+          )
+            .then((res) => res.json())
+            .then((res) => {
+              if (res) {
+                reset();
+                if (openModalIndex) {
+                  openModalIndex.close();
+                }
 
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Review added successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
 
-
-
-
-          } )             
-       
           // tonmoy end
-
-          
-
-
-        
-
-         
         } else if (result.message === "You have already reviewed this book") {
           reset();
           if (openModalIndex) {
@@ -117,28 +102,25 @@ const PurchasedBooks = () => {
             icon: "error",
             title: "Sorry",
             text: "You have already reviewed this book",
-           });
-          
-         
-
+          });
         }
       });
   }
   if (loading) return <Loader />;
   return (
-    <div className="w-full h-full">
+    <div className="mt-5 w-96 md:w-full h-full ">
       <>
         {books.length > 0 ? (
           <>
             {" "}
             <div>
-              <div className="">
-                <h1 className="text-3xl font-bold text-center my-5">
+              <div className="overflow-x-auto">
+                <h1 className=" dashboard-heading">
                   All Your Purchased Books : {books.length}
                 </h1>
-                <table className={darkMode?"table table-zebra shadow-xl w-full bg-black/90  text-center overflow-x-auto ":"table table-zebra shadow-xl w-full  text-center overflow-x-auto "}>
+                <table className={darkMode?"table table-zebra shadow-xl w-full bg-black/90  text-center overflow-x-auto ":"table table-zebra shadow-lg  text-center overflow-x-auto    px-2   mx-auto "}>
                   {/* head */}
-                  <thead className={darkMode?"bg-white/10 text-white":"bg-black text-white"}>
+                  <thead className={darkMode?"bg-white/10 text-white":"bg-primary text-white"}>
                     <tr>
                       <th>#</th>
                       <th>Books</th>
@@ -154,7 +136,7 @@ const PurchasedBooks = () => {
                         <td className={darkMode?" bg-black":""}>
                           {book.books.map((sBook, sIndex) => (
                             <div
-                              className={darkMode?"text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90":"text-start flex gap-10 my-5 shadow-lg p-2"}
+                              className={darkMode?"text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90":"text-start flex gap-10 my-5 shadow-lg p-2 w-96"}
                               key={sBook._id}
                             >
                               <img
@@ -178,7 +160,13 @@ const PurchasedBooks = () => {
                                       modal.showModal();
                                     }
                                   }}
-                                  className={darkMode?"btn btn-sm btn-outline text-white hover:bg-white hover:text-black mt-2":"btn btn-sm btn-outline mt-2"}
+                                  // className={darkMode?"btn btn-sm btn-outline text-white hover:bg-white hover:text-black mt-2":"btn-custom"}
+                                  className={`btn-custom ${
+                                    book.status === "Delivered"
+                                      ? ""
+                                      : "cursor-not-allowed opacity-50"
+                                  }`}
+                                  disabled={book.status !== "Delivered"}
                                 >
                                   review
                                 </button>
@@ -235,6 +223,9 @@ const PurchasedBooks = () => {
                                             onChange={onChange}
                                             visibleLabelId="rating_label"
                                             onBlur={onBlur}
+                                            emptySymbol="fa fa-star-o fa-2x"
+                                            fullSymbol="fa fa-star fa-2x"
+                                            fractions={2}
                                           />
                                         )}
                                       />
@@ -246,8 +237,6 @@ const PurchasedBooks = () => {
                                     <p className="text-lg font-medium my-2">
                                       Your Review
                                     </p>
-
-                                   
 
                                     <input
                                       type="hidden"
@@ -282,12 +271,23 @@ const PurchasedBooks = () => {
                             </div>
                           ))}
                         </td>
+                        <td className={darkMode?"text-xl bg-black":"text-xl"}>
+                          {book?.status == "Cash On Delivery"
+                            ? "Pending"
+                            : book?.status
+                            ? book?.status
+                            : "Pending"}{" "}
+                        </td>
                         <td className={darkMode?" bg-black":""}>
                           <p>
                             {new Date(book.date).toISOString().split("T")[0]}
                           </p>
                         </td>
-                        <td className={darkMode?" bg-black":""}>{book.transactionId}</td>
+                        <td className={darkMode?" bg-black":""}>
+                          {book.transactionId
+                            ? book.transactionId
+                            : "Cash on Delivery"}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

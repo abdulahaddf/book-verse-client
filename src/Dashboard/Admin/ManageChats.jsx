@@ -59,13 +59,14 @@ const ManageChats = () => {
 
     // rounded-tr-[50px] rounded-bl-[50px]
 
-    <div className={darkMode?" px-5 md:px-20 lg:px-20 w-full    ":"px-5 md:px-20 lg:px-20 w-full   "}>
+    <div className={darkMode?" px-5 md:px-20 lg:px-20 w-full    ":" md:px-20 lg:px-20 w-full   "}>
+        <h1 className="dashboard-heading">All Your Chats</h1>
       {allChats?.map((a) => (
        <div key={a?._id}>
 
          <Link to={`singleChat/${a?._id}`} 
           
-          className={darkMode?"my-2 p-[5px] py-[15px]     space-y-3 overflow-hidden   rounded-md   hover:bg-white/10  flex  ":"my-5 p-[5px] py-[15px]    space-y-3 overflow-hidden hover:rounded-[0px]  border-b-[2px]  border-r-[2px] hover:bg-gray-200 flex "}
+          className={darkMode?"my-2 p-[5px] py-[15px]     space-y-3 overflow-hidden   rounded-md   hover:bg-white/10  flex  ":"my-2 p-[5px] py-[15px]  bg-gray-50  space-y-3 overflow-hidden rounded-md hover:rounded-xl  border-b-[5px]  border-r-[2px] hover:bg-gray-200 flex w-4/5 mx-auto"}
         >
 
           <section className=" w-[15%] mt-2 pl-2 "
@@ -76,7 +77,7 @@ const ManageChats = () => {
             </span>
           </section>
 
-          <section className="w-[60%] md:w-[70%] lg:w-[70%]  pl-[15px] md:pl-0 lg:p-0 space-y-1">
+          <section className=" md:w-[70%] lg:w-[70%]  pl-[30px] md:pl-0 lg:p-0 space-y-1">
             <p className={darkMode?"text-[15px] font-[400] text-white":"text-[15px] font-[400] text-gray-600"}> {a?.displayName?.slice(0, 30)}</p>
 
             {a?.role === 'Admin' ? (

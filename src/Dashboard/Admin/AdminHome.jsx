@@ -251,10 +251,10 @@ const AdminHome = () => {
                   <tr key={payment._id}>
                     <td className={darkMode?" bg-black/90 text-slate-200":""} >{index + 1}</td>
                     <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment._id}</td>
-                    <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment.transactionId}</td>
+                    <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment.transactionId ? payment.transactionId : "Cash On Delivery"}</td>
                     <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment.mail}</td>
                     <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment.date}</td>
-                    <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment.total_price}</td>
+                    <td className={darkMode?" bg-black/90 text-slate-200":""}  >{payment.total_price ? <>$ {payment.total_price}</> : "COD"}</td>
                   </tr>
                 ))}
             </tbody>

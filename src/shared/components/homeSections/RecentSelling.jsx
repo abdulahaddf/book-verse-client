@@ -40,7 +40,7 @@ const RecentSelling = () => {
 
   console.log(recentSellingData, "tonu");
   return (
-    <div className="section">
+    <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`}>
       <div className="flex justify-between items-center z-0">
         <Heading title={"Recent Selling"}></Heading>
         <Link

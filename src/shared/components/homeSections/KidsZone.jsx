@@ -27,14 +27,14 @@ const KidsZone = () => {
   
     console.log(books)
     return (
-      <div className="section">
+      <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`}>
         <div className="flex justify-between items-center">
                 <Heading title={"Kids Zone"}></Heading>
                 <Link to='/allkidsbooks' className={darkMode?"btn-fifth-dark hover:text-white hover:no-underline":"btn-fifth hover:text-white hover:no-underline"}>See More</Link>
          
         </div>
         {/* <Skeleton count={3} className="my-2 h-10" />  */}
-        <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
+        {/* <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
         {
                     books?.map((book) => {
                         if ((book.category.toLowerCase()) === 'kids') {
@@ -43,7 +43,7 @@ const KidsZone = () => {
                   } )
               }
        
-        </div> */}
+        </div>  */}
       {/* ----------------------------------
               Slider added -foisal 
           ----------------------------*/}

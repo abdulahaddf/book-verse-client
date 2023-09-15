@@ -81,35 +81,16 @@ const ManageOrder = () => {
                     <td className={darkMode?"bg-black/80":""}>{index + 1}</td>
                     <td className={darkMode?"text-start bg-black/80":"text-start"}>{payment.mail}</td>
                     {/* <td>{payment._id}</td> */}
-                    <td className={darkMode?"text-start bg-black/80":"text-start"}>{payment.transactionId}</td>
-                    <td className={darkMode?"bg-black/80":""} >{payment.date}</td>
-                    <td className={darkMode?"text-start bg-black/80":"text-start"}>${payment.total_price} </td>
-                    <td className={darkMode?"text-start bg-black/80":"text-start"}>
+                    <td className={darkMode?"bg-black/80 text-center":"text-center"} >{payment.transactionId ? payment.transactionId : "Cash On Delivery"}</td>
+                    <td className={darkMode?"bg-black/80":""}>{payment.date}</td>
+                    <td className={darkMode?"bg-black/80 text-start":"text-start"} >{payment.total_price ? <>$ {payment.total_price}</> : "COD"} </td>
+                    <td className={darkMode?"bg-black/80 text-start":"text-start"} >
                       <span className={`${payment?.status  ? "bg-green-400" : "bg-[#FF0000]"} rounded text-white badge-sm `}>
                         {payment?.status ? payment?.status : "Pending"}
                       </span>
                     </td>
                     <td className={darkMode?"bg-black/80":""}>
-                      {/* <form onSubmit={handleSubmit((data) => onSubmit(data, payment?._id))}>
-                        <select {...register("status")} >
-                          <option value="Processing">Processing</option>
-                          <option value="Shipped">Shipped</option>
-                          <option value="In-Transit">In Transit</option>
-                          <option value="Delivered">Delivered</option>
-                        </select>
-                        <button
-                          className="btn btn-success btn-xs normal-case text-white"
-                          type="submit" 
-                        >
-                          update
-                        </button>
-                      </form> */}
-                      {/* <button
-                        className="btn btn-success btn-xs normal-case text-white"
-                        onClick={() => window.my_modal_3.showModal()}
-                      >
-                        update
-                      </button> */}
+                      
                       <form onSubmit={() => handleForm(event, payment?._id)}>
                         <select className={darkMode?"bg-black/0 border-[1px]  text-white":""}  name="select" defaultValue={payment?.status}>
                           <option className={darkMode?"bg-black/90 text-white":""} value="Processing">Processing</option>

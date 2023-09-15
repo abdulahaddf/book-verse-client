@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import OldBookCard from "../../shared/components/OldBookCard/OldBookCard";
+import LazyLoad from "react-lazy-load";
 import { FaSearch } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 
@@ -63,8 +64,9 @@ const AllOldBooks = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
-      <h1 className="text-3xl text-center font-semibold mt-4 ">
+   <LazyLoad>
+     <div>
+      <h1 className="text-3xl text-center font-semibold my-10">
         All Old Books
       </h1>
 
@@ -152,6 +154,7 @@ const AllOldBooks = () => {
       </div>
       {/* -----Pagination calculated end by zihad---*/}
     </div>
+   </LazyLoad>
   );
 };
 

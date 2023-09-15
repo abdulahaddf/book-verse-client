@@ -90,8 +90,8 @@ const UserChat = () => {
   }, []);
 
   return (
-    <div className=" sm:p-5 min-h-screen flex items-center">
-      <div className="flex-1 justify-between flex flex-col h-[600px] rounded-2xl lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 ">
+    <div className="  min-h-screen flex items-center">
+      <div className="flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 ">
         {/* <h1 className='text-center text-3xl font-semibold'>Chat With Seller for any query</h1> */}
         {/* top section chat header */}
         <div className="flex items-center sm:gap-10 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500">

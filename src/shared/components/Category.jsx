@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AuthorCard from "./AuthorDetails/AuthorCard";
 import OfferBanner from "./Offer&Rewards/OfferBanner";
 import ProductCard from "./productCard/ProductCard";
+import Skeleton from "react-loading-skeleton";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext } from "react";
 const Category = () => {
@@ -16,7 +17,7 @@ const Category = () => {
   const { darkMode} = useContext(AuthContext);
   // Tonmoy end
   return (
-    <div className="section">
+    <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`} >
       {/* <Heading title={'Categories'}/> */}
       <style>
         {`
@@ -45,12 +46,14 @@ const Category = () => {
               {/* <Tab>E-books</Tab> */}
             </TabList>
             <TabPanel>
-              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-2 gap-5 justify-items-center">
+              {
+                loading ? <Skeleton count={3} className="my-4 w-32 h-28 flex" />  : <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-2 justify-items-center">
                 {books
                   .filter((card) => card?.category === "Fiction")
                   .map((book) => <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>)
                   .slice(0, 5)}
               </div>
+              }
               <div className="flex justify-center py-3">
                 <button className={`${darkMode?" btn-fifth-dark cursor-pointer hover:font-[500]":"btn-fifth cursor-pointer"}`} >
                   <Link className={darkMode?"hover:text-black hover:no-underline hover:font-[500]":"hover:text-white hover:no-underline hover:font-[500]"} to={`/All/Category`}>See more</Link>

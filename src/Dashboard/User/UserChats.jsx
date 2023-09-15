@@ -2,74 +2,64 @@ import { useContext, useEffect } from "react";
 import UseUserAllChats from "../../hooks/useUserAllChats";
 import { AuthContext } from "../../provider/AuthProvider";
 import moment from "moment";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAllUsersData } from "../../hooks/useAllUsersData";
 
-import logo from '../../../public/logo.png'
+import logo from "../../../public/logo.png";
 
 const UserChats = () => {
     const { user,darkMode } = useContext(AuthContext);
     const navigate = useNavigate()
 
-    const [userAllChats, userAllChatsRefetch] = UseUserAllChats(user?.email);
+  const [userAllChats, userAllChatsRefetch] = UseUserAllChats(user?.email);
 
-    const [allUsersData, allUsersRefetch] = useAllUsersData();
+  const [allUsersData, allUsersRefetch] = useAllUsersData();
 
+  const findTheChat = userAllChats?.filter((a) => a?.chat);
 
-    const findTheChat = userAllChats?.filter(a => a?.chat)
+  const Chats = findTheChat?.filter((a) => a?.chat?.length > 0);
 
+  const allChats = [...Chats].sort((a, b) => {
+    const lastMessageA = a?.chat[a?.chat.length - 1];
+    const lastMessageB = b?.chat[b?.chat.length - 1];
 
-    const Chats = findTheChat?.filter(a => a?.chat?.length > 0);
-
-
-    const allChats = [...Chats].sort((a, b) => {
-        const lastMessageA = a?.chat[a?.chat.length - 1];
-        const lastMessageB = b?.chat[b?.chat.length - 1];
-
-        if (!lastMessageA || !lastMessageB) {
-            return 0; // Handle cases where messages are missing
-        }
-
-        return lastMessageB?.time - lastMessageA?.time;
-    });
-
-
-
-    // Filter out duplicate entries from allUsersData based on email
-    const uniqueUsersData = allUsersData?.filter((user, index, self) =>
-        index === self.findIndex((u) => u?.email === user?.email)
-    );
-
-
-    const routeHandler = (data) => {
-
-        if (data?.email) {
-
-            return navigate('/dashboard/userChat')
-        }
-
-        navigate(`userToUserChat/${data?._id}`)
-
-
+    if (!lastMessageA || !lastMessageB) {
+      return 0; // Handle cases where messages are missing
     }
 
+    return lastMessageB?.time - lastMessageA?.time;
+  });
 
-    useEffect(() => {
-        const refetchInterval = setInterval(() => {
-            allUsersRefetch()
-            userAllChatsRefetch()
+  // Filter out duplicate entries from allUsersData based on email
+  const uniqueUsersData = allUsersData?.filter(
+    (user, index, self) =>
+      index === self.findIndex((u) => u?.email === user?.email)
+  );
 
-        }, 1000); // Check every 3 seconds
+  const routeHandler = (data) => {
+    if (data?.email) {
+      return navigate("/dashboard/userChat");
+    }
 
-        return () => {
-            clearInterval(refetchInterval);
-        };
-    }, []);
+    navigate(`userToUserChat/${data?._id}`);
+  };
 
-    console.log(allChats)
+  useEffect(() => {
+    const refetchInterval = setInterval(() => {
+      allUsersRefetch();
+      userAllChatsRefetch();
+    }, 1000); // Check every 3 seconds
+
+    return () => {
+      clearInterval(refetchInterval);
+    };
+  }, []);
+
+  console.log(allChats);
 
     return (
-        <div className={darkMode?" px-5 md:px-20 lg:px-20 w-full    ":"px-5 md:px-20 lg:px-20 w-full   "}>
+        <div className={darkMode?" md:px-20 lg:px-20 w-4/5    ":" md:px-20 lg:px-20 w-4/5   "}>
+            <h1 className="dashboard-heading">All Your Chats</h1>
             {allChats?.map((a) => (
                 <div key={a?._id}>
 
@@ -78,7 +68,7 @@ const UserChats = () => {
 
                     <button onClick={() => routeHandler(a)} className="w-full ">
 
-                        <div className={darkMode?"my-2 p-[5px] py-[15px]     space-y-3 overflow-hidden   rounded-md   hover:bg-white/10  flex  ":"my-5 p-[5px] py-[15px]    space-y-3 overflow-hidden hover:rounded-[0px]  border-b-[2px]  border-r-[2px] hover:bg-gray-200 flex "}>
+                        <div className={darkMode?"my-2 p-[5px] py-[15px]     space-y-3 overflow-hidden   rounded-md   hover:bg-white/10  flex  ":"my-2 p-[5px] py-[15px]  bg-gray-50  space-y-3 overflow-hidden rounded-md hover:rounded-xl  border-b-[5px]  border-r-[2px] hover:bg-gray-200 flex "}>
                             <section className="w-[15%] mt-2 pl-2">
                                 {uniqueUsersData.map((userData) => {
                                     const otherUserEmail = a?.array?.find((email) => email !== user?.email);

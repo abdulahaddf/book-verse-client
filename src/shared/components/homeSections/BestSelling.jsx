@@ -36,7 +36,7 @@ const BestSelling = () => {
 
   // console.log(books,'tonu')
   return (
-    <div className="section ">
+    <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Best Selling"}></Heading>
         <Link
