@@ -105,7 +105,7 @@ const SellBook = () => {
 
   return (
     <div className="w-4/5 h-full">
-      <h1 className="dashboard-heading">Post Your Old Books to sell</h1>
+      <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>Post Your Old Books to sell</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={
@@ -272,8 +272,8 @@ const SellBook = () => {
         <input
           className={
             darkMode
-              ? "py-2 px-3 mt-4 flex btn w-fit bg-gray-500  text-white hover:bg-gray-600 hover:text-white  btn-outline hover:border-red  rounded-md  border-white "
-              : "btn-primary"
+              ? " btn-primary-dark text-[15px] mt-4 "
+              : "btn-primary text-[15px] mt-4"
           }
           type="submit"
           value="Post your Book"

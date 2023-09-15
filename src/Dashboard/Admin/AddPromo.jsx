@@ -168,7 +168,7 @@ const AddPromo = () => {
                 <td className={darkMode ? "bg-black/80" : ""}>
                   <button
                     onClick={() => handleDelete(promo)}
-                    className={darkMode ? "btn-custom-dark" : "btn-custom"}
+                    className={darkMode ? "btn-custom-dark bg-[#d71d24]" : "btn-custom"}
                   >
                     Delete
                   </button>

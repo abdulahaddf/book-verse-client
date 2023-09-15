@@ -85,7 +85,7 @@ const AllBooks = () => {
 
   return (
     <LazyLoad>
-      <div className={darkMode ? " bg-gray py-5" : ""}>
+      <div className={darkMode ? " bg-gray  py-5" : ""}>
         <h1 className="text-3xl text-center font-semibold my-5">
           All Your Books
         </h1>
@@ -110,104 +110,104 @@ const AllBooks = () => {
               <select
                 className={
                   darkMode
-                    ? "font-semibold max-w-xs bg-black/10 rounded-md   text-white  "
+                    ? "font-semibold max-w-xs bg-[#3C4043] rounded-md focus:outline-none   text-white  "
                     : "font-semibold max-w-xs bg-[#126e9d] focus:outline-none "
                 }
                 value={selectedCategory}
                 onChange={(e) => handleCategoryChange(e.target.value)}
               >
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="default"
                 >
                   Default
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Fiction"
                 >
                   Fiction
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Comics"
                 >
                   Comics
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Mystery and Thriller"
                 >
                   Mystery and Thriller
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Romance"
                 >
                   Romance
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Science Fiction"
                 >
                   Science Fiction
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Biography and Memoir"
                 >
                   Biography and Memoir
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Sports"
                 >
                   Sports
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="History Science and Nature"
                 >
                   History Science and Nature
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Art and Photography"
                 >
                   Art and Photography
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Cookbooks and Food Travel"
                 >
                   Cookbooks and Food Travel
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Travel"
                 >
                   Travel
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Business and Economics"
                 >
                   Business and Economics
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Young Adult"
                 >
                   Young Adult
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Horror"
                 >
                   Horror
                 </option>
                 <option
-                  className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                  className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                   value="Classics"
                 >
                   Classics
@@ -227,26 +227,26 @@ const AllBooks = () => {
                 <select
                   className={
                     darkMode
-                      ? "font-semibold max-w-xs  bg-black/10 rounded-md  "
+                      ? "font-semibold max-w-xs  bg-[#3C4043] rounded-md focus:outline-none  "
                       : "font-semibold max-w-xs bg-[#126e9d] focus:outline-none "
                   }
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value)}
                 >
                   <option
-                    className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                    className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                     value="default"
                   >
                     Default
                   </option>
                   <option
-                    className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                    className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                     value="real_price"
                   >
                     Low to High
                   </option>
                   <option
-                    className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                    className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                     value="-real_price"
                   >
                     High to Low
@@ -265,26 +265,26 @@ const AllBooks = () => {
                 <select
                   className={
                     darkMode
-                      ? "font-semibold rounded-md  max-w-xs bg-black/10"
+                      ? "font-semibold rounded-md  max-w-xs bg-[#3C4043] focus:outline-none "
                       : "font-semibold max-w-xs bg-[#126e9d] focus:outline-none"
                   }
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value)}
                 >
                   <option
-                    className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                    className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                     value="default"
                   >
                     Default
                   </option>
                   <option
-                    className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                    className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                     value="rating"
                   >
                     Low to High
                   </option>
                   <option
-                    className={darkMode ? "bg-black/90 hover:to-black/90" : ""}
+                    className={darkMode ? "bg-[#3C4043] hover:to-black/90" : ""}
                     value="-rating"
                   >
                     High to Low
