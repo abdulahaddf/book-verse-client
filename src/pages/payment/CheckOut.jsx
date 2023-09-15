@@ -88,6 +88,7 @@ const CheckOut = ({ books, price }) => {
         mail: user?.email,
         date: new Date(),
         total_price: price,
+        status : "Paid",
         customer,
       };
       axiosSecure.post("/payments", paymentInfo).then((res) => {

@@ -7,8 +7,14 @@ import { FaFacebookF } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, signInGoogle, signInFB, profileUpdate, setLoading } =
-    useContext(AuthContext);
+  const {
+    createUser,
+    signInGoogle,
+    signInFB,
+    profileUpdate,
+    setLoading,
+    darkMode,
+  } = useContext(AuthContext);
 
   const {
     register,
@@ -22,114 +28,106 @@ const Register = () => {
   const from = location?.state?.from?.pathname || "/";
   const passwordValue = watch("password", "");
 
-//  tonmoy start
+  //  tonmoy start
   const handleReg = (data) => {
     const { name, email, password, url } = data;
 
-
-
-
-    const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`;
+    const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_Image_Upload_token
+    }`;
 
     const coverForm = new FormData();
     coverForm.append("image", url[0]);
-
 
     fetch(imageUploadUrl, {
       method: "POST",
       body: coverForm,
     })
-    .then(res=> res.json())
-    .then(imageResponse=>{
+      .then((res) => res.json())
+      .then((imageResponse) => {
+        if (imageResponse.success) {
+          const imageURL = imageResponse.data.display_url;
 
-      if(imageResponse.success){
-        const imageURL= imageResponse.data.display_url;
-
-
-
-        createUser(email, password)
-        .then(() => {
-          profileUpdate({ displayName: name, photoURL: imageURL }).then(() => {
-            const saveUser = {
-              displayName: data.name,
-              email: data.email,
-              photoURL: imageURL,
-              role:'user'
-            };
-            fetch("https://book-verse-server-phi.vercel.app/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(saveUser),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log(data);
-                if (data.insertedId) {
-                  reset();
-                  Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User created successfully.",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                  navigate(from, { replace: true });
+          createUser(email, password)
+            .then(() => {
+              profileUpdate({ displayName: name, photoURL: imageURL }).then(
+                () => {
+                  const saveUser = {
+                    displayName: data.name,
+                    email: data.email,
+                    photoURL: imageURL,
+                    role: "user",
+                  };
+                  fetch("https://book-verse-server-phi.vercel.app/users", {
+                    method: "POST",
+                    headers: {
+                      "content-type": "application/json",
+                    },
+                    body: JSON.stringify(saveUser),
+                  })
+                    .then((res) => res.json())
+                    .then((data) => {
+                      console.log(data);
+                      if (data.insertedId) {
+                        reset();
+                        Swal.fire({
+                          position: "top-end",
+                          icon: "success",
+                          title: "User created successfully.",
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
+                        navigate(from, { replace: true });
+                      }
+                    });
                 }
-              });
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+              );
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
+  //  tonmoy end
 
-      }
-        
-    
-    })
-    .catch(error=> console.log(error))
-  }
-
-    //  tonmoy end
-
-    // createUser(email, password)
-    //   .then(() => {
-    //     profileUpdate({ displayName: name, photoURL: url }).then(() => {
-    //       const saveUser = {
-    //         name: data.name,
-    //         email: data.email,
-    //         photoURL: data.url,
-    //       };
-    //       fetch("https://book-verse-server-phi.vercel.app/users", {
-    //         method: "POST",
-    //         headers: {
-    //           "content-type": "application/json",
-    //         },
-    //         body: JSON.stringify(saveUser),
-    //       })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //           console.log(data);
-    //           if (data.insertedId) {
-    //             reset();
-    //             Swal.fire({
-    //               position: "top-end",
-    //               icon: "success",
-    //               title: "User created successfully.",
-    //               showConfirmButton: false,
-    //               timer: 1500,
-    //             });
-    //             navigate(from, { replace: true });
-    //           }
-    //         });
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  
+  // createUser(email, password)
+  //   .then(() => {
+  //     profileUpdate({ displayName: name, photoURL: url }).then(() => {
+  //       const saveUser = {
+  //         name: data.name,
+  //         email: data.email,
+  //         photoURL: data.url,
+  //       };
+  //       fetch("https://book-verse-server-phi.vercel.app/users", {
+  //         method: "POST",
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //         body: JSON.stringify(saveUser),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+  //           if (data.insertedId) {
+  //             reset();
+  //             Swal.fire({
+  //               position: "top-end",
+  //               icon: "success",
+  //               title: "User created successfully.",
+  //               showConfirmButton: false,
+  //               timer: 1500,
+  //             });
+  //             navigate(from, { replace: true });
+  //           }
+  //         });
+  //     });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 
   const handleGoogleSignIn = () => {
     signInGoogle()
@@ -140,7 +138,7 @@ const Register = () => {
           displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
-         role:'user'
+          role: "user",
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
@@ -179,7 +177,7 @@ const Register = () => {
           displayName: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
-          role:'user'
+          role: "user",
         };
         fetch("https://book-verse-server-phi.vercel.app/users", {
           method: "POST",
@@ -207,12 +205,17 @@ const Register = () => {
         console.log(err.message);
       });
   };
-  
+
   return (
     <div>
-    
       <div className="relative flex flex-col justify-center my-4 overflow-hidden">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
+        <div
+          className={
+            darkMode
+              ? "w-full p-6 m-auto bg-gray border-[1px] rounded-md shadow-xl lg:max-w-xl"
+              : "w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl"
+          }
+        >
           <h1 className="text-3xl font-semibold text-center text-red uppercase">
             Sign Up
           </h1>
@@ -220,13 +223,18 @@ const Register = () => {
             <div className="mb-2">
               <label
                 htmlFor="name"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Name
               </label>
               <input
                 type="text"
                 id="name"
+                placeholder="Name"
                 {...register("name", { required: true })}
                 className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -235,12 +243,17 @@ const Register = () => {
             <div className="mb-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Email
               </label>
               <input
                 type="email"
+                placeholder="Email"
                 id="email"
                 {...register("email", { required: true })}
                 className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
@@ -250,7 +263,11 @@ const Register = () => {
             <div className="mb-2">
               <label
                 htmlFor="url"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Photo Url
               </label>
@@ -266,12 +283,17 @@ const Register = () => {
             <div className="mb-2">
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Password
               </label>
               <input
                 type="password"
+                placeholder="Password"
                 id="password"
                 {...register("password", {
                   required: "Password is required",
@@ -295,12 +317,17 @@ const Register = () => {
             <div className="mb-2">
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Confirm Password
               </label>
               <input
                 type="password"
+                placeholder="Confirm password"
                 id="confirmPassword"
                 {...register("confirmPassword", {
                   validate: (value) =>
@@ -323,9 +350,17 @@ const Register = () => {
             </div>
           </form>
           <div className="relative flex items-center justify-center w-full mt-6 border border-t">
-            <div className="absolute px-5 bg-white">Or</div>
+            <div
+              className={
+                darkMode
+                  ? "absolute px-5 bg-[#3C4043]"
+                  : "absolute px-5 bg-white"
+              }
+            >
+              Or
+            </div>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -341,7 +376,7 @@ const Register = () => {
               <span className="ml-2">Sign up with Google</span>
             </button>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handlefbSignIn}
               type="button"
@@ -352,7 +387,13 @@ const Register = () => {
             </button>
           </div>
 
-          <p className="mt-8 text-md font-normal text-center text-gray-700">
+          <p
+            className={
+              darkMode
+                ? "mt-8 text-md font-normal text-center text-gray-300"
+                : "mt-8 text-md font-normal text-center text-gray-700"
+            }
+          >
             Already have an account?{" "}
             <Link
               to="/login"

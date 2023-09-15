@@ -5,9 +5,17 @@ import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import EditModal from "./EditModal";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ManageBooksCard = ({ book, books, setBooks }) => {
   const { _id, title, author, rating, description } = book;
+
+  // Tonmoy Start
+
+  const { darkMode } = useContext(AuthContext);
+
+  //  Tonmoy end
 
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [showFullTitle, setShowFullTitle] = useState(false);
@@ -55,7 +63,13 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
     setIsEditModalOpen(!isEditModalOpen);
   };
   return (
-    <div className="card shadow-lg bg-slate-100 rounded-md">
+    <div
+      className={
+        darkMode
+          ? "card shadow-lg bg-gray border-[1px] rounded-md"
+          : "card shadow-lg bg-slate-100 rounded-md"
+      }
+    >
       <div className="card-body">
         <div className="card-actions justify-end">
           <button
@@ -111,7 +125,6 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           )}
           {/*----------------- modal body end-------------- */}
         </div>
-        
       </div>
     </div>
   );
