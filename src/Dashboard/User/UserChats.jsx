@@ -72,8 +72,8 @@ const UserChats = () => {
             <div
                className={
                 darkMode
-                  ? "my-2 p-[5px] py-[15px]    space-y-3 overflow-hidden   rounded-md   hover:bg-gray/30 hover:no-underline  flex  "
-                  : "my-2 p-[5px] py-[15px]  hover:text-black/70 hover:no-underline   space-y-3 overflow-hidden   rounded-md   hover:bg-[#f3f4f6]  flex "
+                  ? "my-2 p-[5px] py-[15px]    space-y-3 overflow-hidden   rounded-md  bg-gray hover:bg-gray/30 hover:no-underline  flex shadow-white shadow-sm w-4/5 mx-auto"
+                  : "my-2 p-[5px] py-[15px]  hover:text-black/70 hover:no-underline   space-y-3 overflow-hidden   rounded-md   hover:bg-[#f3f4f6]  flex shadow-md w-4/5 mx-auto"
               }
             >
               <section className="w-[15%] mt-2 pl-2">

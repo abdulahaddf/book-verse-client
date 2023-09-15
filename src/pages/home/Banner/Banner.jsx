@@ -23,13 +23,14 @@ const Banner = () => {
   </div>;
   }
   return (
-    <Swiper
+   <div className="w-11/12 overflow-hidden">
+     <Swiper
       spaceBetween={30}
       pagination={{
         clickable: true,
       }}
       modules={[Pagination, Autoplay]}
-      className="mySwiper z-0"
+      className="mySwiper z-0 "
       autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto play configuration
     >
       {banners.map((banner) => (
@@ -40,6 +41,7 @@ const Banner = () => {
         </LazyLoad>
       ))}
     </Swiper>
+   </div>
   );
 };
 
