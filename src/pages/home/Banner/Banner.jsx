@@ -23,7 +23,7 @@ const Banner = () => {
   </div>;
   }
   return (
-   <div className="w-11/12 overflow-hidden">
+   <div className="overflow-hidden">
      <Swiper
       spaceBetween={30}
       pagination={{
