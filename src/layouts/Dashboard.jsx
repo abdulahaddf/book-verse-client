@@ -45,7 +45,6 @@ const Dashboard = () => {
             >
               <FaBars></FaBars>
             </label>
-            {/* <DashboardNavbar></DashboardNavbar> */}
             <Outlet></Outlet>
           </div>
           <div className="drawer-side ">
@@ -86,7 +85,7 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  hover:no-underline"
                             : "hover:no-underline"
                         }
                         to="/dashboard/adminHome"

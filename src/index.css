@@ -227,6 +227,10 @@
 
 /* Button end Tonmoy for dark mode */
 
+
+/*----- dashboard navlink active rout color set ---- */
+
+
   .section {
     @apply shadow-xl rounded-lg p-5 my-5;
   }
