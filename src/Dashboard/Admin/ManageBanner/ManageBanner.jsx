@@ -102,7 +102,7 @@ const ManageBanner = () => {
           <button
             htmlFor="my_modal_8"
             onClick={() => window.my_modal_8.showModal()}
-            className={darkMode ? "primary-button-dark" : "primary-button"}
+            className={darkMode ? "primary-button-dark border-white border-[2px]" : "primary-button"}
           >
             Add New Banner
                 </button>

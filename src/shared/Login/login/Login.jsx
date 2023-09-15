@@ -256,14 +256,14 @@ const Login = () => {
             <div
               className={
                 darkMode
-                  ? "absolute px-5 bg-[#2B2B2B]"
+                  ? "absolute px-5 bg-[#3C4043]"
                   : "absolute px-5 bg-white"
               }
             >
               Or
             </div>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -273,7 +273,7 @@ const Login = () => {
               <span className="ml-2">Sign in with Google</span>
             </button>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md">
+          <div className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handlefbSignIn}
               type="button"

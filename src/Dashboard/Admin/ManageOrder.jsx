@@ -200,7 +200,7 @@ const ManageOrder = () => {
             <div className="text-center mt-4">
               <button
                 onClick={toggleShowMore}
-                className="bg-[#4c6acb] btn text-white hover:bg-[#4ccb85] normal-case focus:outline-none mb-6 "
+                className={darkMode?"bg-black/0 btn text-white hover:bg-white hover:text-black normal-case focus:outline-none mb-6 ":"bg-[#4c6acb] btn text-white hover:bg-[#4ccb85] normal-case focus:outline-none mb-6 "}
               >
                 {showMore ? "Show Less" : "See More"}
               </button>

@@ -52,7 +52,7 @@ const ManageBooks = () => {
           type="text"
           ref={searchRef}
           placeholder="Find Book"
-          className="input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm"
+          className="input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm text-slate-600"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSearch();
