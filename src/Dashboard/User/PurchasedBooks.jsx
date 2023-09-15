@@ -12,7 +12,7 @@ import Loader from "../../shared/components/loader/Loader";
 import UseUser from "../../hooks/UseUser";
 
 const PurchasedBooks = () => {
-  const { user, loading,darkMode } = useContext(AuthContext);
+  const { user, loading, darkMode } = useContext(AuthContext);
   const [userinfo] = UseUser();
   const [books, setBooks] = useState([]);
   const [openModalIndex, setOpenModalIndex] = useState("");
@@ -118,9 +118,19 @@ const PurchasedBooks = () => {
                 <h1 className=" dashboard-heading">
                   All Your Purchased Books : {books.length}
                 </h1>
-                <table className={darkMode?"table table-zebra shadow-xl w-full bg-black/90  text-center overflow-x-auto ":"table table-zebra shadow-lg  text-center overflow-x-auto    px-2   mx-auto "}>
+                <table
+                  className={
+                    darkMode
+                      ? "table table-zebra shadow-xl w-full bg-black/90  text-center overflow-x-auto "
+                      : "table table-zebra shadow-lg  text-center overflow-x-auto    px-2   mx-auto "
+                  }
+                >
                   {/* head */}
-                  <thead className={darkMode?"bg-white/10 text-white":"bg-primary text-white"}>
+                  <thead
+                    className={
+                      darkMode ? "bg-gray text-white" : "bg-primary text-white"
+                    }
+                  >
                     <tr>
                       <th>#</th>
                       <th>Books</th>
@@ -129,14 +139,20 @@ const PurchasedBooks = () => {
                       <th>Transection ID</th>
                     </tr>
                   </thead>
-                  <tbody >
+                  <tbody>
                     {books.map((book, index) => (
                       <tr key={book._id}>
-                        <th className={darkMode?" bg-black":""}>{index + 1}</th>
-                        <td className={darkMode?" bg-black":""}>
+                        <th className={darkMode ? " bg-black" : ""}>
+                          {index + 1}
+                        </th>
+                        <td className={darkMode ? " bg-black" : ""}>
                           {book.books.map((sBook, sIndex) => (
                             <div
-                              className={darkMode?"text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90":"text-start flex gap-10 my-5 shadow-lg p-2 w-96"}
+                              className={
+                                darkMode
+                                  ? "text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90"
+                                  : "text-start flex gap-10 my-5 shadow-lg p-2 w-96"
+                              }
                               key={sBook._id}
                             >
                               <img
@@ -271,19 +287,21 @@ const PurchasedBooks = () => {
                             </div>
                           ))}
                         </td>
-                        <td className={darkMode?"text-xl bg-black":"text-xl"}>
+                        <td
+                          className={darkMode ? "text-xl bg-black" : "text-xl"}
+                        >
                           {book?.status == "Cash On Delivery"
                             ? "Pending"
                             : book?.status
                             ? book?.status
                             : "Pending"}{" "}
                         </td>
-                        <td className={darkMode?" bg-black":""}>
+                        <td className={darkMode ? " bg-black" : ""}>
                           <p>
                             {new Date(book.date).toISOString().split("T")[0]}
                           </p>
                         </td>
-                        <td className={darkMode?" bg-black":""}>
+                        <td className={darkMode ? " bg-black" : ""}>
                           {book.transactionId
                             ? book.transactionId
                             : "Cash on Delivery"}

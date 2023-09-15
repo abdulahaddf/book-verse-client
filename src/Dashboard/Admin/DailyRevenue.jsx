@@ -17,7 +17,7 @@ const DailyRevenue = () => {
 
   // Tonmoy Start
 
-  const {darkMode}=useContext(AuthContext)
+  const { darkMode } = useContext(AuthContext);
 
   //  Tonmoy End
 
@@ -49,10 +49,22 @@ const DailyRevenue = () => {
   return (
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
       <h2 className="text-4xl font-bold text-center">Daily Revenue Chart</h2>
-      <p className={darkMode?"text-center text-gray-100 mt-2":"text-center text-gray-600 mt-2"}>
+      <p
+        className={
+          darkMode
+            ? "text-center text-gray-100 mt-2"
+            : "text-center text-gray-600 mt-2"
+        }
+      >
         Revenue data for every single day in the current months.
       </p>
-      <div className={darkMode?"rounded-md border p-6 my-4 bg-white/10  text-white ":"rounded-md border p-6 my-4 bg-slate-50"}>
+      <div
+        className={
+          darkMode
+            ? "rounded-md border p-6 my-4 bg-gray  text-white "
+            : "rounded-md border p-6 my-4 bg-slate-50"
+        }
+      >
         <ResponsiveContainer width="100%" height={500}>
           <LineChart
             data={chartData}
@@ -63,18 +75,21 @@ const DailyRevenue = () => {
               bottom: 10,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke={darkMode?"#3f3f46" :"#f0f0f0" }/>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={darkMode ? "#3f3f46" : "#f0f0f0"}
+            />
             <XAxis
               dataKey="day"
               // tick={{ fill: "#333" }}
               tickLine={false}
               interval={4}
-
-              stroke={darkMode?"#ffffff":"#333"}
+              stroke={darkMode ? "#ffffff" : "#333"}
             />
-            <YAxis yAxisId="left" 
-            // tick={{ fill: "#333" }} 
-            stroke={darkMode?"#ffffff":"#333"}
+            <YAxis
+              yAxisId="left"
+              // tick={{ fill: "#333" }}
+              stroke={darkMode ? "#ffffff" : "#333"}
             />
             <Tooltip
               contentStyle={{ backgroundColor: "#333", color: "#fff" }}

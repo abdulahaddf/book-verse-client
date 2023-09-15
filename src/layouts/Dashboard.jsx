@@ -47,8 +47,8 @@ const Dashboard = () => {
             </label>
             {/* <DashboardNavbar></DashboardNavbar> */}
             <div className="absolute top-2 right-3 bg-white rounded-xl shadow-md p-3">
-            <img  className="w-32 " src="/main-logo.png" alt="" />
-          </div>
+              <img className="w-32 " src="/main-logo.png" alt="" />
+            </div>
             <Outlet></Outlet>
           </div>
           <div className="drawer-side ">
@@ -58,7 +58,7 @@ const Dashboard = () => {
             ></label>
             <div
               className={`menu p-4 w-60 ${
-                darkMode ? "bg-white/10 border-r-[1px]" : "bg-slate-100"
+                darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
               } ${isAdmin ? "h-auto" : "h-full"}`}
             >
               <div className="text-center mx-auto">

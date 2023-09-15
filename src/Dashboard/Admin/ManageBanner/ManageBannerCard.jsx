@@ -10,12 +10,11 @@ import { AuthContext } from "../../../provider/AuthProvider";
 const ManageBannerCard = ({ banner, refetch }) => {
   // eslint-disable-next-line react/prop-types
 
+  // Tonmoy Start
 
-   // Tonmoy Start
+  const { darkMode } = useContext(AuthContext);
 
-   const { darkMode } = useContext(AuthContext)
-
-   //  Tonmoy end
+  //  Tonmoy end
 
   const { _id, bannerURL, title, subtitle } = banner;
   const { register, handleSubmit, reset } = useForm();
@@ -112,7 +111,13 @@ const ManageBannerCard = ({ banner, refetch }) => {
   };
 
   return (
-    <div className={darkMode?"card card-compact w-96 h-72 bg-white/10  shadow-xl ":"card card-compact w-96 h-72 bg-base-100 shadow-xl "}>
+    <div
+      className={
+        darkMode
+          ? "card card-compact w-96 h-72 bg-gray  shadow-xl "
+          : "card card-compact w-96 h-72 bg-base-100 shadow-xl "
+      }
+    >
       <figure>
         <img src={bannerURL} alt="Shoes" />
       </figure>
@@ -125,14 +130,18 @@ const ManageBannerCard = ({ banner, refetch }) => {
         <div className="card-actions justify-end mt-auto">
           <div className="flex gap-6">
             <button
-              className={darkMode?"primary-button-dark":"primary-button"}
+              className={darkMode ? "primary-button-dark" : "primary-button"}
               onClick={() => document.getElementById("my_modal_2").showModal()}
             >
               <FaEdit className="text-xl"></FaEdit>
             </button>
             <dialog id="my_modal_2" className="modal">
-              <div   className={darkMode?"bg-gray-200 modal-box":"modal-box"} >
-                <form  className={darkMode?"bg-gray-200":""}  method="dialog" onSubmit={handleSubmit(handleEdit)}>
+              <div className={darkMode ? "bg-gray-200 modal-box" : "modal-box"}>
+                <form
+                  className={darkMode ? "bg-gray-200" : ""}
+                  method="dialog"
+                  onSubmit={handleSubmit(handleEdit)}
+                >
                   <h3 className="text-3xl font-semibold text-center text-red uppercase">
                     Edit Banner{" "}
                   </h3>
@@ -201,7 +210,12 @@ const ManageBannerCard = ({ banner, refetch }) => {
               </form>
             </dialog>
 
-            <button className={darkMode?"primary-button-dark text-black" :"primary-button" } onClick={handleDelete}>
+            <button
+              className={
+                darkMode ? "primary-button-dark text-black" : "primary-button"
+              }
+              onClick={handleDelete}
+            >
               <MdDelete className="text-xl"></MdDelete>
             </button>
           </div>
