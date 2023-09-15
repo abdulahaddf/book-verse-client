@@ -171,12 +171,12 @@ const BookDetails = () => {
               {darkMode ? (
                 <img
                   src={cover_image}
-                  className="max-h-96 rounded-md min-h-[383px] w-full  shadow-2xl imgBox"
+                  className="max-h-96 rounded-md min-h-[383px] w-full  shadow-2xl imgBox duration-300"
                 />
               ) : (
                 <img
                   src={cover_image}
-                  className="max-h-96 min-h-[383px] w-full  shadow-2xl imgBox"
+                  className="max-h-96 min-h-[383px] w-full  shadow-2xl imgBox duration-300"
                 />
               )}
             </div>
