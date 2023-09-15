@@ -101,7 +101,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
     //         Swal.fire({
     //           position: "center",
     //           icon: "success",
-    //           title: `Userinfo updated successfully.`,
+  //           title: `Userinfo updated successfully.`
     //           showConfirmButton: false,
     //           timer: 1500,
     //         });
@@ -114,7 +114,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
     <div
       className={
         darkMode
-          ? "card card-compact w-96 h-72 bg-gray  shadow-xl "
+          ? "card card-compact w-96 h-72 bg-gray border-[1px]  shadow-xl "
           : "card card-compact w-96 h-72 bg-base-100 shadow-xl "
       }
     >
@@ -130,7 +130,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
         <div className="card-actions justify-end mt-auto">
           <div className="flex gap-6">
             <button
-              className={darkMode ? "primary-button-dark" : "primary-button"}
+              className={darkMode ? "primary-button-dark hover:bg-[#10aade] hover:text-white border-[2px] border-[#10aade] text-[#10aade] hover:border-white " : "primary-button"}
               onClick={() => document.getElementById("my_modal_2").showModal()}
             >
               <FaEdit className="text-xl"></FaEdit>
@@ -212,7 +212,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
 
             <button
               className={
-                darkMode ? "primary-button-dark text-black" : "primary-button"
+                darkMode ? "primary-button-dark  border-[2px] border-[#d71d24] hover:bg-[#d71d24] hover:text-white hover:border-white  text-[#d71d24]" : "primary-button"
               }
               onClick={handleDelete}
             >

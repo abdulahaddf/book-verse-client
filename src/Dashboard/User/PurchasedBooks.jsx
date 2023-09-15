@@ -115,7 +115,7 @@ const PurchasedBooks = () => {
             {" "}
             <div>
               <div className="overflow-x-auto">
-                <h1 className=" dashboard-heading">
+                <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>
                   All Your Purchased Books : {books.length}
                 </h1>
                 <table
@@ -177,7 +177,7 @@ const PurchasedBooks = () => {
                                     }
                                   }}
                                   // className={darkMode?"btn btn-sm btn-outline text-white hover:bg-white hover:text-black mt-2":"btn-custom"}
-                                  className={`btn-custom ${
+                                  className={`${darkMode?"btn-custom-dark":"btn-custom"} ${
                                     book.status === "Delivered"
                                       ? ""
                                       : "cursor-not-allowed opacity-50"

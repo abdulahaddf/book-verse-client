@@ -428,7 +428,7 @@ const AddBook = () => {
         </div>
 
         <input
-          className="btn-primary mt-6 w-28"
+          className={darkMode?"btn-primary-dark mt-6 w-28":"btn-primary mt-6 w-28"}
           type="submit"
           value="Add Book"
         />

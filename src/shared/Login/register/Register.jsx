@@ -353,14 +353,14 @@ const Register = () => {
             <div
               className={
                 darkMode
-                  ? "absolute px-5 bg-[#2B2B2B]"
+                  ? "absolute px-5 bg-[#3C4043]"
                   : "absolute px-5 bg-white"
               }
             >
               Or
             </div>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -376,7 +376,7 @@ const Register = () => {
               <span className="ml-2">Sign up with Google</span>
             </button>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handlefbSignIn}
               type="button"
