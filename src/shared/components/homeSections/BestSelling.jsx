@@ -36,14 +36,14 @@ const BestSelling = () => {
 
   // console.log(books,'tonu')
   return (
-    <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`}>
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Best Selling"}></Heading>
         <Link
           to="/allBestSelling"
           className={`${
             darkMode
-              ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500] text-xs w-24 h-7 md:w-36 md:h-10 md:text-base" 
+              ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500] text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
               : "btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base "
           }`}
         >

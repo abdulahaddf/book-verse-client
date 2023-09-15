@@ -4,12 +4,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const AddPromo = () => {
+  // Tonmoy Start
 
-   // Tonmoy Start
+  const { darkMode } = useContext(AuthContext);
 
-   const {darkMode}=useContext(AuthContext)
-
-   //  Tonmoy end
+  //  Tonmoy end
 
   const [promos, setPromos] = useState([]);
   const { register, handleSubmit, watch, reset } = useForm();
@@ -81,12 +80,24 @@ const AddPromo = () => {
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className={darkMode?"bg-white/10 border-[1px] rounded-md p-4 md:p-5":"bg-slate-100 rounded-md p-4 md:p-5"}
+          className={
+            darkMode
+              ? "bg-gray border-[1px] rounded-md p-4 md:p-5"
+              : "bg-slate-100 rounded-md p-4 md:p-5"
+          }
         >
           <div className="flex items-center justify-center gap-5 w-4/5 mx-auto">
             <div className="form-control w-full">
               <label className="label">
-                <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Promo Code</span>
+                <span
+                  className={
+                    darkMode
+                      ? "label-text font-semibold text-white"
+                      : "label-text font-semibold"
+                  }
+                >
+                  Promo Code
+                </span>
               </label>
               <input
                 required
@@ -99,7 +110,15 @@ const AddPromo = () => {
             </div>
             <div className="form-control w-full">
               <label className="label">
-                <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Discount</span>
+                <span
+                  className={
+                    darkMode
+                      ? "label-text font-semibold text-white"
+                      : "label-text font-semibold"
+                  }
+                >
+                  Discount
+                </span>
               </label>
               <input
                 required
@@ -124,7 +143,11 @@ const AddPromo = () => {
       <div className="overflow-x-auto mt-5  md:my-10">
         <table className="table table-zebra shadow-xl w-full text-center">
           {/* head */}
-          <thead className={darkMode?"bg-white/10 text-white":"bg-primary text-white"}>
+          <thead
+            className={
+              darkMode ? "bg-gray text-white" : "bg-primary text-white"
+            }
+          >
             <tr>
               <th>#</th>
               <th>promo Code</th>
@@ -134,16 +157,18 @@ const AddPromo = () => {
           </thead>
           <tbody>
             {promos.map((promo, index) => (
-              <tr className={darkMode?"bg-black/80":""}  key={promo._id}>
-                <th className={darkMode?"bg-black/80":""} >{index + 1}</th>
+              <tr className={darkMode ? "bg-black/80" : ""} key={promo._id}>
+                <th className={darkMode ? "bg-black/80" : ""}>{index + 1}</th>
 
-                <td className={darkMode?"bg-black/80":""} >{promo.promo}</td>
-                <td className={darkMode?"bg-black/80":""} >{promo.discount}</td>
+                <td className={darkMode ? "bg-black/80" : ""}>{promo.promo}</td>
+                <td className={darkMode ? "bg-black/80" : ""}>
+                  {promo.discount}
+                </td>
 
-                <td className={darkMode?"bg-black/80":""}>
+                <td className={darkMode ? "bg-black/80" : ""}>
                   <button
                     onClick={() => handleDelete(promo)}
-                    className={darkMode?"btn-custom-dark":"btn-custom"}
+                    className={darkMode ? "btn-custom-dark bg-[#d71d24]" : "btn-custom"}
                   >
                     Delete
                   </button>

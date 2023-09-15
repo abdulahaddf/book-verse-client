@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const FeaturedBooks = () => {
-  const { darkMode} = useContext(AuthContext);
+  const { darkMode } = useContext(AuthContext);
   const { books, loading } = UseBooks();
   // console.log(books);
   // const params = {
@@ -35,13 +35,15 @@ const FeaturedBooks = () => {
   //   },
   // };
   return (
-    <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`}>
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Featured Books"}></Heading>
       </div>
-      {
-        loading ? <Skeleton count={3} className="my-4 h-28" /> :   <div className="py-5">
-        <Swiper
+      {loading ? (
+        <Skeleton count={3} className="my-4 h-28" />
+      ) : (
+        <div className="py-5">
+          <Swiper
           slidesPerView={1}
           // centeredSlides={true}
           spaceBetween={30}
@@ -76,13 +78,12 @@ const FeaturedBooks = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
-      }
+        </div>
+      )}
 
       {/* ----------------------------------
               Slider added -foisal 
           ----------------------------*/}
-     
     </div>
   );
 };

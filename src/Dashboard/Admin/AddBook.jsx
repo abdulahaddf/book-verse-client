@@ -16,7 +16,7 @@ const AddBook = () => {
   console.log(watch("example"));
 
   // tonmoy start
-  const {darkMode}=useContext(AuthContext)
+  const { darkMode } = useContext(AuthContext);
   const onSubmit = async (allData) => {
     const {
       title,
@@ -32,9 +32,9 @@ const AddBook = () => {
       author_image,
     } = allData;
 
-     // Converting real_price and offer_price to numbers - AHAD
-  const real_price = parseFloat(allData.real_price);
-  const offer_price = parseFloat(allData.offer_price);
+    // Converting real_price and offer_price to numbers - AHAD
+    const real_price = parseFloat(allData.real_price);
+    const offer_price = parseFloat(allData.offer_price);
 
     const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
       import.meta.env.VITE_Image_Upload_token
@@ -128,12 +128,24 @@ const AddBook = () => {
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={darkMode?"bg-white/10  border-[1px] rounded-md p-4 md:p-16 mt-10":"bg-slate-100 rounded-md p-4 md:p-16 mt-10"}
+        className={
+          darkMode
+            ? "bg-gray  border-[1px] rounded-md p-4 md:p-16 mt-10"
+            : "bg-slate-100 rounded-md p-4 md:p-16 mt-10"
+        }
       >
         <div className="flex gap-6">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Book name</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Book name
+              </span>
             </label>
             <input
               required
@@ -146,7 +158,15 @@ const AddBook = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Author name</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Author name
+              </span>
             </label>
             <input
               required
@@ -161,7 +181,15 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Category</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Category
+              </span>
             </label>
             <input
               required
@@ -174,7 +202,15 @@ const AddBook = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Language</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Language
+              </span>
             </label>
             <input
               required
@@ -190,7 +226,15 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Real Prices</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Real Prices
+              </span>
             </label>
             <input
               required
@@ -204,7 +248,15 @@ const AddBook = () => {
 
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Offer price*</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Offer price*
+              </span>
             </label>
             <input
               required
@@ -220,7 +272,15 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Page numbers</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Page numbers
+              </span>
             </label>
             <input
               required
@@ -234,7 +294,15 @@ const AddBook = () => {
 
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Rating*</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Rating*
+              </span>
             </label>
             <input
               required
@@ -250,7 +318,15 @@ const AddBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Published date</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Published date
+              </span>
             </label>
             <input
               required
@@ -263,7 +339,15 @@ const AddBook = () => {
 
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>About author</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                About author
+              </span>
             </label>
             <input
               required
@@ -279,7 +363,15 @@ const AddBook = () => {
         <div className="md:flex gap-6 justify-between">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Cover image</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Cover image
+              </span>
             </label>
             <input
               type="file"
@@ -293,7 +385,15 @@ const AddBook = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Author image</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Author image
+              </span>
             </label>
             <input
               required
@@ -308,7 +408,15 @@ const AddBook = () => {
 
         <div className="form-control">
           <label className="label">
-            <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Description</span>
+            <span
+              className={
+                darkMode
+                  ? "label-text font-semibold text-white"
+                  : "label-text font-semibold"
+              }
+            >
+              Description
+            </span>
           </label>
           <textarea
             required
@@ -320,10 +428,9 @@ const AddBook = () => {
         </div>
 
         <input
-          className="btn-primary mt-6 w-28"
+          className={darkMode?"btn-primary-dark mt-6 w-28":"btn-primary mt-6 w-28"}
           type="submit"
           value="Add Book"
-        
         />
       </form>
     </div>

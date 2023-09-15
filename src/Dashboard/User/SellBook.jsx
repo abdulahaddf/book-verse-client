@@ -105,17 +105,27 @@ const SellBook = () => {
 
   return (
     <div className="w-4/5 h-full">
-      <h1 className="dashboard-heading">
-        Post Your Old Books to sell
-      </h1>
+      <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>Post Your Old Books to sell</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={darkMode?"bg-white/10 w-[90%] mx-auto border-[1px] rounded-md p-4 md:p-16 mt-10":"bg-slate-100 rounded-md p-4 md:p-16 mt-10"}
+        className={
+          darkMode
+            ? "bg-gray w-[90%] mx-auto border-[1px] rounded-md p-4 md:p-16 mt-10"
+            : "bg-slate-100 rounded-md p-4 md:p-16 mt-10"
+        }
       >
         <div className="flex gap-6">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Book name</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Book name
+              </span>
             </label>
             <input
               required
@@ -128,7 +138,15 @@ const SellBook = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Author name</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Author name
+              </span>
             </label>
             <input
               required
@@ -143,7 +161,15 @@ const SellBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Language</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Language
+              </span>
             </label>
             <input
               required
@@ -156,7 +182,15 @@ const SellBook = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Price</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Price
+              </span>
             </label>
             <input
               required
@@ -172,7 +206,15 @@ const SellBook = () => {
         <div className=" flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Purchased date</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Purchased date
+              </span>
             </label>
             <input
               required
@@ -184,7 +226,15 @@ const SellBook = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Book image</span>
+              <span
+                className={
+                  darkMode
+                    ? "label-text font-semibold text-white"
+                    : "label-text font-semibold"
+                }
+              >
+                Book image
+              </span>
             </label>
             <input
               type="file"
@@ -200,7 +250,15 @@ const SellBook = () => {
 
         <div className="form-control">
           <label className="label">
-            <span className={darkMode?"label-text font-semibold text-white":"label-text font-semibold"}>Description</span>
+            <span
+              className={
+                darkMode
+                  ? "label-text font-semibold text-white"
+                  : "label-text font-semibold"
+              }
+            >
+              Description
+            </span>
           </label>
           <textarea
             required
@@ -212,7 +270,11 @@ const SellBook = () => {
         </div>
 
         <input
-          className={darkMode? "py-2 px-3 mt-4 flex btn w-fit bg-gray-500  text-white hover:bg-gray-600 hover:text-white  btn-outline hover:border-red  rounded-md  border-white ":"btn-primary"}
+          className={
+            darkMode
+              ? " btn-primary-dark text-[15px] mt-4 "
+              : "btn-primary text-[15px] mt-4"
+          }
           type="submit"
           value="Post your Book"
         />
