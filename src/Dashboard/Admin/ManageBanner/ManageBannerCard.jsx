@@ -102,7 +102,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
     //         Swal.fire({
     //           position: "center",
     //           icon: "success",
-    //           title: `Userinfo updated successfully.`,
+  //           title: `Userinfo updated successfully.`
     //           showConfirmButton: false,
     //           timer: 1500,
     //         });
