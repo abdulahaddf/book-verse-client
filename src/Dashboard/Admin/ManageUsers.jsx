@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { MdDeleteForever } from "react-icons/md";
@@ -6,11 +5,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const ManageUsers = () => {
-     // Tonmoy Start
+  // Tonmoy Start
 
-     const {darkMode}=useContext(AuthContext)
+  const { darkMode } = useContext(AuthContext);
 
-     //  Tonmoy end
+  //  Tonmoy end
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await fetch("https://book-verse-server-phi.vercel.app/users");
     return res.json();
@@ -70,7 +69,7 @@ const ManageUsers = () => {
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
-            <thead className={darkMode?" bg-white/10 text-white ":""}>
+            <thead className={darkMode ? " bg-gray text-white " : ""}>
               <tr>
                 <th>#</th>
                 <th>Photo</th>
@@ -82,7 +81,7 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {users.map((user, index) => (
-                <tr key={user._id} >
+                <tr key={user._id}>
                   <td>{index + 1}</td>
                   <td>
                     <div className="avatar">
@@ -100,7 +99,9 @@ const ManageUsers = () => {
                       ) : (
                         <button
                           onClick={() => handleMakeAdmin(user)}
-                          className={darkMode?"btn-custom-dark  ":"btn-custom  "}
+                          className={
+                            darkMode ? "btn-custom-dark  " : "btn-custom  "
+                          }
                         >
                           Make Admin
                         </button>

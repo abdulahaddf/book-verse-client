@@ -9,6 +9,7 @@ export default {
         red : '#048ed6',
         primary : '#048ed6',
         secondary : '#003159',
+        gray : '#3C4043',
         
       }},
       

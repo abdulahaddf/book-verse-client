@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const FeaturedBooks = () => {
-  const { darkMode} = useContext(AuthContext);
+  const { darkMode } = useContext(AuthContext);
   const { books, loading } = UseBooks();
   // console.log(books);
   // const params = {
@@ -35,53 +35,54 @@ const FeaturedBooks = () => {
   //   },
   // };
   return (
-    <div className={`${darkMode?"section bg-[#3C4043] ":"section"}`}>
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Featured Books"}></Heading>
       </div>
-      {
-        loading ? <Skeleton count={3} className="my-4 h-28" /> :   <div className="py-5">
-        <Swiper
-          slidesPerView={1}
-          centeredSlides={true}
-          spaceBetween={30}
-          pagination={{ clickable: true }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          initialSlide={1}
-          breakpoints={{
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 1,
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 3,
-            },
-            // when window width is >= 1024px
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
-          className="mySwiper flex w-full"
-        >
-          {books?.slice(0, 20).map((book, idx) => (
-            <SwiperSlide key={idx}>
-              <ProductCard
-                key={book._id}
-                data={book}
-                loading={loading}
-              ></ProductCard>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-      }
+      {loading ? (
+        <Skeleton count={3} className="my-4 h-28" />
+      ) : (
+        <div className="py-5">
+          <Swiper
+            slidesPerView={1}
+            centeredSlides={true}
+            spaceBetween={30}
+            pagination={{ clickable: true }}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            initialSlide={1}
+            breakpoints={{
+              // when window width is >= 480px
+              480: {
+                slidesPerView: 1,
+              },
+              // when window width is >= 768px
+              768: {
+                slidesPerView: 3,
+              },
+              // when window width is >= 1024px
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="mySwiper flex w-full"
+          >
+            {books?.slice(0, 20).map((book, idx) => (
+              <SwiperSlide key={idx}>
+                <ProductCard
+                  key={book._id}
+                  data={book}
+                  loading={loading}
+                ></ProductCard>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
 
       {/* ----------------------------------
               Slider added -foisal 
           ----------------------------*/}
-     
     </div>
   );
 };

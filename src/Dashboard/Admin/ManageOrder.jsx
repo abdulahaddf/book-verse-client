@@ -6,35 +6,34 @@ import { AuthContext } from "../../provider/AuthProvider";
 // import { useForm } from "react-hook-form";
 
 const ManageOrder = () => {
+  // Tonmoy Start
 
-    // Tonmoy Start
+  const { darkMode } = useContext(AuthContext);
 
-    const {darkMode}=useContext(AuthContext)
-
-    //  Tonmoy end
+  //  Tonmoy end
 
   const handleForm = (event, id) => {
     event.preventDefault();
     console.log(id);
-    const value=event.target.select.value;
-    const data={
-      "status": value
-    }
-    console.log(data)
-    fetch(`https://book-verse-server-phi.vercel.app/paymentStatus/${id}`,{
-      method:"PATCH",
+    const value = event.target.select.value;
+    const data = {
+      status: value,
+    };
+    console.log(data);
+    fetch(`https://book-verse-server-phi.vercel.app/paymentStatus/${id}`, {
+      method: "PATCH",
       headers: {
-        "content-type":"application/json"
+        "content-type": "application/json",
       },
-      body:JSON.stringify(data)
+      body: JSON.stringify(data),
     })
-    .then((res)=>res.json())
-    .then(data=>{
-      console.log(data)
-      if(data.modifiedCount>0){
-        refetch()
-      }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          refetch();
+        }
+      });
   };
   // const { register, handleSubmit } = useForm();
   // const onSubmit = (data,id) => {
@@ -50,16 +49,34 @@ const ManageOrder = () => {
   };
   console.log(payments);
   return (
-    <div className={darkMode?"w-full  px-10 p-5 min-h-full ":"w-full  px-10 p-5 min-h-full bg-slate-300"}>
-      <div className={darkMode?"p-10  ":"p-10 bg-slate-500 "}>
-        <h2 className={darkMode?"text-center text-5xl text-white font-mono font-bold":"text-center text-5xl text-[#91d6f6] font-mono font-bold"}>
+    <div
+      className={
+        darkMode
+          ? "w-full  px-10 p-5 min-h-full "
+          : "w-full  px-10 p-5 min-h-full bg-slate-300"
+      }
+    >
+      <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
+        <h2
+          className={
+            darkMode
+              ? "text-center text-5xl text-white font-mono font-bold"
+              : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
+          }
+        >
           Track Orders
         </h2>
       </div>
       <div className="flex flex-col md:flex-row justify-between gap-6">
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
-            <thead className={darkMode?" bg-white/10  text-white text-start":"bg-slate-100 text-start"}>
+            <thead
+              className={
+                darkMode
+                  ? " bg-gray  text-white text-start"
+                  : "bg-slate-100 text-start"
+              }
+            >
               <tr>
                 <th>No</th>
                 <th>Email</th>
@@ -73,30 +90,99 @@ const ManageOrder = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className={darkMode?"bg-black/90 divide-y divide-gray-200 ":"bg-slate-100 divide-y divide-gray-200 "}>
+            <tbody
+              className={
+                darkMode
+                  ? "bg-black/90 divide-y divide-gray-200 "
+                  : "bg-slate-100 divide-y divide-gray-200 "
+              }
+            >
               {payments
                 .slice(0, showMore ? payments.length : initialDisplayCount)
                 .map((payment, index) => (
                   <tr key={payment._id}>
-                    <td className={darkMode?"bg-black/80":""}>{index + 1}</td>
-                    <td className={darkMode?"text-start bg-black/80":"text-start"}>{payment.mail}</td>
+                    <td className={darkMode ? "bg-black/80" : ""}>
+                      {index + 1}
+                    </td>
+                    <td
+                      className={
+                        darkMode ? "text-start bg-black/80" : "text-start"
+                      }
+                    >
+                      {payment.mail}
+                    </td>
                     {/* <td>{payment._id}</td> */}
-                    <td className={darkMode?"bg-black/80 text-center":"text-center"} >{payment.transactionId ? payment.transactionId : "Cash On Delivery"}</td>
-                    <td className={darkMode?"bg-black/80":""}>{payment.date}</td>
-                    <td className={darkMode?"bg-black/80 text-start":"text-start"} >{payment.total_price ? <>$ {payment.total_price}</> : "COD"} </td>
-                    <td className={darkMode?"bg-black/80 text-start":"text-start"} >
-                      <span className={`${payment?.status  ? "bg-green-400" : "bg-[#FF0000]"} rounded text-white badge-sm `}>
+                    <td
+                      className={
+                        darkMode ? "bg-black/80 text-center" : "text-center"
+                      }
+                    >
+                      {payment.transactionId
+                        ? payment.transactionId
+                        : "Cash On Delivery"}
+                    </td>
+                    <td className={darkMode ? "bg-black/80" : ""}>
+                      {payment.date}
+                    </td>
+                    <td
+                      className={
+                        darkMode ? "bg-black/80 text-start" : "text-start"
+                      }
+                    >
+                      {payment.total_price ? (
+                        <>$ {payment.total_price}</>
+                      ) : (
+                        "COD"
+                      )}{" "}
+                    </td>
+                    <td
+                      className={
+                        darkMode ? "bg-black/80 text-start" : "text-start"
+                      }
+                    >
+                      <span
+                        className={`${
+                          payment?.status ? "bg-green-400" : "bg-[#FF0000]"
+                        } rounded text-white badge-sm `}
+                      >
                         {payment?.status ? payment?.status : "Pending"}
                       </span>
                     </td>
-                    <td className={darkMode?"bg-black/80":""}>
-                      
+                    <td className={darkMode ? "bg-black/80" : ""}>
                       <form onSubmit={() => handleForm(event, payment?._id)}>
-                        <select className={darkMode?"bg-black/0 border-[1px]  text-white":""}  name="select" defaultValue={payment?.status}>
-                          <option className={darkMode?"bg-black/90 text-white":""} value="Processing">Processing</option>
-                          <option className={darkMode?"bg-black/90 text-white":""} value="Shipped">Shipped</option>
-                          <option className={darkMode?"bg-black/90 text-white":""} value="In-Transit">In Transit</option>
-                          <option className={darkMode?"bg-black/90 text-white":""} value="Delivered">Delivered</option>
+                        <select
+                          className={
+                            darkMode
+                              ? "bg-black/0 border-[1px]  text-white"
+                              : ""
+                          }
+                          name="select"
+                          defaultValue={payment?.status}
+                        >
+                          <option
+                            className={darkMode ? "bg-black/90 text-white" : ""}
+                            value="Processing"
+                          >
+                            Processing
+                          </option>
+                          <option
+                            className={darkMode ? "bg-black/90 text-white" : ""}
+                            value="Shipped"
+                          >
+                            Shipped
+                          </option>
+                          <option
+                            className={darkMode ? "bg-black/90 text-white" : ""}
+                            value="In-Transit"
+                          >
+                            In Transit
+                          </option>
+                          <option
+                            className={darkMode ? "bg-black/90 text-white" : ""}
+                            value="Delivered"
+                          >
+                            Delivered
+                          </option>
                         </select>
                         <button
                           className="btn btn-success btn-xs normal-case text-white mx-1"
