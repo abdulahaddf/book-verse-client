@@ -22,6 +22,17 @@ import { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
+
+// Function to format numbers as "1k" or "1M"
+function formatNumber(num) {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(2) + "M";
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(2) + "k";
+  }
+  return num;
+}
+
 const AdminHome = () => {
   // Tonmoy Start
   const { darkMode } = useContext(AuthContext);
@@ -106,7 +117,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              {paymentHistory.length}
+              {formatNumber(paymentHistory.length)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+04%</p>
@@ -128,7 +139,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              ${revenueSummary.totalRevenueToday}
+              ${formatNumber(revenueSummary.totalRevenueToday)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+14%</p>
@@ -151,7 +162,7 @@ const AdminHome = () => {
             </li>
             <h3 className="text-3xl font-semibold my-6">
               {" "}
-              ${revenueSummary.totalRevenueCurrentMonth}
+              ${formatNumber(revenueSummary.totalRevenueCurrentMonth)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+06%</p>
@@ -173,7 +184,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              ${revenueSummary.totalRevenue}
+              ${formatNumber(revenueSummary.totalRevenue)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+26%</p>
