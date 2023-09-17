@@ -40,7 +40,7 @@ const Dashboard = () => {
     <div className={darkMode ? "dark-style" : ""}>
       <Helmet>
           <title>Book Verse | Dashboard | {user?.displayName}</title>
-        </Helmet>
+      </Helmet>
       {user && singleUser && userinfo && (
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
