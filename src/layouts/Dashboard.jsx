@@ -15,6 +15,7 @@ import { AiFillWechat } from "react-icons/ai";
 import Loader from "../shared/components/loader/Loader";
 import UseSingleUser from "../hooks/useSingleUser";
 import { CiSignpostDuo1 } from "react-icons/ci";
+import { Helmet } from "react-helmet";
 
 
 const Dashboard = () => {
@@ -37,6 +38,9 @@ const Dashboard = () => {
 
   return (
     <div className={darkMode ? "dark-style" : ""}>
+      <Helmet>
+          <title>Book Verse | Dashboard | {user.displayName}</title>
+        </Helmet>
       {user && singleUser && userinfo && (
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
