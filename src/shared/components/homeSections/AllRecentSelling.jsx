@@ -1,14 +1,18 @@
 import { useSelector } from 'react-redux';
 
 import ProductCard from '../productCard/ProductCard';
+import { useEffect } from 'react';
 
 const AllRecentSelling = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const recentSellingData = useSelector(state => state.recentSelling.recentSelling);
 
     console.log(recentSellingData); // Add this line
 
     return (
-        <div className='py-[100px]'>
+        <div className='py-10'>
             <h1 className="page-heading mb-[30px]">All Recent Selling books </h1>
 
 

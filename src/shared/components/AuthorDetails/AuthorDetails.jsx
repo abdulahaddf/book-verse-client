@@ -7,6 +7,7 @@ import AuthorCard from "./AuthorCard";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AuthorDetails = () => {
   useEffect(() => {
@@ -31,6 +32,9 @@ const AuthorDetails = () => {
   return (
     <div className="min-h-screen p-10 md:px-32 md:p-20">
       {/* Author Details  */}
+      <Helmet>
+          <title>Book Verse | Author Details</title>
+        </Helmet>
       <div
         className={`${
           darkMode

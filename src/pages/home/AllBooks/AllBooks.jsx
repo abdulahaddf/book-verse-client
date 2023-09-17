@@ -5,6 +5,7 @@ import Loader from "../../../shared/components/loader/Loader";
 import ProductCard from "../../../shared/components/productCard/ProductCard";
 import { AuthContext } from "../../../provider/AuthProvider";
 import LazyLoad from "react-lazy-load";
+import { Helmet } from "react-helmet";
 
 const AllBooks = () => {
   const { books, loading } = UseBooks();
@@ -85,7 +86,11 @@ const AllBooks = () => {
 
   return (
     <LazyLoad>
+       
       <div className={darkMode ? " bg-gray  py-5" : ""}>
+      <Helmet>
+          <title>Book Verse | All Books</title>
+        </Helmet>
         <h1 className="text-3xl text-center font-semibold my-5">
           All Your Books
         </h1>
