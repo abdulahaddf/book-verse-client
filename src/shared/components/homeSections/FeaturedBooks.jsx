@@ -44,39 +44,40 @@ const FeaturedBooks = () => {
       ) : (
         <div className="py-5">
           <Swiper
-            slidesPerView={1}
-            centeredSlides={true}
-            spaceBetween={30}
-            pagination={{ clickable: true }}
-            navigation={true}
-            modules={[Pagination, Navigation]}
-            initialSlide={1}
-            breakpoints={{
-              // when window width is >= 480px
-              480: {
-                slidesPerView: 1,
-              },
-              // when window width is >= 768px
-              768: {
-                slidesPerView: 3,
-              },
-              // when window width is >= 1024px
-              1024: {
-                slidesPerView: 3,
-              },
-            }}
-            className="mySwiper flex w-full"
-          >
-            {books?.slice(0, 20).map((book, idx) => (
-              <SwiperSlide key={idx}>
-                <ProductCard
-                  key={book._id}
-                  data={book}
-                  loading={loading}
-                ></ProductCard>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          slidesPerView={1}
+          // centeredSlides={true}
+          spaceBetween={30}
+          pagination={{ clickable: true }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          initialSlide={1}
+          loop={true}
+          breakpoints={{
+            // when window width is >= 480px
+            300: {
+              slidesPerView: 2,
+            },
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 3,
+            },
+            // when window width is >= 1024px
+            1024: {
+              slidesPerView: 7,
+            },
+          }}
+          className="mySwiper flex w-full"
+        >
+          {books?.slice(0, 20).map((book, idx) => (
+            <SwiperSlide key={idx}>
+              <ProductCard
+                key={book._id}
+                data={book}
+                loading={loading}
+              ></ProductCard>
+            </SwiperSlide>
+          ))}
+        </Swiper>
         </div>
       )}
 
