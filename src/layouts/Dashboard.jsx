@@ -39,7 +39,7 @@ const Dashboard = () => {
   return (
     <div className={darkMode ? "dark-style" : ""}>
       <Helmet>
-          <title>Book Verse | Dashboard | {user.displayName}</title>
+          <title>Book Verse | Dashboard | {user?.displayName}</title>
         </Helmet>
       {user && singleUser && userinfo && (
         <div className="drawer lg:drawer-open">
