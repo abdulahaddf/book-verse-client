@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useContext } from "react";
 const AuthorCard = ({ card }) => {
+  // Tonmoy start
+
+  const { darkMode} = useContext(AuthContext);
+  // Tonmoy end
   const { _id, author, author_image } = card;
   return (
-    <div className="p-5 group  relative overflow-hidden bg-stone-50 hover:shadow-xl shadow-slate-300">
+    <div className={`${darkMode?  "p-5 group  text-white bg-white/10 shadow-sm    relative overflow-hidden  shadow-slate-100": "p-5 group  relative overflow-hidden bg-stone-50 hover:shadow-xl shadow-slate-300"} `}>
       <img src={author_image} alt="" className="rounded-full w-48 h-48" />
       <h2 className="text-lg py-3 font-mono">{author}</h2>
       <div className="absolute top-48 w-full px-3 left-0">

@@ -15,10 +15,31 @@ import ProductCard from "../../../shared/components/productCard/ProductCard";
 
 
 
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+
+
+// import required modules
+import { Pagination, Autoplay } from "swiper/modules";
+import RecommendedCard from "../../../shared/components/BookDetails/RecommendedCard";
+import { useSelector } from "react-redux";
+
+
+
+
+
+
 const UserHome = () => {
-  const { user } = useContext(AuthContext);
+  const { user,darkMode } = useContext(AuthContext);
   const [isModalOpen, setModalOpen] = useState(false);
   const { books, loading } = UseBooks();
+  const bestSellingData = useSelector(state => state.bestSelling.bestSelling);
 
   const openModal = () => {
     setModalOpen(true);
@@ -142,8 +163,8 @@ const UserHome = () => {
   }
 
   return (
-    <div className="w-11/12">
-      <div className=" p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
+    <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
+      <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information
         </h1>
@@ -210,7 +231,7 @@ const UserHome = () => {
               <p className="text-lg mt-6">Gender: </p>
               <p className="text-lg mt-6">Birth Date: </p>
               <p className="text-lg mt-6">Phone Number: </p>
-            </div>
+            </div> 
             <div className="">
               <p className="border-2 px-2 py-2 h-10 w-64 mt-6">
                 {userinfo.displayName}
@@ -245,7 +266,7 @@ const UserHome = () => {
             className="modal-box"
             onSubmit={handleSubmit(updateProfile)}
           >
-            <h3 className="text-3xlllll font-semibold text-center  uppercase">
+            <h3 className="text-3xl font-semibold text-center  uppercase">
               Update Profile{" "}
             </h3>
             <div>
@@ -360,70 +381,17 @@ const UserHome = () => {
           </form>
         </dialog>
       </div>
-     
-        {/* <Skeleton count={3} className="my-2 h-10" />  */}
-        {/* <div className="grid grid-cols-1 gap-10 place-items-center items-start">
-        
-       
-   {/* <Swiper
-   // install Swiper modules
-   slidesPerView="1"
-   mousewheel={true}
-   direction="vertical"
-   modules={[Pagination]}
-   pagination={{ clickable: true }}
-   scrollbar={{ draggable: true }}
->
-  <SwiperSlide>Slide 1</SwiperSlide>
-  <SwiperSlide>Slide 2</SwiperSlide>
-  <SwiperSlide>Slide 3</SwiperSlide>
-  {/* Add more slides as needed */}
-{/* </Swiper> */} 
+      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
+          <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
-          {/* </div> */} 
-{/* 
-        {books?.slice(5, 7).map((book) => (
-              <ProductCard
-                key={book._id}
-              data={book}
-              loading={loading}
-              ></ProductCard>
-        ))} */}
-            {/* </SwiperSlide>
-        </Swiper> */}
-        {/* <Swiper
-           direction={'vertical'}
-           slidesPerView={1}
-           spaceBetween={30}
-           mousewheel={true}
-           pagination={{
-             clickable: true,
-           }}
-           modules={[Mousewheel, Pagination]}
-           className="mySwiper"
-         >
-
-        <div className="grid grid-cols-1 gap-10 place-items-center items-start">
-          {books?.slice(5, 7).map((book) => (
-           
-              <SwiperSlide key={book._id}>
-              <ProductCard
-              data={book}
-              loading={loading}
-            ></ProductCard>
-
-           </SwiperSlide>
-            
-
-            
-            // <ProductCard
-            //   key={book._id}
-            //   data={book}
-            //   loading={loading}
-            // ></ProductCard>
-            ))}
+          <div className="md:h-1/2">
+            {bestSellingData
+              .slice(0, 3)
+              .map((book) => (
+                <RecommendedCard key={book._id} data={book} />
+              ))}
+          </div>
         </div>
-            </Swiper> */}
      
       </div>
      

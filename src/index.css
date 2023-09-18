@@ -10,8 +10,12 @@
     @apply btn w-24 text-black  bg-white hover:text-white border-red normal-case hover:bg-red  px-2 py-1 rounded-lg border-b-4 hover:scale-105 duration-300 hover:shadow-rose-400 shadow-lg;
   } */
   .btn-custom {
-    @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white
+    @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white hover:no-underline
          hover:bg-red  rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
+  }
+  .btn-custom-dark {
+    @apply btn btn-sm text-white  bg-black/10 hover:text-black border-white  hover:border-b-white hover:no-underline
+         hover:bg-white   rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
   }
 
   /*-------------- Button start -------------------- */
@@ -42,6 +46,8 @@
   .btn-primary:hover {
     background: linear-gradient(to right, #126e9d, #10aade);
   }
+
+
 
   /*-------------- button secondary ------------ */
   .btn-secondary {
@@ -129,7 +135,6 @@
     margin: 6px 4px;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
@@ -140,6 +145,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: none;
     font: 18px;
     /* outline: none */
     z-index: 0;
@@ -147,12 +153,14 @@
   .btn-fifth:hover {
     color: white;
     cursor: pointer;
+    border: 1px solid #126e9d;
+    border-radius: 5px;
   }
   .btn-fifth:before {
     transition: 0.5s all ease;
     position: absolute;
     top: 0;
-    left: 50%;
+    /* left: 50%; */
     right: 50%;
     bottom: 0;
     opacity: 0;
@@ -168,9 +176,64 @@
   }
   /*-------------- Button end-------------------- */
 
+
+/* Button start Tonmoy for dark mode */
+.btn-fifth-dark {
+  width: 140px ;
+  height: 42px ;
+  padding: 10px 18px ;
+  margin: 6px 4px ;
+  text-align: center ;
+  text-decoration: none ;
+  text-transform: uppercase ;
+  display: inline-block ;
+  font-size: 16px ;
+  border-radius: 5px !important;
+  border: 1px solid #ffffff !important ;
+  color: #ffffff  !important;
+  transition: ease-in-out 0.5s ;
+  position: relative ;
+  display: flex ;
+  align-items: center ;
+  justify-content: center ;
+  font: 18px ;
+  /* outline: none */
+  z-index: 0 ;
+  
+}
+.btn-fifth-dark:hover {
+  color: rgb(3, 1, 1)  !important;
+  cursor: pointer;
+ 
+  
+}
+.btn-fifth-dark:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background: linear-gradient(to right, #fdfeff, #ffffff);
+  
+}
+.btn-fifth-dark:hover::before {
+  transition: 0.3s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: -1;
+}
+
+/* Button end Tonmoy for dark mode */
+
   .section {
     @apply shadow-xl rounded-lg p-5 my-5;
   }
+ 
+  
   .page-heading {
     @apply text-4xl  border-b-4 border-red w-fit mx-auto pb-2;
   }
@@ -230,6 +293,56 @@
 }
 /* button end */
 
+
+  /* Tonmoy start */
+   
+  .primary-button-dark {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color:  white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    /* min-height: 60px; */
+    min-width: 0;
+    outline: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    /* width: 100%; */
+    will-change: transform;
+  }
+  
+  .primary-button-dark:disabled {
+    pointer-events: none;
+  }
+  
+  .primary-button-dark:hover {
+    color: black;
+    background-color: white ;
+    box-shadow: rgba(105, 4, 4, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .primary-button-dark:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  /* Tonmoy end */
+
+
 /* CSS */
 .button-52 {
   font-size: 16px;
@@ -263,8 +376,75 @@
   left: 0px;
 }
 
+.dark-style{
+  background-color: rgba(0, 0, 0, 0.925) !important;
+  color: white !important;
+}
+
 @media (min-width: 768px) {
   .button-52 {
     padding: 13px 50px 13px;
   }
+}
+
+
+/* slider styles 
+ */
+.swiper-button-prev,.swiper-button-next{
+  color: #B9B9B9;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 5px;
+  height: 100px;
+  /* border: .5px solid #B9B9B9; */
+  top: 120px;
+}
+.swiper-slide{
+  width: fit-content !important;
+  margin: 0 auto !important;
+}
+.swiper {
+  z-index: 0;
+  justify-content: center;
+}
+.swiper-pagination {
+  display: none;
+}
+.swiper-wrapper{
+  transform: translate3d(20.875px, 0px, 0px);
+  
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+.shadow-Card:hover{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+}
+.coupon .replies {
+  display: none;
+  opacity: 0; 
+}
+
+.coupon:hover .comment {
+  display: none;
+}
+
+
+.coupon:hover .replies {
+  display: inline;
+  opacity: 1; 
 }

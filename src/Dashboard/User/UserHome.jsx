@@ -9,10 +9,25 @@ import axios from "axios";
 
 import Loader from "../../shared/components/loader/Loader";
 import UseUser from "../../hooks/UseUser";
+import UseBooks from "../../hooks/UseBooks";
+import Marquee from "react-fast-marquee";
 
+// ----------
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import './styles.css';
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+
+// ------
 const UserHome = () => {
   const { user } = useContext(AuthContext);
+  const { books } = UseBooks();
 
   const navigate = useNavigate();
   const {
@@ -94,11 +109,14 @@ const UserHome = () => {
     }
   };
 
+
+  
   if (isLoading) {
     return <Loader></Loader>;
   }
   return (
-    <div className=" bg-slate-50 w-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
+    <div>
+      <div className=" bg-slate-50 w-3/4 p-10 rounded shadow-xl border-t-2 border-[#d71d24]">
       <img className="rounded-full w-32 h-32" src={userinfo?.photoURL} alt="" />
       <p className="font-bold text-xl text-[#d71d24] uppercase my-4">
         Name: <span className="font-normal">{userinfo?.displayName}</span>
@@ -244,6 +262,31 @@ const UserHome = () => {
           Close
         </label>
       </div>
+      </div>
+
+  {/* ------- */}
+      <div>
+      <Swiper
+        direction={'vertical'}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+      </div>
+
+      {/* ----------- */}
     </div>
   );
 };

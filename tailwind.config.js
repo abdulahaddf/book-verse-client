@@ -10,10 +10,11 @@ export default {
         secondary : '#003159',
         
       }},
+      
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light",],
+    themes: ["light", "dark"],
   },
 }
 

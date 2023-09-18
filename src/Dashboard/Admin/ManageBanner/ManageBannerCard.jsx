@@ -1,12 +1,22 @@
 import axios from "axios";
 import React from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const ManageBannerCard = ({ banner, refetch }) => {
   // eslint-disable-next-line react/prop-types
+
+
+   // Tonmoy Start
+
+   const { darkMode } = useContext(AuthContext)
+
+   //  Tonmoy end
+
   const { _id, bannerURL, title, subtitle } = banner;
   const { register, handleSubmit, reset } = useForm();
   const handleEdit = (data) => {
@@ -72,7 +82,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://book-verse-server-phi.vercel.app/banner/${_id}`, {
+        fetch(`https://book-verse-server-phi.vercel.app/banner/${_id}`,{
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -102,7 +112,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
   };
 
   return (
-    <div className="card card-compact w-96 h-72 bg-base-100 shadow-xl">
+    <div className={darkMode?"card card-compact w-96 h-72 bg-white/10  shadow-xl ":"card card-compact w-96 h-72 bg-base-100 shadow-xl "}>
       <figure>
         <img src={bannerURL} alt="Shoes" />
       </figure>
@@ -115,14 +125,14 @@ const ManageBannerCard = ({ banner, refetch }) => {
         <div className="card-actions justify-end mt-auto">
           <div className="flex gap-6">
             <button
-              className="primary-button"
+              className={darkMode?"primary-button-dark":"primary-button"}
               onClick={() => document.getElementById("my_modal_2").showModal()}
             >
               <FaEdit className="text-xl"></FaEdit>
             </button>
             <dialog id="my_modal_2" className="modal">
-              <div className="modal-box">
-                <form method="dialog" onSubmit={handleSubmit(handleEdit)}>
+              <div   className={darkMode?"bg-gray-200 modal-box":"modal-box"} >
+                <form  className={darkMode?"bg-gray-200":""}  method="dialog" onSubmit={handleSubmit(handleEdit)}>
                   <h3 className="text-3xl font-semibold text-center text-red uppercase">
                     Edit Banner{" "}
                   </h3>
@@ -191,7 +201,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
               </form>
             </dialog>
 
-            <button className="primary-button" onClick={handleDelete}>
+            <button className={darkMode?"primary-button-dark text-black" :"primary-button" } onClick={handleDelete}>
               <MdDelete className="text-xl"></MdDelete>
             </button>
           </div>
