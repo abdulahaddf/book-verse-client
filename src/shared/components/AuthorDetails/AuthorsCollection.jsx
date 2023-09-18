@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import UseBooks from "../../../hooks/UseBooks";
 import AuthorCard from "./AuthorCard";
+import { Helmet } from "react-helmet";
 
 const AuthorsCollection = () => {
   const { books } = UseBooks();
@@ -10,6 +11,9 @@ const AuthorsCollection = () => {
   })
   return (
     <div className="p-2">
+      <Helmet>
+          <title>Book Verse | All Authors</title>
+        </Helmet>
       <div className="mx-5 md:mx-16  p-6 bg-[#F1EDFF] rounded-md">
         <h2 className="text-slate-900 text-xl font-semibold">All Author's</h2>
       </div>
