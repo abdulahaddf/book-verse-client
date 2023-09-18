@@ -12,10 +12,10 @@ const AuthorCard = ({ card }) => {
       className={`${
         darkMode
           ? "p-5 group  text-white bg-gray shadow-sm    relative overflow-hidden  shadow-slate-100"
-          : "p-5 group  relative overflow-hidden bg-stone-50 hover:shadow-xl shadow-slate-300"
+          : "p-5 group  relative overflow-hidden bg-stone-50 hover:shadow-4xl hover:ring-2 focus:ring-2 shadow-slate-300"
       } `}
     >
-      <img src={author_image} alt="" className="rounded-full w-48 h-48" />
+      <img src={author_image} alt="" className="rounded-full w-48 h-48 ring-4" />
       <h2 className="text-lg py-3 font-mono">{author}</h2>
       <div className="absolute top-48 w-full px-3 left-0">
         <div className="translate-y-8 transform opacity-0 transition-all w-full group-hover:translate-y-0 group-hover:opacity-100">
