@@ -13,7 +13,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
 
   // Tonmoy Start
 
-  const {darkMode}=useContext(AuthContext)
+  const { darkMode } = useContext(AuthContext);
 
   //  Tonmoy end
 
@@ -63,7 +63,13 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
     setIsEditModalOpen(!isEditModalOpen);
   };
   return (
-    <div className={darkMode?"card shadow-lg bg-white/10 border-[1px] rounded-md":"card shadow-lg bg-slate-100 rounded-md"}>
+    <div
+      className={
+        darkMode
+          ? "card shadow-lg bg-gray border-[1px] rounded-md"
+          : "card shadow-lg bg-slate-100 rounded-md"
+      }
+    >
       <div className="card-body">
         <div className="card-actions justify-end">
           <button
@@ -119,7 +125,6 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
           )}
           {/*----------------- modal body end-------------- */}
         </div>
-        
       </div>
     </div>
   );

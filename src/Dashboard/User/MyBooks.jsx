@@ -6,7 +6,7 @@ import { Zoom } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 
 const MyBooks = () => {
-  const { user,darkMode } = useContext(AuthContext);
+  const { user, darkMode } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
   // console.log(books);
   useEffect(() => {
@@ -40,21 +40,25 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="w-full h-full">
+    <div className="w-4/5 h-full">
       {/* <h1 className="text-3xl text-center font-semibold my-5">Your Selling Books</h1> */}
       <div>
         {books.length > 0 ? (
           <>
             <Zoom>
               {" "}
-              <h1 className="text-3xl text-center font-semibold my-5">
+              <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>
                 Your Selling Books : {books.length}
               </h1>
             </Zoom>
-            <div className="overflow-x-auto">
+            <div className="max-w-md md:max-w-6xl overflow-x-auto">
               <table className="table table-zebra shadow-xl w-full text-center">
                 {/* head */}
-                <thead className={darkMode?"bg-white/10 text-white":"bg-black text-white"}>
+                <thead
+                  className={
+                    darkMode ? "bg-gray text-white" : "bg-red text-white"
+                  }
+                >
                   <tr>
                     <th>#</th>
                     <th>Book Cover</th>
@@ -68,24 +72,28 @@ const MyBooks = () => {
                 <tbody>
                   {books.map((book, index) => (
                     <tr key={book._id}>
-                      <th>{index + 1}</th>
-                      <td>
+                      <th className={darkMode?"bg-black/90":""}>{index + 1}</th>
+                      <td className={darkMode?"bg-black/90":""}>
                         <img
                           className="w-32 rounded-md"
                           src={book.cover_image}
                           alt=""
                         />
                       </td>
-                      <td>{book.title}</td>
-                      <td>{book.postDate}</td>
-                      <td>{book.offer_price}</td>
-                      <td>
+                      <td className={darkMode?"bg-black/90":""}>{book.title}</td>
+                      <td className={darkMode?"bg-black/90":""}>{book.postDate}</td>
+                      <td className={darkMode?"bg-black/90":""}>{book.offer_price}</td>
+                      <td className={darkMode?"bg-black/90":""}>
                         <button className="">Pending</button>
                       </td>
-                      <td>
+                      <td className={darkMode?"bg-black/90":""}>
                         <button
                           onClick={() => handleDelete(book)}
-                          className={darkMode?" btn-custom-dark bg-[#dc2626]":"btn-custom"}
+                          className={
+                            darkMode
+                              ? " btn-custom-dark bg-[#dc2626]"
+                              : "btn-custom"
+                          }
                         >
                           Delete
                         </button>

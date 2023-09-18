@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import OldBookCard from "../../shared/components/OldBookCard/OldBookCard";
+import LazyLoad from "react-lazy-load";
 import { FaSearch } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AllOldBooks = () => {
   //  Tonmoy start
@@ -18,7 +20,9 @@ const AllOldBooks = () => {
   const perPage = 10; // Items per page
 
   const searchRef = useRef(null);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,8 +67,12 @@ const AllOldBooks = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
-      <h1 className="text-3xl text-center font-semibold mt-4 ">
+   <LazyLoad>
+     <div>
+     <Helmet>
+          <title>Book Verse | All Old Books</title>
+        </Helmet>
+      <h1 className="text-3xl text-center font-semibold my-10">
         All Old Books
       </h1>
 
@@ -152,6 +160,7 @@ const AllOldBooks = () => {
       </div>
       {/* -----Pagination calculated end by zihad---*/}
     </div>
+   </LazyLoad>
   );
 };
 

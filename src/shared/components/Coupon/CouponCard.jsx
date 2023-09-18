@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import barImg from '../../../assets/image/bar.png'
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const CouponCard = ({data}) => {
+  const { darkMode } = useContext(AuthContext);
   return (
-    <div className='flex outline-dotted w-fit outline-8 -outline-offset-[6px] outline-white '>
+    <div className={`flex outline-dotted w-fit outline-8 -outline-offset-[6px] outline-white`}>
       <div className='p-5 bg-slate-200'>
         <img src={barImg} alt="" className='h-28' />
       </div>

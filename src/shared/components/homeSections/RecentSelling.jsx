@@ -40,7 +40,7 @@ const RecentSelling = () => {
 
   console.log(recentSellingData, "tonu");
   return (
-    <div className="section">
+    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center z-0">
         <Heading title={"Recent Selling"}></Heading>
         <Link
@@ -60,16 +60,17 @@ const RecentSelling = () => {
       <div className="py-5">
         <Swiper
           slidesPerView={1}
-          centeredSlides={true}
+          // centeredSlides={true}
           spaceBetween={30}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Pagination, Navigation]}
           initialSlide={1}
+          loop={true}
           breakpoints={{
             // when window width is >= 480px
-            480: {
-              slidesPerView: 1,
+            300: {
+              slidesPerView: 2,
             },
             // when window width is >= 768px
             768: {
@@ -77,7 +78,7 @@ const RecentSelling = () => {
             },
             // when window width is >= 1024px
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 7,
             },
           }}
           className="mySwiper flex w-full z-0"

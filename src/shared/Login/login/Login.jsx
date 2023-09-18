@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   //  Tonmoy End
-  const { signIn, signInGoogle, signInFB, setLoading,darkMode } =
+  const { signIn, signInGoogle, signInFB, setLoading, darkMode } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -165,8 +165,20 @@ const Login = () => {
 
   return (
     <>
-      <div className={darkMode?" md:flex justify-center gap-32 my-10  items-center ":" md:flex justify-center my-10  items-center "}>
-        <div className={darkMode?"w-full p-6 h-3/4 bg-white/10 border-[1px] rounded-md shadow-2xl lg:max-w-xl":"w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl"}>
+      <div
+        className={
+          darkMode
+            ? " md:flex justify-center gap-32 my-10  items-center "
+            : " md:flex justify-center my-10  items-center "
+        }
+      >
+        <div
+          className={
+            darkMode
+              ? "w-full p-6 h-3/4 bg-gray border-[1px] rounded-md shadow-2xl lg:max-w-xl"
+              : "w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl"
+          }
+        >
           <h1 className="text-3xl font-semibold text-center text-red uppercase">
             Sign in
           </h1>
@@ -174,8 +186,11 @@ const Login = () => {
             <div className="mb-2">
               <label
                 htmlFor="email"
-                
-                className={darkMode?"block text-sm font-semibold text-gray-100":"block text-sm font-semibold text-gray-800"}
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
                 required
               >
                 Email
@@ -195,7 +210,11 @@ const Login = () => {
             <div className="mb-2 relative">
               <label
                 htmlFor="password"
-                className={darkMode?"block text-sm font-semibold text-gray-100":"block text-sm font-semibold text-gray-800"}
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Password
               </label>
@@ -234,9 +253,17 @@ const Login = () => {
             </div>
           </form>
           <div className="relative flex items-center justify-center w-full mt-6 border border-t">
-            <div className={darkMode?"absolute px-5 bg-[#2B2B2B]":"absolute px-5 bg-white"}>Or</div>
+            <div
+              className={
+                darkMode
+                  ? "absolute px-5 bg-[#3C4043]"
+                  : "absolute px-5 bg-white"
+              }
+            >
+              Or
+            </div>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -246,7 +273,7 @@ const Login = () => {
               <span className="ml-2">Sign in with Google</span>
             </button>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md">
+          <div className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handlefbSignIn}
               type="button"
@@ -257,7 +284,13 @@ const Login = () => {
             </button>
           </div>
 
-          <p className={darkMode?"mt-8 text-md font-normal text-center text-gray-300":"mt-8 text-md font-normal text-center text-gray-700"}>
+          <p
+            className={
+              darkMode
+                ? "mt-8 text-md font-normal text-center text-gray-300"
+                : "mt-8 text-md font-normal text-center text-gray-700"
+            }
+          >
             Don't have an account?{" "}
             <Link
               to="/register"
@@ -268,10 +301,11 @@ const Login = () => {
           </p>
         </div>
         <div>
-       {darkMode?   <Lottie  height={500}
-        width={350} options={defaultOptions2} />:
-        <Lottie  
-         options={defaultOptions} />}
+          {darkMode ? (
+            <Lottie height={500} width={350} options={defaultOptions2} />
+          ) : (
+            <Lottie options={defaultOptions} />
+          )}
         </div>
       </div>
     </>

@@ -23,23 +23,25 @@ const Banner = () => {
   </div>;
   }
   return (
-    <Swiper
+   <div className="overflow-hidden">
+     <Swiper
       spaceBetween={30}
       pagination={{
         clickable: true,
       }}
       modules={[Pagination, Autoplay]}
-      className="mySwiper z-0"
+      className="mySwiper z-0 "
       autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto play configuration
     >
       {banners.map((banner) => (
         <LazyLoad key={banner._id}>
           <SwiperSlide>
-            <img className="w-full" src={banner.bannerURL} alt="" />
+            <img className="w-[100vw]" src={banner.bannerURL} alt="" />
           </SwiperSlide>
         </LazyLoad>
       ))}
     </Swiper>
+   </div>
   );
 };
 

@@ -10,7 +10,7 @@ import UseSingleUser from "../../hooks/useSingleUser";
 
 const ContactWithSeller = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user,darkMode } = useContext(AuthContext);
 
     const book = useLoaderData();
     const {sellerMail} = book;
