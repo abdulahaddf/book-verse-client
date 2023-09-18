@@ -48,7 +48,7 @@ const Dashboard = () => {
               <FaBars></FaBars>
             </label>
             {/* <DashboardNavbar></DashboardNavbar> */}
-            <div className={darkMode?"bg-white/10 text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 ":" bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3"}>
+            <div className={darkMode?"bg-graytext-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 ":" bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3"}>
             <div >
               <button>
          

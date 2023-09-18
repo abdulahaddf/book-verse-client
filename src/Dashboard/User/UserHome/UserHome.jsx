@@ -164,7 +164,7 @@ const UserHome = () => {
 
   return (
     <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
-      <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
+      <div className={darkMode?"w-11/12 p-10  bg-gray shadow-xl border-[1px] rounded-md":"w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]"}>
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information
         </h1>
@@ -381,7 +381,7 @@ const UserHome = () => {
           </form>
         </dialog>
       </div>
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
+      <div className={darkMode?"border-[1px] px-5 bg-gray rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
           <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
           <div className="md:h-1/2">

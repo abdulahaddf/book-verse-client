@@ -381,7 +381,7 @@ const UserHome = () => {
           </form>
         </dialog>
       </div>
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
+      <div className={darkMode?"border-[1px] px-5 bg-gray rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
           <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
           <div className="md:h-1/2">
