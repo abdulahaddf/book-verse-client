@@ -252,7 +252,7 @@ const Payment = () => {
             <h1 className="text-xl my-3">Payment Method</h1>
 
             {/* Radio button for SSLCommerz payment */}
-            <label className="flex items-center text-lg bg-white w-11/12 p-2 rounded-lg ">
+            <label className="flex items-center text-lg bg-white w-11/12  p-2 rounded-lg ">
               <input
                 type="radio"
                 value="sslCommerz"
