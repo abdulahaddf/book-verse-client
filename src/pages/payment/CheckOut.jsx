@@ -14,7 +14,7 @@ const CheckOut = ({ books, price }) => {
   // console.log(price, books);
   const stripe = useStripe();
   const elements = useElements();
-  const { user, cartRefetch } = useContext(AuthContext);
+  const { user, cartRefetch,darkMode } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -179,7 +179,7 @@ const CheckOut = ({ books, price }) => {
       ) : (
         <>
           <form
-            className="w-1/2 p-20 mt-20 mx-auto text-white border-double border-4 border-red bg-black"
+            className={darkMode?"w-1/2 p-20 mt-20 mx-auto text-white bg-gray border-double  border-[1px] rounded-md ":"w-1/2 p-20 mt-20 mx-auto text-white border-double border-4 border-red bg-black"}
             onSubmit={handleSubmit}
           >
             <h1 className="text-center">Hello, {user?.displayName} </h1>
@@ -208,7 +208,9 @@ const CheckOut = ({ books, price }) => {
             <button
               type="submit"
               // disabled={!stripe || !clientSecret || processing}
-              className="inline-flex justify-center rounded-md border border-transparent bg-red px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+              className={darkMode?"inline-flex justify-center rounded-md  border-[1px] px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+              :
+              "inline-flex justify-center rounded-md border border-transparent bg-red px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"}
             >
               {processing ? (
                 <ImSpinner10 className="m-auto animate-spin" size={24} />

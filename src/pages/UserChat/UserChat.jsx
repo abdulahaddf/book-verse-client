@@ -70,7 +70,7 @@ const UserChat = () => {
       userRefetch();
       adminRefetch();
       allUsersRefetch();
-    }, 3000); // Check every 3 seconds
+    }, 1000); // Check every 1 seconds
 
     return () => {
       clearInterval(refetchInterval);
@@ -90,22 +90,22 @@ const UserChat = () => {
   }, []);
 
   return (
-    <div className="  min-h-screen w-[50%] flex items-center">
+    <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]   flex items-center">
       <div  className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 "}>
         {/* <h1 className='text-center text-3xl font-semibold'>Chat With Seller for any query</h1> */}
         {/* top section chat header */}
-        <div className={darkMode?"flex items-center  relative  border-b-[1px] sm:gap-10 justify-between sm:justify-start p-3":"flex items-center sm:gap-10 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative "}>
-          <div>
+        <div className={darkMode?"flex items-center bg-white/10   relative  border-b-[1px] p-3":"flex items-center gap-4 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative "}>
+          <div className="mr-5">
             <img src={logo} alt="" className="w-10  mx-auto" />
           </div>
           <div>
-            <h2 className="md:text-4xl text-xl font-mono font-bold flex items-center   text-slate-100">
+            <p className="mr-2  font-bold text-[20px] lg:text-[30px] xl:text-[30px] xxl:text-[30px] text-slate-50">
              Chat Support{" "}
               <HiOutlineChatBubbleLeftRight className=" absolute text-[40px]   right-[7%] top-[20%] " />
-            </h2>
-            <h2 className="leading-none inline-block text-slate-100">
+            </p>
+            <p className=" text-slate-50  text-[14px] mr-3">
               We are here to Chat!{" "}
-            </h2>
+            </p>
           </div>
         </div>
         {/* <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
@@ -195,12 +195,14 @@ const UserChat = () => {
               {/* <div className="absolute right-0 items-center inset-y-0 hidden sm:flex"> */}
 
               <button className={darkMode?"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
-                <span className="font-bold">Send</span>
+                {/* <span className="font-bold">Send</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-4 w-4 ml-2 transform rotate-90"
+                  className="  ml-[5px] transform rotate-90 "
+
+                  width="20px" height="20px"
                 >
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                 </svg>

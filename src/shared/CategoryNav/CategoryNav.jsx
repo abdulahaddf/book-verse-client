@@ -27,13 +27,17 @@ const CategoryNav = () => {
                 <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'}`} href='/all-books'>All Books</a></li>
                 <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'}`} href='/allBestSelling'>Best Selling Books</a></li>
                 <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'}`} href='/allRecentSelling'>Recent Selling Books</a></li>
-                <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'}`}>  <details className="dropdown z-10">
+                <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'}`} href='/allkidsbooks'>Kids Zone</a></li>
+
+
+                
+                {/* <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'}`}>  <details className="dropdown z-10">
                   <summary className="flex">DropDown - TODO </summary>
                   <ul className={`${darkMode?'ml-44 dark-style p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52':'ml-44 p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52'}`}>
                     <li><a className={`${darkMode? 'hover:text-[#10aade]  hover:no-underline':'hover:no-underline'}`}>Item 1</a></li>
                     <li><a className={`${darkMode? 'hover:text-[#10aade]  hover:no-underline':'hover:no-underline'}`}>Item 2</a></li>
                   </ul>
-                </details></a></li>
+                </details></a></li> */}
               </ul>
             </div>
 
