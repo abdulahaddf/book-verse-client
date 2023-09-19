@@ -350,7 +350,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 placeholder="Cover image"
                 defaultValue={book.cover_image_url}
                 className="input 
-              file-input file-input-bordered w-full text-[#4b5563]"
+              file-input file-input-bordered w-full text-[#4b5563] file-input-info"
               />
             </div>
             <div className="form-control w-full">
@@ -364,7 +364,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("author_image")}
                 placeholder="Author image"
                 defaultValue={book.author_image_url}
-                className="input file-input file-input-bordered w-full text-[#4b5563]"
+                className="input file-input file-input-bordered w-full text-[#4b5563] file-input-info"
               />
             </div>
           </div>

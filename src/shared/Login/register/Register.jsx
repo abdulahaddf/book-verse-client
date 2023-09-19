@@ -207,8 +207,8 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div className="relative flex flex-col justify-center my-4 overflow-hidden">
+    <div className=" bg-gradient-to-b from-red to-secondary md:p-10    ">
+      <div className="relative flex flex-col justify-center my-4 overflow-hidden glass p-5">
         <div
           className={
             darkMode
@@ -277,7 +277,7 @@ const Register = () => {
                 required
                 {...register("url")}
                 className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                input file-input file-input-bordered w-full "
+                input file-input file-input-bordered w-full file-input-info"
               />
             </div>
             <div className="mb-2">
