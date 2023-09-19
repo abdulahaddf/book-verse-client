@@ -116,7 +116,7 @@ const Payment = () => {
       <div className="w-11/12 mx-auto my-5 md:flex gap-10">
         {/* Checkout form starts here */}
 
-      <div className={darkMode?" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20"}>
+      <div className={darkMode?" bg-gray w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-[1px] py-20":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20"}>
      
    
               <h1 className="text-2xl font-semibold text-center text-red uppercase">
@@ -135,7 +135,7 @@ const Payment = () => {
         type="radio"
         {...register("receive", { required: true })}
         value="home"
-        className="radio text-red focus:ring-red focus:ring-opacity-40"
+        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
       />
       <span className="ml-2 text-gray-600">Home</span>
     </label>
@@ -144,7 +144,7 @@ const Payment = () => {
         type="radio"
         {...register("receive")}
         value="office"
-        className="radio text-red focus:ring-red focus:ring-opacity-40"
+        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
       />
       <span className="ml-2 text-gray-600">Office</span>
     </label>
@@ -246,7 +246,7 @@ const Payment = () => {
 
         {/* Checkout form ends here */}
 
-        <div className="w-1/2 mx-auto my-5  bg-slate-200 py-10 rounded-lg ">
+        <div className={darkMode?"w-1/2 mx-auto my-5  bg-gray border-[1px] py-10 rounded-lg ":"w-1/2 mx-auto my-5  bg-slate-200 py-10 rounded-lg "}>
           {/* Payment method selection */}
           <div className="flex flex-col items-center justify-center gap-10  ">
             <h1 className="text-xl my-3">Payment Method</h1>
