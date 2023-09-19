@@ -145,7 +145,7 @@ const ManageOrder = () => {
                     >
                       {payment.transactionId
                         ? payment.transactionId
-                        : "Cash On Delivery"}
+                        : "COD"}
                     </td>
                     <td className={darkMode ? "bg-black/80" : ""}>
                       {payment.date}
