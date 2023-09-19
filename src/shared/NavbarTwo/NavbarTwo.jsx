@@ -14,7 +14,7 @@ import SearchBar from "../../pages/home/SearchBar/SearchBar";
 import SearchResultsList from "../../pages/home/SearchBar/SearchResultsList";
 import './NavbarTwo.css';
 import Headroom from "react-headroom";
-import { FaBook, FaBookReader, FaHome } from "react-icons/fa";
+import { FaBook, FaBookReader, FaHome , FaSignInAlt} from "react-icons/fa";
 import { RiArrowDownSLine} from "react-icons/ri";
 
 
@@ -429,6 +429,7 @@ console.log(openDrawer)
   <Link to="/login" className="btn-custom">
     Login
   </Link>
+  
 )}
 
 
