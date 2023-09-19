@@ -154,7 +154,7 @@ const ManageBanner = () => {
               id="url"
               {...register("url")}
               className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
+                  input file-input file-input-bordered w-full file-input-info"
             />
             <div className="mt-6">
               <button
