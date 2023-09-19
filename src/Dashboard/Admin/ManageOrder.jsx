@@ -113,6 +113,7 @@ const ManageOrder = () => {
                   <TfiCrown className="inline text-amber-300" /> status
                 </th>
                 <th>Action</th>
+                <th>Invoice</th>
               </tr>
             </thead>
             <tbody
@@ -173,7 +174,7 @@ const ManageOrder = () => {
                       </span>
                     </td>
                     <td className={darkMode ? "bg-black/80" : ""}>
-                      <form onSubmit={() => handleForm(event, payment?._id)}>
+                      <form className="flex" onSubmit={() => handleForm(event, payment?._id)}>
                         <select
                           className={
                             darkMode
@@ -215,6 +216,10 @@ const ManageOrder = () => {
                           update
                         </button>
                       </form>
+                      
+                    </td>
+
+                    <td className={darkMode ? "bg-black/80" : ""}>
                       {/* Tonmoy Start */}
                      
                       <div onClick={()=> invoiceHandler(payment)}>

@@ -5,6 +5,7 @@ import html2pdf from 'html2pdf.js';
 import logo from '../../../public/main-logo.png';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useContext } from 'react';
+import { FaFileDownload } from "react-icons/fa";
 
 const Invoice = () => {
   const { darkMode } = useContext(AuthContext);
@@ -52,13 +53,13 @@ const Invoice = () => {
                 <tbody>
                     ${books.map((a, index) => `
                         <tr key=${index}>
-                            <td class="border border-gray-400 px-4 py-2 text-center">book</td>
+                            <td class="border border-gray-400 px-4 py-2 text-center">Book</td>
                             <td class="border border-gray-400 px-4 py-2 text-center">${a?.title}</td>
                             <td class="border border-gray-400 px-4 py-2 text-center">${a?.offer_price}</td>
                         </tr>
                     `).join('')}
                 </tbody>
-            </table>
+            </table>  
 
             <h2 class=" font-[500]  px-4 py-2 text-end"> Total price= ${price || total_price} </h2>
         </div>
@@ -94,7 +95,7 @@ const Invoice = () => {
         }
         onClick={handleButtonClick}
       >
-        Invoice
+      <FaFileDownload/>
       </button>
 
       <div>
