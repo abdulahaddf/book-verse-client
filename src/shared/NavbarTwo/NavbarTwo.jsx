@@ -443,7 +443,7 @@ useEffect(() => {
 
 
 
-                <label tabIndex={0} className=" flex border rounded-lg px-3 py-1 m-1 justify-center items-center overflow-hidden lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden"> <div className="flex items-center">
+                <label tabIndex={0} className="cursor-pointer flex border rounded-lg px-3 py-1 m-1 justify-center items-center overflow-hidden lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden"> <div className="flex items-center">
 
                   <img className="w-[30px] rounded-full mr-1 sm:w-[28px]" src={user?.photoURL} />
                   
