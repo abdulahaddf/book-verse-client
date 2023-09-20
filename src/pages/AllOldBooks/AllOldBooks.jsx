@@ -132,32 +132,32 @@ const AllOldBooks = () => {
       </div>
 
       {/* -----Pagination calculated start by zihad---*/}
-      <div className="flex justify-center mt-4">
-        <button
-          className={`px-4 py-2 rounded-md mx-2 ${
-            currentPage === 1
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-[#126e9d] text-white hover:bg-[#10aade]"
-          }`}
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-
-
-          Previous
-        </button>
-        <button
-          className={`px-4 py-2 rounded-md mx-2 ${
-            books.length < perPage
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-[#126e9d] text-white hover:bg-[#10aade]"
-          }`}
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={books.length < perPage}
-        >
-          Next
-        </button>
-      </div>
+      {!userNotFound && (
+        <div className="flex justify-center mt-4">
+          <button
+            className={`px-4 py-2 rounded-md mx-2 ${
+              currentPage === 1
+                ? "bg-slate-300 text-gray-500 cursor-not-allowed"
+                : "bg-[#126e9d] text-white hover:bg-[#10aade]"
+            }`}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <button
+            className={`px-4 py-2 rounded-md mx-2 ${
+              books.length < perPage
+                ? "bg-slate-300 text-gray-500 cursor-not-allowed"
+                : "bg-[#126e9d] text-white hover:bg-[#10aade]"
+            }`}
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={books.length < perPage}
+          >
+            Next
+          </button>
+        </div>
+      )}
       {/* -----Pagination calculated end by zihad---*/}
     </div>
    </LazyLoad>
