@@ -128,8 +128,8 @@ const Dashboard = () => {
               className="drawer-overlay shadow-xl"
             ></label>
             <div
-              className={`menu p-4 w-60 ${darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
-                } ${isAdmin ? "h-screen" : "h-screen"}`}
+              className={`menu flex-row p-4 w-60 ${darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
+                } ${isAdmin ? "h-screen " : "h-screen"}`}
             >
               <div className="text-center mx-auto">
                 <img
@@ -141,7 +141,7 @@ const Dashboard = () => {
                 </h3>
               </div>
 
-              <ul className="font-medium text-black mt-1">
+              <ul className="font-medium text-black mt-1 w-full">
                 {/* Side bar  content here */}
 
                 {singleUser?.role === "admin" && (
@@ -159,8 +159,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white nav-link  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/adminHome"
                       >
@@ -171,8 +171,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/userHome"
                       >
@@ -198,8 +198,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/daily"
                       >
@@ -210,8 +210,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/monthly"
                       >
@@ -232,8 +232,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/addBook"
                       >
@@ -244,8 +244,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/manageBooks"
                       >
@@ -256,8 +256,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/manageUsers"
                       >
@@ -268,8 +268,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/manageChats"
                       >
@@ -280,20 +280,20 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/OrderStatus"
                       >
-                        <GrMapLocation /> Order Status
+                        <GrMapLocation className="focus:text-white" /> Order Status
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/promo"
                       >
@@ -305,8 +305,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/manageBanner"
                       >
@@ -323,8 +323,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/userHome"
                       >
@@ -336,8 +336,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline "
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline "
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/purchasedBooks"
                       >
@@ -349,8 +349,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/sell"
                       >
@@ -362,8 +362,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/my-books"
                       >
@@ -375,8 +375,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/dashboard/userChats"
                       >
@@ -395,8 +395,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/"
                       >
@@ -407,8 +407,8 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:no-underline"
                         }
                         to="/all-books"
                       >
