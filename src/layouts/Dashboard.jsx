@@ -75,7 +75,7 @@ const Dashboard = () => {
               <FaBars></FaBars>
             </label>
             {/* <DashboardNavbar></DashboardNavbar> */}
-            <div className={darkMode ? "bg-graytext-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 " : " bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3"}>
+            <div className={darkMode ? "bg-gray text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 " : " bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3"}>
               <div >
                 <button>
 
@@ -127,8 +127,8 @@ const Dashboard = () => {
               className="drawer-overlay shadow-xl"
             ></label>
             <div
-              className={`menu flex-row p-4 w-60 ${darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
-                } ${isAdmin ? "h-screen " : "h-screen"}`}
+              className={`menu p-4 w-60 ${darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
+                } ${isAdmin ? "h-auto" : "h-full"}`}
             >
               <div className="text-center mx-auto">
                 <img
@@ -159,9 +159,14 @@ const Dashboard = () => {
                         className={
                           darkMode
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
-                            : "focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
                         to="/dashboard/adminHome"
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                       >
                         <FaHome></FaHome>Admin Home
                       </NavLink>
