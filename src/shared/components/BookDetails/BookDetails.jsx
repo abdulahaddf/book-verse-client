@@ -14,6 +14,7 @@ import "./BookDetails.css";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import { Helmet } from "react-helmet";
 
 const BookDetails = () => {
   useEffect(() => {
@@ -152,6 +153,9 @@ const BookDetails = () => {
   if (loading) return <Loader />;
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+          <title>Book Verse | Book Details</title>
+        </Helmet>
       <div className="lg:flex justify-center gap-8 my-10">
         <div
           className={
@@ -426,7 +430,7 @@ const BookDetails = () => {
                     className={
                       darkMode
                         ? "rounded-lg border-[1px]  bg-gray  p-8"
-                        : "rounded-lg bg-gray-100 p-8"
+                        : "rounded-lg bg-gray-100 p-8 shadow-sm"
                     }
                   >
                     <div className="flex  gap-4">

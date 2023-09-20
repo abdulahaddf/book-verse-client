@@ -287,9 +287,9 @@ const AdminHome = () => {
 
       {/* customer info with table start  */}
       {/* Conditionally render the table or error message */}
-      {paymentHistory.length > 0 ? ( // Check if paymentHistory is not empty
+      {paymentHistory.length > 0 ? (
         <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
-          <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
+          <div className="w-[390px] md:w-[768px] lg:w-full overflow-x-auto">
             <table className="table table-zebra w-full text-center">
               <thead
                 className={darkMode ? "bg-gray text-white" : "bg-slate-100"}

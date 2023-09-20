@@ -73,9 +73,9 @@ const AddPromo = () => {
       }
     });
   };
-
+  
   return (
-    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-20">
       <h1 className="text-4xl font-bold text-center mb-4">Add Promo Codes</h1>
       <div>
         <form

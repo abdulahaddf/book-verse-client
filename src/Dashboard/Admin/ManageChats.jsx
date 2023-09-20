@@ -43,8 +43,8 @@ const ManageChats = () => {
     <div
       className={
         darkMode
-          ? " md:px-10 lg:px-20 w-full mt-10 "
-          : " md:px-10 lg:px-20 w-full mt-10"
+          ? " px-5 md:px-20 lg:px-20 w-[90%]     "
+          : " md:px-20 lg:px-20 w-[90%]   "
       }
     >
       <h1 className={darkMode ? "dashboard-heading-dark" : "dashboard-heading"}>
@@ -56,8 +56,8 @@ const ManageChats = () => {
             to={`singleChat/${a?._id}`}
             className={
               darkMode
-                ? "my-2 py-[15px] space-y-3 overflow-hidden   rounded-md bg-gray  hover:bg-gray/30 hover:no-underline  flex  shadow-md w-4/5 mx-auto "
-                : "my-2  py-[15px] hover:text-black/70 hover:no-underline   space-y-3 overflow-hidden   rounded-md   hover:bg-[#f3f4f6]  flex shadow-md w-4/5 mx-auto"
+                ? "my-2 p-[5px] py-[15px]    space-y-3 overflow-hidden   rounded-md bg-gray  hover:bg-gray/30 hover:no-underline  flex  shadow-md w-full mx-auto "
+                : "my-2 p-[5px] py-[15px]  hover:text-black/70 hover:no-underline   space-y-3 overflow-hidden   rounded-md   hover:bg-[#f3f4f6]  flex shadow-md w-full mx-auto"
             }
           >
             <section className=" w-[15%] mt-2 pl-2 ">

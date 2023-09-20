@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import usePaymentHistory from "../../hooks/usePayments";
 import { TfiCrown } from "react-icons/tfi";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+
+
+import Invoice from "./Invoice";
+import 'jspdf-autotable';
+
+
+
 // import { useForm } from "react-hook-form";
 
 const ManageOrder = () => {
@@ -48,21 +55,45 @@ const ManageOrder = () => {
     setShowMore(!showMore);
   };
   console.log(payments);
+
+
+
+  
+
+
+
+  // Tonmoy start 
+
+
+
+  const invoiceHandler=(payment)=>{
+
+    localStorage.setItem('invoice',JSON.stringify(payment))
+  }
+
+  //  Tonmoy end 2
+
   return (
-    <>
-      <div className={darkMode ? "w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-20" : "w-[390px] md:w-full mx-auto h-full lg:p-4 mt-20"}>
+    <div
+      className={
+        darkMode
+          ? "w-full  px-10 p-5 min-h-full "
+          : "w-full  px-10 p-5 min-h-full "
+      }
+    >
+      <div className={darkMode ? "p-10  mt-10" : "p-10 mt-20 bg-slate-500 "}>
         <h2
           className={
             darkMode
               ? "text-center text-5xl text-white font-mono font-bold"
-              : "text-center text-5xl bg-slate-600 text-[#91d6f6] font-mono font-bold"
+              : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
           }
         >
           Track Orders
         </h2>
       </div>
-      <div className="flex ps-4 md:ps-0 flex-col md:flex-row justify-between gap-6">
-        <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto p-5">
+      <div className="flex flex-col md:flex-row justify-between gap-6">
+        <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
             <thead
               className={
@@ -82,6 +113,7 @@ const ManageOrder = () => {
                   <TfiCrown className="inline text-amber-300" /> status
                 </th>
                 <th>Action</th>
+                <th>Invoice</th>
               </tr>
             </thead>
             <tbody
@@ -113,7 +145,7 @@ const ManageOrder = () => {
                     >
                       {payment.transactionId
                         ? payment.transactionId
-                        : "Cash On Delivery"}
+                        : "COD"}
                     </td>
                     <td className={darkMode ? "bg-black/80" : ""}>
                       {payment.date}
@@ -135,15 +167,14 @@ const ManageOrder = () => {
                       }
                     >
                       <span
-                        className={`${
-                          payment?.status ? "bg-green-400" : "bg-[#FF0000]"
-                        } rounded text-white badge-sm `}
+                        className={`${payment?.status ? "bg-green-400" : "bg-[#FF0000]"
+                          } rounded text-white badge-sm `}
                       >
                         {payment?.status ? payment?.status : "Pending"}
                       </span>
                     </td>
                     <td className={darkMode ? "bg-black/80" : ""}>
-                      <form onSubmit={() => handleForm(event, payment?._id)}>
+                      <form className="flex" onSubmit={() => handleForm(event, payment?._id)}>
                         <select
                           className={
                             darkMode
@@ -185,6 +216,18 @@ const ManageOrder = () => {
                           update
                         </button>
                       </form>
+                      
+                    </td>
+
+                    <td className={darkMode ? "bg-black/80" : ""}>
+                      {/* Tonmoy Start */}
+                     
+                      <div onClick={()=> invoiceHandler(payment)}>
+
+                        <Invoice  userInfo={payment} />
+
+                      </div>
+                      {/* Tonmoy End */}
                     </td>
                   </tr>
                 ))}
@@ -194,7 +237,7 @@ const ManageOrder = () => {
             <div className="text-center mt-4">
               <button
                 onClick={toggleShowMore}
-                className={darkMode?"bg-black/0 btn text-white hover:bg-white hover:text-black normal-case focus:outline-none mb-6 ":"bg-[#4c6acb] btn text-white hover:bg-[#4ccb85] normal-case focus:outline-none mb-6 "}
+                className={darkMode ? "bg-black/0 btn text-white hover:bg-white hover:text-black normal-case focus:outline-none mb-6 " : "bg-[#4c6acb] btn text-white hover:bg-[#4ccb85] normal-case focus:outline-none mb-6 "}
               >
                 {showMore ? "Show Less" : "See More"}
               </button>
@@ -216,7 +259,11 @@ const ManageOrder = () => {
           </dialog>
         </div>
       </div>
-    </>
+      {/* Tonmoy start */}
+
+
+      {/* Tonmoy end */}
+    </div>
   );
 };
 

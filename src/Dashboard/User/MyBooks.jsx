@@ -40,7 +40,7 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="w-full ps-6 h-full lg:p-4 mt-10">
+    <div className="w-full ps-4 h-full lg:p-4 mt-10">
       {/* <h1 className="text-3xl text-center font-semibold my-5">Your Selling Books</h1> */}
       <div>
         {books.length > 0 ? (

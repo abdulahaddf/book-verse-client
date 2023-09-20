@@ -6,8 +6,7 @@ import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Lottie from "react-lottie";
-import animationData from "../../../assets/animations/login.json";
-import animationData2 from "../../../assets/animations/login2.json";
+import animationData from "../../../../public/login.json";
 import google from "../../../assets/social/google.png";
 import facebook from "../../../assets/social/facebook.png";
 
@@ -20,17 +19,7 @@ const Login = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  // Tonmoy Start
-  const defaultOptions2 = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData2,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  //  Tonmoy End
+ 
   const { signIn, signInGoogle, signInFB, setLoading, darkMode } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
@@ -164,25 +153,25 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className=" bg-gradient-to-b from-red to-secondary md:p-10    ">
       <div
         className={
           darkMode
-            ? " md:flex justify-center gap-32 my-10  items-center "
-            : " md:flex justify-center my-10  items-center "
+            ? " md:flex justify-center gap-32 my-10  items-center glass p-5"
+            : " md:flex justify-center my-10  items-center glass p-5"
         }
       >
         <div
           className={
             darkMode
               ? "w-full p-6 h-3/4 bg-gray border-[1px] rounded-md shadow-2xl lg:max-w-xl"
-              : "w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl"
+              : "w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl "
           }
         >
           <h1 className="text-3xl font-semibold text-center text-red uppercase">
             Sign in
           </h1>
-          <form onSubmit={handleSubmit(handleForm)} className="mt-6">
+          <form onSubmit={handleSubmit(handleForm)} className="md:mt-6">
             <div className="mb-2">
               <label
                 htmlFor="email"
@@ -301,14 +290,12 @@ const Login = () => {
           </p>
         </div>
         <div>
-          {darkMode ? (
-            <Lottie height={500} width={350} options={defaultOptions2} />
-          ) : (
+        
             <Lottie options={defaultOptions} />
-          )}
+        
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

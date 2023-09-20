@@ -108,7 +108,7 @@ const PurchasedBooks = () => {
   }
   if (loading) return <Loader />;
   return (
-    <div className="w-full ps-4 h-full lg:p-4 mt-10">
+    <div className="w-full ps-2 h-full lg:p-4 mt-10">
       <>
         {books.length > 0 ? (
           <>

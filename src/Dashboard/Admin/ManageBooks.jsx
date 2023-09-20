@@ -79,7 +79,7 @@ const ManageBooks = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {paginatedBooks?.map((book) => (
             <ManageBooksCard
               key={book._id}
@@ -93,7 +93,7 @@ const ManageBooks = () => {
 
       {/*----------- Pagination started by zihad---------- */}
       {/* Pagination */}
-      <div className="flex justify-center">
+      <div className="flex justify-center ">
         <button
           className={`px-4 py-2 rounded-md mx-2 ${
             currentPage === 1

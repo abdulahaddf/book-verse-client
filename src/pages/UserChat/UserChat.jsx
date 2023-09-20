@@ -11,7 +11,7 @@ import moment from "moment";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 
 const UserChat = () => {
-  const { user, setShowAlert, showAlert } = useContext(AuthContext);
+  const { user, setShowAlert,darkMode } = useContext(AuthContext);
 
   const [messages, userRefetch] = useUserMessage(user?.email);
 
@@ -70,7 +70,7 @@ const UserChat = () => {
       userRefetch();
       adminRefetch();
       allUsersRefetch();
-    }, 3000); // Check every 3 seconds
+    }, 1000); // Check every 1 seconds
 
     return () => {
       clearInterval(refetchInterval);
@@ -90,22 +90,22 @@ const UserChat = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center ps-8">
-      <div className="flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 ">
+    <div className="  min-h-screen w-full md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%] ps-6  flex items-center">
+      <div  className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 "}>
         {/* <h1 className='text-center text-3xl font-semibold'>Chat With Seller for any query</h1> */}
         {/* top section chat header */}
-        <div className="flex items-center sm:gap-10 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500 ">
-          <div>
+        <div className={darkMode?"flex items-center bg-white/10   relative  border-b-[1px] p-3":"flex items-center gap-4 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative "}>
+          <div className="mr-5">
             <img src={logo} alt="" className="w-10  mx-auto" />
           </div>
           <div>
-            <h2 className="md:text-4xl text-xl font-mono font-bold text-slate-100">
-              Chat Support{" "}
-              <HiOutlineChatBubbleLeftRight className="inline mx-1" />
-            </h2>
-            <h2 className="leading-none inline-block text-slate-100">
+            <p className="mr-2  font-bold text-[20px] lg:text-[30px] xl:text-[30px] xxl:text-[30px] text-slate-50">
+             Chat Support
+              <HiOutlineChatBubbleLeftRight className=" absolute text-[40px]   right-[7%] top-[20%] " />
+            </p>
+            <p className=" text-slate-50  text-[14px] mr-3">
               We are here to Chat!{" "}
-            </h2>
+            </p>
           </div>
         </div>
         {/* <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
@@ -138,8 +138,8 @@ const UserChat = () => {
                       <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                         <div>
                           <span
-                            className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-400 text-white
-                      tooltip  tooltip-right"
+                          
+                         className={darkMode?"px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray  text-white  tooltip  tooltip-right":"px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-400 text-white  tooltip  tooltip-right"}
                             data-tip={moment(message?.time).format(
                               "MMMM Do YYYY, h:mm:ss a"
                             )}
@@ -160,8 +160,8 @@ const UserChat = () => {
                       <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
                         <div>
                           <span
-                            className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white 
-                         tooltip  tooltip-left"
+                       
+                         className={darkMode?"px-4 py-2 rounded-lg inline-block rounded-br-none bg-slate-700 text-white  tooltip  tooltip-left":"px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white tooltip  tooltip-left"}
                             data-tip={moment(message?.time).format(
                               "MMMM Do YYYY, h:mm:ss a"
                             )}
@@ -179,7 +179,7 @@ const UserChat = () => {
             ))}
           </div>
           {/* foot section  */}
-          <div className="border-t-2 border-gray-200 px-4 p-4 mb-2 sm:mb-0">
+          <div className={darkMode?"border-t-[1px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0":"border-t-[2px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0"}>
             <form
               onSubmit={buttonHandler}
               className="relative flex items-center gap-5"
@@ -189,18 +189,20 @@ const UserChat = () => {
                 name="name"
                 type="text"
                 placeholder="Write your message!"
-                className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
+                className={darkMode?"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 border-[1px] rounded-md py-2":"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-white rounded-md py-2"}
                 required
               />
               {/* <div className="absolute right-0 items-center inset-y-0 hidden sm:flex"> */}
 
-              <button className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
-                <span className="font-bold">Send</span>
+              <button className={darkMode?"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
+                {/* <span className="font-bold">Send</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-6 w-6 ml-2 transform rotate-90"
+                  className="  ml-[5px] transform rotate-90 "
+
+                  width="20px" height="20px"
                 >
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                 </svg>
