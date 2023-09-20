@@ -76,7 +76,7 @@ const Dashboard = () => {
               <FaBars></FaBars>
             </label>
             {/* <DashboardNavbar></DashboardNavbar> */}
-            <div className={darkMode ? "bg-graytext-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 " : " bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3"}>
+            <div className={darkMode ? "bg-gray text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 " : " bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3"}>
               <div >
                 <button>
 
@@ -129,7 +129,7 @@ const Dashboard = () => {
             ></label>
             <div
               className={`menu p-4 w-60 ${darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
-                } ${isAdmin ? "h-screen" : "h-screen"}`}
+                } ${isAdmin ? "h-auto" : "h-full"}`}
             >
               <div className="text-center mx-auto">
                 <img

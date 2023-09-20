@@ -504,9 +504,13 @@ useEffect(() => {
               // <Link to="/login" className={darkMode ? " btn-custom-dark" : "btn-custom"}>
               //   Login
               // </Link>
-              <Link to="/login" className={darkMode?"btn bg-black/0 text-white btn-sm normal-case ps-5 pe-0 rounded-3xl hover:no-underline hover:text-cyan-700":"btn bg-[#10aade] text-white btn-sm normal-case ps-5 pe-0 rounded-3xl hover:no-underline hover:text-cyan-700"}>
-           <span className=" hidden  md:hidden lg:hidden xl:inline xxl:inline" > Sign IN</span> <span className="rounded-full p-1 bg-white"><FaSignOutAlt className={darkMode?"bg-white text-[#10aade] text-xl rounded-full":"bg-white text-[#10aade] text-xl rounded-full"}/></span> 
-          </Link>
+              <NavLink to="/login"
+              
+              className={darkMode?"btn bg-black/0 text-white btn-sm normal-case ps-5 pe-0 rounded-3xl hover:no-underline hover:text-cyan-700"
+              :"btn bg-[#10aade] text-white btn-sm normal-case ps-5 pe-0 rounded-3xl hover:no-underline hover:scale-105 hover:bg-red hover:text-white"}>
+
+           <span className=" hidden  md:hidden lg:hidden xl:inline xxl:inline" > Sign IN</span> <span className="rounded-full p-1 bg-white"><FaSignOutAlt className={darkMode?"bg-white text-[#10aade] text-xl rounded-full":"bg-white text-[#10aade] no-underline hover:no-underline text-xl rounded-full hover:scale-110 "}/></span> 
+          </NavLink>
             )}
 
 
