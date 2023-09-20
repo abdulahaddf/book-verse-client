@@ -1,10 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
+import { FaBars, FaBook, FaBookReader, FaHome, FaUsers,FaMapMarkedAlt } from "react-icons/fa";
 import { ImBook, ImBooks } from "react-icons/im";
 // import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
-import { GrMapLocation } from "react-icons/gr";
 import { useContext, useEffect } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -285,7 +284,7 @@ const Dashboard = () => {
                         }
                         to="/dashboard/OrderStatus"
                       >
-                        <GrMapLocation className="focus:text-white" /> Order Status
+                        <FaMapMarkedAlt className="focus:text-white" /> Order Status
                       </NavLink>
                     </li>
                     <li>

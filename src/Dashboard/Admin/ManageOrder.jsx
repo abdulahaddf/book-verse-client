@@ -3,11 +3,10 @@ import usePaymentHistory from "../../hooks/usePayments";
 import { TfiCrown } from "react-icons/tfi";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-
 import Invoice from "./Invoice";
 import "jspdf-autotable";
 import { toast } from "react-toastify";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch,FaMapMarkedAlt } from "react-icons/fa";
 
 
 const ManageOrder = () => {
@@ -73,6 +72,7 @@ const ManageOrder = () => {
           : "w-full  px-10 p-5 min-h-full bg-slate-300 max-w-full"
       }
     >
+      {/* top banner section  */}
       <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
         <h2
           className={
@@ -81,7 +81,7 @@ const ManageOrder = () => {
               : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
           }
         >
-          Track Orders
+          Track <FaMapMarkedAlt className="inline text-[#91d6f6]" /> Orders
         </h2>
         <div className="flex justify-center pt-4 md:justify-end items-center w-full">
           <input
@@ -111,6 +111,7 @@ const ManageOrder = () => {
           </button>
         </div>
       </div>
+      {/* content section  */}
       <div className="flex flex-col md:flex-row justify-between gap-6">
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
@@ -192,6 +193,8 @@ const ManageOrder = () => {
                       </span>
                     </td>
                     <td className={darkMode ? "bg-black/80" : ""}>
+
+                      {/* update status using form  */}
                       <form
                         className="flex"
                         onSubmit={() => handleForm(event, payment?._id)}
