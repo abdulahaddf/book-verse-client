@@ -104,7 +104,7 @@ const SellBook = () => {
   };
 
   return (
-    <div className="w-4/5 h-full">
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
       <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>Post Your Old Books to sell</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}

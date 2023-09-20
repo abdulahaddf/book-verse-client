@@ -78,10 +78,10 @@ const ManageOrder = () => {
       className={
         darkMode
           ? "w-full  px-10 p-5 min-h-full "
-          : "w-full  px-10 p-5 min-h-full bg-slate-300"
+          : "w-full  px-10 p-5 min-h-full "
       }
     >
-      <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
+      <div className={darkMode ? "p-10  mt-10" : "p-10 mt-20 bg-slate-500 "}>
         <h2
           className={
             darkMode

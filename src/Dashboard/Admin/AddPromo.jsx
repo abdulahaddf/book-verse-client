@@ -73,10 +73,10 @@ const AddPromo = () => {
       }
     });
   };
-
+  
   return (
-    <div className="h-full  w-11/12">
-      <h1 className="text-4xl font-bold text-center my-10">Add Promo Codes</h1>
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-20">
+      <h1 className="text-4xl font-bold text-center mb-4">Add Promo Codes</h1>
       <div>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -86,14 +86,14 @@ const AddPromo = () => {
               : "bg-slate-100 rounded-md p-4 md:p-5"
           }
         >
-          <div className="flex items-center justify-center gap-5 w-4/5 mx-auto">
+          <div className="flex items-center justify-center gap-5 mx-auto">
             <div className="form-control w-full">
               <label className="label">
                 <span
                   className={
                     darkMode
-                      ? "label-text font-semibold text-white"
-                      : "label-text font-semibold"
+                      ? "label-text font-semibold w-full text-white"
+                      : "label-text font-semibold w-full "
                   }
                 >
                   Promo Code
@@ -105,7 +105,7 @@ const AddPromo = () => {
                 name="promo"
                 {...register("promo")}
                 placeholder="Enter Promo Code"
-                className="input input-bordered w-full  text-black/70"
+                className="input input-bordered w-[100px] md:w-full text-black/70"
               />
             </div>
             <div className="form-control w-full">
@@ -126,7 +126,7 @@ const AddPromo = () => {
                 name="discount"
                 {...register("discount")}
                 placeholder="Enter % of Discount"
-                className="input input-bordered w-full text-black/70"
+                className="input input-bordered w-[100px] md:w-full text-black/70"
               />
             </div>
             <div>
@@ -140,8 +140,8 @@ const AddPromo = () => {
         </form>
       </div>
 
-      <div className="overflow-x-auto mt-5  md:my-10">
-        <table className="table table-zebra shadow-xl w-full text-center">
+      <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
+        <table className="table table-zebra shadow-xl w-full text-center rounded-md">
           {/* head */}
           <thead
             className={

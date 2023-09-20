@@ -40,7 +40,7 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="w-4/5 h-full">
+    <div className="w-full ps-4 h-full lg:p-4 mt-10">
       {/* <h1 className="text-3xl text-center font-semibold my-5">Your Selling Books</h1> */}
       <div>
         {books.length > 0 ? (
@@ -51,8 +51,8 @@ const MyBooks = () => {
                 Your Selling Books : {books.length}
               </h1>
             </Zoom>
-            <div className="max-w-md md:max-w-6xl overflow-x-auto">
-              <table className="table table-zebra shadow-xl w-full text-center">
+            <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
+              <table className="table table-zebra shadow-xl text-center rounded-md">
                 {/* head */}
                 <thead
                   className={

@@ -124,7 +124,7 @@ const AddBook = () => {
   // tonmoy end
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
