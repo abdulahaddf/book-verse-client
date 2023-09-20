@@ -389,6 +389,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/userHome"
                       >
                         <FaHome></FaHome>User Home
@@ -402,6 +407,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/purchasedBooks"
                       >
                         <ImBook />
@@ -415,6 +425,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/sell"
                       >
                         <MdSell />
@@ -428,6 +443,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/my-books"
                       >
                         <ImBooks />
@@ -441,6 +461,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/userChats"
                       >
                         <FaUsers />
@@ -461,6 +486,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/"
                       >
                         <FaHome></FaHome>Home
@@ -473,6 +503,11 @@ const Dashboard = () => {
                             ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
                             : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/all-books"
                       >
                         <FaBook></FaBook>All Books
