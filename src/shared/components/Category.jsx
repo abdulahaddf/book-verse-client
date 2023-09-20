@@ -115,7 +115,7 @@ const Category = () => {
             </TabPanel>
             {/* <TabPanel /> */}
             <TabPanel>
-              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-2 gap-5 justify-items-center">
                 {newArival
                   .reverse()
                   .map((book) => (
@@ -125,7 +125,7 @@ const Category = () => {
                       loading={loading}
                     ></ProductCard>
                   ))
-                  .slice(0, 4)}
+                  .slice(0, 5)}
               </div>
             </TabPanel>
             {/* <TabPanel /> */}
