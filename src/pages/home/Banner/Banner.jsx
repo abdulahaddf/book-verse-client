@@ -25,7 +25,7 @@ const Banner = () => {
   return (
    <div className="overflow-hidden">
      <Swiper
-      spaceBetween={30}
+     
       pagination={{
         clickable: true,
       }}
