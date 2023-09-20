@@ -265,8 +265,8 @@ const AdminHome = () => {
         placeholder="Find Transaction"
         className={
           darkMode
-            ? "input input-bordered focus:outline-none text-black border-[#126e9d] w-[300px] md:max-w-xs rounded-sm"
-            : "input input-bordered focus:outline-none border-[#126e9d] w-[300px] md:max-w-xs rounded-sm"
+            ? "input input-bordered focus:outline-none text-black border-[#126e9d] w-[200px] md:max-w-xs rounded-sm"
+            : "input input-bordered focus:outline-none border-[#126e9d] w-[200px] md:max-w-xs rounded-sm"
         }
         onKeyDown={(e) => {
           if (e.key === "Enter") {
