@@ -90,7 +90,7 @@ const ManageBanner = () => {
 
   return (
 
-    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
+    <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
       <div className='text-center'>
         <h2 className="text-4xl font-bold mb-8">Banner management</h2>
         

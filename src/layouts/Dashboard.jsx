@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { ImBook, ImBooks } from "react-icons/im";

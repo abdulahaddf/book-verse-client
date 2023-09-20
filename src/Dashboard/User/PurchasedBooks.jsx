@@ -112,7 +112,7 @@ const PurchasedBooks = () => {
       <>
         {books.length > 0 ? (
           <>
-            <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
+            <div className="w-full h-full lg:p-4 mt-10">
               <h1
                 className={
                   darkMode ? "dashboard-heading-dark" : "dashboard-heading"
@@ -120,6 +120,7 @@ const PurchasedBooks = () => {
               >
                 All Your Purchased Books : {books.length}
               </h1>
+              <div className="max-w-[414px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
               <table
                 className={
                   darkMode
@@ -310,6 +311,7 @@ const PurchasedBooks = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </>
         ) : (

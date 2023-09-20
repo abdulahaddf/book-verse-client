@@ -66,7 +66,7 @@ const ManageUsers = () => {
       </h3>
 
       <>
-        <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
+        <div className="max-w-[414px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
           <table className="table">
             {/* head */}
             <thead

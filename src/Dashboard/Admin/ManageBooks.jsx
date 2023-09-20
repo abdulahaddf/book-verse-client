@@ -44,7 +44,7 @@ const ManageBooks = () => {
   };
 
   return (
-    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-10">
+    <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-10">
       <h2 className="text-4xl font-bold text-center">Books management</h2>
 
       <div className="flex justify-start items-center mt-8">
