@@ -60,16 +60,20 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-full h-full p-2 lg:p-4 mt-14">
       <h3 className="text-4xl font-bold text-center">
         Total Users: {users.length}
       </h3>
 
-      <div className="w-[90%] mx-auto">
-        <div className="overflow-x-auto">
+      <>
+        <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
           <table className="table">
             {/* head */}
-            <thead className={darkMode ? " bg-gray text-white " : ""}>
+            <thead
+              className={
+                darkMode ? " bg-gray text-white  text-center" : " text-center"
+              }
+            >
               <tr>
                 <th>#</th>
                 <th>Photo</th>
@@ -121,7 +125,7 @@ const ManageUsers = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </>
     </div>
   );
 };

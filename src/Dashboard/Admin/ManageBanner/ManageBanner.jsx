@@ -90,7 +90,7 @@ const ManageBanner = () => {
 
   return (
 
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6 ">
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
       <div className='text-center'>
         <h2 className="text-4xl font-bold mb-8">Banner management</h2>
         
@@ -179,9 +179,9 @@ const ManageBanner = () => {
 
 
 
-      <div className="mt-10 w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {banners?.map((banner,index) => (
-          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch} index={index}></ManageBannerCard>
+      <div className="mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {banners?.map((banner) => (
+          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch}></ManageBannerCard>
         ))}
       </div>
 
