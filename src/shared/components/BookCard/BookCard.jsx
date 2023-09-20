@@ -69,7 +69,7 @@ const BookCard = ({book,text}) => {
     <div className=" mx-auto    ">
       {/* card 1 start */}
       <div
-        className="group book-card-container relative block bg-black h-[390px]  w-[270px]
+        className="group book-card-container relative block bg-black h-[414px]  w-[270px]
             overflow-hidden "
       > 
         <img
