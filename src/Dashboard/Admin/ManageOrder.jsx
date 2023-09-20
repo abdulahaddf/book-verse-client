@@ -36,7 +36,7 @@ const ManageOrder = () => {
         // console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
-          toast("Status Updated");
+          toast.info("Status Updated");
         }
       });
   };

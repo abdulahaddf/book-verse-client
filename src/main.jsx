@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <RouterProvider router={router} />
-          <ToastContainer theme="dark"/>
+          <ToastContainer theme="colored"/>
         </AuthProvider>
       </QueryClientProvider>
     </Provider>
