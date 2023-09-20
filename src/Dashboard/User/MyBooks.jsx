@@ -51,7 +51,7 @@ const MyBooks = () => {
                 Your Selling Books : {books.length}
               </h1>
             </Zoom>
-            <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
+            <div className="max-w-[414px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
               <table className="table table-zebra shadow-xl text-center rounded-md">
                 {/* head */}
                 <thead
