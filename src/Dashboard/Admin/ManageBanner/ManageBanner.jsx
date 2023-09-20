@@ -13,7 +13,8 @@ import { AuthContext } from '../../../provider/AuthProvider';
 const ManageBanner = () => {
   // Tonmoy Start
 
-  const { darkMode } = useContext(AuthContext)
+  const { darkMode } = useContext(AuthContext);
+  const [openModalIndex, setOpenModalIndex] = useState("");
 
   //  Tonmoy end
 
@@ -63,8 +64,10 @@ const ManageBanner = () => {
                 console.log(res.data)
                 if (res.data.insertedId) {
                   reset();
-                  document.body.classList.remove('modal-open')
                   refetch();
+                  if (openModalIndex) {
+                    openModalIndex.close();
+                  }
                   Swal.fire({
                     position: "center",
                     icon: "success",
@@ -90,18 +93,20 @@ const ManageBanner = () => {
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6 ">
       <div className='text-center'>
         <h2 className="text-4xl font-bold mb-8">Banner management</h2>
-        {/* <button
-        htmlFor="my_modal_8"
-        onClick={() => window.my_modal_8.showModal()}
-        className="btn-fifth-dark":"primary-button"
-      >
-        Add New Banner
-                </button> */}
+        
 
         <div className={darkMode?" flex justify-center":""}>
           <button
-            htmlFor="my_modal_8"
-            onClick={() => window.my_modal_8.showModal()}
+            onClick={() => {
+              const modalId = 'my_modal_8';
+                                  const modal =
+                                    document.getElementById(modalId);
+                                  setOpenModalIndex(modal);
+                                  if (modal) {
+                                    // setTId(sBook._id);
+                                    modal.showModal();
+                                  }
+            }}
             className={darkMode ? "primary-button-dark border-white border-[2px]" : "primary-button"}
           >
             Add New Banner
@@ -154,7 +159,7 @@ const ManageBanner = () => {
               id="url"
               {...register("url")}
               className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
+                  input file-input file-input-bordered w-full file-input-info"
             />
             <div className="mt-6">
               <button
@@ -175,8 +180,8 @@ const ManageBanner = () => {
 
 
       <div className="mt-10 w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {banners?.map((banner) => (
-          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch}></ManageBannerCard>
+        {banners?.map((banner,index) => (
+          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch} index={index}></ManageBannerCard>
         ))}
       </div>
 

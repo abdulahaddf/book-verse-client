@@ -17,6 +17,7 @@ import ProductCard from "../../../shared/components/productCard/ProductCard";
 
 
 
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -29,6 +30,7 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from "swiper/modules";
 import RecommendedCard from "../../../shared/components/BookDetails/RecommendedCard";
 import { useSelector } from "react-redux";
+import BestSellingCard from "./BestSellingCard";
 
 
 
@@ -37,17 +39,12 @@ import { useSelector } from "react-redux";
 
 const UserHome = () => {
   const { user,darkMode } = useContext(AuthContext);
-  const [isModalOpen, setModalOpen] = useState(false);
+
   const { books, loading } = UseBooks();
   const bestSellingData = useSelector(state => state.bestSelling.bestSelling);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+const [openModalPic, setOpenModalPic] = useState("");
+const [openModalInfo, setOpenModalInfo] = useState("");
+ 
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -55,7 +52,7 @@ const UserHome = () => {
 
   console.log(userinfo);
 
-  // const from = location?.state?.from?.pathname || "/dashboard/userHome";
+ 
 
   const updateProfile = (data) => {
     console.log(data);
@@ -74,11 +71,13 @@ const UserHome = () => {
         profile
       )
       .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          document.getElementById("my_modal_2").checked = false;
+        console.log(res)
+        if (res.data.modifiedCount ==1) {
           reset();
-          closeModal();
-
+          
+          if (openModalInfo) {
+            openModalInfo.close();
+          }
           Swal.fire({
             position: "center",
             icon: "success",
@@ -86,8 +85,12 @@ const UserHome = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-        } else if (res.data.modifiedCount == 0 || res.data.matchedCount > 1) {
-          closeModal();
+        } 
+        else if (res.data.modifiedCount == 0 ) {
+         
+                  if (openModalInfo) {
+                    openModalInfo.close();
+                  }
           Swal.fire({
             position: "center",
             icon: "error",
@@ -130,11 +133,14 @@ const UserHome = () => {
               .then((res) => {
                 if (res.data.modifiedCount > 0) {
                   reset();
-                  document.body.classList.remove("modal-open");
+                
+                  if (openModalPic) {
+                    openModalPic.close();
+                  }
                   Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Userinfo updated successfully",
+                    title: "User profile picture updated successfully",
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -142,11 +148,13 @@ const UserHome = () => {
                   res.data.modifiedCount == 0 ||
                   res.data.matchedCount > 1
                 ) {
-                  document.body.classList.remove("modal-open");
+                  if (openModalPic) {
+                    openModalPic.close();
+                  }
                   Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: "Userinfo already updated.",
+                    title: "User profile pic already updated!",
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -171,16 +179,21 @@ const UserHome = () => {
         <div className="image-container">
           <img className="image" src={userinfo?.photoURL} alt="" />
           <button
-            onClick={() => {
-              openModal();
-              window.my_modal_2.showModal();
+             onClick={() => {
+              const modalId = 'my_modal_2';
+                                  const modal =
+                                    document.getElementById(modalId);
+                                  setOpenModalPic(modal);
+                                  if (modal) {
+                                    // setTId(sBook._id);
+                                    modal.showModal();
+                                  }
             }}
             className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md focus:outline-none "
           >
             <FaCamera></FaCamera>
           </button>
 
-          {isModalOpen && (
             <dialog id="my_modal_2" className="modal">
               <form
                 method="dialog"
@@ -211,19 +224,13 @@ const UserHome = () => {
                 <button>close</button>
               </form>
             </dialog>
-          )}
+          
         </div>
         <div>
           <h1 className="font-bold uppercase text-xl mt-10">
             Account Information
           </h1>
-          <div className="flex gap-10">
-            {/* <div className="">
-          <p className="text-lg mt-4">
-        Name:
-            </p>
-            <p className="border-2 px-2 py-2">{userinfo.displayName}</p>
-          </div> */}
+          <div className="flex gap-2 lg:gap-10">
             <div>
               <p className="text-lg mt-6">Name:</p>
 
@@ -233,19 +240,19 @@ const UserHome = () => {
               <p className="text-lg mt-6">Phone Number: </p>
             </div> 
             <div className="">
-              <p className="border-2 px-2 py-2 h-10 w-64 mt-6">
+              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-6">
                 {userinfo.displayName}
               </p>
-              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
                 {userinfo.address}
               </p>
-              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
                 {userinfo.gender}
               </p>
-              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
                 {userinfo.birthday}
               </p>
-              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
                 {userinfo.phoneNumber}
               </p>
             </div>
@@ -253,8 +260,16 @@ const UserHome = () => {
         </div>
 
         <button
-          htmlFor="my_modal_8"
-          onClick={() => window.my_modal_8.showModal()}
+           onClick={() => {
+            const modalId = 'my_modal_8';
+                                const modal =
+                                  document.getElementById(modalId);
+                                setOpenModalInfo(modal);
+                                if (modal) {
+                                  // setTId(sBook._id);
+                                  modal.showModal();
+                                }
+          }}
           className="btn-home mt-10"
         >
           <FaEdit></FaEdit> <span className="ms-2">Update Profile</span>
@@ -381,14 +396,14 @@ const UserHome = () => {
           </form>
         </dialog>
       </div>
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
+      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"}>
           <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
           <div className="md:h-1/2">
             {bestSellingData
               .slice(0, 3)
               .map((book) => (
-                <RecommendedCard key={book._id} data={book} />
+                <BestSellingCard key={book._id} data={book} />
               ))}
           </div>
         </div>

@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import LazyLoad from "react-lazy-load";
 
-import Loader from "../../../shared/components/loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
+
 
 const Banner = () => {
 
@@ -22,16 +22,21 @@ const Banner = () => {
     <Skeleton height={550} />
   </div>;
   }
+
   return (
    <div className="overflow-hidden">
-     <Swiper
-      spaceBetween={30}
+<Swiper
+      centeredSlides={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: true,
+      }}
       pagination={{
         clickable: true,
       }}
-      modules={[Pagination, Autoplay]}
-      className="mySwiper z-0 "
-      autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto play configuration
+  
+      modules={[Autoplay, Pagination]}
+      className="mySwiper"
     >
       {banners.map((banner) => (
         <LazyLoad key={banner._id}>
