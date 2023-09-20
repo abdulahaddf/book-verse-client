@@ -64,7 +64,7 @@ const UserChats = () => {
     className={
       darkMode
         ? " px-5 md:px-20 lg:px-20 w-[90%]     "
-        : " md:px-20 lg:px-20 w-[90%]   "
+        : " md:px-20 lg:px-20 w-[90%]    "
     }
     >
       <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>All Your Chats</h1>

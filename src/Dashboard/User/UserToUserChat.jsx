@@ -86,7 +86,7 @@ const UserToUserChat = () => {
   }, [messages]);
 
   return (
-    <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]   flex items-center">
+    <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]   flex items-center ">
       <div className={darkMode?"flex-1 justify-between     flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0  "}>
 
         {/* Head chat section  */}
