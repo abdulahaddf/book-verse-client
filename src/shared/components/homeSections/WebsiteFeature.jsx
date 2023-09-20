@@ -14,7 +14,7 @@ const WebsiteFeature = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShouldStartCounter(true);
-    }, delayInSeconds * 1000); // Convert delayInSeconds to milliseconds
+    }, delayInSeconds * 100); // Convert delayInSeconds to milliseconds
 
     // Clear the timer if the component unmounts or when the delay is no longer needed
     return () => clearTimeout(timer);

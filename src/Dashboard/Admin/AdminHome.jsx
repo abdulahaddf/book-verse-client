@@ -22,6 +22,16 @@ import { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 
+// Function to format numbers as "1k" or "1M"
+function formatNumber(num) {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(2) + "M";
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(2) + "k";
+  }
+  return num;
+}
+
 const AdminHome = () => {
   // Tonmoy Start
   const { darkMode } = useContext(AuthContext);
@@ -86,7 +96,7 @@ const AdminHome = () => {
   });
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-full ps-6 p-2 h-full lg:p-4 mt-10">
       <h1 className="text-4xl font-bold text-center">Revenue Calculation</h1>
 
       {/* ----------------Revenue start------------- */}
@@ -106,7 +116,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              {paymentHistory.length}
+              {formatNumber(paymentHistory.length)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+04%</p>
@@ -128,7 +138,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              ${revenueSummary.totalRevenueToday}
+              ${formatNumber(revenueSummary.totalRevenueToday)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+14%</p>
@@ -151,7 +161,7 @@ const AdminHome = () => {
             </li>
             <h3 className="text-3xl font-semibold my-6">
               {" "}
-              ${revenueSummary.totalRevenueCurrentMonth}
+              ${formatNumber(revenueSummary.totalRevenueCurrentMonth)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+06%</p>
@@ -173,7 +183,7 @@ const AdminHome = () => {
               </p>
             </li>
             <h3 className="text-3xl font-semibold my-6">
-              ${revenueSummary.totalRevenue}
+              ${formatNumber(revenueSummary.totalRevenue)}
             </h3>
             <li className="flex justify-between items-center">
               <p className="text-green-600">+26%</p>
@@ -181,17 +191,18 @@ const AdminHome = () => {
             </li>
           </div>
         </div>
+
         {/* weekly revenue chart start */}
 
         <div
           className={
             darkMode
-              ? "w-full md:w-1/2 bg-gray border-[1px] text-black shadow-xl p-5 rounded-md "
-              : "w-full md:w-1/2 bg-slate-100 shadow-xl p-5 rounded-md "
+              ? "w-full md:w-1/2 bg-gray border-[1px] text-black shadow-xl p-5 rounded-md"
+              : "w-full md:w-1/2 bg-slate-100 shadow-xl p-5 rounded-md"
           }
         >
-          <div style={{ width: "100%", height: 330 }}>
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="overflow-x-auto">
+            <ResponsiveContainer width="100%" height={340}>
               <ComposedChart
                 data={Object.entries(revenueSummary.weeklyRevenue || {}).map(
                   ([day, weekly]) => ({
@@ -201,10 +212,10 @@ const AdminHome = () => {
                 )}
                 margin={
                   {
-                    // top: 4,
-                    // right: 4,
-                    // bottom: 4,
-                    // left: 4,
+                    top: 4,
+                    right: 4,
+                    bottom: 4,
+                    left: 4,
                   }
                 }
               >
@@ -254,8 +265,8 @@ const AdminHome = () => {
         placeholder="Find Transaction"
         className={
           darkMode
-            ? "input input-bordered focus:outline-none text-black border-[#126e9d] max-w-xs rounded-sm"
-            : "input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-sm"
+            ? "input input-bordered focus:outline-none text-black border-[#126e9d] w-[200px] md:max-w-xs rounded-sm"
+            : "input input-bordered focus:outline-none border-[#126e9d] w-[200px] md:max-w-xs rounded-sm"
         }
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -276,9 +287,9 @@ const AdminHome = () => {
 
       {/* customer info with table start  */}
       {/* Conditionally render the table or error message */}
-      {paymentHistory.length > 0 ? ( // Check if paymentHistory is not empty
+      {paymentHistory.length > 0 ? (
         <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
-          <div className="w-full overflow-x-auto rounded-md shadow-xl">
+          <div className="w-[414px] md:w-[768px] lg:w-full overflow-x-auto">
             <table className="table table-zebra w-full text-center">
               <thead
                 className={darkMode ? "bg-gray text-white" : "bg-slate-100"}

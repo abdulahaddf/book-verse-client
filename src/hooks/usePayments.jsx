@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-const usePaymentHistory = () => {
+const usePaymentHistory = (search) => {
   const { data: payments = [] , refetch} = useQuery(
-     ['paymentHistory'],
+     ['paymentHistory',search],
      async () => {
-        const res = await fetch(`https://book-verse-server-phi.vercel.app/paymentHistory`)
+        const res = await fetch(`https://book-verse-server-phi.vercel.app/paymentHistory?search=${search}`)
         return res.json();
     },
   )

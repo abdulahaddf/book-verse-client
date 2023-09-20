@@ -47,9 +47,11 @@ const ManageChats = () => {
           : " md:px-20 lg:px-20 w-[90%]   "
       }
     >
-      <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>All Your Chats</h1>
+      <h1 className={darkMode ? "dashboard-heading-dark" : "dashboard-heading"}>
+        All Your Chats
+      </h1>
       {allChats?.map((a) => (
-        <div key={a?._id}>
+        <div key={a?._id} className="w-[400px] md:w-full">
           <Link
             to={`singleChat/${a?._id}`}
             className={

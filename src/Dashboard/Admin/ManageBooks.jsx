@@ -44,7 +44,7 @@ const ManageBooks = () => {
   };
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-10">
       <h2 className="text-4xl font-bold text-center">Books management</h2>
 
       <div className="flex justify-start items-center mt-8">
@@ -79,7 +79,7 @@ const ManageBooks = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {paginatedBooks?.map((book) => (
             <ManageBooksCard
               key={book._id}
@@ -93,11 +93,11 @@ const ManageBooks = () => {
 
       {/*----------- Pagination started by zihad---------- */}
       {/* Pagination */}
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center ">
         <button
           className={`px-4 py-2 rounded-md mx-2 ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              ? "bg-slate-300 text-gray-500 cursor-not-allowed"
               : "bg-[#126e9d] text-white hover:bg-[#10aade]"
           }`}
           onClick={() => handlePageChange(currentPage - 1)}
@@ -113,7 +113,7 @@ const ManageBooks = () => {
             className={`${
               currentPage === index + 1
                 ? "bg-[#126e9d] text-white"
-                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                : "bg-slate-200 hover:bg-gray-300 text-gray-700"
             } px-3 py-1 mx-1 rounded-md cursor-pointer`}
           >
             {index + 1}
@@ -123,7 +123,7 @@ const ManageBooks = () => {
         <button
           className={`px-4 py-2 rounded-md mx-2 ${
             currentPage === totalPages
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              ? "bg-slate-300 text-gray-500 cursor-not-allowed"
               : "bg-[#126e9d] text-white hover:bg-[#10aade]"
           }`}
           onClick={() => handlePageChange(currentPage + 1)}

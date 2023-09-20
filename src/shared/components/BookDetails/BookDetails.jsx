@@ -430,7 +430,7 @@ const BookDetails = () => {
                     className={
                       darkMode
                         ? "rounded-lg border-[1px]  bg-gray  p-8"
-                        : "rounded-lg bg-gray-100 p-8"
+                        : "rounded-lg bg-gray-100 p-8 shadow-sm"
                     }
                   >
                     <div className="flex  gap-4">

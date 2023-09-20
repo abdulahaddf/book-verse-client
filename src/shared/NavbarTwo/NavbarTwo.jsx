@@ -287,7 +287,7 @@ useEffect(() => {
       transition: 'all .5s ease-in-out'
     }}>
       <div className={` z-50 ${darkMode ? "bg-[#131313]" : 'bg-white'} shadow-sm`}>
-        <div className={`navbar  ${darkMode ? "bg-[#131313]" : "bg-base-100"} overflow-hidden  w-11/12 md:w-11/12 mx-auto  lg:w-11/12 xl:w-11/12  inset-0 z-20 sticky`}>
+        <div className={`navbar  ${darkMode ? "bg-[#131313]" : "bg-base-100"}  w-11/12 md:w-11/12 mx-auto  lg:w-11/12 xl:w-11/12  inset-0 z-20 sticky`}>
           <div className="navbar-start ">
             <div className="drawer lg:hidden z-20 w-7 relative ">
               <input id="my-drawer" type="checkbox" className="drawer-toggle " checked={drawerOpen}
@@ -402,8 +402,6 @@ useEffect(() => {
               </div>
 
 
-
-
             </ul>
           </div>
 
@@ -445,8 +443,7 @@ useEffect(() => {
 
 
 
-
-                <label tabIndex={0} className=" flex border rounded-lg px-3 py-1 m-1 justify-center items-center overflow-hidden lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden "> <div className="flex items-center">
+                <label tabIndex={0} className=" flex border rounded-lg px-3 py-1 m-1 justify-center items-center overflow-hidden lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden"> <div className="flex items-center">
 
                   <img className="w-[30px] rounded-full mr-1 sm:w-[28px]" src={user?.photoURL} />
                   
@@ -455,11 +452,12 @@ useEffect(() => {
 
                   </span>
                   
+                  
                   <span className=""><RiArrowDownSLine className=''></RiArrowDownSLine></span>
                 </div></label>
-                <ul tabIndex={0} className={`dropdown-content z-[1]  menu p-2 shadow ${darkMode === true ? ' bg-black 90 text-white   w-32 md:w-52 lg:w-52' : 'bg-base-100'} rounded-box  w-32 md:w-52 lg:w-52 `}>
+                <ul tabIndex={0} className={`dropdown-content z-[1]  menu p-2 shadow ${darkMode === true ? ' bg-black 90 text-white   w-32 md:w-40 lg:w-40 lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden' : 'bg-base-100'} rounded-box  w-32 md:w-40 lg:w-40  lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden`}>
                   <li>
-                    <a href="/dashboard/userHome" className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'justify-between hover:no-underline'}`}>
+                    <a href="/dashboard/userHome" className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'justify-between hover:no-underline hover:text-[#10aade] '}`}>
                       My Profile
                       <span className=""></span>
                     </a>
@@ -468,7 +466,7 @@ useEffect(() => {
                     {user ? (
                       isAdmin ? (
 
-                        <a onClick={dashBoardHandler} className={`${darkMode ? 'hover:text-[#10aade] hover:no-underline' : 'hover:no-underline'}`}
+                        <a onClick={dashBoardHandler} className={`${darkMode ? 'hover:text-[#10aade] hover:no-underline' : 'hover:no-underline hover:text-[#10aade] '}`}
 
                         >
                           Dashboard
@@ -477,7 +475,7 @@ useEffect(() => {
 
                       ) : (
 
-                        <a onClick={myProfileHandler} className={`${darkMode ? 'hover:text-[#10aade] hover:no-underline' : 'hover:no-underline'}`}
+                        <a onClick={myProfileHandler} className={`${darkMode ? 'hover:text-[#10aade] hover:no-underline' : 'hover:no-underline hover:text-[#10aade] '}`}
 
                         >
                           Dashboard
@@ -490,7 +488,7 @@ useEffect(() => {
                     )}
                   </li>
                   {/* <li><a className={` ${darkMode?'hover:text-[#10aade]  hover:no-underline':'hover:no-underline' } `}>Settings</a></li> */}
-                  <li><a className={` ${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:no-underline'} `} onClick={logOut}>Logout</a></li>
+                  <li><a className={` ${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:text-[#10aade]  hover:no-underline'} `} onClick={logOut}>Logout</a></li>
                 </ul>
 
 
@@ -510,7 +508,7 @@ useEffect(() => {
 
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${darkMode ? 'text-white lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden ' : 'text-red lg:inline xl:inline xxl:inline md:inline sm:hidden'}` : "no-underline lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden"
+                isActive ? `${darkMode ? 'text-white lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden ' : 'text-red lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden '}` : "no-underline lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden"
               }
               to="/addToCart"
             >
