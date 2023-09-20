@@ -7,12 +7,17 @@ import UseUser from '../../../hooks/UseUser';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
+import  { Client, Filestack } from 'filestack-js'; // Import the Filestack library
 
 const ManageBanner = () => {
 
     // const [banners, setBanners] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [progress, setProgress] = useState(0);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const apikey = 'ApA4Qt6SR4WpZkkO844gQz';
+        const client = Filestack(apikey);
     const [userinfo] = UseUser()
     const {
         register,
@@ -27,10 +32,52 @@ const ManageBanner = () => {
 
 
     const AddNewBanner = (data) => {
+      // console.log(data);
       if (data!=="null") {
         const { title, subtitle, url } = data;
-        console.log(data);
-        const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+        console.log(url[0]);
+
+        // Update state with the selected file
+    setSelectedFile(url[0]);
+    // Create an empty token object
+    const token = {};
+    // Create a custom XMLHttpRequest to track progress
+    const xhr = new XMLHttpRequest();
+
+    xhr.upload.addEventListener('progress', (event) => {
+      if (event.lengthComputable) {
+        const percentComplete = (event.loaded / event.total) * 100;
+        setProgress(percentComplete);
+      }
+    });
+
+    // Upload the selected file using the Filestack client
+    Client.upload(url[0], {}, token,xhr)
+      .then((res) => {
+        console.log('Success:', res);
+      })
+      .catch((err) => {
+        console.error('Error:', err);
+      });
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // ---------imgbb
+  
+  const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
           import.meta.env.VITE_Image_Upload_token
           }`;
         
