@@ -9,6 +9,7 @@ import Lottie from "react-lottie";
 import animationData from "../../../../public/login.json";
 import google from "../../../assets/social/google.png";
 import facebook from "../../../assets/social/facebook.png";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const defaultOptions = {
@@ -41,13 +42,14 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate("/");
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Successfully Signed In.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        // Swal.fire({
+        //   position: "center",
+        //   icon: "success",
+        //   title: "Successfully Signed In.",
+        //   showConfirmButton: false,
+        //   timer: 1500,
+        // });
+        toast("Successfully Signed In")
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -56,21 +58,23 @@ const Login = () => {
           errorCode === "auth/user-not-found" ||
           errorCode === "auth/wrong-password"
         ) {
-          Swal.fire({
-            position: "center",
-            icon: "eroor",
-            title: "Invalid email or password",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          // Swal.fire({
+          //   position: "center",
+          //   icon: "eroor",
+          //   title: "Invalid email or password",
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // });
+          toast("Invalid email or password")
         } else {
-          Swal.fire({
-            position: "center",
-            icon: "eroor",
-            title: { errorMessage },
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          // Swal.fire({
+          //   position: "center",
+          //   icon: "eroor",
+          //   title: { errorMessage },
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // });
+          toast(errorMessage.slice(10,61))
         }
       });
   };

@@ -10,6 +10,8 @@ import store from "./pages/payment/redux/Store";
 import '@smastrom/react-rating/style.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { SkeletonTheme } from "react-loading-skeleton";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <RouterProvider router={router} />
+          <ToastContainer theme="dark"/>
         </AuthProvider>
       </QueryClientProvider>
     </Provider>
