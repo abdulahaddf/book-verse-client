@@ -44,7 +44,7 @@ const ManageBooks = () => {
   };
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-10">
       <h2 className="text-4xl font-bold text-center">Books management</h2>
 
       <div className="flex justify-start items-center mt-8">
@@ -79,7 +79,7 @@ const ManageBooks = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {paginatedBooks?.map((book) => (
             <ManageBooksCard
               key={book._id}
@@ -93,7 +93,7 @@ const ManageBooks = () => {
 
       {/*----------- Pagination started by zihad---------- */}
       {/* Pagination */}
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center">
         <button
           className={`px-4 py-2 rounded-md mx-2 ${
             currentPage === 1

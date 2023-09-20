@@ -163,7 +163,7 @@ const UserHome = () => {
   }
 
   return (
-    <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
+    <div className="w-11/12 flex justify-center items-center gap-6">
       <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information

@@ -36,7 +36,7 @@ const MonthlyRevenue = () => {
     async function fetchMonthlyRevenue() {
       try {
         const response = await fetch(
-          "https://book-verse-server-phi.vercel.app/monthlyRevenue"
+          "http://localhost:5000/monthlyRevenue"
         );
         if (response.ok) {
           const data = await response.json();
@@ -58,7 +58,7 @@ const MonthlyRevenue = () => {
   const maxY = Math.max(...revenueValues);
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
       <h3 className="text-4xl font-bold text-center">Monthly Revenue</h3>
       <p
         className={
@@ -81,8 +81,8 @@ const MonthlyRevenue = () => {
             data={monthlyRevenue}
             margin={{
               top: 20,
-              right: 30,
-              left: 20,
+              right: 0,
+              left: 0,
               bottom: 40,
             }}
           >
@@ -99,7 +99,7 @@ const MonthlyRevenue = () => {
             <Tooltip />
             <Bar
               dataKey="revenue"
-              label={{ position: "top", fill: "white" }} // Display label on top of bars
+              label={{ position: "top", fill: "#126e9d" }} // Display label on top of bars
               barSize={30} // Adjust bar width
             >
               {monthlyRevenue.map((entry, index) => (

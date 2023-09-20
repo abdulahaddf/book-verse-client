@@ -49,26 +49,20 @@ const ManageOrder = () => {
   };
   console.log(payments);
   return (
-    <div
-      className={
-        darkMode
-          ? "w-full  px-10 p-5 min-h-full "
-          : "w-full  px-10 p-5 min-h-full bg-slate-300"
-      }
-    >
-      <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
+    <>
+      <div className={darkMode ? "w-[390px] md:w-full mx-auto h-full p-2 lg:p-4 mt-20" : "w-[390px] md:w-full mx-auto h-full lg:p-4 mt-20"}>
         <h2
           className={
             darkMode
               ? "text-center text-5xl text-white font-mono font-bold"
-              : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
+              : "text-center text-5xl bg-slate-600 text-[#91d6f6] font-mono font-bold"
           }
         >
           Track Orders
         </h2>
       </div>
-      <div className="flex flex-col md:flex-row justify-between gap-6">
-        <div className="w-full overflow-x-auto rounded-md shadow-xl">
+      <div className="flex ps-4 md:ps-0 flex-col md:flex-row justify-between gap-6">
+        <div className="max-w-[390px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto p-5">
           <table className="table table-zebra w-full text-center">
             <thead
               className={
@@ -222,7 +216,7 @@ const ManageOrder = () => {
           </dialog>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
