@@ -380,7 +380,7 @@ const AddBook = () => {
               {...register("cover_image")}
               placeholder="Cover image"
               className="input 
-              file-input file-input-bordered w-full text-black "
+              file-input file-input-bordered w-full text-black file-input-info"
             />
           </div>
           <div className="form-control w-full">
@@ -401,7 +401,7 @@ const AddBook = () => {
               name="author_image"
               {...register("author_image")}
               placeholder="Author image"
-              className="input file-input file-input-bordered w-full text-black"
+              className="input file-input file-input-bordered w-full text-black file-input-info"
             />
           </div>
         </div>

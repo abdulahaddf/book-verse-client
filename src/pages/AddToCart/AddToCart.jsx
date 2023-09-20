@@ -236,11 +236,7 @@ const AddToCart = () => {
                   >
                     <button onClick={() => deleteAddToCart(data?._id)}>
                       <MdDeleteForever
-                        className={
-                          darkMode
-                            ? " text-4xl mt-10  text-white hover:text-blue-500"
-                            : " text-4xl mt-10  text-red hover:text-blue-500"
-                        }
+                        className={darkMode?" text-4xl mt-10  text-white hover:text-blue-500":" text-4xl mt-10  text-[#dc2626] hover:text-blue-500"}
                       />
                     </button>
                   </div>

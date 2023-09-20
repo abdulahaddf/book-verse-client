@@ -17,7 +17,6 @@ import ProductCard from "../../../shared/components/productCard/ProductCard";
 
 
 
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -30,7 +29,6 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from "swiper/modules";
 import RecommendedCard from "../../../shared/components/BookDetails/RecommendedCard";
 import { useSelector } from "react-redux";
-import BestSellingCard from "./BestSellingCard";
 
 
 
@@ -39,12 +37,17 @@ import BestSellingCard from "./BestSellingCard";
 
 const UserHome = () => {
   const { user,darkMode } = useContext(AuthContext);
-
+  const [isModalOpen, setModalOpen] = useState(false);
   const { books, loading } = UseBooks();
   const bestSellingData = useSelector(state => state.bestSelling.bestSelling);
-const [openModalPic, setOpenModalPic] = useState("");
-const [openModalInfo, setOpenModalInfo] = useState("");
- 
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -52,7 +55,7 @@ const [openModalInfo, setOpenModalInfo] = useState("");
 
   console.log(userinfo);
 
- 
+  // const from = location?.state?.from?.pathname || "/dashboard/userHome";
 
   const updateProfile = (data) => {
     console.log(data);
@@ -67,30 +70,24 @@ const [openModalInfo, setOpenModalInfo] = useState("");
     };
     axios
       .patch(
-        `https://book-verse-server-phi.vercel.app/userinfoupdate/?email=${user?.email}`,
+        https://book-verse-server-phi.vercel.app/userinfoupdate/?email=${user?.email},
         profile
       )
       .then((res) => {
-        console.log(res)
-        if (res.data.modifiedCount ==1) {
+        if (res.data.modifiedCount > 0) {
+          document.getElementById("my_modal_2").checked = false;
           reset();
-          
-          if (openModalInfo) {
-            openModalInfo.close();
-          }
+          closeModal();
+
           Swal.fire({
             position: "center",
             icon: "success",
-            title:" Userinfo updated successfully",
+            title:"userinfo updated successfully" ,
             showConfirmButton: false,
             timer: 1500,
           });
-        } 
-        else if (res.data.modifiedCount == 0 ) {
-         
-                  if (openModalInfo) {
-                    openModalInfo.close();
-                  }
+        } else if (res.data.modifiedCount == 0 || res.data.matchedCount > 1) {
+          closeModal();
           Swal.fire({
             position: "center",
             icon: "error",
@@ -127,20 +124,17 @@ const [openModalInfo, setOpenModalInfo] = useState("");
             };
             axios
               .patch(
-               ` https://book-verse-server-phi.vercel.app/userpictureupdate/?email=${user?.email}`,
+                https://book-verse-server-phi.vercel.app/userpictureupdate/?email=${user?.email},
                 profile
               )
               .then((res) => {
                 if (res.data.modifiedCount > 0) {
                   reset();
-                
-                  if (openModalPic) {
-                    openModalPic.close();
-                  }
+                  document.body.classList.remove("modal-open");
                   Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "User profile picture updated successfully",
+                    title: Userinfo updated successfully.,
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -148,13 +142,11 @@ const [openModalInfo, setOpenModalInfo] = useState("");
                   res.data.modifiedCount == 0 ||
                   res.data.matchedCount > 1
                 ) {
-                  if (openModalPic) {
-                    openModalPic.close();
-                  }
+                  document.body.classList.remove("modal-open");
                   Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: "User profile pic already updated!",
+                    title: "Userinfo already updated.",
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -171,29 +163,24 @@ const [openModalInfo, setOpenModalInfo] = useState("");
   }
 
   return (
-    <div className="w-11/12 flex flex-col lg:flex-row justify-center items-center mx-auto gap-6">
-      <div className={darkMode?"w-11/12 p-10  bg-gray shadow-xl border-[1px] rounded-md":"w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]"}>
+    <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
+      <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information
         </h1>
         <div className="image-container">
           <img className="image" src={userinfo?.photoURL} alt="" />
           <button
-             onClick={() => {
-              const modalId = 'my_modal_2';
-                                  const modal =
-                                    document.getElementById(modalId);
-                                  setOpenModalPic(modal);
-                                  if (modal) {
-                                    // setTId(sBook._id);
-                                    modal.showModal();
-                                  }
+            onClick={() => {
+              openModal();
+              window.my_modal_2.showModal();
             }}
             className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md focus:outline-none "
           >
             <FaCamera></FaCamera>
           </button>
 
+          {isModalOpen && (
             <dialog id="my_modal_2" className="modal">
               <form
                 method="dialog"
@@ -224,13 +211,19 @@ const [openModalInfo, setOpenModalInfo] = useState("");
                 <button>close</button>
               </form>
             </dialog>
-          
+          )}
         </div>
         <div>
           <h1 className="font-bold uppercase text-xl mt-10">
             Account Information
           </h1>
-          <div className="flex gap-2 lg:gap-10">
+          <div className="flex gap-10">
+            {/* <div className="">
+          <p className="text-lg mt-4">
+        Name:
+            </p>
+            <p className="border-2 px-2 py-2">{userinfo.displayName}</p>
+          </div> */}
             <div>
               <p className="text-lg mt-6">Name:</p>
 
@@ -240,19 +233,19 @@ const [openModalInfo, setOpenModalInfo] = useState("");
               <p className="text-lg mt-6">Phone Number: </p>
             </div> 
             <div className="">
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-6">
+              <p className="border-2 px-2 py-2 h-10 w-64 mt-6">
                 {userinfo.displayName}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
                 {userinfo.address}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
                 {userinfo.gender}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
                 {userinfo.birthday}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              <p className="border-2 px-2 py-2 h-10 w-64 mt-[10px]">
                 {userinfo.phoneNumber}
               </p>
             </div>
@@ -260,16 +253,8 @@ const [openModalInfo, setOpenModalInfo] = useState("");
         </div>
 
         <button
-           onClick={() => {
-            const modalId = 'my_modal_8';
-                                const modal =
-                                  document.getElementById(modalId);
-                                setOpenModalInfo(modal);
-                                if (modal) {
-                                  // setTId(sBook._id);
-                                  modal.showModal();
-                                }
-          }}
+          htmlFor="my_modal_8"
+          onClick={() => window.my_modal_8.showModal()}
           className="btn-home mt-10"
         >
           <FaEdit></FaEdit> <span className="ms-2">Update Profile</span>
@@ -396,13 +381,14 @@ const [openModalInfo, setOpenModalInfo] = useState("");
           </form>
         </dialog>
       </div>
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"}>
+      <div className={darkMode?"border-[1px] px-5 bg-gray rounded-lg lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"}>
           <h1 className="text-xl text-start my-5">Best Selling Books</h1>
+
           <div className="md:h-1/2">
             {bestSellingData
               .slice(0, 3)
               .map((book) => (
-                <BestSellingCard key={book._id} data={book} />
+                <RecommendedCard key={book._id} data={book} />
               ))}
           </div>
         </div>

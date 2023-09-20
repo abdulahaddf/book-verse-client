@@ -18,6 +18,7 @@ const Publications = () => {
   // Tonmoy end
   return (
     <div className={`${darkMode ? "section bg-gray mt-20" : " my-20"}`}>
+     <WebsiteFeature />
       <Heading title={"Our Publication Partner"}></Heading>
       <div className="mt-6">
         <Marquee pauseOnHover>
@@ -79,7 +80,7 @@ const Publications = () => {
           </div>
         </Marquee>
       </div>
-      <WebsiteFeature />
+      
     </div>
   );
 };

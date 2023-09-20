@@ -1,12 +1,21 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import Swal from "sweetalert2";
 import { FaFacebookF } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
+import animationData from "../../../../public/reg.json";
+import Lottie from "react-lottie";
 
 const Register = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   const {
     createUser,
     signInGoogle,
@@ -207,8 +216,8 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div className="relative flex flex-col justify-center my-4 overflow-hidden">
+    <div className=" bg-gradient-to-b from-red to-secondary md:p-10  md:flex justify-center ">
+      <div className="relative flex flex-col justify-center my-4 overflow-hidden glass p-5 md:w-1/2">
         <div
           className={
             darkMode
@@ -277,7 +286,7 @@ const Register = () => {
                 required
                 {...register("url")}
                 className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                input file-input file-input-bordered w-full "
+                input file-input file-input-bordered w-full file-input-info"
               />
             </div>
             <div className="mb-2">
@@ -404,6 +413,11 @@ const Register = () => {
           </p>
         </div>
       </div>
+      <div className="md:w-1/3 w-11/12 mx-auto">
+        
+        <Lottie options={defaultOptions} />
+    
+    </div>
     </div>
   );
 };

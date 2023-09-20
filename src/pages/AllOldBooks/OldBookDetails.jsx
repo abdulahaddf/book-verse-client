@@ -97,11 +97,11 @@ const OldBookDetails = () => {
       <div
         className={
           darkMode
-            ? " bg-gray my-10 w-4/5 mx-auto p-5 border-[1px]"
+            ? " bg-gray my-10 w-4/5 mx-auto rounded-md p-5 border-[1px]"
             : " my-10 w-4/5 mx-auto"
         }
       >
-        <div className="md:flex justify-center gap-10 w-4/5 mx-auto ">
+        <div className="md:flex  gap-10 w-4/5 mx-auto ">
           <img
             src={cover_image}
             className=" md:w-2/12 my-5 rounded-lg shadow-2xl "

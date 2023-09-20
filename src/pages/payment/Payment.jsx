@@ -113,10 +113,10 @@ const Payment = () => {
       <h2 className="text-center text-2xl font-sans my-2">
         You need to pay : {totalPrice}
       </h2>
-      <div className="w-11/12 mx-auto my-5 md:flex gap-10">
+      <div className="md:w-11/12 mx-auto my-5 md:flex gap-10">
         {/* Checkout form starts here */}
 
-      <div className={darkMode?" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20"}>
+      <div className={darkMode?" bg-gray w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20 h-fit":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20 h-fit"}>
      
    
               <h1 className="text-2xl font-semibold text-center text-red uppercase">
@@ -135,7 +135,7 @@ const Payment = () => {
         type="radio"
         {...register("receive", { required: true })}
         value="home"
-        className="radio text-red focus:ring-red focus:ring-opacity-40"
+        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
       />
       <span className="ml-2 text-gray-600">Home</span>
     </label>
@@ -144,7 +144,7 @@ const Payment = () => {
         type="radio"
         {...register("receive")}
         value="office"
-        className="radio text-red focus:ring-red focus:ring-opacity-40"
+        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
       />
       <span className="ml-2 text-gray-600">Office</span>
     </label>
@@ -246,13 +246,13 @@ const Payment = () => {
 
         {/* Checkout form ends here */}
 
-        <div className="w-1/2 mx-auto my-5  bg-slate-200 py-10 rounded-lg ">
+        <div className={darkMode?"w-11/12 md:w-1/2 mx-auto my-5  bg-gray py-10 rounded-lg h-fit":" w-11/12 md:w-1/2 mx-auto my-5  bg-slate-200 py-2 md:py-10 rounded-lg"} >
           {/* Payment method selection */}
           <div className="flex flex-col items-center justify-center gap-10  ">
             <h1 className="text-xl my-3">Payment Method</h1>
 
             {/* Radio button for SSLCommerz payment */}
-            <label className="flex items-center text-lg bg-white w-11/12 p-2 rounded-lg ">
+            <label className="flex items-center text-lg bg-white w-11/12  p-2 rounded-lg ">
               <input
                 type="radio"
                 value="sslCommerz"
@@ -260,7 +260,7 @@ const Payment = () => {
                 onChange={() => setSelectedPaymentMethod("sslCommerz")}
                 className="radio text-red focus:ring-red focus:ring-opacity-40"
               />
-              <span className="ml-2">
+              <span className="ml-2 h-24 p-4 scale-110">
                 <img
                   className=" rounded-[10px]"
                   src="https://i.ibb.co/Lhwv66n/SSLCommerz-01.png"
@@ -295,9 +295,9 @@ const Payment = () => {
                 onChange={() => setSelectedPaymentMethod("cod")}
                 className="radio text-red focus:ring-red focus:ring-opacity-40"
               />
-              <span className="w-4/5 mx-auto ml-2">
+              <span className="w-11/12 mx-auto ml-2">
                 <img
-                  className="h-32 mx-auto rounded-[10px]"
+                  className="h-32 scale-150 mx-auto rounded-[10px]"
                   src="https://i.ibb.co/RpP1krV/cod-transformed-removebg-preview.png"
                   alt=""
                 />

@@ -243,7 +243,7 @@ const SellBook = () => {
               {...register("book_image")}
               placeholder="Book Image"
               className="input  text-black
-              file-input file-input-bordered w-full "
+              file-input file-input-bordered w-full file-input-info"
             />
           </div>
         </div>
