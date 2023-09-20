@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import {
   BarChart,
@@ -9,8 +10,15 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MonthlyRevenue = () => {
+  // Tonmoy Start
+
+  const { darkMode } = useContext(AuthContext);
+
+  //  Tonmoy End
+
   const colors = [
     "#0088FE",
     "#00C49F",
@@ -52,10 +60,22 @@ const MonthlyRevenue = () => {
   return (
     <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
       <h3 className="text-4xl font-bold text-center">Monthly Revenue</h3>
-      <p className="text-center text-gray-600 mt-2">
+      <p
+        className={
+          darkMode
+            ? "text-center text-gray-200 mt-2"
+            : "text-center text-gray-600 mt-2"
+        }
+      >
         Revenue data for the current months.
       </p>
-      <div className="w-full bg-slate-50 border rounded-md my-4 p-6">
+      <div
+        className={
+          darkMode
+            ? "w-full bg-gray border rounded-md my-4 p-6"
+            : "w-full bg-slate-50 border rounded-md my-4 p-6"
+        }
+      >
         <ResponsiveContainer width="100%" height={500}>
           <BarChart
             data={monthlyRevenue}
@@ -66,9 +86,16 @@ const MonthlyRevenue = () => {
               bottom: 40,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
-            <YAxis domain={[minY, maxY]} /> {/* Set Y-axis domain */}
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={darkMode ? "#3f3f46" : "#d1d5db"}
+            />
+            <XAxis dataKey="month" stroke={darkMode ? "#ffffff" : "#333"} />
+            <YAxis
+              domain={[minY, maxY]}
+              stroke={darkMode ? "#ffffff" : "#333"}
+            />{" "}
+            {/* Set Y-axis domain */}
             <Tooltip />
             <Bar
               dataKey="revenue"

@@ -7,86 +7,46 @@ import UseUser from '../../../hooks/UseUser';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
-import  { Client, Filestack } from 'filestack-js'; // Import the Filestack library
+import { useContext } from 'react';
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const ManageBanner = () => {
+  // Tonmoy Start
 
-    // const [banners, setBanners] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [progress, setProgress] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const apikey = 'ApA4Qt6SR4WpZkkO844gQz';
-        const client = Filestack(apikey);
-    const [userinfo] = UseUser()
-    const {
-        register,
-        handleSubmit,
-        reset
+  const { darkMode } = useContext(AuthContext);
+  const [openModalIndex, setOpenModalIndex] = useState("");
+
+  //  Tonmoy end
+
+  // const [banners, setBanners] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [userinfo] = UseUser()
+  const {
+    register,
+    handleSubmit,
+    reset
   } = useForm();
-  
-  const { data: banners = [],isLoading, refetch, } = useQuery(["banners"], async () => {
+
+  const { data: banners = [], isLoading, refetch, } = useQuery(["banners"], async () => {
     const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
     return res.json();
   });
 
 
-    const AddNewBanner = (data) => {
-      // console.log(data);
-      if (data!=="null") {
-        const { title, subtitle, url } = data;
-        console.log(url[0]);
+  const AddNewBanner = (data) => {
+    if (data !== "null") {
+      const { title, subtitle, url } = data;
+      console.log(data);
+      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token
+        }`;
 
-        // Update state with the selected file
-    setSelectedFile(url[0]);
-    // Create an empty token object
-    const token = {};
-    // Create a custom XMLHttpRequest to track progress
-    const xhr = new XMLHttpRequest();
-
-    xhr.upload.addEventListener('progress', (event) => {
-      if (event.lengthComputable) {
-        const percentComplete = (event.loaded / event.total) * 100;
-        setProgress(percentComplete);
-      }
-    });
-
-    // Upload the selected file using the Filestack client
-    Client.upload(url[0], {}, token,xhr)
-      .then((res) => {
-        console.log('Success:', res);
+      const coverForm = new FormData();
+      coverForm.append("image", url[0]);
+      fetch(imageUploadUrl, {
+        method: "POST",
+        body: coverForm,
       })
-      .catch((err) => {
-        console.error('Error:', err);
-      });
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // ---------imgbb
-  
-  const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
-          import.meta.env.VITE_Image_Upload_token
-          }`;
-        
-          const coverForm = new FormData();
-        coverForm.append("image", url[0]);
-        fetch(imageUploadUrl, {
-          method: "POST",
-          body: coverForm,
-        })
         .then((res) => res.json())
         .then((imageResponse) => {
           if (imageResponse.success) {
@@ -98,14 +58,16 @@ const ManageBanner = () => {
             };
             axios
               .post(
-              "https://book-verse-server-phi.vercel.app/banners",bannerDetails
+                "https://book-verse-server-phi.vercel.app/banners", bannerDetails
               )
               .then((res) => {
                 console.log(res.data)
                 if (res.data.insertedId) {
                   reset();
-                  document.body.classList.remove('modal-open')
                   refetch();
+                  if (openModalIndex) {
+                    openModalIndex.close();
+                  }
                   Swal.fire({
                     position: "center",
                     icon: "success",
@@ -113,107 +75,119 @@ const ManageBanner = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
-                
+
                 }
               })
               .catch((err) => console.log(err));
           }
         });
-        
-        }
+
     }
+  }
 
 
 
 
-    return (
-       
-            <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
-        <div className='text-center'>
+  return (
+
+    <div className="w-full h-full ps-4 lg:p-4 md:mt-6 ">
+      <div className='text-center'>
         <h2 className="text-4xl font-bold mb-8">Banner management</h2>
-                <button
-        htmlFor="my_modal_8"
-        onClick={() => window.my_modal_8.showModal()}
-        className="primary-button"
-      >
-        Add New Banner
+        
+
+        <div className={darkMode?" flex justify-center":""}>
+          <button
+            onClick={() => {
+              const modalId = 'my_modal_8';
+                                  const modal =
+                                    document.getElementById(modalId);
+                                  setOpenModalIndex(modal);
+                                  if (modal) {
+                                    // setTId(sBook._id);
+                                    modal.showModal();
+                                  }
+            }}
+            className={darkMode ? "primary-button-dark border-white border-[2px]" : "primary-button"}
+          >
+            Add New Banner
                 </button>
-                </div>
-                
-                <dialog id="my_modal_8" className="modal">
-  <form method="dialog" className="modal-box" onSubmit={handleSubmit(AddNewBanner)}>
-    <h3 className="text-3xl font-semibold text-center text-red uppercase">Add New Banner </h3>
+        </div>
+      </div>
+
+      <dialog id="my_modal_8" className="modal">
+        <form method="dialog" className="modal-box" onSubmit={handleSubmit(AddNewBanner)}>
+          <h3 className="text-3xl font-semibold text-center text-red uppercase">Add New Banner </h3>
           <div>
-          <div className="mb-2">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-semibold text-gray-800"
-                  >
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    {...register("title")}
-                    className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                </div>
-                
-                <div className="mb-2">
-                  <label
-                    htmlFor="subtitle"
-                    className="block text-sm font-semibold text-gray-800"
-                  >
-                    Subtitle
-                  </label>
-                  <input
-                    type="text"
-                    id="subtitle"
-                    {...register("subtitle")}
-                    className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                </div>
-                <label
-                    htmlFor="photo"
-                    className="block text-sm font-semibold text-gray-800"
-                  >
-                    Add photo <span className='font-thin'>(1920px x 1080px) </span>
-                  </label>
-                <input
-                checked={true}
-                  type="file"
-                  id="url"
-                  {...register("url")}
-                  className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
-                />
-<div className="mt-6">
-                <button
-                  type="submit"
-                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
-                >
-                  Submit
-                </button>
-              </div>
-                
+            <div className="mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-semibold text-gray-800"
+              >
+                Title
+              </label>
+              <input
+                type="text"
+                id="title"
+                {...register("title")}
+                className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+
+            <div className="mb-2">
+              <label
+                htmlFor="subtitle"
+                className="block text-sm font-semibold text-gray-800"
+              >
+                Subtitle
+              </label>
+              <input
+                type="text"
+                id="subtitle"
+                {...register("subtitle")}
+                className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
+            <label
+              htmlFor="photo"
+              className="block text-sm font-semibold text-gray-800"
+            >
+              Add photo <span className='font-thin'>(1920px x 1080px) </span>
+            </label>
+            <input
+              checked={true}
+              type="file"
+              id="url"
+              {...register("url")}
+              className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
+                  input file-input file-input-bordered w-full file-input-info"
+            />
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
+              >
+                Submit
+              </button>
+            </div>
+
           </div>
-  </form>
-  <form method="dialog" className="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
-   
+        </form>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+
 
 
       <div className="mt-10 w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {banners?.map((banner) => (
-          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch}></ManageBannerCard>
+        {banners?.map((banner,index) => (
+          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch} index={index}></ManageBannerCard>
         ))}
-                </div>
-                
+      </div>
+
     </div>
-       
-    );
+
+  );
 };
 
 export default ManageBanner;

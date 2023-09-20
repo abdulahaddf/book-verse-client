@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const UseUser = () => {
   const { user } = useContext(AuthContext);
-  const { data: userinfo = null, isLoading } = useQuery(
+  const { data: userinfo = null, isLoading,refetch } = useQuery(
     [user,'userinfo'],
     async () => {
       const res = await fetch(
@@ -15,6 +15,6 @@ const UseUser = () => {
       return res.json();
     }
   );
-  return [userinfo, isLoading];
+  return [userinfo, isLoading,refetch];
 };
 export default UseUser;

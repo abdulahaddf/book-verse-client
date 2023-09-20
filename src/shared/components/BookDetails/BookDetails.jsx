@@ -10,10 +10,11 @@ import { FaCheckCircle, FaStar } from "react-icons/fa";
 import UseBooks from "../../../hooks/UseBooks";
 import RecommendedCard from "./RecommendedCard";
 import Loader from "../loader/Loader";
-import './BookDetails.css'
-import { Rating } from '@smastrom/react-rating'
+import "./BookDetails.css";
+import { Rating } from "@smastrom/react-rating";
 
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
+import { Helmet } from "react-helmet";
 
 const BookDetails = () => {
   useEffect(() => {
@@ -26,7 +27,7 @@ const BookDetails = () => {
     title,
     cover_image,
     author,
-    
+
     page_numbers,
     category,
     published,
@@ -43,7 +44,7 @@ const BookDetails = () => {
   const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(2);
 
   const [activeTab, setActiveTab] = useState("description");
-  const { cartRefetch } = useContext(AuthContext);
+  const { cartRefetch, darkMode } = useContext(AuthContext);
   const { getValue, setValue } = useLocalStorage();
   const [agree, setAgree] = useState(false);
   const [readMore, setReadMore] = useState(false);
@@ -90,43 +91,27 @@ const BookDetails = () => {
 
   //   add to cart end
 
+  // tonmoy start
 
-  // tonmoy start 
+  const allRating = singleBookDetails?.review?.map((a) => a?.rating);
 
-   
+  const sumOfRating = allRating?.reduce((a, b) => a + b, 0);
 
-    const allRating= singleBookDetails?.review?.map((a)=> a?.rating) 
+  const rating = sumOfRating / singleBookDetails?.review?.length;
 
-    const sumOfRating= allRating?.reduce((a,b)=> a+b ,0)
+  const realRating = parseFloat(rating).toFixed(2);
 
-    const rating= sumOfRating / singleBookDetails?.review?.length;
+  const Star = (
+    <path d="M62 25.154H39.082L32 3l-7.082 22.154H2l18.541 13.693L13.459 61L32 47.309L50.541 61l-7.082-22.152L62 25.154z" />
+  );
 
-    const realRating=parseFloat(rating).toFixed(2)
+  const myStyles = {
+    itemShapes: Star,
 
-   
+    activeFillColor: "#10aade",
 
-
-    const Star = (
-      <path d="M62 25.154H39.082L32 3l-7.082 22.154H2l18.541 13.693L13.459 61L32 47.309L50.541 61l-7.082-22.152L62 25.154z" />
-    )
-    
-    const myStyles = {
-      itemShapes: Star,
-      
-
-      
-    
-      activeFillColor: '#10aade',
-    
-    
-      inactiveFillColor: '#10abde3a',
-     
-   
-    }
-
-   
-  
-  // tonmoy end 
+    inactiveFillColor: "#10abde3a",
+  };
 
   const linkName = readMore ? "Read Less << " : "...Read More >> ";
 
@@ -168,15 +153,37 @@ const BookDetails = () => {
   if (loading) return <Loader />;
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+          <title>Book Verse | Book Details</title>
+        </Helmet>
       <div className="lg:flex justify-center gap-8 my-10">
-        <div className=" md:w-4/6 shadow-md p-5">
+        <div
+          className={
+            darkMode
+              ? " md:w-4/6 bg-gray  border-[1px] rounded-md p-5"
+              : " md:w-4/6 shadow-md p-5"
+          }
+        >
           <div className="md:flex justify-center gap-10 items-start ">
-           <div className="bg-slate-300 box">
-             <img
-              src={cover_image}
-              className="max-h-96 min-h-[383px] min-w-[244px]  shadow-2xl imgBox"
-            />
-           </div>
+            <div
+              className={
+                darkMode
+                  ? "bg-slate-300 box rounded-md min-w-[244px]"
+                  : "bg-slate-300 box min-w-[244px]"
+              }
+            >
+              {darkMode ? (
+                <img
+                  src={cover_image}
+                  className="max-h-96 rounded-md min-h-[383px] w-full  shadow-2xl imgBox duration-300"
+                />
+              ) : (
+                <img
+                  src={cover_image}
+                  className="max-h-96 min-h-[383px] w-full  shadow-2xl imgBox duration-300"
+                />
+              )}
+            </div>
             <div className="ms-3 space-y-3">
               <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
               <h2>
@@ -204,11 +211,13 @@ const BookDetails = () => {
                 <span className="font-semibold flex items-center gap-3">
                   Rating:{" "}
                 </span>{" "}
-                <Rating readOnly value={realRating > 0 ? realRating : 1} style={{ maxWidth: 150}}  itemStyles={myStyles} />
-                 
-                
-                ( {review ? <>{review?.length}</> : ""}{" "}
-                reviews)
+                <Rating
+                  readOnly
+                  value={realRating > 0 ? realRating : 0}
+                  style={{ maxWidth: 100 }}
+                  itemStyles={myStyles}
+                />
+                ( {review ? <>{review?.length}</> : "0"} reviews)
               </p>
 
               {/* Tonmoy end */}
@@ -233,9 +242,16 @@ const BookDetails = () => {
               <div className="flex justify-center items-center mt-6">
                 <dialog
                   id="my_modal_5"
-                  className="modal modal-bottom sm:modal-middle"
+                  className="modal modal-bottom sm:modal-middle "
                 >
-                  <form method="dialog" className="modal-box">
+                  <form
+                    method="dialog"
+                    className={
+                      darkMode
+                        ? "modal-box bg-gray-200 border-[1px] text-black"
+                        : "modal-box"
+                    }
+                  >
                     <h3 className="font-bold text-lg">
                       Are you sure? Please read terms and conditions.
                     </h3>
@@ -255,7 +271,7 @@ const BookDetails = () => {
                       extend your rental period for a small fee. <br />
                       3. What You Pay: You'll pay the rental fee we agreed upon
                       when you booked the book. If you bring it back late, there
-                      might be extra charges.  <br />
+                      might be extra charges. <br />
                     </p>
                     <a
                       onClick={() => {
@@ -279,7 +295,7 @@ const BookDetails = () => {
                     <div className="modal-action">
                       <button
                         disabled={!agree}
-                        className="btn-fifth w-[250px] "
+                        className="btn-fifth w-[250px]"
                         onClick={handleAddToCart}
                       >
                         Add to Cart
@@ -293,13 +309,19 @@ const BookDetails = () => {
           </div>
           <div className="w-11/12 mx-auto md:flex justify-center gap-2">
             <button
-              className="btn-primary md:mt-10"
+              className={
+                darkMode ? "btn-fifth-dark md:mt-10" : "btn-primary md:mt-10"
+              }
               onClick={handleAddToCart}
             >
               Add to Cart
             </button>
             <button
-              className="btn-fifth mr-6 mt-5 md:mt-10"
+              className={
+                darkMode
+                  ? "btn-fifth-dark mr-6 mt-5 md:mt-10"
+                  : "btn-fifth mr-6 mt-5 md:mt-10"
+              }
               onClick={() => window.my_modal_5.showModal()}
             >
               Rent Now
@@ -307,12 +329,16 @@ const BookDetails = () => {
           </div>
         </div>
 
-
         {/* Recommended Books Section -AHAD*/}
 
-
-        <div className="shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0">
-          <h1 className="text-xl text-center">You may also like</h1>
+        <div
+          className={
+            darkMode
+              ? "border-[1px] px-5 bg-gray  rounded-lg lg:w-1/4 my-10 lg:my-0"
+              : "shadow-lg py-2 px-5 rounded-lg lg:w-1/4 my-10 lg:my-0"
+          }
+        >
+          <h1 className="text-xl text-center my-5">You may also like</h1>
 
           <div className="md:h-1/2">
             {books
@@ -325,18 +351,34 @@ const BookDetails = () => {
         </div>
       </div>
 
-      <section className="md:mx-10 shadow-lg">
+      <section
+        className={
+          darkMode
+            ? "md:mx-10 bg-gray  rounded-md  border-b-[1px]  "
+            : "md:mx-10 shadow-lg"
+        }
+      >
         <div className="tabs mt-6  text-center ">
           <button
-            className={`tab tab-lifted ${activeTab === "description" ? "tab-active" : ""
-              }`}
+            className={`tab tab-lifted ${
+              activeTab === "description"
+                ? "tab-active"
+                : darkMode
+                ? "text-white"
+                : ""
+            }`}
             onClick={() => handleTabChange("description")}
           >
             Description
           </button>
           <button
-            className={`tab tab-lifted ${activeTab === "price" ? "tab-active" : ""
-              }`}
+            className={`tab tab-lifted ${
+              activeTab === "price"
+                ? "tab-active"
+                : darkMode
+                ? "text-white"
+                : ""
+            }`}
             onClick={() => handleTabChange("price")}
           >
             Author
@@ -367,7 +409,13 @@ const BookDetails = () => {
       </section>
 
       {/* Review Section---------------------------------------- */}
-      <div className="my-10 shadow-lg md:mx-10 ">
+      <div
+        className={
+          darkMode
+            ? "my-10 bg-black/0  rounded-s-md p-10 md:mx-10 "
+            : "my-10 shadow-lg md:mx-10 "
+        }
+      >
         <h2 className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
           Read trusted reviews from our customers
         </h2>
@@ -378,7 +426,13 @@ const BookDetails = () => {
               {" "}
               {review?.map((r) => (
                 <div key={r.postDate}>
-                  <div className="rounded-lg bg-gray-100 p-8">
+                  <div
+                    className={
+                      darkMode
+                        ? "rounded-lg border-[1px]  bg-gray  p-8"
+                        : "rounded-lg bg-gray-100 p-8"
+                    }
+                  >
                     <div className="flex  gap-4">
                       <img
                         alt="Reviewer"
@@ -387,24 +441,52 @@ const BookDetails = () => {
                       />
 
                       <div className="">
-                        <p className="mt-1 text-md font-medium text-gray-800">
+                        <p
+                          className={
+                            darkMode
+                              ? "mt-1 text-md font-medium text-white"
+                              : "mt-1 text-md font-medium text-gray-800"
+                          }
+                        >
                           By - {r.name}{" "}
                         </p>
 
                         {r.postDate ? (
-                          <span className="text-gray-500">
+                          <span
+                            className={
+                              darkMode ? "text-white" : "text-gray-500"
+                            }
+                          >
                             {new Date(r.postDate).toISOString().split("T")[0]}
                           </span>
                         ) : (
                           ""
                         )}
-
-                        <Rating value={r.rating} readOnly />
-                        <p>Rating : {r.rating}</p>
+                        {darkMode ? (
+                          <>
+                            <Rating
+                              value={r.rating}
+                              readOnly
+                              itemStyles={myStyles}
+                            />
+                            <p>Rating : {r.rating}</p>
+                          </>
+                        ) : (
+                          <>
+                            <Rating value={r.rating} readOnly />
+                            <p>Rating : {r.rating}</p>
+                          </>
+                        )}
                       </div>
                     </div>
 
-                    <p className="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
+                    <p
+                      className={
+                        darkMode
+                          ? "line-clamp-2 sm:line-clamp-none mt-4 text-white"
+                          : "line-clamp-2 sm:line-clamp-none mt-4 text-gray-500"
+                      }
+                    >
                       {r.review}
                     </p>
                   </div>

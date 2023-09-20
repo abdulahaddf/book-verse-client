@@ -1,23 +1,35 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
-import React from "react";
+
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useState } from "react";
 
-const ManageBannerCard = ({ banner, refetch }) => {
+const ManageBannerCard = ({ banner, refetch,index }) => {
   // eslint-disable-next-line react/prop-types
+
+  // Tonmoy Start
+
+  const { darkMode } = useContext(AuthContext);
+
+  //  Tonmoy end
+
   const { _id, bannerURL, title, subtitle } = banner;
   const { register, handleSubmit, reset } = useForm();
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [openModalIndex, setOpenModalIndex] = useState("");
+  
   const handleEdit = (data) => {
     console.log(data);
     if (data !== "null") {
       const { title, subtitle, url } = data;
       console.log(data);
 
-      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
-        import.meta.env.VITE_Image_Upload_token
-      }`;
+      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`;
 
       const coverForm = new FormData();
       coverForm.append("image", url[0]);
@@ -44,12 +56,14 @@ const ManageBannerCard = ({ banner, refetch }) => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                   reset();
-                  document.body.classList.remove("modal-open");
                   refetch();
+                  if (openModalIndex) {
+                    openModalIndex.close();
+                  }
                   Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: `Banner updated successfully.`,
+                    title: "Banner updated successfully.",
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -70,39 +84,41 @@ const ManageBannerCard = ({ banner, refetch }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`https://book-verse-server-phi.vercel.app/banner/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              refetch();
-              Swal.fire("Deleted!", "Banner has been deleted.", "success");
-            }
-          });
-      }
-    });
+    })
+      .then((result) => {
+        console.log(result)
+        if (result.isConfirmed) {
+          axios.delete(`https://book-verse-server-phi.vercel.app/banner/${_id}`)
+            .then(res => {
+              console.log(res)
+              if (res.data.acknowledged) {
+                refetch();
+                if (openModalIndex) {
+                  openModalIndex.close();
+                }
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Banner deleted successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            })
+          
+        }
+      })
+  }
 
-    // axios.delete(`https://book-verse-server-phi.vercel.app/banner/${_id}`)
-    //   .then((res) => {
-    //     if (res.data.modifiedCount>0) {
-    //       {
-    //         Swal.fire({
-    //           position: "center",
-    //           icon: "success",
-    //           title: `Userinfo updated successfully.`,
-    //           showConfirmButton: false,
-    //           timer: 1500,
-    //         });
-    //     }
-    //     }
-    //   })
-  };
 
   return (
-    <div className="card card-compact w-96 h-72 bg-base-100 shadow-xl">
+    <div
+      className={
+        darkMode
+          ? "card card-compact w-96 h-72 bg-gray border-[1px]  shadow-xl "
+          : "card card-compact w-96 h-72 bg-base-100 shadow-xl "
+      }
+    >
       <figure>
         <img src={bannerURL} alt="Shoes" />
       </figure>
@@ -115,14 +131,28 @@ const ManageBannerCard = ({ banner, refetch }) => {
         <div className="card-actions justify-end mt-auto">
           <div className="flex gap-6">
             <button
-              className="primary-button"
-              onClick={() => document.getElementById("my_modal_2").showModal()}
+              className={darkMode ? "primary-button-dark hover:bg-[#10aade] hover:text-white border-[2px] border-[#10aade] text-[#10aade] hover:border-white " : "primary-button"}
+              onClick={() => {
+                const modalId = `${banner._id}_${index}`;
+                                    const modal =
+                                      document.getElementById(modalId);
+                                    setOpenModalIndex(modal);
+                                    if (modal) {
+                                      // setTId(sBook._id);
+                                      modal.showModal();
+                                    }
+              }}
             >
               <FaEdit className="text-xl"></FaEdit>
             </button>
-            <dialog id="my_modal_2" className="modal">
-              <div className="modal-box">
-                <form method="dialog" onSubmit={handleSubmit(handleEdit)}>
+            <dialog id={`${banner._id}_${index}`}
+              className="modal">
+              <div className={darkMode ? "bg-gray-200 modal-box" : "modal-box"}>
+                <form
+                  className={darkMode ? "bg-gray-200" : ""}
+                  method="dialog"
+                  onSubmit={handleSubmit(handleEdit)}
+                >
                   <h3 className="text-3xl font-semibold text-center text-red uppercase">
                     Edit Banner{" "}
                   </h3>
@@ -173,7 +203,7 @@ const ManageBannerCard = ({ banner, refetch }) => {
                       id="url"
                       {...register("url", { required: true })}
                       className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
+                  input file-input file-input-bordered w-full file-input-info"
                     />
                     <div className="mt-6">
                       <button
@@ -191,7 +221,12 @@ const ManageBannerCard = ({ banner, refetch }) => {
               </form>
             </dialog>
 
-            <button className="primary-button" onClick={handleDelete}>
+            <button
+              className={
+                darkMode ? "primary-button-dark  border-[2px] border-[#d71d24] hover:bg-[#d71d24] hover:text-white hover:border-white  text-[#d71d24]" : "primary-button"
+              }
+              onClick={()=>handleDelete(_id)}
+            >
               <MdDelete className="text-xl"></MdDelete>
             </button>
           </div>

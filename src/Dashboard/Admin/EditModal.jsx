@@ -1,11 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { RxCross2 } from "react-icons/rx";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const EditModal = ({ isOpen, book, onClose }) => {
+   // Tonmoy Start
+
+   const {darkMode}=useContext(AuthContext)
+
+   //  Tonmoy end
   if (!isOpen) return null;
   const {
     _id,
@@ -158,7 +165,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
       >
         <form
           method="dialog"
-          className="modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500"
+          className={darkMode?"modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500 bg-gray-200 ":"modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500  "}
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="modal-action -mt-6">
@@ -172,7 +179,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
               <RxCross2></RxCross2>
             </button>
           </div>
-          <h2 className="text-3xl font-bold text-center mb-4">Update Book</h2>
+          <h2 className={darkMode?"text-3xl font-bold text-center text-[#4b5563] mb-4":"text-3xl font-bold text-center mb-4"}>Update Book</h2>
 
           <div className="flex gap-6">
             <div className="form-control w-full">
@@ -186,7 +193,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("title")}
                 placeholder="Book name"
                 defaultValue={book.title}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
             <div className="form-control w-full">
@@ -199,7 +206,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 name="author"
                 {...register("author")}
                 placeholder="Author name"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
                 defaultValue={book.author}
               />
             </div>
@@ -217,7 +224,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("category")}
                 placeholder="Select category"
                 defaultValue={book.category}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
             <div className="form-control w-full">
@@ -231,7 +238,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("language")}
                 placeholder="Select language"
                 defaultValue={book.language}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
           </div>
@@ -248,7 +255,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("real_price")}
                 placeholder="Real price"
                 defaultValue={book.real_price}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
 
@@ -263,7 +270,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("offer_price")}
                 placeholder="Offer price"
                 defaultValue={book.offer_price}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
           </div>
@@ -280,7 +287,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("page_numbers")}
                 placeholder="Page numbers"
                 defaultValue={book.page_numbers}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
 
@@ -295,7 +302,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("rating")}
                 placeholder="Rating"
                 defaultValue={book.rating}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
           </div>
@@ -310,7 +317,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 type="date"
                 name="published"
                 {...register("published")}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
 
@@ -325,7 +332,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("about_author")}
                 placeholder="About author"
                 defaultValue={book.about_author}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-[#4b5563]"
               />
             </div>
           </div>
@@ -343,7 +350,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 placeholder="Cover image"
                 defaultValue={book.cover_image_url}
                 className="input 
-              file-input file-input-bordered w-full "
+              file-input file-input-bordered w-full text-[#4b5563] file-input-info"
               />
             </div>
             <div className="form-control w-full">
@@ -357,7 +364,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
                 {...register("author_image")}
                 placeholder="Author image"
                 defaultValue={book.author_image_url}
-                className="input file-input file-input-bordered w-full"
+                className="input file-input file-input-bordered w-full text-[#4b5563] file-input-info"
               />
             </div>
           </div>
@@ -368,7 +375,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
             </label>
             <textarea
               required
-              className="textarea textarea-bordered h-24"
+              className="textarea textarea-bordered h-24 text-[#4b5563]"
               name="description"
               {...register("description")}
               placeholder="Description"
@@ -377,7 +384,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
           </div>
 
           <input
-            className="py-2 px-3 mt-4 flex btn w-32 hover:bg-[#d71d24] hover:text-white rounded-sm btn-outline hover:border-[#d71d24] text-[#d71d24]"
+            className="mt-4 flex btn w-32 btn-primary"
             type="submit"
             value="Update Book"
           />
