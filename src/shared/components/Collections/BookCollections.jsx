@@ -2,6 +2,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import UseBooks from "../../../hooks/UseBooks";
 import CategoryCard from "../CategoryCard";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const BookCollections = () => {
   useEffect(() => {
@@ -14,6 +15,9 @@ const BookCollections = () => {
   })
   return (
     <div className="py-5">
+      <Helmet>
+          <title>Book Verse | Book Category</title>
+        </Helmet>
       <div className="mx-5 md:mx-16  p-6 bg-[#F1EDFF] rounded-md">
         <h2 className="text-slate-900 text-xl font-semibold">Book Collections</h2>
       </div>

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Lottie from "react-lottie";
-import animationData from "../../../assets/animations/login.json";
+import animationData from "../../../../public/login.json";
 import google from "../../../assets/social/google.png";
 import facebook from "../../../assets/social/facebook.png";
 
@@ -19,7 +19,8 @@ const Login = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  const { signIn, signInGoogle, signInFB, setLoading } =
+ 
+  const { signIn, signInGoogle, signInFB, setLoading, darkMode } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -152,23 +153,40 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className=" md:flex justify-center my-10 ">
-        <div className="w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl">
+    <div className=" bg-gradient-to-b from-red to-secondary md:p-10    ">
+      <div
+        className={
+          darkMode
+            ? " md:flex justify-center gap-32 my-10  items-center glass p-5"
+            : " md:flex justify-center my-10  items-center glass p-5"
+        }
+      >
+        <div
+          className={
+            darkMode
+              ? "w-full p-6 h-3/4 bg-gray border-[1px] rounded-md shadow-2xl lg:max-w-xl"
+              : "w-full p-6 h-3/4 bg-white rounded-md shadow-2xl lg:max-w-xl "
+          }
+        >
           <h1 className="text-3xl font-semibold text-center text-red uppercase">
             Sign in
           </h1>
-          <form onSubmit={handleSubmit(handleForm)} className="mt-6">
+          <form onSubmit={handleSubmit(handleForm)} className="md:mt-6">
             <div className="mb-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
                 required
               >
                 Email
               </label>
               <input
                 type="email"
+                placeholder="Email"
                 id="email"
                 {...register("email", { required: true })}
                 className={`block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40 ${
@@ -181,13 +199,18 @@ const Login = () => {
             <div className="mb-2 relative">
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-gray-800"
+                className={
+                  darkMode
+                    ? "block text-sm font-semibold text-gray-100"
+                    : "block text-sm font-semibold text-gray-800"
+                }
               >
                 Password
               </label>
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
+                placeholder="Password"
                 {...register("password", { required: true })}
                 className={`block w-full px-4 py-2 pr-10 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40 ${
                   errors.password ? "border-red-500" : ""
@@ -219,9 +242,17 @@ const Login = () => {
             </div>
           </form>
           <div className="relative flex items-center justify-center w-full mt-6 border border-t">
-            <div className="absolute px-5 bg-white">Or</div>
+            <div
+              className={
+                darkMode
+                  ? "absolute px-5 bg-[#3C4043]"
+                  : "absolute px-5 bg-white"
+              }
+            >
+              Or
+            </div>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md">
+          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -231,7 +262,7 @@ const Login = () => {
               <span className="ml-2">Sign in with Google</span>
             </button>
           </div>
-          <div className="flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md">
+          <div className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
             <button
               onClick={handlefbSignIn}
               type="button"
@@ -242,7 +273,13 @@ const Login = () => {
             </button>
           </div>
 
-          <p className="mt-8 text-md font-normal text-center text-gray-700">
+          <p
+            className={
+              darkMode
+                ? "mt-8 text-md font-normal text-center text-gray-300"
+                : "mt-8 text-md font-normal text-center text-gray-700"
+            }
+          >
             Don't have an account?{" "}
             <Link
               to="/register"
@@ -253,10 +290,12 @@ const Login = () => {
           </p>
         </div>
         <div>
-          <Lottie options={defaultOptions} />
+        
+            <Lottie options={defaultOptions} />
+        
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

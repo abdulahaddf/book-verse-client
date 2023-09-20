@@ -41,6 +41,8 @@ import ManageOrder from "../Dashboard/Admin/ManageOrder";
 import ContactWithSeller from "../pages/AllOldBooks/ContactWithSeller";
 import UserChats from "../Dashboard/User/UserChats";
 import UserToUserChat from "../Dashboard/User/UserToUserChat";
+import Cod from "../pages/payment/Cod";
+import AllKidsBooks from "../shared/components/homeSections/AllKidsBooks";
 
 
 export const router = createBrowserRouter([
@@ -77,6 +79,10 @@ export const router = createBrowserRouter([
         element: <AllRecentSelling />,
       },
       {
+        path: "/allkidsbooks",
+        element:<AllKidsBooks></AllKidsBooks>
+      },
+      {
         path: "/payment",
         element: (
           <PrivateRoute>
@@ -91,6 +97,15 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <StripePayment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/cash-on-delivery",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Cod />
           </PrivateRoute>
         ),
       },

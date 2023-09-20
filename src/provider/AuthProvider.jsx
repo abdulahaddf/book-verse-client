@@ -111,6 +111,24 @@ const AuthProvider = ({ children }) => {
 
   // add to cart data fetch  end by Tonmoy
 
+  // dark mode start Tonmoy
+
+
+    
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('darkMode') === 'true'
+  );
+
+
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode.toString());
+    // You can also add logic to toggle CSS classes or apply different styles here based on `darkMode`.
+    // For example, you can add/remove a 'dark-mode' class to your HTML or update your application's theme.
+  }, [darkMode]);
+
+  //  dark mode end by Tonmoy
+
 
 
 
@@ -132,6 +150,8 @@ const AuthProvider = ({ children }) => {
     cartRefetch,
     showAlert,
     setShowAlert,
+    darkMode,
+    setDarkMode
    
   };
 
