@@ -159,7 +159,7 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  hover:no-underline"
                             : "hover:no-underline"
                         }
                         to="/dashboard/adminHome"
