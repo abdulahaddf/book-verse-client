@@ -62,7 +62,7 @@ const ManageChats = () => {
           >
             <section className=" w-[15%] mt-2 pl-2 ">
               <span className="indicator">
-                <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 "></span>
+                <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 z-0"></span>
                 <img
                   src={a?.photoURL}
                   className=" rounded-[100%] h-[60px] w-[60px]"

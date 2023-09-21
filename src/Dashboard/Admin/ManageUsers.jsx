@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteSweep } from "react-icons/md";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
+import { GrUserSettings } from "react-icons/gr";
 
 const ManageUsers = () => {
   // Tonmoy Start
@@ -23,13 +25,14 @@ const ManageUsers = () => {
       .then((data) => {
         if (data.modifiedCount) {
           refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${user.name} is an Admin Now!`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          // Swal.fire({
+          //   position: "top-end",
+          //   icon: "success",
+          //   title: `${user.name} is an Admin Now!`,
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // });
+          toast.info(`${user.displayName?user.displayName:"user"} is an Admin Now!`)
         }
       });
   };
@@ -94,17 +97,17 @@ const ManageUsers = () => {
                       </div>
                     </div>
                   </td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
+                  <td>{user.displayName}</td>
+                  <td className="text-red">{user.email}</td>
                   <td>
                     <div className=" text-center">
                       {user.role === "admin" ? (
-                        "admin"
+                        <button className="btn btn-sm">Admin <GrUserSettings  /></button>
                       ) : (
                         <button
                           onClick={() => handleMakeAdmin(user)}
                           className={
-                            darkMode ? "btn-custom-dark  " : "btn-custom  "
+                            darkMode ? "btn-custom-dark  normal-case" : "btn-custom  normal-case"
                           }
                         >
                           Make Admin
@@ -117,7 +120,7 @@ const ManageUsers = () => {
                       onClick={() => handleDelete(user)}
                       className="w-full"
                     >
-                      <MdDeleteForever className=" text-4xl  text-[#dc2626] hover:text-[#10aade]"></MdDeleteForever>
+                      <MdDeleteSweep className=" text-4xl mx-auto  text-[#dc2626] hover:text-[#ff7479]"/>
                     </button>
                   </td>
                 </tr>

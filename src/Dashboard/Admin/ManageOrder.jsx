@@ -36,7 +36,7 @@ const ManageOrder = () => {
         // console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
-          toast("Status Updated");
+          toast.info("Status Updated");
         }
       });
   };
@@ -68,8 +68,8 @@ const ManageOrder = () => {
     <div
       className={
         darkMode
-          ? "w-full  px-10 p-5 min-h-full "
-          : "w-full  px-10 p-5 min-h-full bg-slate-300 max-w-full"
+          ? "p-2 py-32 md:py-5 md:px-10 md:p-5 min-h-full max-w-full overflow-x-auto"
+          : "p-2 py-32 md:py-5 md:px-10 md:p-5 min-h-full bg-slate-300 max-w-full overflow-x-auto"
       }
     >
       {/* top banner section  */}
