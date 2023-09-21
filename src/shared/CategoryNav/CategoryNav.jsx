@@ -1,52 +1,130 @@
-import React, { useContext } from 'react';
-import Dropdown from 'rsuite/Dropdown';
-import ButtonToolbar from 'rsuite/ButtonToolbar';
-import 'rsuite/dist/rsuite.min.css';
-import './CategoryNav.css';
-import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import "rsuite/dist/rsuite.min.css";
+import "./CategoryNav.css";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { AuthContext } from '../../provider/AuthProvider';
-
-// mt-0 flex justify-center py-1
+import { AuthContext } from "../../provider/AuthProvider";
+import { Link, NavLink } from "react-router-dom";
 
 const CategoryNav = () => {
-
   const { darkMode, setDarkMode } = useContext(AuthContext);
 
   return (
-
     <div className="navbar h-[15px] relative w-11/12 mx-auto">
-
       <div className="flex-none mx-auto">
-        <ul className="menu menu-horizontal ">
-
-          <li>
+        <p className="menu menu-horizontal flex gap-6 items-center text-xl">
+          <>
             <div className="dropdown dropdown-hover dropdown-bottom ">
-              <label tabIndex={0} className={`${darkMode?'text-white text-base hover:text-[#10aade]  flex font-semibold':' hover:text-[#10aade]  flex font-semibold text-base'}  `}> Category  <RiArrowDownSLine className='ml-1 mt-1'></RiArrowDownSLine></label>
-              <ul tabIndex={0} className={`${darkMode ? 'dropdown-content z-[1]  menu p-2 shadow dark-style rounded-box w-52' : 'dropdown-content z-[1]  menu p-2 shadow bg-base-100 rounded-box w-52'} `}>
-                <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:text-[#10aade]  hover:no-underline'}`} href='/all-books'>All Books</a></li>
-                <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:text-[#10aade]  hover:no-underline'}`} href='/allBestSelling'>Best Selling Books</a></li>
-                <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:text-[#10aade]  hover:no-underline'}`} href='/allRecentSelling'>Recent Selling Books</a></li>
-                <li><a className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'hover:text-[#10aade]  hover:no-underline'}`} href='/allkidsbooks'>Kids Zone</a></li>
-
+              <label
+                tabIndex={0}
+                className={`${
+                  darkMode
+                    ? "text-white  hover:text-[#10aade]  flex font-semibold"
+                    : " hover:text-[#10aade]  flex font-semibold "
+                }  `}
+              >
+                {" "}
+                Category{" "}
+                <RiArrowDownSLine className="ml-1 mt-1"></RiArrowDownSLine>
+              </label>
+              <ul
+                tabIndex={0}
+                className={`${
+                  darkMode
+                    ? "dropdown-content z-[1]  menu p-2 shadow dark-style rounded-box w-52"
+                    : "dropdown-content z-[1]  menu p-2 shadow bg-base-100 rounded-box w-52 "
+                } `}
+              >
+                <li>
+                  <Link
+                    className={`${
+                      darkMode
+                        ? "hover:text-[#10aade]  hover:no-underline"
+                        : "hover:text-[#10aade]  hover:no-underline"
+                    }`}
+                    to="/all-books"
+                  >
+                    All Books
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={`${
+                      darkMode
+                        ? "hover:text-[#10aade]  hover:no-underline"
+                        : "hover:text-[#10aade]  hover:no-underline"
+                    }`}
+                    to="/allBestSelling"
+                  >
+                    Best Selling Books
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={`${
+                      darkMode
+                        ? "hover:text-[#10aade]  hover:no-underline"
+                        : "hover:text-[#10aade]  hover:no-underline"
+                    }`}
+                    to="/allRecentSelling"
+                  >
+                    Recent Selling Books
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={`${
+                      darkMode
+                        ? "hover:text-[#10aade]  hover:no-underline"
+                        : "hover:text-[#10aade]  hover:no-underline"
+                    }`}
+                    to="/allkidsbooks"
+                  >
+                    Kids Zone
+                  </Link>
+                </li>
               </ul>
             </div>
+          </>
 
-          </li>
-
-
-
-
-         
-          <li className='font-semibold text-base '><a className={`${darkMode? "hover:text-[#10aade] hover:no-underline":"hover:no-underline"}`} href='/all-books'>All Books</a></li>
-          <li className='font-semibold text-base '><a className={`${darkMode? "hover:text-[#10aade] hover:no-underline":"hover:no-underline"}`} href='/old-books'>Old Books</a></li>
-        </ul>
+          <p className="font-semibold ">
+            <NavLink
+              style={({ isActive }) => {
+                return {
+                  // backgroundColor: isActive ? "#10aade" : "",
+                  color: isActive ? "#10aade" : "",
+                };
+              }}
+              className={`${
+                darkMode
+                  ? "hover:text-[#10aade] hover:no-underline"
+                  : "hover:text-[#10aade] no-underline hover:no-underline"
+              }`}
+              to="/all-books"
+            >
+              All Books
+            </NavLink>
+          </p>
+          <p className="font-semibold  ">
+            <NavLink
+              className={`${
+                darkMode
+                  ? "hover:text-[#10aade] hover:no-underline"
+                  : "hover:text-[#10aade]  hover:no-underline"
+              }`}
+              style={({ isActive }) => {
+                return {
+                  
+                  color: isActive ? "#10aade" : "",
+                };
+              }}
+              to="/old-books"
+            >
+              Old Books
+            </NavLink>
+          </p>
+        </p>
       </div>
     </div>
-
-
-
-
   );
 };
 

@@ -443,7 +443,7 @@ useEffect(() => {
 
 {/* lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden */}
 
-                <label tabIndex={0} className="cursor-pointer flex border rounded-lg px-3 py-1 m-1 justify-center items-center overflow-hidden "> <div className="flex items-center">
+                <label tabIndex={0} className="cursor-pointer flex border rounded-lg p-1  justify-center items-center overflow-hidden "> <div className="flex items-center">
 
                   <img className="w-[30px] rounded-full mr-1 sm:w-[28px]" src={user?.photoURL} />
                   
@@ -457,10 +457,10 @@ useEffect(() => {
                 </div></label>
                 <ul tabIndex={0} className={`dropdown-content z-[1]  menu p-2 shadow ${darkMode === true ? ' bg-black 90 text-white   w-32 md:w-40 lg:w-40 ' : 'bg-base-100'} rounded-box  w-32 md:w-40 lg:w-40  `}>
                   <li>
-                    <a href="/dashboard/userHome" className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'justify-between hover:no-underline hover:text-[#10aade] '}`}>
+                    <Link to="/dashboard/userHome" className={`${darkMode ? 'hover:text-[#10aade]  hover:no-underline' : 'justify-between hover:no-underline hover:text-[#10aade] '}`}>
                       My Profile
                       <span className=""></span>
-                    </a>
+                    </Link>
                   </li>
                   <li >
                     {user ? (
