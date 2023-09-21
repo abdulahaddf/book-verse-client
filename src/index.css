@@ -556,7 +556,7 @@
 }
 .theme__icon,
 .theme__toggle {
-	z-index: 1;
+	z-index: 0;
 }
 .theme__icon,
 .theme__icon-part {

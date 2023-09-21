@@ -65,9 +65,10 @@ const Dashboard = () => {
         <title>Book Verse | Dashboard | {user?.displayName}</title>
       </Helmet>
       {user && singleUser && userinfo && (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open max-w-full">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content w-11/12 md:w-full  flex flex-col items-center justify-center">
+          {/* solve issue overflox fixed fosial */}
+          <div className="drawer-content max-w-full  flex flex-col items-center justify-center overflow-x-hidden">
             <label
               htmlFor="my-drawer-2"
               className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
