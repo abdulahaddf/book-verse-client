@@ -25,7 +25,7 @@ const DailyRevenue = () => {
     async function fetchDailyData() {
       try {
         const response = await fetch(
-          "https://book-verse-server-phi.vercel.app/dailyRevenue"
+          "http://localhost:5000/dailyRevenue"
         );
         if (response.ok) {
           const data = await response.json();
@@ -47,7 +47,7 @@ const DailyRevenue = () => {
   }));
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
       <h2 className="text-4xl font-bold text-center">Daily Revenue Chart</h2>
       <p
         className={
@@ -61,8 +61,8 @@ const DailyRevenue = () => {
       <div
         className={
           darkMode
-            ? "rounded-md border p-6 my-4 bg-gray  text-white "
-            : "rounded-md border p-6 my-4 bg-slate-50"
+            ? "rounded-md border p-2 my-4 bg-gray  text-white overflow-x-auto"
+            : "rounded-md border p-2 my-4 bg-slate-50 overflow-x-auto"
         }
       >
         <ResponsiveContainer width="100%" height={500}>
@@ -70,7 +70,7 @@ const DailyRevenue = () => {
             data={chartData}
             margin={{
               top: 20,
-              right: 40,
+              right: 0,
               left: 0,
               bottom: 10,
             }}

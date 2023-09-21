@@ -89,6 +89,9 @@ const AllOldBooks = () => {
                 handleSearch();
               }
             }}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
           />
           <button
             onClick={handleSearch}
