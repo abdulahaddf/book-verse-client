@@ -4,15 +4,18 @@ import { Link } from "react-router-dom";
 
 const BestSellingCard = ({ data }) => {
   const { author, title, cover_image, _id ,real_price, offer_price, rating} = data;
+  console.log(_id)
   return (
     <div className=" my-2  ">
       <div className="flex gap-3">
        
        <div className="md:w-64">
+       <Link to={`/details/${_id}`}>
        <img
           alt="BookCOver"
           src={cover_image || `https://i.ibb.co/Lx94QQt/book-default-data.jpg`}
           className="w-24"/>
+       </Link>
        </div>
     
        <div className="w-full lg:w-96 space-y-2">
