@@ -24,33 +24,22 @@ import { ImBooks } from "react-icons/im";
 
 
 const Navbar = () => {
+  const [isHovered, setIsHovered] = useState(false);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
 
-
-  // const handleToggle = (e) => {
-  //   if (e.target.checked) {
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // };
-
-
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
 
   const { addToCartData, user, logOut, darkMode, setDarkMode } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
   const [results, setResults] = useState([]);
 
-  //  Tonmoy start
 
-  // const handleToggle = () => {
-  //   setDarkMode((prevDarkMode) => !prevDarkMode);
-
-
-  // };
-
-  //  Tonmoy end
 
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -78,7 +67,7 @@ const Navbar = () => {
   const close = () => {
     setOpenDrawer(false);
   }
-  // console.log(openDrawer)
+  
 
 
 //  dark button Tonmoy Start
@@ -370,7 +359,7 @@ useEffect(() => {
                 <div className="  mx-auto ">
                   <Link to="/" >
                     {darkMode ? <img className="w-[99px] h-[30px]  lg:w-[200px] lg:h-[50px]" src={darkLogo} alt="" /> :
-                      <img className="w-[99px] h-[30px] lg:w-[200px] lg:h-[50px] " src={logo} alt="" />}
+                      <img className="w-[99px] h-[30px] lg:w-[200px] lg:h-[50px] ml-1 " src={logo} alt="" />}
                   </Link>
                 </div>
 
@@ -413,8 +402,8 @@ useEffect(() => {
 
 <label for="theme" className="theme ">
 	
-	<span className="theme__toggle-wrap  lg:inline xl:inline xxl:inline md:hidden hidden">
-		<input id="theme" className="theme__toggle  " type="checkbox" role="switch" name="theme" value="dark" checked={darkMode} onChange={toggleDarkMode}/>
+	<span className="theme__toggle-wrap  lg:inline xl:inline xxl:inline md:hidden hidden cursor-pointer">
+		<input id="theme" className="theme__toggle  cursor-pointer" type="checkbox" role="switch" name="theme" value="dark" checked={darkMode} onChange={toggleDarkMode}/>
 		<span className="theme__icon ">
 		<span className="theme__fill"></span>
 			<span className="theme__icon-part "></span>
@@ -439,11 +428,14 @@ useEffect(() => {
 
 
             {user ? (
-              <div className=" dropdown dropdown-hover ">
+              <div className=" dropdown dropdown-hover "
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              >
 
-{/* lg:inline-block xl:inline-block xxl:inline-block md:hidden hidden */}
 
-                <label tabIndex={0} className="cursor-pointer flex border rounded-lg px-3 py-1 m-1 justify-center items-center overflow-hidden "> <div className="flex items-center">
+
+                <label tabIndex={0} className="cursor-pointer flex border rounded-lg px-3 py-1  justify-center items-center overflow-hidden "> <div className="flex items-center">
 
                   <img className="w-[30px] rounded-full mr-1 sm:w-[28px]" src={user?.photoURL} />
                   
@@ -453,7 +445,10 @@ useEffect(() => {
                   </span>
                   
                   
-                  <span className=""><RiArrowDownSLine className=''></RiArrowDownSLine></span>
+                  <span className=""><RiArrowDownSLine  className={`${
+                    isHovered ? 'transform rotate-180 ' : ''
+                  } transition-transform duration-300 inline-block `}></RiArrowDownSLine></span>
+                
                 </div></label>
                 <ul tabIndex={0} className={`dropdown-content z-[1]  menu p-2 shadow ${darkMode === true ? ' bg-black 90 text-white   w-32 md:w-40 lg:w-40 ' : 'bg-base-100'} rounded-box  w-32 md:w-40 lg:w-40  `}>
                   <li>
