@@ -156,7 +156,7 @@ const UserToUserChat = () => {
                         </div>
                       </div>
 
-                      {/* <img src={message?.img} className='w-[30px] h-[30px] rounded-[100%]' /> */}
+                 
                     </div>
                   </div>
                 )}
@@ -174,10 +174,10 @@ const UserToUserChat = () => {
                 className={darkMode?"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 border-[1px] rounded-md py-2":"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-white rounded-md py-2"}
                 required
               />
-              {/* <div className="absolute right-0 items-center inset-y-0 hidden sm:flex"> */}
+             
 
               <button className={darkMode?"inline-flex items-center    justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
-                {/* <span className={darkMode?"font-[500]":"font-bold"}>Send</span> */}
+               
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -191,7 +191,7 @@ const UserToUserChat = () => {
 
                
               </button>
-              {/* </div> */}
+             
             </form>
           </div>
         </div>

@@ -9,6 +9,9 @@ import { ImSpinner10 } from "react-icons/im";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/UseAxiousSecure";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import Lottie from "react-lottie";
+import animationData from "../../../public/confirm-order.json";
+import { Link } from "react-router-dom";
 
 const CheckOut = ({ books, price }) => {
   // console.log(price, books);
@@ -160,33 +163,63 @@ const CheckOut = ({ books, price }) => {
       });
     }
   };
-
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
     <div className="w-11/12 mx-auto">
       {paid ? (
-        <div className="md:my-40">
-          <h1 className="text-3xl text-center mt-10">
-            Congratulations!! You have Paid For All Your Books{" "}
-          </h1>
-          <h3 className="text-xl text-center my-5">
+        <div className="md:my-10">
+
+<div
+      className={
+        darkMode
+          ? "md:h-[70vh] w-11/12 md:w-1/2 mx-auto p-5 md:p-10 text-center my-10 space-y-4 border-[1px] bg-gray "
+          : "md:h-[70vh] w-11/12 md:w-1/2 mx-auto p-5 md:p-10 text-center my-10 space-y-4 border-2 border-red shadow-2xl glass"
+      }
+    >
+      <div className="md:w-2/3 flex md:gap-20 mx-auto">
+        <Lottie options={defaultOptions} />
+        <img className="w-32" src="https://i.ibb.co/PYJ6bm1/paid.png" alt="" />
+      </div>
+      
+      <h1 className="text-3xl">
+        Your Order is In Progress{" "}
+        <span className="loading loading-dots loading-md"></span>
+      </h1>
+      <h3 className="text-xl text-center my-5">
             Your Transaction Id :{" "}
             <span className="text-red">{transactionId}</span>
           </h3>
-          <h2 className="text-2xl text-center mt-5">
-            Please wait for the fastest delivery
-          </h2>
+      <p className="text-xl md:text-3xl">
+        <Link
+          className="text-red hover:no-underline "
+          to="/dashboard/purchasedBooks"
+        >
+          Click here
+        </Link>{" "}
+        To Truck Your Order
+      </p>
+      <h3 className="text-xl">Thanks For Being With Us</h3>
+    </div>
+
         </div>
       ) : (
         <>
           <form
-            className={darkMode?"w-1/2 p-20 mt-20 mx-auto text-white bg-gray border-double  border-[1px] rounded-md ":"w-1/2 p-20 mt-20 mx-auto text-white border-double border-4 border-red bg-black"}
+            className={darkMode?"md:w-1/2 p-20 mt-10 mx-auto text-white bg-gray border-double  border-[1px] rounded-md ":"md:w-1/2 p-3 md:p-20 mt-10 mx-auto text-white border-double border-4 border-red bg-gradient-to-b from-red to-secondary  "}
             onSubmit={handleSubmit}
           >
             <h1 className="text-center">Hello, {user?.displayName} </h1>
-            <h1 className="text-3xl text-center my-10">
+            <h1 className=" text-xl md:text-3xl text-center my-10">
               You Need to Pay{" "}
-              <span className="font-semibold text-red">${price}</span> for{" "}
-              <span className="font-semibold text-red">{books.length}</span>{" "}
+              <span className="font-semibold text-green-400">${price}</span> for{" "}
+              <span className="font-semibold text-green-400">{books.length}</span>{" "}
               Books
             </h1>
             <CardElement
@@ -210,7 +243,7 @@ const CheckOut = ({ books, price }) => {
               // disabled={!stripe || !clientSecret || processing}
               className={darkMode?"inline-flex justify-center rounded-md  border-[1px] px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
               :
-              "inline-flex justify-center rounded-md border border-transparent bg-red px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"}
+              "inline-flex justify-center rounded-md border border-transparent bg-red px-4 py-2 text-sm font-medium text-white hover:bg-white hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"}
             >
               {processing ? (
                 <ImSpinner10 className="m-auto animate-spin" size={24} />
@@ -219,7 +252,7 @@ const CheckOut = ({ books, price }) => {
               )}
             </button>
             <div>
-              {cardError && <p className="text-red-600 ">{cardError}</p>}
+              {cardError && <p className="text-orange-600 ">{cardError}</p>}
             </div>
           </form>
         </>

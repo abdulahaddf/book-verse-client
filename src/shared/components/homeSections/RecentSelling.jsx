@@ -1,20 +1,18 @@
 import { useEffect } from "react";
 import Heading from "../heading/Heading";
 import { Link } from "react-router-dom";
-// import BookCard from "../BookCard/BookCard";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setRecentSelling } from "../../../pages/payment/redux/RecentSellingSlice";
 import ProductCard from "../productCard/ProductCard";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import './styles.css';
 
-// import required modules
 import { Pagination, Navigation } from "swiper/modules";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useContext } from "react";
@@ -95,12 +93,7 @@ const RecentSelling = () => {
           ))}
         </Swiper>
       </div>
-      {/* normal grid view  */}
-      {/* <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 place-items-center items-start py-5">
-          {recentSellingData?.slice(0, 10).map((book) => (
-            <ProductCard key={book._id} data={book} text='recentSelling' loading={loading}></ProductCard>
-          ))}
-        </div> */}
+     
     </div>
   );
 };

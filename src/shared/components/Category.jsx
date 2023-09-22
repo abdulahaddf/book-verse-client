@@ -34,7 +34,7 @@ const Category = () => {
             `}
       </style>
 
-      <div className="md:p-10">
+      <div className="">
         <div className="text-center  md:p-5">
           <Tabs>
             <TabList className="text-xs md:text-base py-2  ">

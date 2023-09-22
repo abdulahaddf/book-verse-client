@@ -63,8 +63,8 @@ const UserChats = () => {
     <div
     className={
       darkMode
-        ? " px-5 md:px-20 lg:px-20 w-[90%]     "
-        : " md:px-20 lg:px-20 w-[90%]    "
+        ? " mt-10 md:px-20 lg:px-20 w-[90%] ps-6"
+        : " md:px-20 mt-10 lg:px-20 w-[90%] ps-6"
     }
     >
       <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>All Your Chats</h1>
@@ -78,6 +78,7 @@ const UserChats = () => {
                   : "my-2 p-[5px] py-[15px]  hover:text-black/70 hover:no-underline   space-y-3 overflow-hidden   rounded-md   hover:bg-[#f3f4f6]  flex shadow-md w-full mx-auto"
               }
             >
+
               <section className="w-[15%] mt-2 pl-2">
                 {uniqueUsersData.map((userData) => {
                   

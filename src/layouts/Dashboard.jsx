@@ -1,10 +1,17 @@
+/* eslint-disable react/no-unknown-property */
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBars, FaBook, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
+import {
+  FaBars,
+  FaBook,
+  FaBookReader,
+  FaHome,
+  FaUsers,
+  FaMapMarkedAlt,
+} from "react-icons/fa";
 import { ImBook, ImBooks } from "react-icons/im";
 // import { GrOverview } from "react-icons/gr";
 import { CgProfile } from "react-icons/cg";
 import { BsCalendarDate, BsCalendarDayFill } from "react-icons/bs";
-import { GrMapLocation } from "react-icons/gr";
 import { useContext, useEffect } from "react";
 import avatar from "../assets/avatar/avatar.png";
 import { AuthContext } from "../provider/AuthProvider";
@@ -16,7 +23,6 @@ import Loader from "../shared/components/loader/Loader";
 import UseSingleUser from "../hooks/useSingleUser";
 import { CiSignpostDuo1 } from "react-icons/ci";
 import { Helmet } from "react-helmet";
-
 
 const Dashboard = () => {
   const { user, darkMode, setDarkMode } = useContext(AuthContext);
@@ -31,20 +37,18 @@ const Dashboard = () => {
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', newDarkMode); // Store the state in local storage
+    localStorage.setItem("darkMode", newDarkMode); // Store the state in local storage
   };
 
   useEffect(() => {
     if (darkMode) {
       // Apply dark mode styles
-      document.body.classList.add('dark-mode');
+      document.body.classList.add("dark-mode");
     } else {
       // Apply light mode styles
-      document.body.classList.remove('dark-mode');
+      document.body.classList.remove("dark-mode");
     }
   }, [darkMode]);
-
-
 
   const [singleUser] = UseSingleUser(user?.email);
   const isAdmin = singleUser?.role === "admin";
@@ -88,9 +92,17 @@ const Dashboard = () => {
 
 
                   <label for="theme" className="theme">
-
                     <span className="theme__toggle-wrap ">
-                      <input id="theme" className="theme__toggle  " type="checkbox" role="switch" name="theme" value="dark" checked={darkMode} onChange={toggleDarkMode} />
+                      <input
+                        id="theme"
+                        className="theme__toggle  "
+                        type="checkbox"
+                        role="switch"
+                        name="theme"
+                        value="dark"
+                        checked={darkMode}
+                        onChange={toggleDarkMode}
+                      />
                       <span className="theme__icon ">
                         <span className="theme__fill"></span>
                         <span className="theme__icon-part"></span>
@@ -104,15 +116,17 @@ const Dashboard = () => {
                         <span className="theme__icon-part"></span>
                       </span>
                     </span>
-
                   </label>
-
 
                   {/* moon icon */}
                 </button>
               </div>
               <div>
-                {darkMode ? <img className="w-32 " src="/dark.png" alt="" /> : <img className="w-32 " src="/main-logo.png" alt="" />}
+                {darkMode ? (
+                  <img className="w-32 " src="/dark.png" alt="" />
+                ) : (
+                  <img className="w-32 " src="/main-logo.png" alt="" />
+                )}
               </div>
             </div>
             <Outlet></Outlet>
@@ -123,8 +137,9 @@ const Dashboard = () => {
               className="drawer-overlay shadow-xl"
             ></label>
             <div
-              className={`menu p-4 w-60 ${darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
-                } ${isAdmin ? "h-screen" : "h-screen"}`}
+              className={`menu p-4 w-60 ${
+                darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
+              } ${isAdmin ? "h-auto" : "h-full"}`}
             >
               <div className="text-center mx-auto">
                 <img
@@ -136,7 +151,7 @@ const Dashboard = () => {
                 </h3>
               </div>
 
-              <ul className="font-medium text-black mt-1">
+              <ul className="font-medium text-black mt-1 w-full">
                 {/* Side bar  content here */}
 
                 {singleUser?.role === "admin" && (
@@ -154,10 +169,15 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white nav-link  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
                         to="/dashboard/adminHome"
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                       >
                         <FaHome></FaHome>Admin Home
                       </NavLink>
@@ -166,9 +186,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/userHome"
                       >
                         <CgProfile></CgProfile>Profile
@@ -193,9 +218,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/daily"
                       >
                         <BsCalendarDayFill></BsCalendarDayFill>Daily
@@ -205,9 +235,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/monthly"
                       >
                         <BsCalendarDate></BsCalendarDate>Monthly
@@ -227,9 +262,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/addBook"
                       >
                         <FaBookReader></FaBookReader>Add Book
@@ -239,9 +279,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/manageBooks"
                       >
                         <ImBooks></ImBooks>Manage Books
@@ -251,9 +296,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/manageUsers"
                       >
                         <FaUsers></FaUsers>Manage Users
@@ -263,9 +313,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/manageChats"
                       >
                         <AiFillWechat /> Manage Chats
@@ -275,21 +330,32 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/OrderStatus"
                       >
-                        <GrMapLocation /> Order Status
+                        <FaMapMarkedAlt className="focus:text-white" /> Order
+                        Status
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/promo"
                       >
                         <CiDiscount1 className="font-semibold" /> Add Promo
@@ -300,9 +366,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/manageBanner"
                       >
                         <CiSignpostDuo1 className="font-semibold" /> Manage
@@ -318,9 +389,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/userHome"
                       >
                         <FaHome></FaHome>User Home
@@ -331,9 +407,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline "
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/purchasedBooks"
                       >
                         <ImBook />
@@ -344,9 +425,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/sell"
                       >
                         <MdSell />
@@ -357,9 +443,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/my-books"
                       >
                         <ImBooks />
@@ -370,9 +461,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/dashboard/userChats"
                       >
                         <FaUsers />
@@ -392,9 +488,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/"
                       >
                         <FaHome></FaHome>Home
@@ -404,9 +505,14 @@ const Dashboard = () => {
                       <NavLink
                         className={
                           darkMode
-                            ? " text-white  hover:text-[#10aade]  hover:no-underline"
-                            : "hover:no-underline"
+                            ? " text-white nav-link  hover:text-[#10aade]  focus:no-underline hover:no-underline"
+                            : "focus:no-underline hover:text-[#10aade]  hover:no-underline "
                         }
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive ? "#10aade" : "",
+                          };
+                        }}
                         to="/all-books"
                       >
                         <FaBook></FaBook>All Books
