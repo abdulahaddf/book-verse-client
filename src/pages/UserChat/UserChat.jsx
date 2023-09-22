@@ -92,7 +92,7 @@ const UserChat = () => {
   return (
     <div className="  min-h-screen w-full md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%] ps-6  flex items-center">
       <div  className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 "}>
-        {/* <h1 className='text-center text-3xl font-semibold'>Chat With Seller for any query</h1> */}
+       
         {/* top section chat header */}
         <div className={darkMode?"flex items-center bg-white/10   relative  border-b-[1px] p-3":"flex items-center gap-4 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative "}>
           <div className="mr-5">
@@ -108,21 +108,7 @@ const UserChat = () => {
             </p>
           </div>
         </div>
-        {/* <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
-            <div className="relative flex items-center space-x-4">
-          <div className="relative">
-
-          <img src={logo} className='w-[100px] h-[100px] rounded-[100%]' />
-        </div>
-        <div className="flex flex-col leading-tight">
-          <div className="text-2xl mt-1 flex items-center">
-            <span className="text-gray-700 mr-3">Book Verse</span>
-          </div>
-
-        </div>
-      </div>
-
-      </div> */}
+   
 
         <div>
           <div
@@ -171,7 +157,7 @@ const UserChat = () => {
                         </div>
                       </div>
 
-                      {/* <img src={message?.img} className='w-[30px] h-[30px] rounded-[100%]' /> */}
+                     
                     </div>
                   </div>
                 )}
@@ -192,10 +178,10 @@ const UserChat = () => {
                 className={darkMode?"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 border-[1px] rounded-md py-2":"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-white rounded-md py-2"}
                 required
               />
-              {/* <div className="absolute right-0 items-center inset-y-0 hidden sm:flex"> */}
+             
 
               <button className={darkMode?"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
-                {/* <span className="font-bold">Send</span> */}
+               
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -207,7 +193,7 @@ const UserChat = () => {
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                 </svg>
               </button>
-              {/* </div> */}
+             
             </form>
           </div>
         </div>
