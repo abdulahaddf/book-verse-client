@@ -18,7 +18,7 @@ const Banner = () => {
   console.log(banners);
 
   if (isLoading) {
-    return <div className="swiper skeleton">
+    return <div className="swiper skeleton h-36 md:h-full">
     <Skeleton height={550} />
   </div>;
   }
