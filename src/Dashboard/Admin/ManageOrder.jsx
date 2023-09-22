@@ -7,6 +7,7 @@ import Invoice from "./Invoice";
 import "jspdf-autotable";
 import { toast } from "react-toastify";
 import { FaSearch,FaMapMarkedAlt } from "react-icons/fa";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 
 const ManageOrder = () => {
@@ -36,7 +37,9 @@ const ManageOrder = () => {
         // console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
-          toast.info("Status Updated");
+          toast.info("Status Updated", {
+            icon: <AiFillCheckCircle className="text-xl text-primary"/>
+          });
         }
       });
   };
@@ -68,8 +71,8 @@ const ManageOrder = () => {
     <div
       className={
         darkMode
-          ? "p-2 my-20  md:px-10 md:p-5 min-h-full w-full overflow-x-hidden"
-          : "p-2 my-20  md:px-10 md:p-5 min-h-full bg-slate-300 w-full overflow-x-hidden"
+          ? "p-2 my-5  md:px-10 min-h-full w-full overflow-x-hidden"
+          : "p-2 my-5  md:px-10 min-h-full bg-slate-300 w-full overflow-x-hidden"
       }
     >
       <div className="w-full overflow-x-auto">
