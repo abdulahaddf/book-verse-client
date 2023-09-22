@@ -111,7 +111,7 @@ const SellBook = () => {
         className={
           darkMode
             ? "bg-gray w-[90%] mx-auto border-[1px] rounded-md p-4"
-            : "bg-slate-100 rounded-md p-4 "
+            : "bg-slate-100 rounded-md p-4 px-8"
         }
       >
         <div className="md:flex p-2 gap-6">
