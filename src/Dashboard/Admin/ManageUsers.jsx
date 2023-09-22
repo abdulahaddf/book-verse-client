@@ -99,8 +99,8 @@ const ManageUsers = () => {
                   </td>
                   <td>{user.displayName}</td>
                   <td className="text-red">{user.email}</td>
-                  <td>
-                    <div className=" text-center">
+                  <td className="mr-2">
+                    <div className="flex gap-2  text-center">
                       {user.role === "admin" ? (
                         <button className="btn btn-sm">Admin <GrUserSettings  /></button>
                       ) : (
@@ -118,7 +118,7 @@ const ManageUsers = () => {
                   <td>
                     <button
                       onClick={() => handleDelete(user)}
-                      className="w-full"
+                      className="w-full p-5"
                     >
                       <MdDeleteSweep className=" text-4xl mx-auto  text-[#dc2626] hover:text-[#ff7479]"/>
                     </button>

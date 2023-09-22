@@ -57,11 +57,6 @@ const Dashboard = () => {
     return <Loader />;
   }
 
-
-
-
-
-
   //  Tonmoy End
 
   return (
@@ -70,28 +65,27 @@ const Dashboard = () => {
         <title>Book Verse | Dashboard | {user?.displayName}</title>
       </Helmet>
       {user && singleUser && userinfo && (
-        <div className="drawer lg:drawer-open max-w-full">
+        <div className="drawer lg:drawer-open max-w-full p-2 md:p-0">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           {/* solve issue overflox fixed fosial */}
-          <div className="drawer-content max-w-full  flex flex-col items-center justify-center overflow-x-hidden">
+          <div className="drawer-content max-w-full items-center justify-center overflow-hidden ">
             <label
               htmlFor="my-drawer-2"
               className=" text-lg drawer-button lg:hidden mt-4 w-full ml-8"
             >
               <FaBars></FaBars>
             </label>
-            {/* <DashboardNavbar></DashboardNavbar> */}
-            <div className={darkMode ? "bg-gray hidden md:block lg:block xl:block xxl:block text-white absolute md:flex lg:flex xl:flex xxl:flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 " : " bg-white text-white absolute flex gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-3 hidden md:block lg:block xl:block xxl:block md:flex lg:flex xl:flex xxl:flex"}>
-              <div >
+          
+           <div className="flex justify-center md:justify-end mb-2 md:p-2 ">
+           <div
+              className={
+                darkMode
+                  ? "bg-gray  text-white flex w-64 gap-3 md:gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-1 md:p-3 "
+                  : " bg-white text-white flex w-64 gap-3 md:gap-5 items-center top-2 right-3 border-[1px] rounded-xl shadow-md p-1 md:p-3 "
+              }
+            >
+              <div>
                 <button>
-
-
-
-
-
-
-
-
                   <label for="theme" className="theme">
                     <span className="theme__toggle-wrap ">
                       <input
@@ -130,19 +124,25 @@ const Dashboard = () => {
                 )}
               </div>
             </div>
+           </div>
+            <div className="h-full">
+
             <Outlet></Outlet>
+            </div>
           </div>
           <div className="drawer-side ">
             <label
               htmlFor="my-drawer-2"
               className="drawer-overlay shadow-xl"
             ></label>
+            
             <div
               className={`menu p-4 w-60 ${
                 darkMode ? "bg-gray border-r-[1px]" : "bg-slate-100"
               } ${isAdmin ? "h-auto" : "h-full"}`}
             >
               <div className="text-center mx-auto">
+                
                 <img
                   className="rounded-full w-24 h-24 mx-auto"
                   src={user && userinfo?.photoURL ? userinfo?.photoURL : avatar}
@@ -483,8 +483,6 @@ const Dashboard = () => {
                   <>
                     {" "}
                     <div className="divider"></div>
-
-                    
                     <li>
                       <NavLink
                         className={
@@ -522,27 +520,7 @@ const Dashboard = () => {
                   </>
                 )}
               </ul>
-              <section className=" mt-5 block md:hidden lg:hidden xl:hidden xxl:hidden">
-                <label for="theme" className="theme">
-
-                  <span className="theme__toggle-wrap ">
-                    <input id="theme" className="theme__toggle  " type="checkbox" role="switch" name="theme" value="dark" checked={darkMode} onChange={toggleDarkMode} />
-                    <span className="theme__icon ">
-                      <span className="theme__fill"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                      <span className="theme__icon-part"></span>
-                    </span>
-                  </span>
-
-                </label>
-              </section>
+             
             </div>
           </div>
         </div>

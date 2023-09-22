@@ -68,8 +68,8 @@ const ManageOrder = () => {
     <div
       className={
         darkMode
-          ? "p-2 py-32  md:px-10 md:p-5 min-h-full w-full overflow-x-hidden"
-          : "p-2 py-32  md:px-10 md:p-5 min-h-full bg-slate-300 w-full overflow-x-hidden"
+          ? "p-2 my-20  md:px-10 md:p-5 min-h-full w-full overflow-x-hidden"
+          : "p-2 my-20  md:px-10 md:p-5 min-h-full bg-slate-300 w-full overflow-x-hidden"
       }
     >
       <div className="w-full overflow-x-auto">
