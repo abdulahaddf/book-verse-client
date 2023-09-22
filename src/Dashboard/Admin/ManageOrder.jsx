@@ -68,22 +68,24 @@ const ManageOrder = () => {
     <div
       className={
         darkMode
-          ? "p-2 py-32 md:py-5 md:px-10 md:p-5 min-h-full max-w-full overflow-x-auto"
-          : "p-2 py-32 md:py-5 md:px-10 md:p-5 min-h-full bg-slate-300 max-w-full overflow-x-auto"
+          ? "p-2 py-32  md:px-10 md:p-5 min-h-full w-full overflow-x-hidden"
+          : "p-2 py-32  md:px-10 md:p-5 min-h-full bg-slate-300 w-full overflow-x-hidden"
       }
     >
-      {/* top banner section  */}
-      <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
+      <div className="w-full overflow-x-auto">
+        {/* top banner section  */}
+      <div className={darkMode ? "p-5 md:p-10 bg-[#313234]" : "p-5 md:p-10 bg-slate-500 "}>
         <h2
           className={
             darkMode
-              ? "text-center text-5xl text-white font-mono font-bold"
-              : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
+              ? "text-center text-2xl md:text-5xl text-white font-mono font-bold"
+              : "text-center text-2xl md:text-5xl text-[#a3d1e6] font-mono font-bold"
           }
         >
           Track <FaMapMarkedAlt className="inline text-[#91d6f6]" /> Orders
         </h2>
-        <div className="flex justify-center pt-4 md:justify-end items-center w-full">
+        {/* search functionality  */}
+        <div className="flex justify-center pt-4 xl:justify-end items-center w-full">
           <input
             type="text"
             ref={searchRef}
@@ -283,6 +285,7 @@ const ManageOrder = () => {
             </div>
           </dialog>
         </div>
+      </div>
       </div>
       {/* Tonmoy start */}
 
