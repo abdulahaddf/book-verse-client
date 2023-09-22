@@ -164,6 +164,7 @@ const UserHome = () => {
 
   return (
     <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
+       
       <div className={darkMode?"w-11/12 p-10  bg-gray shadow-xl border-[1px] rounded-md":"w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]"}>
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information
@@ -195,7 +196,7 @@ const UserHome = () => {
                     id="url"
                     {...register("url")}
                     className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
+                  input file-input file-input-bordered w-full file-input-info"
                   />
                 </div>
                 <div className="mt-6">
@@ -218,12 +219,7 @@ const UserHome = () => {
             Account Information
           </h1>
           <div className="flex gap-10">
-            {/* <div className="">
-          <p className="text-lg mt-4">
-        Name:
-            </p>
-            <p className="border-2 px-2 py-2">{userinfo.displayName}</p>
-          </div> */}
+            
             <div>
               <p className="text-lg mt-6">Name:</p>
 

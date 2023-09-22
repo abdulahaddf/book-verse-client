@@ -135,7 +135,7 @@ const Payment = () => {
         type="radio"
         {...register("receive", { required: true })}
         value="home"
-        className="radio text-red focus:ring-red focus:ring-opacity-40"
+        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
       />
       <span className="ml-2 text-gray-600">Home</span>
     </label>
@@ -144,7 +144,7 @@ const Payment = () => {
         type="radio"
         {...register("receive")}
         value="office"
-        className="radio text-red focus:ring-red focus:ring-opacity-40"
+        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
       />
       <span className="ml-2 text-gray-600">Office</span>
     </label>

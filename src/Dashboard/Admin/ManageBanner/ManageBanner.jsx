@@ -154,7 +154,7 @@ const ManageBanner = () => {
               id="url"
               {...register("url")}
               className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full "
+                  input file-input file-input-bordered w-full file-input-info"
             />
             <div className="mt-6">
               <button
@@ -175,8 +175,8 @@ const ManageBanner = () => {
 
 
       <div className="mt-10 w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {banners?.map((banner) => (
-          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch}></ManageBannerCard>
+        {banners?.map((banner,index) => (
+          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch} index={index}></ManageBannerCard>
         ))}
       </div>
 

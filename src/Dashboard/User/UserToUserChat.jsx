@@ -9,6 +9,7 @@ import { useContext } from "react";
 import moment from "moment";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 
+
 const UserToUserChat = () => {
   const { user,darkMode } = useContext(AuthContext);
 
@@ -85,11 +86,11 @@ const UserToUserChat = () => {
   }, [messages]);
 
   return (
-    <div className="  min-h-screen w-[50%] flex items-center">
-      <div className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0  "}>
+    <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]   flex items-center">
+      <div className={darkMode?"flex-1 justify-between     flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0  "}>
 
         {/* Head chat section  */}
-        <div className={darkMode?"flex items-center  relative  border-b-[1px] sm:gap-10 justify-between sm:justify-start p-3":"flex items-center sm:gap-10 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative  "}>
+        <div className={darkMode?"flex items-center  bg-white/10    rounded-t-[15px] relative  border-b-[1px] sm:gap-10 justify-between sm:justify-start p-3":"flex items-center sm:gap-10 justify-between sm:justify-start p-3 bg-gradient-to-r  from-[#82bdd2] from-80% to-cyan-500  rounded-t-2xl relative  "}>
           <div className=" flex items-center space-x-4">
             <div >
               <img
@@ -98,18 +99,18 @@ const UserToUserChat = () => {
               />
             </div>
             <div className="flex flex-col leading-tight ">
-              <p className="mr-3 font-bold text-xl text-slate-50">
+              <p className="mr-3  font-bold text-[20px] text-slate-50">
                 {otherUserData?.displayName}
                 <HiOutlineChatBubbleLeftRight className=" absolute text-[40px]   right-[7%] top-[20%] " />
               </p>
-              <p className="font-mono text-slate-50  text-[14px] mr-3">
+              <p className=" text-slate-50  text-[14px] mr-3">
                 {otherUserData?.email}
               </p>
             </div>
           </div>
         </div>
 
-        <div className={darkMode?"flex flex-col  justify-end h-full rounded-b-2xl":"flex flex-col bg-slate-200 justify-end h-full rounded-b-2xl"}>
+        <div className={darkMode?"flex flex-col   justify-end h-full  rounded-b-2xl":"flex flex-col bg-slate-200 justify-end h-full rounded-b-2xl"}>
           {/* message display section  */}
           <div
             ref={chatContainerRef}
@@ -163,8 +164,8 @@ const UserToUserChat = () => {
             ))}
           </div>
           {/* foot section  */}
-          <div className={darkMode?"border-t-[1px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0":"border-t-[2px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0"}>
-            <form onSubmit={buttonHandler} className="relative flex  gap-5 items-center">
+          <div className={darkMode?"border-t-[1px] border-white px-4 p-2  rounded-b-2xl mb-2 sm:mb-0":"border-t-[2px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0"}>
+            <form onSubmit={buttonHandler} className="relative flex  gap-5 items-center ">
               <span className="absolute inset-y-0 flex items-center"></span>
               <input
                 name="name"
@@ -175,16 +176,20 @@ const UserToUserChat = () => {
               />
               {/* <div className="absolute right-0 items-center inset-y-0 hidden sm:flex"> */}
 
-              <button className={darkMode?"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
-                <span className="font-bold">Send</span>
+              <button className={darkMode?"inline-flex items-center    justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
+                {/* <span className={darkMode?"font-[500]":"font-bold"}>Send</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-4 w-4 ml-2 transform rotate-90 "
+                  className="  ml-[5px] transform rotate-90 "
+
+                  width="20px" height="20px"
                 >
-                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                  <path  d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                 </svg>
+
+               
               </button>
               {/* </div> */}
             </form>
