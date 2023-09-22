@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Heading from "../heading/Heading";
 import { Link } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setRecentSelling } from "../../../pages/payment/redux/RecentSellingSlice";
 import ProductCard from "../productCard/ProductCard";
 import { useState } from "react";
@@ -21,10 +21,14 @@ const RecentSelling = () => {
   const { darkMode } = useContext(AuthContext);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
+  const [data,setData]=useState([])
+
   useEffect(() => {
     fetch("https://book-verse-server-phi.vercel.app/recentSelling")
       .then((res) => res.json())
       .then((data) => {
+        setData(data)
         dispatch(setRecentSelling({ recentSelling: data }));
         setLoading(false);
       })
@@ -32,11 +36,8 @@ const RecentSelling = () => {
     setLoading(false);
   }, [dispatch]);
 
-  const recentSellingData = useSelector(
-    (state) => state.recentSelling.recentSelling
-  );
 
-  console.log(recentSellingData, "tonu");
+ 
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center z-0">
@@ -81,7 +82,7 @@ const RecentSelling = () => {
           }}
           className="mySwiper flex w-full z-0"
         >
-          {recentSellingData?.slice(0, 20).map((book, idx) => (
+          {data?.slice(0, 20).map((book, idx) => (
             <SwiperSlide key={idx}>
               <ProductCard
                 key={book._id}
