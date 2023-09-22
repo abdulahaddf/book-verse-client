@@ -90,7 +90,7 @@ const UserChat = () => {
   }, []);
 
   return (
-    <div className="  min-h-screen w-full md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%] ps-6  flex items-center">
+    <div className="  min-h-screen w-full md:w-[50%] lg:w-[50%]  xl:w-[35%]  flex items-center mx-auto">
       <div  className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0 "}>
        
         {/* top section chat header */}
@@ -99,9 +99,9 @@ const UserChat = () => {
             <img src={logo} alt="" className="w-10  mx-auto" />
           </div>
           <div>
-            <p className="mr-2  font-bold text-[20px] lg:text-[30px] xl:text-[30px] xxl:text-[30px] text-slate-50">
+            <p className="pr-6 flex gap-3 font-bold text-[20px] lg:text-[30px] xl:text-[30px]  text-slate-50">
              Chat Support
-              <HiOutlineChatBubbleLeftRight className=" absolute text-[40px]   right-[7%] top-[20%] " />
+              <HiOutlineChatBubbleLeftRight className="  text-[40px]   " />
             </p>
             <p className=" text-slate-50  text-[14px] mr-3">
               We are here to Chat!{" "}
