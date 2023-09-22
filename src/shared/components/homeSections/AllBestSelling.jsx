@@ -14,7 +14,7 @@ const AllBestSelling = () => {
 
     const bestSellingData = useSelector(state => state.bestSelling.bestSelling);
 
-    console.log(bestSellingData); // Add this line
+  
 
     return (
 

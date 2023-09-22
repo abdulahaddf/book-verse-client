@@ -7,14 +7,12 @@ import ProductCard from "../productCard/ProductCard";
 import { useState } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useContext } from "react";
-// Import Swiper styles
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import './styles.css';
 
-// import required modules
 import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -34,7 +32,7 @@ const BestSelling = () => {
 
   const bestSellingData = useSelector((state) => state.bestSelling.bestSelling);
 
-  // console.log(books,'tonu')
+  
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
@@ -50,11 +48,7 @@ const BestSelling = () => {
           See All
         </Link>
       </div>
-      {/* <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-10 items-start  py-5 place-items-center">
-        {bestSellingData?.slice(0, 10).map((book) => (
-          <ProductCard key={book._id} data={book} text='bestSelling' loading={loading}></ProductCard>
-        ))}
-      </div> */}
+     
 
       {/* ----------------------------------
               Slider added -foisal 
