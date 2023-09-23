@@ -169,8 +169,8 @@ const [openModalInfo, setOpenModalInfo] = useState("");
   }
 
   return (
-    <div className="w-11/12 h-full flex flex-col md:flex-row justify-center items-center mx-auto gap-6 mt-20">
-      <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
+    <div className="w-11/12 md:flex justify-center items-center mx-auto gap-10 my-24 ">
+      <div className="w-full px-6 md:px-10 py-10 rounded shadow-xl border-t-2 border-[#126e9d]">
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information
         </h1>
@@ -205,7 +205,7 @@ const [openModalInfo, setOpenModalInfo] = useState("");
                     type="file"
                     id="url"
                     {...register("url")}
-                    className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
+                    className="block  mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
                   input file-input file-input-bordered w-full file-input-info"
                   />
                 </div>
@@ -224,36 +224,58 @@ const [openModalInfo, setOpenModalInfo] = useState("");
             </dialog>
           
         </div>
-        <div>
+        <div className="">
           <h1 className="font-bold uppercase text-xl mt-10">
             Account Information
           </h1>
-          <div className="flex gap-2 lg:gap-10">
-            <div>
-              <p className="text-lg mt-6">Name:</p>
-
-              <p className="text-lg mt-6">Address: </p>
-              <p className="text-lg mt-6">Gender: </p>
-              <p className="text-lg mt-6">Birth Date: </p>
-              <p className="text-lg mt-6">Phone Number: </p>
-            </div> 
-            <div className="">
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-6">
+          <div className=" gap-2 lg:gap-10">
+            <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Name:</p>
+              <p className="border-[1px] md:text-lg  px-2 py-2 w-11/12 md:w-1/2  mt-[20px]">
                 {userinfo.displayName}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+            </div>
+            <div className="md:flex items-center gap-10">
+            <p className="md:text-lg w-32 mt-6">Address: </p>
+            <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2 mt-[20px]">
                 {userinfo.address}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              </div> 
+              <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Gender: </p>
+              <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2 mt-[20px]">
                 {userinfo.gender}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              </div>
+              <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Birth Date: </p>
+              <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2  mt-[20px]">
                 {userinfo.birthday}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              </div>
+              <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Phone Number: </p>
+              <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2  mt-[20px]">
                 {userinfo.phoneNumber}
               </p>
-            </div>
+              </div>
+            {/* <div className="">
+              <p className="border-2 px-2 py-2 lg:h-10 lg:min-w-fit mt-6">
+                {userinfo.displayName}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.address}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.gender}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.birthday}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.phoneNumber}
+              </p>
+            </div> */}
           </div>
         </div>
 
@@ -394,10 +416,10 @@ const [openModalInfo, setOpenModalInfo] = useState("");
           </form>
         </dialog>
       </div>
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"}>
+      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0 hidden md:inline":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0 hidden md:inline"}>
           <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
-          <div className="md:h-1/2">
+          <div className="">
             {bestSellingData
               .slice(0, 3)
               .map((book) => (

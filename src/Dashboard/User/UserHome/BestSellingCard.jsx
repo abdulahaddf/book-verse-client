@@ -6,10 +6,10 @@ const BestSellingCard = ({ data }) => {
   const { author, title, cover_image, _id ,real_price, offer_price, rating} = data;
   console.log(_id)
   return (
-    <div className=" my-2  ">
+    <div className="my-2">
       <div className="flex gap-3">
        
-       <div className="md:w-64">
+       <div className="w-full md:w-64">
        <Link to={`/details/${_id}`}>
        <img
           alt="BookCOver"
