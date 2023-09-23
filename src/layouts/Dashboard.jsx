@@ -125,7 +125,7 @@ const Dashboard = () => {
               </div>
             </div>
            </div>
-            <div className="h-full">
+            <div className="">
 
             <Outlet></Outlet>
             </div>

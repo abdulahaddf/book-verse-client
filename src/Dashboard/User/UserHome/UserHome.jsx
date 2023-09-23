@@ -10,13 +10,11 @@ import Loader from "../../../shared/components/loader/Loader";
 import UseUser from "../../../hooks/UseUser";
 import { FaCamera, FaEdit } from "react-icons/fa";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import BestSellingCard from "./BestSellingCard";
+
 
 const UserHome = () => {
   const { user, darkMode } = useContext(AuthContext);
 
-  const bestSellingData = useSelector((state) => state.bestSelling.bestSelling);
   const [openModalPic, setOpenModalPic] = useState("");
   const [openModalInfo, setOpenModalInfo] = useState("");
 
@@ -366,23 +364,7 @@ const UserHome = () => {
       </div>
 
 
-      <div
-        className={
-          darkMode
-            ? "border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"
-            : "shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0 h-[70vh]"
-        }
-      >
-        <h1 className="text-xl text-start my-5">Best Selling Books</h1>
-
-        <div className="md:h-1/2">
-       
-
-          {bestSellingData.slice(0, 3).map((book) => (
-            <BestSellingCard key={book._id} data={book} />
-          ))}
-        </div>
-      </div>
+     
 
       
     </div>

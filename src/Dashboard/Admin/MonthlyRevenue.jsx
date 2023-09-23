@@ -36,7 +36,7 @@ const MonthlyRevenue = () => {
     async function fetchMonthlyRevenue() {
       try {
         const response = await fetch(
-          "http://localhost:5000/monthlyRevenue"
+          "https://book-verse-server-phi.vercel.app/monthlyRevenue"
         );
         if (response.ok) {
           const data = await response.json();
@@ -58,7 +58,7 @@ const MonthlyRevenue = () => {
   const maxY = Math.max(...revenueValues);
 
   return (
-    <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
+    <div className="w-[414px] md:w-full mx-auto h-full p-2 px-8 lg:p-4 mt-10">
       <h3 className="text-4xl font-bold text-center">Monthly Revenue</h3>
       <p
         className={

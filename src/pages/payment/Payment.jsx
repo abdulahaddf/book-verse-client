@@ -121,7 +121,7 @@ const Payment = () => {
     <div className="my-5">
       <h1 className="page-heading">Checkout</h1>
       <h2 className="text-center  text-2xl font-mono text-red ">
-        You need to pay : {totalPrice}
+        You need to pay : ${totalPrice}
       </h2>
       <div className="md:w-11/12 mx-auto my-5 md:flex gap-10 ">
         {/* Checkout form starts here */}

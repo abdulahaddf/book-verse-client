@@ -131,7 +131,7 @@ const AddBook = () => {
         className={
           darkMode
             ? "bg-gray  border-[1px] rounded-md p-4 md:p-16 mt-10"
-            : "bg-slate-100 rounded-md p-5 md:p-16 mt-10"
+            : "bg-slate-100 rounded-md p-5 px-8 md:p-16 mt-10"
         }
       >
         <div className="md:flex gap-6">

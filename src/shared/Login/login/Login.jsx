@@ -10,6 +10,7 @@ import animationData from "../../../../public/login.json";
 import google from "../../../assets/social/google.png";
 import facebook from "../../../assets/social/facebook.png";
 import { toast } from "react-toastify";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const Login = () => {
   const defaultOptions = {
@@ -42,14 +43,10 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate("/");
-        // Swal.fire({
-        //   position: "center",
-        //   icon: "success",
-        //   title: "Successfully Signed In.",
-        //   showConfirmButton: false,
-        //   timer: 1500,
-        // });
-        toast("Successfully Signed In")
+       
+        toast.info("Successfully Signed In", {
+          icon: <AiFillCheckCircle className="text-xl text-primary"/>
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -65,7 +62,8 @@ const Login = () => {
           //   showConfirmButton: false,
           //   timer: 1500,
           // });
-          toast("Invalid email or password")
+          toast.error("Invalid email or password")
+           
         } else {
           // Swal.fire({
           //   position: "center",
@@ -101,12 +99,8 @@ const Login = () => {
           .then((res) => res.json())
           .then(() => {
             console.log(result.user);
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Successfully Signed In",
-              showConfirmButton: false,
-              timer: 1500,
+            toast.info("Successfully Signed In", {
+              icon: <AiFillCheckCircle className="text-xl text-primary"/>
             });
             navigate(from, { replace: true });
           });
@@ -139,12 +133,8 @@ const Login = () => {
           .then((res) => res.json())
           .then(() => {
             console.log(result.user);
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Successfully Signed In",
-              showConfirmButton: false,
-              timer: 1500,
+            toast.info("Successfully Signed In", {
+              icon: <AiFillCheckCircle className="text-xl text-primary"/>
             });
             navigate(from, { replace: true });
           });
@@ -298,6 +288,7 @@ const Login = () => {
             <Lottie options={defaultOptions} />
         
         </div>
+        
       </div>
     </div>
   );
