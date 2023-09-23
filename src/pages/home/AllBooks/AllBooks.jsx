@@ -15,7 +15,7 @@ const AllBooks = () => {
   const [selectedCategory, setSelectedCategory] = useState("default");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 10;
 
   // Tonmoy start
 
@@ -29,29 +29,29 @@ const AllBooks = () => {
     const book = books.reverse();
     let sortedBooks = [...book];
     //  tonmoy end
-    // ------------Filter by category------------
+    // ------------Filter by category start by zihad------------
     if (selectedCategory !== "default") {
       sortedBooks = sortedBooks.filter(
         (book) => book.category === selectedCategory
       );
     }
 
-    //--------- Sort by price (Low to High)------------
+    //--------- Sort by price (Low to High) by zihad------------
     if (sortBy === "real_price") {
       sortedBooks.sort((a, b) => a.real_price - b.real_price);
     }
 
-    //--------- Sort by rating (Low to High)------------
+    //--------- Sort by rating (Low to High) by zihad------------
     if (sortBy === "rating") {
       sortedBooks.sort((a, b) => a.rating - b.rating);
     }
 
-    //--------- Sort by price (High to Low) ------------
+    //--------- Sort by price (High to Low) by zihad------------
     if (sortBy === "-real_price") {
       sortedBooks.sort((a, b) => b.real_price - a.real_price);
     }
 
-    //--------- Sort by rating (High to Low) ------------
+    //--------- Sort by rating (High to Low) by zihad------------
     if (sortBy === "-rating") {
       sortedBooks.sort((a, b) => b.rating - a.rating);
     }
@@ -326,7 +326,7 @@ const AllBooks = () => {
           <button
             className={`px-4 py-2 rounded-md mx-2 ${
               currentPage === 1
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                ? "bg-slate-300 text-gray-500 cursor-not-allowed"
                 : "bg-[#126e9d] text-white hover:bg-[#10aade]"
             }`}
             onClick={() => handlePageChange(currentPage - 1)}
@@ -342,7 +342,7 @@ const AllBooks = () => {
               className={`${
                 currentPage === index + 1
                   ? "bg-[#126e9d] text-white"
-                  : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                  : "bg-slate-200 hover:bg-gray-300 text-gray-700"
               } px-3 py-1 mx-1 rounded-md cursor-pointer`}
             >
               {index + 1}
@@ -352,7 +352,7 @@ const AllBooks = () => {
           <button
             className={`px-4 py-2 rounded-md mx-2 ${
               currentPage === totalPages
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                ? "bg-slate-300 text-gray-500 cursor-not-allowed"
                 : "bg-[#126e9d] text-white hover:bg-[#10aade]"
             }`}
             onClick={() => handlePageChange(currentPage + 1)}

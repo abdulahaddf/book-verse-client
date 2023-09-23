@@ -102,43 +102,7 @@ const Register = () => {
 
   //  tonmoy end
 
-  // createUser(email, password)
-  //   .then(() => {
-  //     profileUpdate({ displayName: name, photoURL: url }).then(() => {
-  //       const saveUser = {
-  //         name: data.name,
-  //         email: data.email,
-  //         photoURL: data.url,
-  //       };
-  //       fetch("https://book-verse-server-phi.vercel.app/users", {
-  //         method: "POST",
-  //         headers: {
-  //           "content-type": "application/json",
-  //         },
-  //         body: JSON.stringify(saveUser),
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //           if (data.insertedId) {
-  //             reset();
-  //             Swal.fire({
-  //               position: "top-end",
-  //               icon: "success",
-  //               title: "User created successfully.",
-  //               showConfirmButton: false,
-  //               timer: 1500,
-  //             });
-  //             navigate(from, { replace: true });
-  //           }
-  //         });
-  //     });
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
-  const handleGoogleSignIn = () => {
+      const handleGoogleSignIn = () => {
     signInGoogle()
       .then((result) => {
         const loggedInUser = result.user;
@@ -369,7 +333,13 @@ const Register = () => {
               Or
             </div>
           </div>
-          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
+          <div
+            className={
+              darkMode
+                ? "flex mt-4 gap-x-2  rounded-md"
+                : "flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"
+            }
+          >
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -385,7 +355,13 @@ const Register = () => {
               <span className="ml-2">Sign up with Google</span>
             </button>
           </div>
-          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
+          <div
+            className={
+              darkMode
+                ? "flex mt-4 gap-x-2  rounded-md"
+                : "flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"
+            }
+          >
             <button
               onClick={handlefbSignIn}
               type="button"
@@ -414,10 +390,8 @@ const Register = () => {
         </div>
       </div>
       <div className="md:w-1/3 w-11/12 mx-auto">
-        
         <Lottie options={defaultOptions} />
-    
-    </div>
+      </div>
     </div>
   );
 };

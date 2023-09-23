@@ -124,17 +124,17 @@ const AddBook = () => {
   // tonmoy end
 
   return (
-    <div className="w-full h-full ps-4 lg:p-4 md:mt-6">
+    <div className="w-[414px] md:w-full mx-auto p-2 lg:p-4">
       <h2 className="text-4xl font-bold text-center">Add Book</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={
           darkMode
             ? "bg-gray  border-[1px] rounded-md p-4 md:p-16 mt-10"
-            : "bg-slate-100 rounded-md p-4 md:p-16 mt-10"
+            : "bg-slate-100 rounded-md p-5 md:p-16 mt-10"
         }
       >
-        <div className="flex gap-6">
+        <div className="md:flex gap-6">
           <div className="form-control w-full">
             <label className="label">
               <span
@@ -178,7 +178,7 @@ const AddBook = () => {
             />
           </div>
         </div>
-        <div className=" flex gap-6 b-4">
+        <div className=" md:flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
               <span
@@ -223,7 +223,7 @@ const AddBook = () => {
           </div>
         </div>
 
-        <div className=" flex gap-6 b-4">
+        <div className=" md:flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
               <span
@@ -269,7 +269,7 @@ const AddBook = () => {
           </div>
         </div>
 
-        <div className=" flex gap-6 b-4">
+        <div className=" md:flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
               <span
@@ -315,7 +315,7 @@ const AddBook = () => {
           </div>
         </div>
 
-        <div className=" flex gap-6 b-4">
+        <div className=" md:flex gap-6 b-4">
           <div className="form-control w-full">
             <label className="label">
               <span

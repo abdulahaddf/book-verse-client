@@ -3,14 +3,11 @@ import usePaymentHistory from "../../hooks/usePayments";
 import { TfiCrown } from "react-icons/tfi";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-
-
 import Invoice from "./Invoice";
-import 'jspdf-autotable';
+import "jspdf-autotable";
+import { toast } from "react-toastify";
+import { FaSearch,FaMapMarkedAlt } from "react-icons/fa";
 
-
-
-// import { useForm } from "react-hook-form";
 
 const ManageOrder = () => {
   // Tonmoy Start
@@ -26,7 +23,7 @@ const ManageOrder = () => {
     const data = {
       status: value,
     };
-    console.log(data);
+    // console.log(data);
     fetch(`https://book-verse-server-phi.vercel.app/paymentStatus/${id}`, {
       method: "PATCH",
       headers: {
@@ -36,40 +33,34 @@ const ManageOrder = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
+          toast.info("Status Updated");
         }
       });
   };
-  // const { register, handleSubmit } = useForm();
-  // const onSubmit = (data,id) => {
-  //   console.log(data);
-  //   console.log(id)
-  // }
 
-  const [payments, refetch] = usePaymentHistory();
+  const searchRef = useRef(null);
+  const [search, setSearch] = useState("");
+  const [payments, refetch] = usePaymentHistory(search);
   const [showMore, setShowMore] = useState(false);
-  const initialDisplayCount = 10;
+  const initialDisplayCount = 6;
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
-  console.log(payments);
+  console.log(search);
 
+  const handleSearch = () => {
+    setSearch(searchRef.current.value);
+    searchRef.current.value = "";
+  };
 
+  // Tonmoy start
 
-  
-
-
-
-  // Tonmoy start 
-
-
-
-  const invoiceHandler=(payment)=>{
-
-    localStorage.setItem('invoice',JSON.stringify(payment))
-  }
+  const invoiceHandler = (payment) => {
+    localStorage.setItem("invoice", JSON.stringify(payment));
+  };
 
   //  Tonmoy end 2
 
@@ -77,21 +68,52 @@ const ManageOrder = () => {
     <div
       className={
         darkMode
-          ? "w-full  px-10 p-5 min-h-full "
-          : "w-full  px-10 p-5 min-h-full bg-slate-300"
+          ? "p-2 my-20  md:px-10 md:p-5 min-h-full w-full overflow-x-hidden"
+          : "p-2 my-20  md:px-10 md:p-5 min-h-full bg-slate-300 w-full overflow-x-hidden"
       }
     >
-      <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
+      <div className="w-full overflow-x-auto">
+        {/* top banner section  */}
+      <div className={darkMode ? "p-5 md:p-10 bg-[#313234]" : "p-5 md:p-10 bg-slate-500 "}>
         <h2
           className={
             darkMode
-              ? "text-center text-5xl text-white font-mono font-bold"
-              : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
+              ? "text-center text-2xl md:text-5xl text-white font-mono font-bold"
+              : "text-center text-2xl md:text-5xl text-[#a3d1e6] font-mono font-bold"
           }
         >
-          Track Orders
+          Track <FaMapMarkedAlt className="inline text-[#91d6f6]" /> Orders
         </h2>
+        {/* search functionality  */}
+        <div className="flex justify-center pt-4 xl:justify-end items-center w-full">
+          <input
+            type="text"
+            ref={searchRef}
+            placeholder="Find Order"
+            className={
+              darkMode
+                ? "input input-bordered focus:outline-none text-black border-[#126e9d] max-w-xs rounded-sm h-8"
+                : "input input-bordered focus:outline-none border-[#126e9d] max-w-xs rounded-lg h-8"
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
+          />
+          <button
+            onClick={handleSearch}
+            className={
+              darkMode
+                ? "btn btn-sm rounded-sm bg-black/90 ml-2 text-[#10aade] border-0 hover:text-black "
+                : "btn btn-sm rounded-sm bg-[#126e9d] ml-2 text-white border-0 hover:text-black"
+            }
+          >
+            <FaSearch></FaSearch>
+          </button>
+        </div>
       </div>
+      {/* content section  */}
       <div className="flex flex-col md:flex-row justify-between gap-6">
         <div className="w-full overflow-x-auto rounded-md shadow-xl">
           <table className="table table-zebra w-full text-center">
@@ -140,14 +162,12 @@ const ManageOrder = () => {
                     {/* <td>{payment._id}</td> */}
                     <td
                       className={
-                        darkMode ? "bg-black/80 text-center" : "text-center"
+                        darkMode ? "bg-black/80 text-start" : "text-start"
                       }
                     >
-                      {payment.transactionId
-                        ? payment.transactionId
-                        : "COD"}
+                      {payment.transactionId ? payment.transactionId : "COD"}
                     </td>
-                    <td className={darkMode ? "bg-black/80" : ""}>
+                    <td className={darkMode ? "bg-black/80" : "text-start text-xs"}>
                       {payment.date}
                     </td>
                     <td
@@ -167,14 +187,20 @@ const ManageOrder = () => {
                       }
                     >
                       <span
-                        className={`${payment?.status ? "bg-green-400" : "bg-[#FF0000]"
-                          } rounded text-white badge-sm `}
+                        className={`${
+                          payment?.status ? "bg-green-400" : "bg-[#FF0000]"
+                        } rounded text-white badge-sm `}
                       >
                         {payment?.status ? payment?.status : "Pending"}
                       </span>
                     </td>
                     <td className={darkMode ? "bg-black/80" : ""}>
-                      <form className="flex" onSubmit={() => handleForm(event, payment?._id)}>
+
+                      {/* update status using form  */}
+                      <form
+                        className="flex"
+                        onSubmit={() => handleForm(event, payment?._id)}
+                      >
                         <select
                           className={
                             darkMode
@@ -216,16 +242,13 @@ const ManageOrder = () => {
                           update
                         </button>
                       </form>
-                      
                     </td>
 
                     <td className={darkMode ? "bg-black/80" : ""}>
                       {/* Tonmoy Start */}
-                     
-                      <div onClick={()=> invoiceHandler(payment)}>
 
-                        <Invoice  userInfo={payment} />
-
+                      <div onClick={() => invoiceHandler(payment)}>
+                        <Invoice userInfo={payment} />
                       </div>
                       {/* Tonmoy End */}
                     </td>
@@ -237,7 +260,11 @@ const ManageOrder = () => {
             <div className="text-center mt-4">
               <button
                 onClick={toggleShowMore}
-                className={darkMode ? "bg-black/0 btn text-white hover:bg-white hover:text-black normal-case focus:outline-none mb-6 " : "bg-[#4c6acb] btn text-white hover:bg-[#4ccb85] normal-case focus:outline-none mb-6 "}
+                className={
+                  darkMode
+                    ? "bg-black/0 btn text-white hover:bg-white hover:text-black normal-case focus:outline-none mb-6 "
+                    : "bg-[#4c6acb] btn text-white hover:bg-[#4ccb85] normal-case focus:outline-none mb-6 "
+                }
               >
                 {showMore ? "Show Less" : "See More"}
               </button>
@@ -259,8 +286,8 @@ const ManageOrder = () => {
           </dialog>
         </div>
       </div>
+      </div>
       {/* Tonmoy start */}
-
 
       {/* Tonmoy end */}
     </div>

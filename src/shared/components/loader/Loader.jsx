@@ -11,7 +11,7 @@ const Loader = () => {
     },
   };
   return (
-    <div className='w-1/4 h-[90vh] mx-auto text-center flex justify-center items-center'>
+    <div className='w-4/5 md:w-1/4 h-[90vh] mx-auto text-center flex justify-center items-center'>
       <div className=' flex justify-center items-center'>
 
         <Lottie options={defaultOptions}></Lottie>

@@ -17,7 +17,7 @@ const AddToCart = () => {
 
   const navigate = useNavigate();
 
-  // console.log(addToCartData);
+
   const [promo, setPromo] = useState([]);
   const [appliedPromo, setAppliedPromo] = useState("");
   const [payable, setPayable] = useState("");
@@ -31,7 +31,7 @@ const AddToCart = () => {
 
   const deleteAddToCart = (id) => {
     const cartItems = getValue("cartItems", []);
-    // console.log(cartItems)
+
 
     const filterCart = cartItems.filter((res) => res?._id !== id);
 
@@ -93,24 +93,24 @@ const AddToCart = () => {
     totalPrice += i?.real_price2;
   }
 
-  // console.log(totalPrice);
+
 
   const tax = totalPrice * 0.05;
 
   const deliveryCharge = 5;
 
-  // console.log(tax);
+
 
   const amount = totalPrice + tax + deliveryCharge;
 
   const finalAmount = parseFloat(amount);
-  // console.log(cartItems);
+
   {
     payable
       ? ""
       : localStorage.setItem("totalPrice", JSON.stringify(finalAmount));
   }
-  // localStorage.setItem("totalPrice", JSON.stringify(finalAmount));
+
 
   const dispatch = useDispatch();
 
@@ -131,7 +131,7 @@ const AddToCart = () => {
     };
 
     dispatch(setCartData(cartData));
-    // history.push('/payment');
+
 
     navigate("/payment");
   };
@@ -159,7 +159,7 @@ const AddToCart = () => {
       return finalAmount;
     }
   };
-  // console.log(localStorage.getValue());
+
   return (
     <div>
       <h1 className="page-heading">My Cart</h1>
@@ -174,7 +174,7 @@ const AddToCart = () => {
                     ? " grid bg-gray  lg:grid-cols-3  md:gap-10 p-3 my-10 border-[1px] rounded-md"
                     : " grid lg:grid-cols-3  md:gap-10 p-3 my-10 shadow-md rounded-md"
                 }
-                // style={{ boxShadow: "10px 10px 10px black" }}
+
               >
                 <div className=" md:w-1/2 mx-auto flex justify-center items-center ">
                   <img src={data?.cover_image} className="" />
@@ -236,7 +236,7 @@ const AddToCart = () => {
                   >
                     <button onClick={() => deleteAddToCart(data?._id)}>
                       <MdDeleteForever
-                        className={darkMode?" text-4xl mt-10  text-white hover:text-blue-500":" text-4xl mt-10  text-[#dc2626] hover:text-blue-500"}
+                        className={darkMode ? " text-4xl mt-10  text-white hover:text-blue-500" : " text-4xl mt-10  text-[#dc2626] hover:text-blue-500"}
                       />
                     </button>
                   </div>
@@ -246,11 +246,10 @@ const AddToCart = () => {
           </section>
 
           <section
-            className={`${
-              darkMode
-                ? "text-white bg-gray  font-semibold my-10 py-10 px-5 border-[1px]   space-y-5  rounded-[10px]  h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
-                : "text-slate-900 font-semibold my-10 py-10 px-5   space-y-5  rounded-[10px]   h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
-            }`}
+            className={`${darkMode
+              ? "text-white bg-gray  font-semibold my-10 py-10 px-5 border-[1px]   space-y-5  rounded-[10px]  h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
+              : "text-slate-900 font-semibold my-10 py-10 px-5   space-y-5  rounded-[10px]   h-[450px]  md:w-1/3  sticky top-0 shadow-2xl"
+              }`}
           >
             <p className=" text-xl flex justify-between border-b-2">
               Subtotal:{" "}
@@ -303,7 +302,7 @@ const AddToCart = () => {
             </p>
             <div className="text-center">
               <button
-                // state={{ price: finalAmount , books : addToCartData  }}
+
                 onClick={sendDataToPayment}
                 className={
                   darkMode

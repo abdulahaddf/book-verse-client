@@ -56,7 +56,6 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                   reset();
-                  document.body.classList.remove("modal-open");
                   refetch();
                   if (openModalIndex) {
                     openModalIndex.close();
@@ -111,20 +110,13 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
       })
   }
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   return (
     <div
       className={
         darkMode
-          ? "card card-compact w-96 h-72 bg-gray border-[1px]  shadow-xl "
-          : "card card-compact w-96 h-72 bg-base-100 shadow-xl "
+          ? "card card-compact w-full h-72 bg-gray border-[1px]  shadow-xl "
+          : "card card-compact w-full h-72 bg-base-100 shadow-xl "
       }
     >
       <figure>
