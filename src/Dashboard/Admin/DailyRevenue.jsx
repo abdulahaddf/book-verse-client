@@ -25,7 +25,7 @@ const DailyRevenue = () => {
     async function fetchDailyData() {
       try {
         const response = await fetch(
-          "http://localhost:5000/dailyRevenue"
+          "https://book-verse-server-phi.vercel.app/dailyRevenue"
         );
         if (response.ok) {
           const data = await response.json();
@@ -47,7 +47,7 @@ const DailyRevenue = () => {
   }));
 
   return (
-    <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
+    <div className="w-[414px] md:w-full mx-auto h-full p-2 px-8  lg:p-4 mt-10">
       <h2 className="text-4xl font-bold text-center">Daily Revenue Chart</h2>
       <p
         className={
