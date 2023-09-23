@@ -27,6 +27,7 @@
     "axios": "^1.4.0",
     "chart.js": "^4.4.0",
     "filestack-js": "^3.27.0",
+    "filestack-react": "^4.0.1",
     "firebase": "^10.1.0",
     "framer-motion": "^10.16.1",
     "html2pdf.js": "^0.10.1",

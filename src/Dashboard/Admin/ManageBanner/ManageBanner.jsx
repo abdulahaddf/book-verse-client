@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { AuthContext } from '../../../provider/AuthProvider';
+import { PickerOverlay } from 'filestack-react';
 
 const ManageBanner = () => {
   // Tonmoy Start
@@ -21,6 +22,7 @@ const ManageBanner = () => {
   // const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showPicker, setShowPicker] = useState(false);
   const [userinfo] = UseUser()
   const {
     register,
@@ -34,40 +36,26 @@ const ManageBanner = () => {
   });
 
 
-  const AddNewBanner = (data) => {
-    if (data !== "null") {
-      const { title, subtitle, url } = data;
-      console.log(data);
-      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token
-        }`;
+  const AddNewBanner = () => {
+    setShowPicker(true);
+  }
 
-      const coverForm = new FormData();
-      coverForm.append("image", url[0]);
-      fetch(imageUploadUrl, {
-        method: "POST",
-        body: coverForm,
-      })
-        .then((res) => res.json())
-        .then((imageResponse) => {
-          if (imageResponse.success) {
-            const imageURL = imageResponse.data.display_url;
-            const bannerDetails = {
-              title: title,
-              subtitle: subtitle,
-              bannerURL: imageURL,
-            };
-            axios
-              .post(
+const handleUploadDone=(res)=>{
+console.log(res)
+console.log(res.filesUploaded[0].url);
+const bannerDetails = {
+            title: '',
+            subtitle: '',
+            bannerURL: res.filesUploaded[0].url
+          };
+
+axios.post(
                 "https://book-verse-server-phi.vercel.app/banners", bannerDetails
               )
               .then((res) => {
                 console.log(res.data)
                 if (res.data.insertedId) {
-                  reset();
-                  refetch();
-                  if (openModalIndex) {
-                    openModalIndex.close();
-                  }
+                  refetch()
                   Swal.fire({
                     position: "center",
                     icon: "success",
@@ -75,16 +63,12 @@ const ManageBanner = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
+                  setShowPicker(false);
 
                 }
               })
               .catch((err) => console.log(err));
-          }
-        });
-
-    }
-  }
-
+}
 
 
 
@@ -97,85 +81,24 @@ const ManageBanner = () => {
 
         <div className={darkMode?" flex justify-center":""}>
           <button
-            onClick={() => {
-              const modalId = 'my_modal_8';
-                                  const modal =
-                                    document.getElementById(modalId);
-                                  setOpenModalIndex(modal);
-                                  if (modal) {
-                                    // setTId(sBook._id);
-                                    modal.showModal();
-                                  }
-            }}
+            onClick={()=>AddNewBanner()}
             className={darkMode ? "primary-button-dark border-white border-[2px]" : "primary-button"}
           >
             Add New Banner
                 </button>
+                {showPicker && (
+        <PickerOverlay
+          // apikey={import.meta.env.REACT_APP_FILESTACK_API_KEY}
+          apikey='ApA4Qt6SR4WpZkkO844gQz'
+          onUploadDone={(res) => {
+            console.log(res);
+            handleUploadDone(res);
+          }}
+        />
+      )}
+                
         </div>
       </div>
-
-      <dialog id="my_modal_8" className="modal">
-        <form method="dialog" className="modal-box" onSubmit={handleSubmit(AddNewBanner)}>
-          <h3 className="text-3xl font-semibold text-center text-red uppercase">Add New Banner </h3>
-          <div>
-            <div className="mb-2">
-              <label
-                htmlFor="name"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                {...register("title")}
-                className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-
-            <div className="mb-2">
-              <label
-                htmlFor="subtitle"
-                className="block text-sm font-semibold text-gray-800"
-              >
-                Subtitle
-              </label>
-              <input
-                type="text"
-                id="subtitle"
-                {...register("subtitle")}
-                className="block w-full px-4 py-2 mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-            <label
-              htmlFor="photo"
-              className="block text-sm font-semibold text-gray-800"
-            >
-              Add photo <span className='font-thin'>(1920px x 1080px) </span>
-            </label>
-            <input
-              checked={true}
-              type="file"
-              id="url"
-              {...register("url")}
-              className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
-                  input file-input file-input-bordered w-full file-input-info"
-            />
-            <div className="mt-6">
-              <button
-                type="submit"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
-              >
-                Submit
-              </button>
-            </div>
-
-          </div>
-        </form>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
 
 
 

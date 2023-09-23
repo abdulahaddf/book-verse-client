@@ -409,6 +409,7 @@ const UserHome = () => {
 
       
     </div>
+    </div>
   );
 };
 
