@@ -60,6 +60,9 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
                   if (openModalIndex) {
                     openModalIndex.close();
                   }
+                  if (openModalIndex) {
+                    openModalIndex.close();
+                  }
                   Swal.fire({
                     position: "center",
                     icon: "success",

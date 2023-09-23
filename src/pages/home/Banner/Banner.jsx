@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import LazyLoad from "react-lazy-load";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
+
 
 const Banner = () => {
   const { data: banners = [], isLoading } = useQuery(["banners"], async () => {
@@ -20,6 +21,7 @@ const Banner = () => {
       </div>
     );
   }
+
   return (
     <div className="overflow-hidden">
       <Swiper
