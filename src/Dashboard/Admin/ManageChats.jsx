@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { useAllUsersData } from "../../hooks/useAllUsersData";
 import { useContext, useEffect } from "react";
@@ -38,7 +38,7 @@ const ManageChats = () => {
   }, []);
 
   return (
-    // rounded-tr-[50px] rounded-bl-[50px]
+  
 
     <div
       className={
@@ -62,7 +62,7 @@ const ManageChats = () => {
           >
             <section className=" w-[15%] mt-2 pl-2 ">
               <span className="indicator">
-                <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 "></span>
+                <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 z-0"></span>
                 <img
                   src={a?.photoURL}
                   className=" rounded-[100%] h-[60px] w-[60px]"
@@ -125,29 +125,7 @@ const ManageChats = () => {
                 </p>
               )}
             </section>
-            {/* 
-
-          <section className=" w-[30%] md:w-[20%] lg:w-[20%]  mx-auto px-5 ">
-            <Link to={`singleChat/${a?._id}`} className=" w-full text-center   font-[500] mt-3
-            group relative inline-block overflow-hidden  px-0 py-1 focus:outline-none focus:ring  rounded-br-[100px] rounded-tl-[100px]  
-         " 
-            >
-             
-
-              <span
-                className="absolute inset-y-0 left-0 w-[0px] md:w-[0px] lg:w-[0px]  bg-gray-700 transition-all group-hover:w-full group-active:bg-indigo-500 duration-[1s]  "
-              ></span>
-
-              <span
-                className="relative text-sm font-medium  transition-colors group-hover:text-white "
-              >
-                View
-              </span>
-
-
-
-            </Link>
-          </section> */}
+      
 
             <section>
               {a?.chat && a?.chat?.length > 0 && (

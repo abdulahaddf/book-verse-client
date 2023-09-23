@@ -108,11 +108,11 @@ const PurchasedBooks = () => {
   }
   if (loading) return <Loader />;
   return (
-    <div className="w-full ps-2 h-full lg:p-4 mt-10">
+    <div className="w-full h-full lg:p-4 ">
       <>
         {books.length > 0 ? (
           <>
-            <div className="w-full h-full lg:p-4 mt-10">
+            <div className="w-full h-full ">
               <h1
                 className={
                   darkMode ? "dashboard-heading-dark" : "dashboard-heading"
