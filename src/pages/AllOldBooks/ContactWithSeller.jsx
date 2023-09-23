@@ -158,7 +158,7 @@ const ContactWithSeller = () => {
 
   return (
   
- <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]   flex items-center">
+ <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]  mx-auto flex items-center">
   <div className={darkMode?"flex-1 justify-between     flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0  "}>
     <div  className={darkMode?"flex items-center  bg-white/10    rounded-t-[15px] relative  border-b-[1px] sm:gap-10 justify-between sm:justify-start p-3":"flex items-center sm:gap-10 justify-between sm:justify-start p-3 bg-gradient-to-r  from-[#82bdd2] from-80% to-cyan-500  rounded-t-2xl relative  "}>
       <div className=" flex items-center space-x-4">

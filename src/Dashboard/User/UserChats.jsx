@@ -87,7 +87,7 @@ const UserChats = () => {
                     (email) => email !== user?.email
                   );
                   if (userData?.email === otherUserEmail) {
-                    console.log(userData,'t')
+                  
                     return (
                       <img
                         src={userData?.photoURL ? userData?.photoURL : logo} // Assuming 'photoURL' contains the image URL
@@ -134,7 +134,7 @@ const UserChats = () => {
                         : "text-[15px] font-[400] text-gray-600"
                     }
                   >
-                    Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                    Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 15)}
                   </p>
                 )}
                 {a?.chat[a?.chat.length - 1].email !== user?.email && (
@@ -145,7 +145,7 @@ const UserChats = () => {
                         : " text-[15px]  font-[600] text-gray-600"
                     }
                   >
-                    New text: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                    New text: {a?.chat[a?.chat.length - 1]?.text.slice(0, 15)}
                   </p>
                 )}
               </section>

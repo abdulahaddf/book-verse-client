@@ -30,7 +30,7 @@ const ManageChats = () => {
   useEffect(() => {
     const refetchInterval = setInterval(() => {
       allUsersRefetch();
-    }, 3000); // Check every 3 seconds
+    }, 1000); // Check every 1 seconds
 
     return () => {
       clearInterval(refetchInterval);
@@ -51,7 +51,7 @@ const ManageChats = () => {
         All Your Chats
       </h1>
       {allChats?.map((a) => (
-        <div key={a?._id} className="w-[400px] md:w-full">
+        <div key={a?._id} className="w-full">
           <Link
             to={`singleChat/${a?._id}`}
             className={
@@ -71,7 +71,8 @@ const ManageChats = () => {
               </span>
             </section>
 
-            <section className=" md:w-[70%] lg:w-[70%]  pl-[30px] md:pl-0 lg:p-0 space-y-1">
+            <section className="w-[60%] md:w-[70%] lg:w-[70%] pl-[50px]  md:pl-0 lg:p-0 space-y-1
+                             text-start">
               <p
                 className={
                   darkMode
@@ -92,7 +93,7 @@ const ManageChats = () => {
                         : "text-[15px] font-[400] text-gray-600"
                     }
                   >
-                    Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                    Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 15)}
                   </p>
                 ) : (
                   <p className="text-[25px] font-500 ">No reply available</p>
@@ -101,16 +102,16 @@ const ManageChats = () => {
                 <p
                   className={
                     darkMode
-                      ? " text-[15px]  font-[600] text-white"
-                      : " text-[15px]  font-[600] text-gray-600"
+                      ? ` text-[15px] ${a?.chat[a?.chat.length - 1]?.name === "Admin"? "font-[400]":"font-[600]"}  text-white`
+                      : ` text-[15px]  ${a?.chat[a?.chat.length - 1]?.name === "Admin"? "font-[400]":"font-[600] "}text-gray-600`
                   }
                 >
                   {a?.chat[a?.chat.length - 1]?.name === "Admin"
                     ? "You"
-                    : "New Message"}{" "}
+                    : "New text"}
                   :{" "}
-                  {`${a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}${
-                    a?.chat[a?.chat.length - 1]?.text.length > 26 ? ` ...` : ""
+                  {`${a?.chat[a?.chat.length - 1]?.text.slice(0, 15)}${
+                    a?.chat[a?.chat.length - 1]?.text.length > 15 ? ` ...` : ""
                   }`}
                 </p>
               ) : (
@@ -127,7 +128,7 @@ const ManageChats = () => {
             </section>
       
 
-            <section>
+            <section >
               {a?.chat && a?.chat?.length > 0 && (
                 <p
                   className={
