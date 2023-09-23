@@ -10,47 +10,21 @@ import Loader from "../../../shared/components/loader/Loader";
 import UseUser from "../../../hooks/UseUser";
 import { FaCamera, FaEdit } from "react-icons/fa";
 import { useState } from "react";
-import UseBooks from "../../../hooks/UseBooks";
-
-
-
-
-
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-
-
-// import required modules
-
 import { useSelector } from "react-redux";
 import BestSellingCard from "./BestSellingCard";
 
-
-
-
-
-
 const UserHome = () => {
-  const { user,darkMode } = useContext(AuthContext);
+  const { user, darkMode } = useContext(AuthContext);
 
-  const { books, loading } = UseBooks();
-  const bestSellingData = useSelector(state => state.bestSelling.bestSelling);
-const [openModalPic, setOpenModalPic] = useState("");
-const [openModalInfo, setOpenModalInfo] = useState("");
- 
+  const bestSellingData = useSelector((state) => state.bestSelling.bestSelling);
+  const [openModalPic, setOpenModalPic] = useState("");
+  const [openModalInfo, setOpenModalInfo] = useState("");
 
   const { register, handleSubmit, reset } = useForm();
 
-  const [userinfo, isLoading,refetch] = UseUser();
+  const [userinfo, isLoading, refetch] = UseUser();
 
   console.log(userinfo);
-
- 
 
   const updateProfile = (data) => {
     console.log(data);
@@ -69,8 +43,8 @@ const [openModalInfo, setOpenModalInfo] = useState("");
         profile
       )
       .then((res) => {
-        console.log(res)
-        if (res.data.modifiedCount ==1) {
+        console.log(res);
+        if (res.data.modifiedCount == 1) {
           reset();
           refetch();
           if (openModalInfo) {
@@ -79,16 +53,14 @@ const [openModalInfo, setOpenModalInfo] = useState("");
           Swal.fire({
             position: "center",
             icon: "success",
-            title:" Userinfo updated successfully",
+            title: " Userinfo updated successfully",
             showConfirmButton: false,
             timer: 1500,
           });
-        } 
-        else if (res.data.modifiedCount == 0 ) {
-         
-                  if (openModalInfo) {
-                    openModalInfo.close();
-                  }
+        } else if (res.data.modifiedCount == 0) {
+          if (openModalInfo) {
+            openModalInfo.close();
+          }
           Swal.fire({
             position: "center",
             icon: "error",
@@ -125,7 +97,7 @@ const [openModalInfo, setOpenModalInfo] = useState("");
             };
             axios
               .patch(
-               ` https://book-verse-server-phi.vercel.app/userpictureupdate/?email=${user?.email}`,
+                ` https://book-verse-server-phi.vercel.app/userpictureupdate/?email=${user?.email}`,
                 profile
               )
               .then((res) => {
@@ -169,60 +141,58 @@ const [openModalInfo, setOpenModalInfo] = useState("");
   }
 
   return (
-    <div className="w-11/12 h-full flex flex-col md:flex-row justify-center items-center mx-auto gap-6 mt-20">
-      <div className="w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]">
+    <div className="w-11/12 md:flex justify-center items-center mx-auto gap-6 overflow-y-auto">
+      <div className="md:w-11/12 p-2 md:p-10 rounded shadow-xl border-t-2 border-[#126e9d] ">
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
           Edit Information
         </h1>
         <div className="image-container">
           <img className="image" src={userinfo?.photoURL} alt="" />
           <button
-             onClick={() => {
-              const modalId = 'my_modal_2';
-                                  const modal =
-                                    document.getElementById(modalId);
-                                  setOpenModalPic(modal);
-                                  if (modal) {
-                                    // setTId(sBook._id);
-                                    modal.showModal();
-                                  }
+            onClick={() => {
+              const modalId = "my_modal_2";
+              const modal = document.getElementById(modalId);
+              setOpenModalPic(modal);
+              if (modal) {
+                // setTId(sBook._id);
+                modal.showModal();
+              }
             }}
             className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md focus:outline-none "
           >
             <FaCamera></FaCamera>
           </button>
 
-            <dialog id="my_modal_2" className="modal">
-              <form
-                method="dialog"
-                className="modal-box"
-                onSubmit={handleSubmit(updatePicture)}
-              >
-                <h3 className="font-bold text-lg">Change Your Picture</h3>
-                <div className="mb-2">
-                  <input
-                    checked={true}
-                    type="file"
-                    id="url"
-                    {...register("url")}
-                    className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
+          <dialog id="my_modal_2" className="modal">
+            <form
+              method="dialog"
+              className="modal-box"
+              onSubmit={handleSubmit(updatePicture)}
+            >
+              <h3 className="font-bold text-lg">Change Your Picture</h3>
+              <div className="mb-2">
+                <input
+                  checked={true}
+                  type="file"
+                  id="url"
+                  {...register("url")}
+                  className="block   mt-2 text-red bg-white border rounded-md focus:border-red focus:ring-red focus:outline-none focus:ring focus:ring-opacity-40
                   input file-input file-input-bordered w-full file-input-info"
-                  />
-                </div>
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-              <form method="dialog" className="modal-backdrop">
-                <button>close</button>
-              </form>
-            </dialog>
-          
+                />
+              </div>
+              <div className="mt-6">
+                <button
+                  type="submit"
+                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+            <form method="dialog" className="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
         </div>
         <div>
           <h1 className="font-bold uppercase text-xl mt-10">
@@ -236,12 +206,12 @@ const [openModalInfo, setOpenModalInfo] = useState("");
               <p className="text-lg mt-6">Gender: </p>
               <p className="text-lg mt-6">Birth Date: </p>
               <p className="text-lg mt-6">Phone Number: </p>
-            </div> 
+            </div>
             <div className="">
               <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-6">
                 {userinfo.displayName}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              <p className="border-2 w-48 px-2 py-2 h-10 lg:w-64 mt-[10px]">
                 {userinfo.address}
               </p>
               <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
@@ -258,15 +228,14 @@ const [openModalInfo, setOpenModalInfo] = useState("");
         </div>
 
         <button
-           onClick={() => {
-            const modalId = 'my_modal_8';
-                                const modal =
-                                  document.getElementById(modalId);
-                                setOpenModalInfo(modal);
-                                if (modal) {
-                                  // setTId(sBook._id);
-                                  modal.showModal();
-                                }
+          onClick={() => {
+            const modalId = "my_modal_8";
+            const modal = document.getElementById(modalId);
+            setOpenModalInfo(modal);
+            if (modal) {
+              // setTId(sBook._id);
+              modal.showModal();
+            }
           }}
           className="btn-home mt-10"
         >
@@ -394,20 +363,28 @@ const [openModalInfo, setOpenModalInfo] = useState("");
           </form>
         </dialog>
       </div>
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"}>
-          <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
-          <div className="md:h-1/2">
-            {bestSellingData
-              .slice(0, 3)
-              .map((book) => (
-                <BestSellingCard key={book._id} data={book} />
-              ))}
-          </div>
+
+      <div
+        className={
+          darkMode
+            ? "border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"
+            : "shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0 h-[70vh]"
+        }
+      >
+        <h1 className="text-xl text-start my-5">Best Selling Books</h1>
+
+        <div className="md:h-1/2">
+       
+
+          {bestSellingData.slice(0, 3).map((book) => (
+            <BestSellingCard key={book._id} data={book} />
+          ))}
         </div>
-     
       </div>
-     
+
+      
+    </div>
   );
 };
 

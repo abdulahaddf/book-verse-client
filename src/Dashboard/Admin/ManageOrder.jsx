@@ -7,6 +7,7 @@ import Invoice from "./Invoice";
 import "jspdf-autotable";
 import { toast } from "react-toastify";
 import { FaSearch,FaMapMarkedAlt } from "react-icons/fa";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 
 const ManageOrder = () => {
@@ -36,7 +37,9 @@ const ManageOrder = () => {
         // console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
-          toast("Status Updated");
+          toast.info("Status Updated", {
+            icon: <AiFillCheckCircle className="text-xl text-primary"/>
+          });
         }
       });
   };
@@ -68,22 +71,24 @@ const ManageOrder = () => {
     <div
       className={
         darkMode
-          ? "w-full  px-10 p-5 min-h-full "
-          : "w-full  px-10 p-5 min-h-full bg-slate-300 max-w-full"
+          ? "p-2 my-5  md:px-10 min-h-full w-full overflow-x-hidden"
+          : "p-2 my-5  md:px-10 min-h-full bg-slate-300 w-full overflow-x-hidden"
       }
     >
-      {/* top banner section  */}
-      <div className={darkMode ? "p-10  " : "p-10 bg-slate-500 "}>
+      <div className="w-full overflow-x-auto">
+        {/* top banner section  */}
+      <div className={darkMode ? "p-5 md:p-10 bg-[#313234]" : "p-5 md:p-10 bg-slate-500 "}>
         <h2
           className={
             darkMode
-              ? "text-center text-5xl text-white font-mono font-bold"
-              : "text-center text-5xl text-[#91d6f6] font-mono font-bold"
+              ? "text-center text-2xl md:text-5xl text-white font-mono font-bold"
+              : "text-center text-2xl md:text-5xl text-[#a3d1e6] font-mono font-bold"
           }
         >
           Track <FaMapMarkedAlt className="inline text-[#91d6f6]" /> Orders
         </h2>
-        <div className="flex justify-center pt-4 md:justify-end items-center w-full">
+        {/* search functionality  */}
+        <div className="flex justify-center pt-4 xl:justify-end items-center w-full">
           <input
             type="text"
             ref={searchRef}
@@ -283,6 +288,7 @@ const ManageOrder = () => {
             </div>
           </dialog>
         </div>
+      </div>
       </div>
       {/* Tonmoy start */}
 

@@ -370,7 +370,7 @@ useEffect(() => {
                 <div className="  mx-auto ">
                   <Link to="/" >
                     {darkMode ? <img className="w-[99px] h-[30px]  lg:w-[200px] lg:h-[50px]" src={darkLogo} alt="" /> :
-                      <img className="w-[99px] h-[30px] lg:w-[200px] lg:h-[50px] " src={logo} alt="" />}
+                      <img className="w-4/5 h-[30px] lg:w-[200px] lg:h-[50px] ml-5 md:ml-0" src={logo} alt="" />}
                   </Link>
                 </div>
 
