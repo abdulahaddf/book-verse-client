@@ -76,7 +76,7 @@ const Category = () => {
                         ? "hover:text-black hover:no-underline hover:font-[500]"
                         : "hover:text-white hover:no-underline hover:font-[500]"
                     }
-                    to={`/All/Category`}
+                    to={`all-books`}
                   >
                     See more
                   </Link>
