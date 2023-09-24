@@ -105,12 +105,12 @@ const ContactWithSeller = () => {
   }, [messages]);
 
   return (
-    <div className="  min-h-screen w-[90%] md:w-[50%] lg:w-[50%]  xxl:w-[40%]  xl:w-[35%]  mx-auto flex items-center">
+    <div className="mt-5 w-full md:w-[50%] lg:w-[50%]   xl:w-[35%]  flex items-center mx-auto overflow-hidden">
       <div
         className={
           darkMode
-            ? "flex-1 justify-between     flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 "
-            : "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0 bg-slate-300 my-5 md:pt-0  "
+            ? "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 "
+            : "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto  bg-slate-300  "
         }
       >
         <div
@@ -144,7 +144,7 @@ const ContactWithSeller = () => {
         <div
           ref={chatContainerRef}
           id="messages"
-          className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+          className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch overflow-hidden"
         >
           {messages?.chat?.map((message, index) => (
             <div key={index}>

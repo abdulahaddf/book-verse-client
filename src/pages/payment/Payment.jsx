@@ -276,11 +276,11 @@ const Payment = () => {
           }
         >
           {/* Payment method selection */}
-          <div className="flex flex-col items-center justify-center gap-10  ">
+          <div className="flex flex-col items-center justify-center gap-10 mx-auto ">
             <h1 className="text-xl my-3">Payment Method</h1>
 
             {/* Radio button for SSLCommerz payment */}
-            <label className="flex items-center text-lg bg-white w-11/12  p-2 rounded-lg ">
+            <label className="flex items-center text-center text-lg bg-white w-11/12  p-2 rounded-lg ">
               <input
                 type="radio"
                 value="sslCommerz"
@@ -288,7 +288,7 @@ const Payment = () => {
                 onChange={() => setSelectedPaymentMethod("sslCommerz")}
                 className="radio text-red focus:ring-red focus:ring-opacity-40"
               />
-              <span className="ml-2 h-24 p-4 scale-110">
+              <span className="w-[500px] ml-2 flex items-center justify-center p-4 mx-auto scale-110">
                 <img
                   className=" rounded-[10px]"
                   src="https://i.ibb.co/Lhwv66n/SSLCommerz-01.png"
