@@ -10,8 +10,10 @@ import Swal from "sweetalert2";
 const Payment = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [submitText, setSubmitText] = useState("Please Submit all information then pay");
-  const { user,darkMode } = useContext(AuthContext);
+  const [submitText, setSubmitText] = useState(
+    "Please Submit all information then pay"
+  );
+  const { user, darkMode } = useContext(AuthContext);
   const [userinfo, isLoading] = UseUser();
   const { getValue } = useLocalStorage();
   const totalPrice = localStorage.getItem("totalPrice");
@@ -23,7 +25,7 @@ const Payment = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue, 
+    setValue,
   } = useForm();
 
   // Set default values after the component is mounted
@@ -32,7 +34,7 @@ const Payment = () => {
     setValue("phoneNumber", userinfo?.phoneNumber || "");
     setValue("email", userinfo?.email || "");
     setValue("address", userinfo?.address || "");
-    setValue("receive", "home"); 
+    setValue("receive", "home");
   }, [userinfo, setValue]);
 
   const customer = getValue("customer"); // getting the customer information from the checkout form
@@ -116,7 +118,6 @@ const Payment = () => {
     setButtonDisabled(false);
   };
 
-
   return (
     <div className="my-5">
       <h1 className="page-heading">Checkout</h1>
@@ -126,41 +127,55 @@ const Payment = () => {
       <div className="md:w-11/12 mx-auto my-5 md:flex gap-10 ">
         {/* Checkout form starts here */}
 
-      <div className={darkMode?" bg-gray w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-10 md:py-20  h-fit ":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-10 md:py-20 h-fit"}>
-     
-   
-              <h1 className="text-2xl font-semibold text-center text-red uppercase">
-              Shipping Information
-              </h1>
-              <form onSubmit={handleSubmit(updateProfile)} className="mt-3 md:mt-6">
-              <div className=" flex items-center gap-5">
-  <label
-    className=" text-sm font-semibold pb-2 text-gray-800"
-  >
-    Pick Up Your Parcel From:
-  </label>
-  <div className="flex items-center  space-x-4">
-    <label className="inline-flex items-center text-lg">
-      <input
-        type="radio"
-        {...register("receive", { required: true })}
-        value="home"
-        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
-      />
-      <span className="ml-2 text-gray-600">Home</span>
-    </label>
-    <label className="inline-flex items-center text-lg">
-      <input
-        type="radio"
-        {...register("receive")}
-        value="office"
-        className={darkMode?"radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40":"radio text-red focus:ring-red focus:ring-opacity-40"}
-      />
-      <span className="ml-2 text-gray-600">Office</span>
-    </label>
-  </div>
-</div>
-{errors.receive && <span className="error font-light text-xs">Pick up information is required</span>}
+        <div
+          className={
+            darkMode
+              ? " bg-gray w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-10 md:py-20  h-fit "
+              : " bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-10 md:py-20 h-fit"
+          }
+        >
+          <h1 className="text-2xl font-semibold text-center text-red uppercase">
+            Shipping Information
+          </h1>
+          <form onSubmit={handleSubmit(updateProfile)} className="mt-3 md:mt-6">
+            <div className=" flex items-center gap-5">
+              <label className=" text-sm font-semibold pb-2 text-gray-800">
+                Pick Up Your Parcel From:
+              </label>
+              <div className="flex items-center  space-x-4">
+                <label className="inline-flex items-center text-lg">
+                  <input
+                    type="radio"
+                    {...register("receive", { required: true })}
+                    value="home"
+                    className={
+                      darkMode
+                        ? "radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40"
+                        : "radio text-red focus:ring-red focus:ring-opacity-40"
+                    }
+                  />
+                  <span className="ml-2 text-gray-600">Home</span>
+                </label>
+                <label className="inline-flex items-center text-lg">
+                  <input
+                    type="radio"
+                    {...register("receive")}
+                    value="office"
+                    className={
+                      darkMode
+                        ? "radio  border-[1px] border-red  focus:ring-red focus:ring-opacity-40"
+                        : "radio text-red focus:ring-red focus:ring-opacity-40"
+                    }
+                  />
+                  <span className="ml-2 text-gray-600">Office</span>
+                </label>
+              </div>
+            </div>
+            {errors.receive && (
+              <span className="error font-light text-xs">
+                Pick up information is required
+              </span>
+            )}
 
             <div className="mb-2">
               <label
@@ -239,30 +254,33 @@ const Payment = () => {
               </span>
             )}
 
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
-                  >
-                    Submit
-                  </button>
-                  <p className="text-center my-3 text-gray-600">{submitText}</p>
-                </div>
-              </form>
-            
-      
-    </div>
-
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-red focus:outline-none focus:bg-red"
+              >
+                Submit
+              </button>
+              <p className="text-center my-3 text-gray-600">{submitText}</p>
+            </div>
+          </form>
+        </div>
 
         {/* Checkout form ends here */}
 
-        <div className={darkMode?"w-11/12 md:w-1/2 mx-auto my-5  bg-gray py-10 rounded-lg h-fit border-t-2 border-red":" w-11/12 md:w-1/2 mx-auto my-5  bg-slate-200 py-2 md:py-10 rounded-lg border-t-2 border-red"} >
+        <div
+          className={
+            darkMode
+              ? "w-11/12 md:w-1/2 mx-auto my-5  bg-gray py-10 rounded-lg h-fit border-t-2 border-red"
+              : " w-11/12 md:w-1/2 mx-auto my-5  bg-slate-200 py-2 md:py-10 rounded-lg border-t-2 border-red"
+          }
+        >
           {/* Payment method selection */}
-          <div className="flex flex-col items-center justify-center gap-10  ">
+          <div className="flex flex-col items-center justify-center gap-10 mx-auto ">
             <h1 className="text-xl my-3">Payment Method</h1>
 
             {/* Radio button for SSLCommerz payment */}
-            <label className="flex items-center text-lg bg-white w-11/12  p-2 rounded-lg ">
+            <label className="flex items-center text-center text-lg bg-white w-11/12  p-2 rounded-lg ">
               <input
                 type="radio"
                 value="sslCommerz"
@@ -270,7 +288,7 @@ const Payment = () => {
                 onChange={() => setSelectedPaymentMethod("sslCommerz")}
                 className="radio text-red focus:ring-red focus:ring-opacity-40"
               />
-              <span className="ml-2 h-24 p-4 scale-110">
+              <span className="w-[500px] ml-2 flex items-center justify-center p-4 mx-auto scale-110">
                 <img
                   className=" rounded-[10px]"
                   src="https://i.ibb.co/Lhwv66n/SSLCommerz-01.png"

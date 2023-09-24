@@ -21,7 +21,7 @@ const Login = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
- 
+
   const { signIn, signInGoogle, signInFB, setLoading, darkMode } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
@@ -43,9 +43,9 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate("/");
-       
+
         toast.info("Successfully Signed In", {
-          icon: <AiFillCheckCircle className="text-xl text-primary"/>
+          icon: <AiFillCheckCircle className="text-xl text-primary" />,
         });
       })
       .catch((error) => {
@@ -62,8 +62,7 @@ const Login = () => {
           //   showConfirmButton: false,
           //   timer: 1500,
           // });
-          toast.error("Invalid email or password")
-           
+          toast.error("Invalid email or password");
         } else {
           // Swal.fire({
           //   position: "center",
@@ -72,7 +71,7 @@ const Login = () => {
           //   showConfirmButton: false,
           //   timer: 1500,
           // });
-          toast(errorMessage.slice(10,61))
+          toast(errorMessage.slice(10, 61));
         }
       });
   };
@@ -100,7 +99,7 @@ const Login = () => {
           .then(() => {
             console.log(result.user);
             toast.info("Successfully Signed In", {
-              icon: <AiFillCheckCircle className="text-xl text-primary"/>
+              icon: <AiFillCheckCircle className="text-xl text-primary" />,
             });
             navigate(from, { replace: true });
           });
@@ -134,7 +133,7 @@ const Login = () => {
           .then(() => {
             console.log(result.user);
             toast.info("Successfully Signed In", {
-              icon: <AiFillCheckCircle className="text-xl text-primary"/>
+              icon: <AiFillCheckCircle className="text-xl text-primary" />,
             });
             navigate(from, { replace: true });
           });
@@ -246,7 +245,13 @@ const Login = () => {
               Or
             </div>
           </div>
-          <div  className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
+          <div
+            className={
+              darkMode
+                ? "flex mt-4 gap-x-2  rounded-md"
+                : "flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"
+            }
+          >
             <button
               onClick={handleGoogleSignIn}
               type="button"
@@ -256,7 +261,13 @@ const Login = () => {
               <span className="ml-2">Sign in with Google</span>
             </button>
           </div>
-          <div className={darkMode?"flex mt-4 gap-x-2  rounded-md":"flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"}>
+          <div
+            className={
+              darkMode
+                ? "flex mt-4 gap-x-2  rounded-md"
+                : "flex mt-4 gap-x-2 hover:bg-slate-200 rounded-md"
+            }
+          >
             <button
               onClick={handlefbSignIn}
               type="button"
@@ -284,11 +295,8 @@ const Login = () => {
           </p>
         </div>
         <div>
-        
-            <Lottie options={defaultOptions} />
-        
+          <Lottie options={defaultOptions} />
         </div>
-        
       </div>
     </div>
   );

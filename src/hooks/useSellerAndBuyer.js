@@ -1,10 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-
-const UseSellerAndBuyer = (sellerMail,buyerMail) => {
-  
+const UseSellerAndBuyer = (sellerMail, buyerMail) => {
   const { data: message = [], refetch: sellerAndBuyerDataRefetch } = useQuery(
-    [sellerMail,buyerMail,'sellerAndBuyerCollections'],
+    [sellerMail, buyerMail, "sellerAndBuyerCollections"],
     async () => {
       const res = await fetch(
         `https://book-verse-server-phi.vercel.app/sellerAndBuyerCollections?seller=${sellerMail}&&buyer=${buyerMail}`

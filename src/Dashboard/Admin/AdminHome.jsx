@@ -210,14 +210,12 @@ const AdminHome = () => {
                     weekly,
                   })
                 )}
-                margin={
-                  {
-                    top: 4,
-                    right: 4,
-                    bottom: 4,
-                    left: 4,
-                  }
-                }
+                margin={{
+                  top: 4,
+                  right: 4,
+                  bottom: 4,
+                  left: 4,
+                }}
               >
                 <CartesianGrid stroke={darkMode ? "#ffff" : "#f5f5f5"} />
                 <XAxis

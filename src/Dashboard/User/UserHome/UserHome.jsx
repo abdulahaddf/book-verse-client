@@ -11,7 +11,6 @@ import UseUser from "../../../hooks/UseUser";
 import { FaCamera, FaEdit } from "react-icons/fa";
 import { useState } from "react";
 
-
 const UserHome = () => {
   const { user, darkMode } = useContext(AuthContext);
 
@@ -360,11 +359,6 @@ const UserHome = () => {
           </form>
         </dialog>
       </div>
-
-
-     
-
-      
     </div>
   );
 };

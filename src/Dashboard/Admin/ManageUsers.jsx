@@ -32,7 +32,9 @@ const ManageUsers = () => {
           //   showConfirmButton: false,
           //   timer: 1500,
           // });
-          toast.info(`${user.displayName?user.displayName:"user"} is an Admin Now!`)
+          toast.info(
+            `${user.displayName ? user.displayName : "user"} is an Admin Now!`
+          );
         }
       });
   };
@@ -102,12 +104,16 @@ const ManageUsers = () => {
                   <td className="mr-2">
                     <div className="flex gap-2  text-center">
                       {user.role === "admin" ? (
-                        <button className="btn btn-sm">Admin <GrUserSettings  /></button>
+                        <button className="btn btn-sm">
+                          Admin <GrUserSettings />
+                        </button>
                       ) : (
                         <button
                           onClick={() => handleMakeAdmin(user)}
                           className={
-                            darkMode ? "btn-custom-dark  normal-case" : "btn-custom  normal-case"
+                            darkMode
+                              ? "btn-custom-dark  normal-case"
+                              : "btn-custom  normal-case"
                           }
                         >
                           Make Admin
@@ -120,7 +126,7 @@ const ManageUsers = () => {
                       onClick={() => handleDelete(user)}
                       className="w-full p-5"
                     >
-                      <MdDeleteSweep className=" text-4xl mx-auto  text-[#dc2626] hover:text-[#ff7479]"/>
+                      <MdDeleteSweep className=" text-4xl mx-auto  text-[#dc2626] hover:text-[#ff7479]" />
                     </button>
                   </td>
                 </tr>

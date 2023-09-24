@@ -17,7 +17,6 @@ import { useQuery } from "@tanstack/react-query";
 import useLocalStorage from "../hooks/useLocalStorage";
 import axios from "axios";
 
-
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
@@ -28,9 +27,6 @@ const AuthProvider = ({ children }) => {
   // Tonmoy alert start
   const [showAlert, setShowAlert] = useState(false);
   // Tonmoy alert end
-   
-  
-
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -73,7 +69,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser)
+      console.log(currentUser);
 
       if (currentUser) {
         axios
@@ -111,27 +107,19 @@ const AuthProvider = ({ children }) => {
 
   // add to cart data fetch  end by Tonmoy
 
-  // dark mode start Tonmoy
+  // dark mode start 
 
-
-    
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem('darkMode') === 'true'
+    localStorage.getItem("darkMode") === "true"
   );
 
-
-
   useEffect(() => {
-    localStorage.setItem('darkMode', darkMode.toString());
+    localStorage.setItem("darkMode", darkMode.toString());
     // You can also add logic to toggle CSS classes or apply different styles here based on `darkMode`.
     // For example, you can add/remove a 'dark-mode' class to your HTML or update your application's theme.
   }, [darkMode]);
 
-  //  dark mode end by Tonmoy
-
-
-
-
+  //  dark mode end 
 
   // console.log(auth, user);
   const authInfo = {
@@ -151,8 +139,7 @@ const AuthProvider = ({ children }) => {
     showAlert,
     setShowAlert,
     darkMode,
-    setDarkMode
-   
+    setDarkMode,
   };
 
   return (

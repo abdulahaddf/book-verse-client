@@ -44,7 +44,6 @@ import UserToUserChat from "../Dashboard/User/UserToUserChat";
 import Cod from "../pages/payment/Cod";
 import AllKidsBooks from "../shared/components/homeSections/AllKidsBooks";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -80,7 +79,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allkidsbooks",
-        element:<AllKidsBooks></AllKidsBooks>
+        element: <AllKidsBooks></AllKidsBooks>,
       },
       {
         path: "/payment",
@@ -156,22 +155,26 @@ export const router = createBrowserRouter([
       },
       {
         path: "/userChat",
-        element: <PrivateRoute>
-          <UserChat />
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <UserChat />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/terms&conditions',
-        element:<TermsCondition/>,
-      }
+        path: "/terms&conditions",
+        element: <TermsCondition />,
+      },
     ],
   },
 
   {
     path: "dashboard",
-    element: <PrivateRoute>
-      <Dashboard></Dashboard>
-    </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "addBook",
@@ -191,49 +194,51 @@ export const router = createBrowserRouter([
       },
       {
         path: "manageBanner",
-        element:<ManageBanner></ManageBanner>
-
+        element: <ManageBanner></ManageBanner>,
       },
       {
         path: "manageChats",
-        element: <ManageChats />
+        element: <ManageChats />,
       },
       {
-        path: 'manageChats/singleChat/:id',
-        element: <PrivateRoute>
-          <AdminSingleChat />
-
-        </PrivateRoute>
+        path: "manageChats/singleChat/:id",
+        element: (
+          <PrivateRoute>
+            <AdminSingleChat />
+          </PrivateRoute>
+        ),
       },
       {
         path: "userChat",
-        element: <PrivateRoute>
-          <UserChat />
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <UserChat />
+          </PrivateRoute>
+        ),
       },
       {
         path: "userChats",
-        element: <PrivateRoute>
-          <UserChats />
-
-        </PrivateRoute>
-
-
-
-
+        element: (
+          <PrivateRoute>
+            <UserChats />
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'userChats/userToUserChat/:id',
-        element: <PrivateRoute>
-          <UserToUserChat />
-
-        </PrivateRoute>
+        path: "userChats/userToUserChat/:id",
+        element: (
+          <PrivateRoute>
+            <UserToUserChat />
+          </PrivateRoute>
+        ),
       },
       {
         path: "ContactWithSeller/:id",
-        element: <PrivateRoute>
-          <ContactWithSeller />
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <ContactWithSeller />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
@@ -286,15 +291,15 @@ export const router = createBrowserRouter([
       {
         path: "promo",
         element: (
-           <PrivateRoute>
-            <AddPromo/>
+          <PrivateRoute>
+            <AddPromo />
           </PrivateRoute>
         ),
       },
       {
-        path:'OrderStatus',
-        element:<ManageOrder/>
-      }
+        path: "OrderStatus",
+        element: <ManageOrder />,
+      },
     ],
   },
   {
