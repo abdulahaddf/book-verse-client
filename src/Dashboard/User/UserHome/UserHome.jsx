@@ -10,12 +10,16 @@ import Loader from "../../../shared/components/loader/Loader";
 import UseUser from "../../../hooks/UseUser";
 import { FaCamera, FaEdit } from "react-icons/fa";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import BestSellingCard from "./BestSellingCard";
+
 
 const UserHome = () => {
   const { user, darkMode } = useContext(AuthContext);
 
   const [openModalPic, setOpenModalPic] = useState("");
   const [openModalInfo, setOpenModalInfo] = useState("");
+  const bestSellingData = useSelector(state => state.bestSelling.bestSelling);
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -138,8 +142,9 @@ const UserHome = () => {
   }
 
   return (
-    <div className="w-11/12 md:flex justify-center items-center mx-auto gap-6 overflow-y-auto">
-      <div className="md:w-11/12 p-2 md:p-10 rounded shadow-xl border-t-2 border-[#126e9d] ">
+    <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
+       
+      <div className={darkMode?"w-11/12 p-10  bg-gray shadow-xl border-[1px] rounded-md":"w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]"}>
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
         Manage Your Profile
         </h1>
@@ -194,32 +199,54 @@ const UserHome = () => {
           <h1 className="font-bold uppercase text-lg mt-10">
             Account Information
           </h1>
-          <div className="flex gap-2 lg:gap-10">
-            <div>
-              <p className="text-lg mt-6">Name:</p>
-
-              <p className="text-lg mt-6">Address: </p>
-              <p className="text-lg mt-6">Gender: </p>
-              <p className="text-lg mt-6">Birth Date: </p>
-              <p className="text-lg mt-6">Phone Number: </p>
-            </div>
-            <div className="">
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-6">
+          <div className=" gap-2 lg:gap-10">
+            <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Name:</p>
+              <p className="border-[1px] md:text-lg  px-2 py-2 w-11/12 md:w-1/2  mt-[20px]">
                 {userinfo.displayName}
               </p>
-              <p className="border-2 w-48 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+            </div>
+            <div className="md:flex items-center gap-10">
+            <p className="md:text-lg w-32 mt-6">Address: </p>
+            <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2 mt-[20px]">
                 {userinfo.address}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              </div> 
+              <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Gender: </p>
+              <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2 mt-[20px]">
                 {userinfo.gender}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              </div>
+              <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Birth Date: </p>
+              <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2  mt-[20px]">
                 {userinfo.birthday}
               </p>
-              <p className="border-2 px-2 py-2 h-10 lg:w-64 mt-[10px]">
+              </div>
+              <div className="md:flex items-center gap-10">
+              <p className="md:text-lg w-32 mt-6">Phone Number: </p>
+              <p className="border-[1px] md:text-lg px-2 py-2 w-11/12 md:w-1/2  mt-[20px]">
                 {userinfo.phoneNumber}
               </p>
-            </div>
+              </div>
+            {/* <div className="">
+              <p className="border-2 px-2 py-2 lg:h-10 lg:min-w-fit mt-6">
+                {userinfo.displayName}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.address}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.gender}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.birthday}
+              </p>
+              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
+                {userinfo.phoneNumber}
+              </p>
+            </div> */}
           </div>
         </div>
 
@@ -359,6 +386,20 @@ const UserHome = () => {
           </form>
         </dialog>
       </div>
+
+      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"}>
+          <h1 className="text-xl text-start my-5">Best Selling Books</h1>
+
+        <div className="md:h-1/2">
+       
+
+          {bestSellingData.slice(0, 3).map((book) => (
+            <BestSellingCard key={book._id} data={book} />
+          ))}
+        </div>
+      </div>
+
+      
     </div>
   );
 };

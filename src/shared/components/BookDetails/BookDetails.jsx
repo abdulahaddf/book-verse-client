@@ -40,6 +40,7 @@ const BookDetails = () => {
     review,
   } = singleBookDetails;
 
+
   const saved = real_price - offer_price;
   const savedPer = (((real_price - offer_price) / real_price) * 100).toFixed(2);
 
