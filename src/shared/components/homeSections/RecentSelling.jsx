@@ -38,7 +38,7 @@ const RecentSelling = () => {
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center z-0">
-        <Heading title={"Recent Seller"}></Heading>
+        <Heading title={"Recent Selling"}></Heading>
         <Link
           to="/allRecentSelling"
           className={
