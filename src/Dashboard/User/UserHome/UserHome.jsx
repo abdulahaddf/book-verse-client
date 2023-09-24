@@ -141,10 +141,10 @@ const UserHome = () => {
     <div className="w-11/12 md:flex justify-center items-center mx-auto gap-6 overflow-y-auto">
       <div className="md:w-11/12 p-2 md:p-10 rounded shadow-xl border-t-2 border-[#126e9d] ">
         <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
-          Edit Information
+        Manage Your Profile
         </h1>
         <div className="image-container">
-          <img className="image" src={userinfo?.photoURL} alt="" />
+          <img className="image hover:ring-1" src={userinfo?.photoURL} alt=""  />
           <button
             onClick={() => {
               const modalId = "my_modal_2";
@@ -155,11 +155,10 @@ const UserHome = () => {
                 modal.showModal();
               }
             }}
-            className="modal-open edit-button ms-6 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md focus:outline-none "
+            className="modal-open edit-button -ms-7 px-3 py-2 tracking-wide text-white transition-colors duration-200 transform rounded-md focus:outline-none "
           >
             <FaCamera></FaCamera>
           </button>
-
           <dialog id="my_modal_2" className="modal">
             <form
               method="dialog"
@@ -192,7 +191,7 @@ const UserHome = () => {
           </dialog>
         </div>
         <div>
-          <h1 className="font-bold uppercase text-xl mt-10">
+          <h1 className="font-bold uppercase text-lg mt-10">
             Account Information
           </h1>
           <div className="flex gap-2 lg:gap-10">
@@ -236,7 +235,7 @@ const UserHome = () => {
           }}
           className="btn-home mt-10"
         >
-          <FaEdit></FaEdit> <span className="ms-2">Update Profile</span>
+          <FaEdit></FaEdit> <span className="ms-2 normal-case">Update Profile</span>
         </button>
 
         <dialog id="my_modal_8" className="modal">
