@@ -17,28 +17,30 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <SkeletonTheme baseColor="#cccccc" highlightColor="#e3e3e3">
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <RouterProvider router={router} />
-            <ToastContainer
-              position="top-right"
-              autoClose={4000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
-            {/* Same as */}
-            <ToastContainer />
-          </AuthProvider>
-        </QueryClientProvider>
-      </Provider>
-    </SkeletonTheme>
+    <section className="2xl:container mx-auto">
+      <SkeletonTheme baseColor="#cccccc" highlightColor="#e3e3e3">
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+              <RouterProvider router={router} />
+              <ToastContainer
+                position="top-right"
+                autoClose={4000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
+              {/* Same as */}
+              <ToastContainer />
+            </AuthProvider>
+          </QueryClientProvider>
+        </Provider>
+      </SkeletonTheme>
+    </section>
   </React.StrictMode>
 );
