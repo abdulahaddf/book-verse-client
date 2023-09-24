@@ -64,7 +64,7 @@ const UserChats = () => {
       }
     >
       <h1 className={darkMode ? "dashboard-heading-dark" : "dashboard-heading"}>
-        All Your Chats
+        Your Chat List
       </h1>
       {allChats?.map((a) => (
         <div key={a?._id}>

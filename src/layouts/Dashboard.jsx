@@ -437,7 +437,7 @@ const Dashboard = () => {
                         to="/dashboard/sell"
                       >
                         <MdSell />
-                        Sell Your Old Books
+                        Post Your Old Book
                       </NavLink>
                     </li>
                     <li>
@@ -455,7 +455,7 @@ const Dashboard = () => {
                         to="/dashboard/my-books"
                       >
                         <ImBooks />
-                        Selling Books
+                       Posted Books
                       </NavLink>
                     </li>
                     <li>
