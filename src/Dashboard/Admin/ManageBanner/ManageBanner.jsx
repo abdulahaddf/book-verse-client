@@ -41,11 +41,7 @@ const ManageBanner = () => {
   }
 
 const handleUploadDone=(res)=>{
-console.log(res)
-console.log(res.filesUploaded[0].url);
 const bannerDetails = {
-            title: '',
-            subtitle: '',
             bannerURL: res.filesUploaded[0].url
           };
 
@@ -81,7 +77,7 @@ axios.post(
 
         <div className={darkMode?" flex justify-center":""}>
           <button
-            onClick={()=>showPicker?setShowPicker(false):setShowPicker(true)}
+            onClick={()=>AddNewBanner()}
             className={darkMode ? "primary-button-dark border-white border-[2px]" : "primary-button"}
           >
             Add New Banner
