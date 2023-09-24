@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Zoom } from "react-awesome-reveal";
 import Swal from "sweetalert2";
+import { MdDeleteSweep } from "react-icons/md";
 
 const MyBooks = () => {
   const { user, darkMode } = useContext(AuthContext);
@@ -40,7 +41,7 @@ const MyBooks = () => {
     });
   };
   return (
-    <div className="w-full ps-4 h-full lg:p-4 mt-10">
+    <div className="w-full ps-4 h-full lg:px-4 mt-10">
       {/* <h1 className="text-3xl text-center font-semibold my-5">Your Selling Books</h1> */}
       <div>
         {books.length > 0 ? (
@@ -48,7 +49,7 @@ const MyBooks = () => {
             <Zoom>
               {" "}
               <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>
-                Your Selling Books : {books.length}
+              Your Posted Books  <span className="text-slate-500">{books.length && books.length}</span> 
               </h1>
             </Zoom>
             <div className="max-w-[414px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
@@ -60,13 +61,13 @@ const MyBooks = () => {
                   }
                 >
                   <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Book Cover</th>
                     <th>Book Name</th>
                     <th>Posting Date</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th>Remove</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -80,9 +81,9 @@ const MyBooks = () => {
                           alt=""
                         />
                       </td>
-                      <td className={darkMode?"bg-black/90":""}>{book.title}</td>
+                      <td className={darkMode?"bg-black/90 text-lg font-semibold ":" text-lg font-semibold text-slate-600"}>{book.title}</td>
                       <td className={darkMode?"bg-black/90":""}>{book.postDate}</td>
-                      <td className={darkMode?"bg-black/90":""}>{book.offer_price}</td>
+                      <td className={darkMode?"bg-black/90 text-success":" text-success"}>$ {book.offer_price}</td>
                       <td className={darkMode?"bg-black/90":""}>
                         <button className="">Pending</button>
                       </td>
@@ -91,15 +92,15 @@ const MyBooks = () => {
                           onClick={() => handleDelete(book)}
                           className={
                             darkMode
-                              ? " btn-custom-dark bg-[#dc2626]"
-                              : "btn-custom"
+                              ? " btn btn-info hover:ring-1 btn-sm text-white  normal-case"
+                              : "btn btn-info hover:ring-1 text-white btn-sm normal-case"
                           }
                         >
-                          Delete
+                          Delete <MdDeleteSweep className="text-lg text-error"/>
                         </button>
                       </td>
                     </tr>
-                  ))}
+                  )).reverse()}
                 </tbody>
               </table>
             </div>

@@ -135,7 +135,7 @@ const PurchasedBooks = () => {
                   }
                 >
                   <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Books</th>
                     <th>Delivery Status</th>
                     <th>Purchase Time</th>
@@ -292,7 +292,7 @@ const PurchasedBooks = () => {
                           </div>
                         ))}
                       </td>
-                      <td className={darkMode ? "text-xl bg-black" : "text-xl"}>
+                      <td className={darkMode ? "text-lg bg-black" : "text-lg"}>
                         {book?.status == "Cash On Delivery"
                           ? "Pending"
                           : book?.status
