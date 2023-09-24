@@ -39,7 +39,7 @@ const Category = () => {
           <Tabs>
             <TabList className="text-xs md:text-base py-2  ">
               <Tab>All Books</Tab>
-              <Tab>Author&apos;s choice</Tab>
+              <Tab>Explore Author&apos;s</Tab>
               <Tab>Offers and Rewards</Tab>
               {/* <Tab>Book Fair</Tab> */}
               <Tab>New Arrival Books</Tab>
@@ -76,7 +76,7 @@ const Category = () => {
                         ? "hover:text-black hover:no-underline hover:font-[500]"
                         : "hover:text-white hover:no-underline hover:font-[500]"
                     }
-                    to={`/All/Category`}
+                    to={`all-books`}
                   >
                     See more
                   </Link>
@@ -115,7 +115,7 @@ const Category = () => {
             </TabPanel>
             {/* <TabPanel /> */}
             <TabPanel>
-              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-5 justify-items-center">
+              <div className="md:p-5 grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-5 md:grid-cols-2 gap-5 justify-items-center">
                 {newArival
                   .reverse()
                   .map((book) => (
@@ -125,7 +125,7 @@ const Category = () => {
                       loading={loading}
                     ></ProductCard>
                   ))
-                  .slice(0, 4)}
+                  .slice(0, 5)}
               </div>
             </TabPanel>
             {/* <TabPanel /> */}

@@ -9,7 +9,7 @@ const AllRecentSelling = () => {
       }, []);
     const recentSellingData = useSelector(state => state.recentSelling.recentSelling);
 
-    console.log(recentSellingData); // Add this line
+   
 
     return (
         <div className='py-10'>

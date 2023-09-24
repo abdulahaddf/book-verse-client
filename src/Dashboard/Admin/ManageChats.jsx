@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { useAllUsersData } from "../../hooks/useAllUsersData";
 import { useContext, useEffect } from "react";
@@ -30,7 +30,7 @@ const ManageChats = () => {
   useEffect(() => {
     const refetchInterval = setInterval(() => {
       allUsersRefetch();
-    }, 3000); // Check every 3 seconds
+    }, 1000); // Check every 1 seconds
 
     return () => {
       clearInterval(refetchInterval);
@@ -38,7 +38,7 @@ const ManageChats = () => {
   }, []);
 
   return (
-    // rounded-tr-[50px] rounded-bl-[50px]
+  
 
     <div
       className={
@@ -51,7 +51,7 @@ const ManageChats = () => {
         All Your Chats
       </h1>
       {allChats?.map((a) => (
-        <div key={a?._id} className="w-[400px] md:w-full">
+        <div key={a?._id} className="w-full">
           <Link
             to={`singleChat/${a?._id}`}
             className={
@@ -62,7 +62,7 @@ const ManageChats = () => {
           >
             <section className=" w-[15%] mt-2 pl-2 ">
               <span className="indicator">
-                <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 "></span>
+                <span className="indicator-item indicator-bottom badge badge-xs badge-success left-10 bottom-2 z-0"></span>
                 <img
                   src={a?.photoURL}
                   className=" rounded-[100%] h-[60px] w-[60px]"
@@ -71,7 +71,8 @@ const ManageChats = () => {
               </span>
             </section>
 
-            <section className=" md:w-[70%] lg:w-[70%]  pl-[30px] md:pl-0 lg:p-0 space-y-1">
+            <section className="w-[60%] md:w-[70%] lg:w-[70%] pl-[50px]  md:pl-0 lg:p-0 space-y-1
+                             text-start">
               <p
                 className={
                   darkMode
@@ -92,7 +93,7 @@ const ManageChats = () => {
                         : "text-[15px] font-[400] text-gray-600"
                     }
                   >
-                    Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}
+                    Your reply: {a?.chat[a?.chat.length - 1]?.text.slice(0, 15)}
                   </p>
                 ) : (
                   <p className="text-[25px] font-500 ">No reply available</p>
@@ -101,16 +102,16 @@ const ManageChats = () => {
                 <p
                   className={
                     darkMode
-                      ? " text-[15px]  font-[600] text-white"
-                      : " text-[15px]  font-[600] text-gray-600"
+                      ? ` text-[15px] ${a?.chat[a?.chat.length - 1]?.name === "Admin"? "font-[400]":"font-[600]"}  text-white`
+                      : ` text-[15px]  ${a?.chat[a?.chat.length - 1]?.name === "Admin"? "font-[400]":"font-[600] "}text-gray-600`
                   }
                 >
                   {a?.chat[a?.chat.length - 1]?.name === "Admin"
                     ? "You"
-                    : "New Message"}{" "}
+                    : "New text"}
                   :{" "}
-                  {`${a?.chat[a?.chat.length - 1]?.text.slice(0, 27)}${
-                    a?.chat[a?.chat.length - 1]?.text.length > 26 ? ` ...` : ""
+                  {`${a?.chat[a?.chat.length - 1]?.text.slice(0, 15)}${
+                    a?.chat[a?.chat.length - 1]?.text.length > 15 ? ` ...` : ""
                   }`}
                 </p>
               ) : (
@@ -125,31 +126,9 @@ const ManageChats = () => {
                 </p>
               )}
             </section>
-            {/* 
+      
 
-          <section className=" w-[30%] md:w-[20%] lg:w-[20%]  mx-auto px-5 ">
-            <Link to={`singleChat/${a?._id}`} className=" w-full text-center   font-[500] mt-3
-            group relative inline-block overflow-hidden  px-0 py-1 focus:outline-none focus:ring  rounded-br-[100px] rounded-tl-[100px]  
-         " 
-            >
-             
-
-              <span
-                className="absolute inset-y-0 left-0 w-[0px] md:w-[0px] lg:w-[0px]  bg-gray-700 transition-all group-hover:w-full group-active:bg-indigo-500 duration-[1s]  "
-              ></span>
-
-              <span
-                className="relative text-sm font-medium  transition-colors group-hover:text-white "
-              >
-                View
-              </span>
-
-
-
-            </Link>
-          </section> */}
-
-            <section>
+            <section >
               {a?.chat && a?.chat?.length > 0 && (
                 <p
                   className={

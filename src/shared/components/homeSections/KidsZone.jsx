@@ -34,27 +34,14 @@ const KidsZone = () => {
           to="/allkidsbooks"
           className={
             darkMode
-              ? "btn-fifth-dark hover:text-white hover:no-underline"
-              : "btn-fifth hover:text-white hover:no-underline"
+            ? " btn-fifth-dark hover:text-white  hover:no-underline hover:font-[500]"
+            : "btn-fifth hover:text-white hover:no-underline text-xs w-24 h-7 md:w-36 md:h-10 md:text-base"
           }
         >
           See More
         </Link>
       </div>
-      {/* <Skeleton count={3} className="my-2 h-10" />  */}
-      {/* <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 place-items-center items-start my-5 py-5">
-        {
-                    books?.map((book) => {
-                        if ((book.category.toLowerCase()) === 'kids') {
-                          return <ProductCard key={book._id} data={book} loading={loading} ></ProductCard>
-                      }
-                  } )
-              }
-       
-        </div>  */}
-      {/* ----------------------------------
-              Slider added -foisal 
-          ----------------------------*/}
+      
       <div className="py-5">
         <Swiper
           slidesPerView={1}

@@ -121,25 +121,25 @@ const Payment = () => {
     <div className="my-5">
       <h1 className="page-heading">Checkout</h1>
       <h2 className="text-center  text-2xl font-mono text-red ">
-        You need to pay : {totalPrice}
+        You need to pay : ${totalPrice}
       </h2>
       <div className="md:w-11/12 mx-auto my-5 md:flex gap-10 ">
         {/* Checkout form starts here */}
 
-      <div className={darkMode?" bg-gray w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20 h-fit":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-20 h-fit"}>
+      <div className={darkMode?" bg-gray w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-10 md:py-20  h-fit ":" bg-slate-200 w-11/12 md:w-1/3 mx-auto my-5 p-3 md:p-8 rounded shadow-xl border-t-2 border-red py-10 md:py-20 h-fit"}>
      
    
               <h1 className="text-2xl font-semibold text-center text-red uppercase">
               Shipping Information
               </h1>
-              <form onSubmit={handleSubmit(updateProfile)} className="mt-6">
+              <form onSubmit={handleSubmit(updateProfile)} className="mt-3 md:mt-6">
               <div className=" flex items-center gap-5">
   <label
-    className="block text-sm font-semibold text-gray-800"
+    className=" text-sm font-semibold pb-2 text-gray-800"
   >
     Pick Up Your Parcel From:
   </label>
-  <div className=" space-x-4">
+  <div className="flex items-center  space-x-4">
     <label className="inline-flex items-center text-lg">
       <input
         type="radio"

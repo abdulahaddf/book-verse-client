@@ -27,7 +27,7 @@ const BookDetails = () => {
     title,
     cover_image,
     author,
-
+    _id,
     page_numbers,
     category,
     published,
@@ -342,7 +342,7 @@ const BookDetails = () => {
 
           <div className="md:h-1/2">
             {books
-              .filter((book) => book?.category === category)
+              .filter((book) => book?.category === category).filter((book)=>book._id !== _id)
               .slice(0, 3)
               .map((book) => (
                 <RecommendedCard key={book._id} data={book} />
