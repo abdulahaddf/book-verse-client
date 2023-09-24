@@ -11,7 +11,7 @@ import moment from "moment";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 
 const UserChat = () => {
-  const { user, setShowAlert,darkMode } = useContext(AuthContext);
+  const { user, setShowAlert, darkMode } = useContext(AuthContext);
 
   const [messages, userRefetch] = useUserMessage(user?.email);
 
@@ -91,16 +91,27 @@ const UserChat = () => {
 
   return (
     <div className="mt-5 w-full md:w-[50%] lg:w-[50%]   xl:w-[35%]  flex items-center mx-auto">
-      <div  className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto  bg-slate-300  "}>
-       
+      <div
+        className={
+          darkMode
+            ? "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 "
+            : "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto  bg-slate-300  "
+        }
+      >
         {/* top section chat header */}
-        <div className={darkMode?"flex items-center bg-white/10   relative  border-b-[1px] p-3":"flex items-center gap-4 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative "}>
+        <div
+          className={
+            darkMode
+              ? "flex items-center bg-white/10   relative  border-b-[1px] p-3"
+              : "flex items-center gap-4 justify-between sm:justify-start p-3 bg-gradient-to-r rounded-t-2xl from-[#82bdd2] from-80% to-cyan-500  relative "
+          }
+        >
           <div className="mr-5">
             <img src={logo} alt="" className="w-10  mx-auto" />
           </div>
           <div>
             <p className="pr-6 flex gap-3 font-bold text-[20px] lg:text-[30px] xl:text-[30px]  text-slate-50">
-             Chat Support
+              Chat Support
               <HiOutlineChatBubbleLeftRight className="  text-[40px]   " />
             </p>
             <p className=" text-slate-50  text-[14px] mr-3">
@@ -108,7 +119,6 @@ const UserChat = () => {
             </p>
           </div>
         </div>
-   
 
         <div>
           <div
@@ -124,8 +134,11 @@ const UserChat = () => {
                       <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                         <div>
                           <span
-                          
-                         className={darkMode?"px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray  text-white  tooltip  tooltip-right":"px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-400 text-white  tooltip  tooltip-right"}
+                            className={
+                              darkMode
+                                ? "px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray  text-white  tooltip  tooltip-right"
+                                : "px-4 py-2 rounded-lg inline-block rounded-bl-none bg-blue-400 text-white  tooltip  tooltip-right"
+                            }
                             data-tip={moment(message?.time).format(
                               "MMMM Do YYYY, h:mm:ss a"
                             )}
@@ -146,8 +159,11 @@ const UserChat = () => {
                       <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
                         <div>
                           <span
-                       
-                         className={darkMode?"px-4 py-2 rounded-lg inline-block rounded-br-none bg-slate-700 text-white  tooltip  tooltip-left":"px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white tooltip  tooltip-left"}
+                            className={
+                              darkMode
+                                ? "px-4 py-2 rounded-lg inline-block rounded-br-none bg-slate-700 text-white  tooltip  tooltip-left"
+                                : "px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white tooltip  tooltip-left"
+                            }
                             data-tip={moment(message?.time).format(
                               "MMMM Do YYYY, h:mm:ss a"
                             )}
@@ -156,8 +172,6 @@ const UserChat = () => {
                           </span>
                         </div>
                       </div>
-
-                     
                     </div>
                   </div>
                 )}
@@ -165,7 +179,13 @@ const UserChat = () => {
             ))}
           </div>
           {/* foot section  */}
-          <div className={darkMode?"border-t-[1px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0":"border-t-[2px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0"}>
+          <div
+            className={
+              darkMode
+                ? "border-t-[1px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0"
+                : "border-t-[2px] border-white px-4 p-2 rounded-b-2xl mb-2 sm:mb-0"
+            }
+          >
             <form
               onSubmit={buttonHandler}
               className="relative flex items-center gap-5"
@@ -175,25 +195,32 @@ const UserChat = () => {
                 name="name"
                 type="text"
                 placeholder="Write your message!"
-                className={darkMode?"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 border-[1px] rounded-md py-2":"w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-white rounded-md py-2"}
+                className={
+                  darkMode
+                    ? "w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 border-[1px] rounded-md py-2"
+                    : "w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-white rounded-md py-2"
+                }
                 required
               />
-             
 
-              <button className={darkMode?"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none":"inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"}>
-               
+              <button
+                className={
+                  darkMode
+                    ? "inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white border-[1px] focus:outline-none"
+                    : "inline-flex items-center justify-center rounded-lg px-4 py-[6px] transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+                }
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   className="  ml-[5px] transform rotate-90 "
-
-                  width="20px" height="20px"
+                  width="20px"
+                  height="20px"
                 >
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                 </svg>
               </button>
-             
             </form>
           </div>
         </div>

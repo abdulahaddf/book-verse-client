@@ -73,8 +73,10 @@ const MyBooks = () => {
                 <tbody>
                   {books.map((book, index) => (
                     <tr key={book._id}>
-                      <th className={darkMode?"bg-black/90":""}>{index + 1}</th>
-                      <td className={darkMode?"bg-black/90":""}>
+                      <th className={darkMode ? "bg-black/90" : ""}>
+                        {index + 1}
+                      </th>
+                      <td className={darkMode ? "bg-black/90" : ""}>
                         <img
                           className="w-32 rounded-md"
                           src={book.cover_image}
@@ -87,7 +89,7 @@ const MyBooks = () => {
                       <td className={darkMode?"bg-black/90":""}>
                         <button className="">Pending</button>
                       </td>
-                      <td className={darkMode?"bg-black/90":""}>
+                      <td className={darkMode ? "bg-black/90" : ""}>
                         <button
                           onClick={() => handleDelete(book)}
                           className={

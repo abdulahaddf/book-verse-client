@@ -126,7 +126,7 @@ const CategoryNav = () => {
               className={`${
                 darkMode
                   ? 'hover:text-[#10aade] hover:no-underline'
-                  : 'hover:text-[#10aade]  hover:no-underline'
+                  : 'hover:text-[#10aade]  hover:no-underline '
               }`}
               style={({ isActive }) => {
                 return {

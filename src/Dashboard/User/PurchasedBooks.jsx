@@ -121,196 +121,200 @@ const PurchasedBooks = () => {
                 All Your Purchased Books : {books.length}
               </h1>
               <div className="max-w-[414px] md:max-w-[768px] lg:max-w-full overflow-x-auto mx-auto">
-              <table
-                className={
-                  darkMode
-                    ? "table table-zebra shadow-xl w-full bg-black/90 text-center"
-                    : "table table-zebra shadow-lg text-center px-2 mx-auto rounded-sm"
-                }
-              >
-                {/* head */}
-                <thead
+                <table
                   className={
-                    darkMode ? "bg-gray text-white" : "bg-primary text-white"
+                    darkMode
+                      ? "table table-zebra shadow-xl w-full bg-black/90 text-center"
+                      : "table table-zebra shadow-lg text-center px-2 mx-auto rounded-sm"
                   }
                 >
-                  <tr>
-                    <th>No</th>
-                    <th>Books</th>
-                    <th>Delivery Status</th>
-                    <th>Purchase Time</th>
-                    <th>Transection ID</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {books.map((book, index) => (
-                    <tr key={book._id}>
-                      <th className={darkMode ? " bg-black" : ""}>
-                        {index + 1}
-                      </th>
-                      <td className={darkMode ? " bg-black" : ""}>
-                        {book.books.map((sBook, sIndex) => (
-                          <div
-                            className={
-                              darkMode
-                                ? "text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90"
-                                : "text-start flex gap-10 my-5 shadow-lg p-2 w-96"
-                            }
-                            key={sBook._id}
-                          >
-                            <img
-                              className="h-[80px] w-[60px] rounded-md"
-                              src={sBook.cover_image}
-                              alt="book cover"
-                            />
-                            <div>
-                              <p className="text-lg font-medium">
-                                {sBook.title}
-                              </p>
-
-                              <button
-                                onClick={() => {
-                                  const modalId = `${sBook._id}_${sIndex}`;
-                                  const modal =
-                                    document.getElementById(modalId);
-                                  setOpenModalIndex(modal);
-                                  if (modal) {
-                                    setTId(sBook._id);
-                                    modal.showModal();
-                                  }
-                                }}
-                                // className={darkMode?"btn btn-sm btn-outline text-white hover:bg-white hover:text-black mt-2":"btn-custom"}
-                                className={`${
-                                  darkMode ? "btn-custom-dark" : "btn-custom"
-                                } ${
-                                  book.status === "Delivered"
-                                    ? ""
-                                    : "cursor-not-allowed opacity-50"
-                                }`}
-                                disabled={book.status !== "Delivered"}
-                              >
-                                review
-                              </button>
-                            </div>
-                            <dialog
-                              id={`${sBook._id}_${sIndex}`}
-                              className="modal"
+                  {/* head */}
+                  <thead
+                    className={
+                      darkMode ? "bg-gray text-white" : "bg-primary text-white"
+                    }
+                  >
+                    <tr>
+                      <th>#</th>
+                      <th>Books</th>
+                      <th>Delivery Status</th>
+                      <th>Purchase Time</th>
+                      <th>Transection ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {books.map((book, index) => (
+                      <tr key={book._id}>
+                        <th className={darkMode ? " bg-black" : ""}>
+                          {index + 1}
+                        </th>
+                        <td className={darkMode ? " bg-black" : ""}>
+                          {book.books.map((sBook, sIndex) => (
+                            <div
+                              className={
+                                darkMode
+                                  ? "text-start flex gap-10 my-5 shadow-lg p-2 bg-black/90"
+                                  : "text-start flex gap-10 my-5 shadow-lg p-2 w-96"
+                              }
+                              key={sBook._id}
                             >
-                              <form
-                                onSubmit={handleSubmit(onSubmit)}
-                                method="dialog"
-                                className="modal-box   text-black "
-                              >
+                              <img
+                                className="h-[80px] w-[60px] rounded-md"
+                                src={sBook.cover_image}
+                                alt="book cover"
+                              />
+                              <div>
+                                <p className="text-lg font-medium">
+                                  {sBook.title}
+                                </p>
+
                                 <button
-                                  className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                                   onClick={() => {
                                     const modalId = `${sBook._id}_${sIndex}`;
                                     const modal =
                                       document.getElementById(modalId);
+                                    setOpenModalIndex(modal);
                                     if (modal) {
-                                      modal.close();
+                                      setTId(sBook._id);
+                                      modal.showModal();
                                     }
                                   }}
+                                  // className={darkMode?"btn btn-sm btn-outline text-white hover:bg-white hover:text-black mt-2":"btn-custom"}
+                                  className={`${
+                                    darkMode ? "btn-custom-dark" : "btn-custom"
+                                  } ${
+                                    book.status === "Delivered"
+                                      ? ""
+                                      : "cursor-not-allowed opacity-50"
+                                  }`}
+                                  disabled={book.status !== "Delivered"}
                                 >
-                                  ✕
+                                  review
                                 </button>
+                              </div>
+                              <dialog
+                                id={`${sBook._id}_${sIndex}`}
+                                className="modal"
+                              >
+                                <form
+                                  onSubmit={handleSubmit(onSubmit)}
+                                  method="dialog"
+                                  className="modal-box   text-black "
+                                >
+                                  <button
+                                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                    onClick={() => {
+                                      const modalId = `${sBook._id}_${sIndex}`;
+                                      const modal =
+                                        document.getElementById(modalId);
+                                      if (modal) {
+                                        modal.close();
+                                      }
+                                    }}
+                                  >
+                                    ✕
+                                  </button>
 
-                                {/* {console.log(sBook)} */}
-                                <h3 className="font-bold text-lg">
-                                  {sBook.title}
-                                </h3>
-                                <div className="md:w-96 p-5 md:p-10">
-                                  {/* <section> */}
+                                  {/* {console.log(sBook)} */}
+                                  <h3 className="font-bold text-lg">
+                                    {sBook.title}
+                                  </h3>
+                                  <div className="md:w-96 p-5 md:p-10">
+                                    {/* <section> */}
 
-                                  <div>
-                                    <div
-                                      id="rating_label"
-                                      className="text-lg font-medium my-2"
-                                    >
-                                      Rating
+                                    <div>
+                                      <div
+                                        id="rating_label"
+                                        className="text-lg font-medium my-2"
+                                      >
+                                        Rating
+                                      </div>
+                                      <Controller
+                                        control={control}
+                                        name="rating"
+                                        rules={{
+                                          validate: (rating) => rating > 0,
+                                        }}
+                                        render={({
+                                          field: { onChange, onBlur, value },
+                                        }) => (
+                                          <Rating
+                                            value={value}
+                                            isRequired
+                                            onChange={onChange}
+                                            visibleLabelId="rating_label"
+                                            onBlur={onBlur}
+                                            emptySymbol="fa fa-star-o fa-2x"
+                                            fullSymbol="fa fa-star fa-2x"
+                                            fractions={2}
+                                          />
+                                        )}
+                                      />
+                                      {errors.rating && (
+                                        <p>Rating is required.</p>
+                                      )}
                                     </div>
+
+                                    <p className="text-lg font-medium my-2">
+                                      Your Review
+                                    </p>
+
+                                    <input
+                                      type="hidden"
+                                      name={"transactionId"}
+                                      value={book.transactionId}
+                                      {...register("transactionId")}
+                                    />
+
                                     <Controller
                                       control={control}
-                                      name="rating"
-                                      rules={{
-                                        validate: (rating) => rating > 0,
-                                      }}
-                                      render={({
-                                        field: { onChange, onBlur, value },
-                                      }) => (
-                                        <Rating
-                                          value={value}
-                                          isRequired
-                                          onChange={onChange}
-                                          visibleLabelId="rating_label"
-                                          onBlur={onBlur}
-                                          emptySymbol="fa fa-star-o fa-2x"
-                                          fullSymbol="fa fa-star fa-2x"
-                                          fractions={2}
+                                      name="review"
+                                      render={({ field }) => (
+                                        <textarea
+                                          className="textarea border-red  md:w-96"
+                                          id="review"
+                                          {...field}
                                         />
                                       )}
                                     />
-                                    {errors.rating && (
-                                      <p>Rating is required.</p>
-                                    )}
+                                    {/* {errors.review && <p>Review is required.</p>} */}
+
+                                    <button
+                                      className="btn-custom my-5"
+                                      type="submit"
+                                    >
+                                      Submit review
+                                    </button>
+                                    {/* </section> */}
                                   </div>
-
-                                  <p className="text-lg font-medium my-2">
-                                    Your Review
-                                  </p>
-
-                                  <input
-                                    type="hidden"
-                                    name={"transactionId"}
-                                    value={book.transactionId}
-                                    {...register("transactionId")}
-                                  />
-
-                                  <Controller
-                                    control={control}
-                                    name="review"
-                                    render={({ field }) => (
-                                      <textarea
-                                        className="textarea border-red  md:w-96"
-                                        id="review"
-                                        {...field}
-                                      />
-                                    )}
-                                  />
-                                  {/* {errors.review && <p>Review is required.</p>} */}
-
-                                  <button
-                                    className="btn-custom my-5"
-                                    type="submit"
-                                  >
-                                    Submit review
-                                  </button>
-                                  {/* </section> */}
-                                </div>
-                              </form>
-                            </dialog>
-                          </div>
-                        ))}
-                      </td>
-                      <td className={darkMode ? "text-lg bg-black" : "text-lg"}>
-                        {book?.status == "Cash On Delivery"
-                          ? "Pending"
-                          : book?.status
-                          ? book?.status
-                          : "Pending"}{" "}
-                      </td>
-                      <td className={darkMode ? " bg-black" : ""}>
-                        <p>{new Date(book.date).toISOString().split("T")[0]}</p>
-                      </td>
-                      <td className={darkMode ? " bg-black" : ""}>
-                        {book.transactionId
-                          ? book.transactionId
-                          : "Cash on Delivery"}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                                </form>
+                              </dialog>
+                            </div>
+                          ))}
+                        </td>
+                        <td
+                          className={darkMode ? "text-xl bg-black" : "text-xl"}
+                        >
+                          {book?.status == "Cash On Delivery"
+                            ? "Pending"
+                            : book?.status
+                            ? book?.status
+                            : "Pending"}{" "}
+                        </td>
+                        <td className={darkMode ? " bg-black" : ""}>
+                          <p>
+                            {new Date(book.date).toISOString().split("T")[0]}
+                          </p>
+                        </td>
+                        <td className={darkMode ? " bg-black" : ""}>
+                          {book.transactionId
+                            ? book.transactionId
+                            : "Cash on Delivery"}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </>

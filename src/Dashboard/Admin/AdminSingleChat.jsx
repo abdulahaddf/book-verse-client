@@ -93,7 +93,13 @@ const AdminSingleChat = () => {
 
   return (
     <div className="mt-5 w-full md:w-[50%] lg:w-[50%]   xl:w-[35%]  flex items-center mx-auto">
-      <div  className={darkMode?"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 ":"flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto  bg-slate-300  "}>
+      <div
+        className={
+          darkMode
+            ? "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto mt-0  border-[1px]  my-5 md:pt-0 "
+            : "flex-1 justify-between flex flex-col h-[600px] rounded-2xl  lg:max-w-[800px] md:mx-auto  bg-slate-300  "
+        }
+      >
         <div
           className={
             darkMode
@@ -106,7 +112,7 @@ const AdminSingleChat = () => {
               <img
                 src={messages?.photoURL}
                 className="w-[60px] h-[60px] rounded-[100%]"
-              /> 
+              />
             </div>
             <div className="flex flex-col leading-tight ">
               <p className="mr-3  font-bold text-[20px] text-slate-50">

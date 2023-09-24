@@ -52,11 +52,14 @@ const ChatIcon = () => {
                </button>
             </div> */}
 
-    {/* test pupose btn -foisal */}
-      <span onClick={chatHandler} className="tooltip tooltip-left" data-tip="Chat with Admin for any help!">
-      
-      <button className="hover:-rotate-2">
-        <span className="relative badge badge-xs badge-success  -right-5 top-4 animate-pulse"></span>
+      {/* test pupose btn -foisal */}
+      <span
+        onClick={chatHandler}
+        className="tooltip tooltip-left"
+        data-tip="Chat with Admin for any help!"
+      >
+        <button className="hover:-rotate-2">
+          <span className="relative badge badge-xs badge-success  -right-5 top-4 animate-pulse"></span>
           <BsChatSquareDotsFill
             className={
               darkMode ? "text-[#0582C3] text-5xl" : "text-[#0582C3] text-5xl"

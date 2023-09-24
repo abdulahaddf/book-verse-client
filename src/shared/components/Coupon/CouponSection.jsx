@@ -8,11 +8,11 @@ const CouponSection = () => {
       .then((response) => response.json())
       .then((data) => setCoupon(data));
   }, []);
-  return <div className="w-full flex justify-center p-2">
-    {
-        coupon && <CouponCard data={coupon[0]}/>
-    }
-  </div>;
+  return (
+    <div className="w-full flex justify-center p-2">
+      {coupon && <CouponCard data={coupon[0]} />}
+    </div>
+  );
 };
 
 export default CouponSection;
