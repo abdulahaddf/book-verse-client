@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import ProductCard from "../productCard/ProductCard";
 
 const AuthorDetails = () => {
   useEffect(() => {
@@ -74,7 +75,7 @@ const AuthorDetails = () => {
         </h2>
         <div className="grid grid-col-1 md:p-3 justify-items-center lg:grid-cols-3">
           {authorBooks?.map((book) => (
-            <CategoryCard data={book} key={book?._id} />
+            <ProductCard data={book} key={book?._id}/>
           ))}
         </div>
       </div>
@@ -87,7 +88,7 @@ const AuthorDetails = () => {
         }`}
       >
         <h2 className="text-xl my-5 p-2 font-serif font-medium">
-          You May Also Like…
+          You May Also Like
         </h2>
         <div className="grid justify-items-center  gap-3 grid-cols-1 md:grid-cols-3">
           {authorRelated?.map((author) => (

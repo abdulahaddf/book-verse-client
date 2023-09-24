@@ -107,7 +107,7 @@ const AuthProvider = ({ children }) => {
 
   // add to cart data fetch  end by Tonmoy
 
-  // dark mode start Tonmoy
+  // dark mode start 
 
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true"
@@ -119,7 +119,7 @@ const AuthProvider = ({ children }) => {
     // For example, you can add/remove a 'dark-mode' class to your HTML or update your application's theme.
   }, [darkMode]);
 
-  //  dark mode end by Tonmoy
+  //  dark mode end 
 
   // console.log(auth, user);
   const authInfo = {

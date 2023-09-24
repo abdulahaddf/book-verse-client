@@ -39,7 +39,7 @@ const Category = () => {
           <Tabs>
             <TabList className="text-xs md:text-base py-2  ">
               <Tab>All Books</Tab>
-              <Tab>Author&apos;s choice</Tab>
+              <Tab>Explore Author&apos;s</Tab>
               <Tab>Offers and Rewards</Tab>
               {/* <Tab>Book Fair</Tab> */}
               <Tab>New Arrival Books</Tab>
@@ -76,7 +76,7 @@ const Category = () => {
                         ? "hover:text-black hover:no-underline hover:font-[500]"
                         : "hover:text-white hover:no-underline hover:font-[500]"
                     }
-                    to={`/All/Category`}
+                    to={`all-books`}
                   >
                     See more
                   </Link>
