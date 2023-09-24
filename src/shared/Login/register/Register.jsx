@@ -102,7 +102,7 @@ const Register = () => {
 
   //  tonmoy end
 
-      const handleGoogleSignIn = () => {
+  const handleGoogleSignIn = () => {
     signInGoogle()
       .then((result) => {
         const loggedInUser = result.user;

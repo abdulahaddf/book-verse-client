@@ -47,7 +47,11 @@ const MyBooks = () => {
           <>
             <Zoom>
               {" "}
-              <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>
+              <h1
+                className={
+                  darkMode ? "dashboard-heading-dark" : "dashboard-heading"
+                }
+              >
                 Your Selling Books : {books.length}
               </h1>
             </Zoom>
@@ -72,21 +76,29 @@ const MyBooks = () => {
                 <tbody>
                   {books.map((book, index) => (
                     <tr key={book._id}>
-                      <th className={darkMode?"bg-black/90":""}>{index + 1}</th>
-                      <td className={darkMode?"bg-black/90":""}>
+                      <th className={darkMode ? "bg-black/90" : ""}>
+                        {index + 1}
+                      </th>
+                      <td className={darkMode ? "bg-black/90" : ""}>
                         <img
                           className="w-32 rounded-md"
                           src={book.cover_image}
                           alt=""
                         />
                       </td>
-                      <td className={darkMode?"bg-black/90":""}>{book.title}</td>
-                      <td className={darkMode?"bg-black/90":""}>{book.postDate}</td>
-                      <td className={darkMode?"bg-black/90":""}>{book.offer_price}</td>
-                      <td className={darkMode?"bg-black/90":""}>
+                      <td className={darkMode ? "bg-black/90" : ""}>
+                        {book.title}
+                      </td>
+                      <td className={darkMode ? "bg-black/90" : ""}>
+                        {book.postDate}
+                      </td>
+                      <td className={darkMode ? "bg-black/90" : ""}>
+                        {book.offer_price}
+                      </td>
+                      <td className={darkMode ? "bg-black/90" : ""}>
                         <button className="">Pending</button>
                       </td>
-                      <td className={darkMode?"bg-black/90":""}>
+                      <td className={darkMode ? "bg-black/90" : ""}>
                         <button
                           onClick={() => handleDelete(book)}
                           className={

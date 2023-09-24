@@ -8,11 +8,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const EditModal = ({ isOpen, book, onClose }) => {
-   // Tonmoy Start
+  // Tonmoy Start
 
-   const {darkMode}=useContext(AuthContext)
+  const { darkMode } = useContext(AuthContext);
 
-   //  Tonmoy end
+  //  Tonmoy end
   if (!isOpen) return null;
   const {
     _id,
@@ -141,12 +141,10 @@ const EditModal = ({ isOpen, book, onClose }) => {
           text: "Book updated successfully",
           icon: "success",
           confirmButtonText: "Ok",
-        })
-          .then(() => {
+        }).then(() => {
           onClose(); // Close the modal
         });
-      }
-      else {
+      } else {
         throw new Error("Book update failed");
       }
     } catch (error) {
@@ -165,7 +163,11 @@ const EditModal = ({ isOpen, book, onClose }) => {
       >
         <form
           method="dialog"
-          className={darkMode?"modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500 bg-gray-200 ":"modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500  "}
+          className={
+            darkMode
+              ? "modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500 bg-gray-200 "
+              : "modal-box w-11/12 max-w-3xl rounded-md p-4 md:p-10 duration-500  "
+          }
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="modal-action -mt-6">
@@ -179,7 +181,15 @@ const EditModal = ({ isOpen, book, onClose }) => {
               <RxCross2></RxCross2>
             </button>
           </div>
-          <h2 className={darkMode?"text-3xl font-bold text-center text-[#4b5563] mb-4":"text-3xl font-bold text-center mb-4"}>Update Book</h2>
+          <h2
+            className={
+              darkMode
+                ? "text-3xl font-bold text-center text-[#4b5563] mb-4"
+                : "text-3xl font-bold text-center mb-4"
+            }
+          >
+            Update Book
+          </h2>
 
           <div className="flex gap-6">
             <div className="form-control w-full">

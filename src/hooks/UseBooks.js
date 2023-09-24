@@ -35,7 +35,17 @@ const UseBooks = () => {
       });
   }, [search]);
 
-  return { books, setBooks, loading,setLoading, search, setSearch, searchRef, error, userNotFound };
+  return {
+    books,
+    setBooks,
+    loading,
+    setLoading,
+    search,
+    setSearch,
+    searchRef,
+    error,
+    userNotFound,
+  };
 };
 
 export default UseBooks;

@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useState } from "react";
 
-const ManageBannerCard = ({ banner, refetch,index }) => {
+const ManageBannerCard = ({ banner, refetch, index }) => {
   // eslint-disable-next-line react/prop-types
 
   // Tonmoy Start
@@ -22,14 +22,16 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
   const { register, handleSubmit, reset } = useForm();
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [openModalIndex, setOpenModalIndex] = useState("");
-  
+
   const handleEdit = (data) => {
     console.log(data);
     if (data !== "null") {
       const { title, subtitle, url } = data;
       console.log(data);
 
-      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`;
+      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_Image_Upload_token
+      }`;
 
       const coverForm = new FormData();
       coverForm.append("image", url[0]);
@@ -84,32 +86,30 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    })
-      .then((result) => {
-        console.log(result)
-        if (result.isConfirmed) {
-          axios.delete(`https://book-verse-server-phi.vercel.app/banner/${_id}`)
-            .then(res => {
-              console.log(res)
-              if (res.data.acknowledged) {
-                refetch();
-                if (openModalIndex) {
-                  openModalIndex.close();
-                }
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Banner deleted successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+    }).then((result) => {
+      console.log(result);
+      if (result.isConfirmed) {
+        axios
+          .delete(`https://book-verse-server-phi.vercel.app/banner/${_id}`)
+          .then((res) => {
+            console.log(res);
+            if (res.data.acknowledged) {
+              refetch();
+              if (openModalIndex) {
+                openModalIndex.close();
               }
-            })
-          
-        }
-      })
-  }
-
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Banner deleted successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div
@@ -131,22 +131,24 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
         <div className="card-actions justify-end mt-auto">
           <div className="flex gap-6">
             <button
-              className={darkMode ? "primary-button-dark hover:bg-[#10aade] hover:text-white border-[2px] border-[#10aade] text-[#10aade] hover:border-white " : "primary-button"}
+              className={
+                darkMode
+                  ? "primary-button-dark hover:bg-[#10aade] hover:text-white border-[2px] border-[#10aade] text-[#10aade] hover:border-white "
+                  : "primary-button"
+              }
               onClick={() => {
                 const modalId = `${banner._id}_${index}`;
-                                    const modal =
-                                      document.getElementById(modalId);
-                                    setOpenModalIndex(modal);
-                                    if (modal) {
-                                      // setTId(sBook._id);
-                                      modal.showModal();
-                                    }
+                const modal = document.getElementById(modalId);
+                setOpenModalIndex(modal);
+                if (modal) {
+                  // setTId(sBook._id);
+                  modal.showModal();
+                }
               }}
             >
               <FaEdit className="text-xl"></FaEdit>
             </button>
-            <dialog id={`${banner._id}_${index}`}
-              className="modal">
+            <dialog id={`${banner._id}_${index}`} className="modal">
               <div className={darkMode ? "bg-gray-200 modal-box" : "modal-box"}>
                 <form
                   className={darkMode ? "bg-gray-200" : ""}
@@ -223,9 +225,11 @@ const ManageBannerCard = ({ banner, refetch,index }) => {
 
             <button
               className={
-                darkMode ? "primary-button-dark  border-[2px] border-[#d71d24] hover:bg-[#d71d24] hover:text-white hover:border-white  text-[#d71d24]" : "primary-button"
+                darkMode
+                  ? "primary-button-dark  border-[2px] border-[#d71d24] hover:bg-[#d71d24] hover:text-white hover:border-white  text-[#d71d24]"
+                  : "primary-button"
               }
-              onClick={()=>handleDelete(_id)}
+              onClick={() => handleDelete(_id)}
             >
               <MdDelete className="text-xl"></MdDelete>
             </button>

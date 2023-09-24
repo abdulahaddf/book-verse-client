@@ -1,14 +1,14 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import ManageBannerCard from './ManageBannerCard';
-import { useForm } from 'react-hook-form';
-import UseUser from '../../../hooks/UseUser';
-import axios from 'axios';
-import Swal from 'sweetalert2';
-import { useQuery } from '@tanstack/react-query';
-import { useContext } from 'react';
-import { AuthContext } from '../../../provider/AuthProvider';
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import ManageBannerCard from "./ManageBannerCard";
+import { useForm } from "react-hook-form";
+import UseUser from "../../../hooks/UseUser";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const ManageBanner = () => {
   // Tonmoy Start
@@ -21,25 +21,25 @@ const ManageBanner = () => {
   // const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userinfo] = UseUser()
-  const {
-    register,
-    handleSubmit,
-    reset
-  } = useForm();
+  const [userinfo] = UseUser();
+  const { register, handleSubmit, reset } = useForm();
 
-  const { data: banners = [], isLoading, refetch, } = useQuery(["banners"], async () => {
+  const {
+    data: banners = [],
+    isLoading,
+    refetch,
+  } = useQuery(["banners"], async () => {
     const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
     return res.json();
   });
-
 
   const AddNewBanner = (data) => {
     if (data !== "null") {
       const { title, subtitle, url } = data;
       console.log(data);
-      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token
-        }`;
+      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_Image_Upload_token
+      }`;
 
       const coverForm = new FormData();
       coverForm.append("image", url[0]);
@@ -58,10 +58,11 @@ const ManageBanner = () => {
             };
             axios
               .post(
-                "https://book-verse-server-phi.vercel.app/banners", bannerDetails
+                "https://book-verse-server-phi.vercel.app/banners",
+                bannerDetails
               )
               .then((res) => {
-                console.log(res.data)
+                console.log(res.data);
                 if (res.data.insertedId) {
                   reset();
                   refetch();
@@ -75,48 +76,50 @@ const ManageBanner = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
-
                 }
               })
               .catch((err) => console.log(err));
           }
         });
-
     }
-  }
-
-
-
+  };
 
   return (
-
     <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-14">
-      <div className='text-center'>
+      <div className="text-center">
         <h2 className="text-4xl font-bold mb-8">Banner management</h2>
-        
 
-        <div className={darkMode?" flex justify-center":""}>
+        <div className={darkMode ? " flex justify-center" : ""}>
           <button
             onClick={() => {
-              const modalId = 'my_modal_8';
-                                  const modal =
-                                    document.getElementById(modalId);
-                                  setOpenModalIndex(modal);
-                                  if (modal) {
-                                    // setTId(sBook._id);
-                                    modal.showModal();
-                                  }
+              const modalId = "my_modal_8";
+              const modal = document.getElementById(modalId);
+              setOpenModalIndex(modal);
+              if (modal) {
+                // setTId(sBook._id);
+                modal.showModal();
+              }
             }}
-            className={darkMode ? "primary-button-dark border-white border-[2px]" : "primary-button"}
+            className={
+              darkMode
+                ? "primary-button-dark border-white border-[2px]"
+                : "primary-button"
+            }
           >
             Add New Banner
-                </button>
+          </button>
         </div>
       </div>
 
       <dialog id="my_modal_8" className="modal">
-        <form method="dialog" className="modal-box" onSubmit={handleSubmit(AddNewBanner)}>
-          <h3 className="text-3xl font-semibold text-center text-red uppercase">Add New Banner </h3>
+        <form
+          method="dialog"
+          className="modal-box"
+          onSubmit={handleSubmit(AddNewBanner)}
+        >
+          <h3 className="text-3xl font-semibold text-center text-red uppercase">
+            Add New Banner{" "}
+          </h3>
           <div>
             <div className="mb-2">
               <label
@@ -151,7 +154,7 @@ const ManageBanner = () => {
               htmlFor="photo"
               className="block text-sm font-semibold text-gray-800"
             >
-              Add photo <span className='font-thin'>(1920px x 1080px) </span>
+              Add photo <span className="font-thin">(1920px x 1080px) </span>
             </label>
             <input
               checked={true}
@@ -169,7 +172,6 @@ const ManageBanner = () => {
                 Submit
               </button>
             </div>
-
           </div>
         </form>
         <form method="dialog" className="modal-backdrop">
@@ -177,16 +179,16 @@ const ManageBanner = () => {
         </form>
       </dialog>
 
-
-
       <div className="mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {banners?.map((banner) => (
-          <ManageBannerCard key={banner._id} banner={banner} refetch={refetch}></ManageBannerCard>
+          <ManageBannerCard
+            key={banner._id}
+            banner={banner}
+            refetch={refetch}
+          ></ManageBannerCard>
         ))}
       </div>
-
     </div>
-
   );
 };
 

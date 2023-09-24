@@ -12,15 +12,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
 import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
-
 const BestSelling = () => {
-
-  const [data,setData]=useState([])
+  const [data, setData] = useState([]);
 
   const { darkMode } = useContext(AuthContext);
   const dispatch = useDispatch();
@@ -29,16 +25,13 @@ const BestSelling = () => {
     fetch("https://book-verse-server-phi.vercel.app/bestSelling")
       .then((res) => res.json())
       .then((data) => {
-        setData(data)
+        setData(data);
         dispatch(setBestSelling({ bestSelling: data }));
         setLoading(false);
       })
       .catch((error) => console.log(error));
   }, [dispatch]);
 
- 
-
-  
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
@@ -54,7 +47,6 @@ const BestSelling = () => {
           See All
         </Link>
       </div>
-     
 
       {/* ----------------------------------
               Slider added -foisal 

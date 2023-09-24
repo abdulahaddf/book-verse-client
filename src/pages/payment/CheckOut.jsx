@@ -17,7 +17,7 @@ const CheckOut = ({ books, price }) => {
   // console.log(price, books);
   const stripe = useStripe();
   const elements = useElements();
-  const { user, cartRefetch,darkMode } = useContext(AuthContext);
+  const { user, cartRefetch, darkMode } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -35,7 +35,7 @@ const CheckOut = ({ books, price }) => {
     }
   }, [price, axiosSecure]);
 
-  const customer = getValue("customer") // getting the customer information from the checkout form 
+  const customer = getValue("customer"); // getting the customer information from the checkout form
   // console.log(customer);
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -84,14 +84,14 @@ const CheckOut = ({ books, price }) => {
 
     if (paymentIntent.status === "succeeded") {
       // save payment information to the server
-      
+
       const paymentInfo = {
         books: [...books],
         transactionId: paymentIntent.id,
         mail: user?.email,
         date: new Date(),
         total_price: price,
-        status : "Paid",
+        status: "Paid",
         customer,
       };
       axiosSecure.post("/payments", paymentInfo).then((res) => {
@@ -175,51 +175,59 @@ const CheckOut = ({ books, price }) => {
     <div className="w-11/12 mx-auto">
       {paid ? (
         <div className="md:my-10">
+          <div
+            className={
+              darkMode
+                ? "md:h-[70vh] w-11/12 md:w-1/2 mx-auto p-5 md:p-10 text-center my-10 space-y-4 border-[1px] bg-gray "
+                : "md:h-[70vh] w-11/12 md:w-1/2 mx-auto p-5 md:p-10 text-center my-10 space-y-4 border-2 border-red shadow-2xl glass"
+            }
+          >
+            <div className="md:w-2/3 flex md:gap-20 mx-auto">
+              <Lottie options={defaultOptions} />
+              <img
+                className="w-32"
+                src="https://i.ibb.co/PYJ6bm1/paid.png"
+                alt=""
+              />
+            </div>
 
-<div
-      className={
-        darkMode
-          ? "md:h-[70vh] w-11/12 md:w-1/2 mx-auto p-5 md:p-10 text-center my-10 space-y-4 border-[1px] bg-gray "
-          : "md:h-[70vh] w-11/12 md:w-1/2 mx-auto p-5 md:p-10 text-center my-10 space-y-4 border-2 border-red shadow-2xl glass"
-      }
-    >
-      <div className="md:w-2/3 flex md:gap-20 mx-auto">
-        <Lottie options={defaultOptions} />
-        <img className="w-32" src="https://i.ibb.co/PYJ6bm1/paid.png" alt="" />
-      </div>
-      
-      <h1 className="text-3xl">
-        Your Order is In Progress{" "}
-        <span className="loading loading-dots loading-md"></span>
-      </h1>
-      <h3 className="text-xl text-center my-5">
-            Your Transaction Id :{" "}
-            <span className="text-red">{transactionId}</span>
-          </h3>
-      <p className="text-xl md:text-3xl">
-        <Link
-          className="text-red hover:no-underline "
-          to="/dashboard/purchasedBooks"
-        >
-          Click here
-        </Link>{" "}
-        To Truck Your Order
-      </p>
-      <h3 className="text-xl">Thanks For Being With Us</h3>
-    </div>
-
+            <h1 className="text-3xl">
+              Your Order is In Progress{" "}
+              <span className="loading loading-dots loading-md"></span>
+            </h1>
+            <h3 className="text-xl text-center my-5">
+              Your Transaction Id :{" "}
+              <span className="text-red">{transactionId}</span>
+            </h3>
+            <p className="text-xl md:text-3xl">
+              <Link
+                className="text-red hover:no-underline "
+                to="/dashboard/purchasedBooks"
+              >
+                Click here
+              </Link>{" "}
+              To Truck Your Order
+            </p>
+            <h3 className="text-xl">Thanks For Being With Us</h3>
+          </div>
         </div>
       ) : (
         <>
           <form
-            className={darkMode?"md:w-1/2 p-20 mt-10 mx-auto text-white bg-gray border-double  border-[1px] rounded-md ":"md:w-1/2 p-3 md:p-20 mt-10 mx-auto text-white border-double border-4 border-red bg-gradient-to-b from-red to-secondary  "}
+            className={
+              darkMode
+                ? "md:w-1/2 p-20 mt-10 mx-auto text-white bg-gray border-double  border-[1px] rounded-md "
+                : "md:w-1/2 p-3 md:p-20 mt-10 mx-auto text-white border-double border-4 border-red bg-gradient-to-b from-red to-secondary  "
+            }
             onSubmit={handleSubmit}
           >
             <h1 className="text-center">Hello, {user?.displayName} </h1>
             <h1 className=" text-xl md:text-3xl text-center my-10">
               You Need to Pay{" "}
               <span className="font-semibold text-green-400">${price}</span> for{" "}
-              <span className="font-semibold text-green-400">{books.length}</span>{" "}
+              <span className="font-semibold text-green-400">
+                {books.length}
+              </span>{" "}
               Books
             </h1>
             <CardElement
@@ -241,9 +249,11 @@ const CheckOut = ({ books, price }) => {
             <button
               type="submit"
               // disabled={!stripe || !clientSecret || processing}
-              className={darkMode?"inline-flex justify-center rounded-md  border-[1px] px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
-              :
-              "inline-flex justify-center rounded-md border border-transparent bg-red px-4 py-2 text-sm font-medium text-white hover:bg-white hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"}
+              className={
+                darkMode
+                  ? "inline-flex justify-center rounded-md  border-[1px] px-4 py-2 text-sm font-medium text-white hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+                  : "inline-flex justify-center rounded-md border border-transparent bg-red px-4 py-2 text-sm font-medium text-white hover:bg-white hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+              }
             >
               {processing ? (
                 <ImSpinner10 className="m-auto animate-spin" size={24} />
