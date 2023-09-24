@@ -88,3 +88,7 @@ Cash on Delivery (COD): Users have the option to pay in cash upon the delivery o
 - Book Verse introduces an invoice system that allows the admin to download any user's invoice.
 - Admins can access and download invoices for order records, simplifying financial record-keeping.
 
+
+## Documentation
+
+[Documentation](https://docs.google.com/document/d/1IwpKcGz2RgTqgLVxAO9vCe9G5vUei5UGgFvaqB0nCkc/edit?usp=sharing)
