@@ -42,7 +42,7 @@ const BestSelling = () => {
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
-        <Heading title={"Best Selling"}></Heading>
+        <Heading title={"Best Seller"}></Heading>
         <Link
           to="/allBestSelling"
           className={`${
