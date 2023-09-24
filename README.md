@@ -29,6 +29,7 @@ In the frontend, we've utilized React for building interactive user interfaces, 
 
 - Enhancing user interactions, we've integrated a communication system between buyers and sellers.
 - Users can communicate directly with sellers to inquire about book details or negotiate terms.
+- User will be able to chat with old seller directly through our platform.
 - This feature fosters a vibrant and engaged book-selling community.
 ### Multiple Payment Systems:
 
@@ -36,55 +37,54 @@ In the frontend, we've utilized React for building interactive user interfaces, 
 - SSL Commerce: Ensures secure and encrypted online transactions, providing users with peace of mind.
 - Stripe Integration: Enables seamless payment processing using international credit or debit cards, enhancing convenience.
 Cash on Delivery (COD): Users have the option to pay in cash upon the delivery of their purchased books, offering flexibility.
-User Authentication:
+### User Authentication:
 
-Ensuring security and trust, we've implemented a robust user authentication system.
-Users can register using their personal information or through their Google and Facebook accounts.
-Password reset functionality is available for added security.
-Book Reviews and Ratings:
+- Ensuring security and trust, we've implemented a robust user authentication system.
+- Users can register using their personal information or through their Google and Facebook accounts.
+- Password reset functionality is available for added security.
+### Book Reviews and Ratings:
 
-Users can contribute valuable book reviews and ratings, helping others make informed decisions.
-Authenticity is ensured by limiting each user to review each purchased book once.
-Reviews and ratings are prominently displayed on book pages, enhancing the user experience.
-Community Building:
+- Users can contribute valuable book reviews and ratings, helping others make informed decisions.
+- Authenticity is ensured by limiting each user to review each purchased book once.
+- Reviews and ratings are prominently displayed on book pages, enhancing the user experience.
+### Community Building:
 
-We aim to create a vibrant community of book lovers who can connect, share recommendations, and engage with one another.
-Features like book listings and user profiles foster a sense of belonging among our users.
-Responsive Design:
+- We aim to create a vibrant community of book lovers who can connect, share recommendations, and engage with one another.
+- Features like book listings and user profiles foster a sense of belonging among our users.
+### Responsive Design:
 
-Our website is fully responsive across all devices, providing a seamless experience for users on desktops, tablets, and mobile phones.
-Dynamic Page Titles with React Helmet:
+- Our website is fully responsive across all devices, providing a seamless experience for users on desktops, tablets, and mobile phones.
+### Dynamic Page Titles with React Helmet:
 
-Implemented React Helmet to dynamically set titles for each page, improving navigation and making it easier for users to identify content when switching tabs.
+-Implemented React Helmet to dynamically set titles for each page, improving navigation and making it easier for users to identify content when switching tabs.
 
-Dynamic Banner Management:
+### Dynamic Banner Management:
 
-Our platform features a dynamic banner system that allows administrators to manage and update banners on the homepage.
-Admins can showcase promotions, featured books, and special events to enhance the user experience.
-Promo Code System:
+- Our platform features a dynamic banner system that allows administrators to manage and update banners on the homepage.
+- Admins can showcase promotions, featured books, and special events to enhance the user experience.
+### Promo Code System:
 
-Book Verse offers a flexible promo code system.
-Admins can create and manage promo codes, providing users with discounts and special offers during checkout.
-Promo codes are dynamic and can be added and managed by the admin, offering flexibility in promotions.
-Admin Monitoring System:
+- Book Verse offers a flexible promo code system.
+- Admins can create and manage promo codes, providing users with discounts and special offers during checkout.
+- Promo codes are dynamic and can be added and managed by the admin, offering flexibility in promotions.
+### Admin Monitoring System:
 
-Admins have access to a comprehensive monitoring system that tracks daily and monthly revenue.
-Dynamic charts and statistics provide valuable insights into the platform's performance and financial health.
-Admin Management System:
+- Admins have access to a comprehensive monitoring system that tracks daily and monthly revenue.
+- Dynamic charts and statistics provide valuable insights into the platform's performance and financial health.
+### Admin Management System:
 
-Admins can efficiently manage user accounts and privileges through the admin dashboard.
-Admins can designate other users as admins or revert them to regular users, providing control and flexibility.
-Book Information Management:
+- Admins can efficiently manage user accounts and privileges through the admin dashboard.
+- Admins can designate other users as admins or revert them to regular users, providing control and flexibility.
+### Book Information Management:
 
-Admins have the power to manage and update book information.
-This includes adding new books, editing existing listings, and removing outdated content to keep the platform current and engaging.
-Order Tracking System:
+- Admins have the power to manage and update book information.
+- This includes adding new books, editing existing listings, and removing outdated content to keep the platform current and engaging.
+### Order Tracking System:
 
-Users can easily track the status of their orders through the order tracking system.
-The system provides real-time updates on order progress, from processing and shipping to delivery.
+- Users can easily track the status of their orders through the order tracking system.
+- The system provides real-time updates on order progress, from processing and shipping to delivery.
 
-Invoice Downloading System:
-
-Book Verse introduces an invoice system that allows the admin to download any user's invoice.
-Admins can access and download invoices for order records, simplifying financial record-keeping.
+### Invoice Downloading System- :
+- Book Verse introduces an invoice system that allows the admin to download any user's invoice.
+- Admins can access and download invoices for order records, simplifying financial record-keeping.
 
