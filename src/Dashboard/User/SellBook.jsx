@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import UseUser from "../../hooks/UseUser";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 const SellBook = () => {
   //  Tonmoy start
@@ -90,12 +91,13 @@ const SellBook = () => {
       const responseData = await apiResponse.json();
 
       if (responseData.insertedId) {
-        Swal.fire({
-          title: "Success!",
-          text: "Book added successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
+        // Swal.fire({
+        //   title: "Success!",
+        //   text: "Book added successfully",
+        //   icon: "success",
+        //   confirmButtonText: "Ok",
+        // });
+        toast.success('Book added successfully')
         reset();
       }
     } catch (error) {
@@ -105,7 +107,9 @@ const SellBook = () => {
 
   return (
     <div className="w-[414px] md:w-full mx-auto h-full p-2 lg:p-4 mt-5">
-      <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>Post Your Old Books to sell</h1>
+      <h1 className={darkMode ? "dashboard-heading-dark" : "dashboard-heading"}>
+        Post Your Old Books!!!
+      </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={
@@ -230,7 +234,7 @@ const SellBook = () => {
                 className={
                   darkMode
                     ? "label-text font-semibold text-white"
-                    : "label-text font-semibold"
+                    : "label-text font-semibold "
                 }
               >
                 Book image
@@ -272,11 +276,11 @@ const SellBook = () => {
         <input
           className={
             darkMode
-              ? " btn-primary-dark text-[15px] mt-4 "
-              : "btn-primary text-[15px] mt-4"
+              ? " btn-primary-dark text-[15px] mt-4 normal-case"
+              : "btn-primary text-[15px] mt-4 normal-case mx-auto"
           }
           type="submit"
-          value="Post your Book"
+          value="Post Book"
         />
       </form>
     </div>

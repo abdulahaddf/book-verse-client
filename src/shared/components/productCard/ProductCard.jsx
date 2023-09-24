@@ -61,7 +61,7 @@ const ProductCard = ({ data, loading, text }) => {
   // tonmoy end 
 
   return (
-    <Link to={`/details/${previous_id ? previous_id : _id}`}>
+    <Link className="hover:no-underline focus:no-underline" to={`/details/${previous_id ? previous_id : _id}`}>
       <div href="#" className={darkMode?"group relative block hover:shadow-sm hover:shadow-white px-auto w-48 p-2  overflow-hidden":"group relative block px-auto w-48 p-2   hover:shadow-[0_2px_4px_0_rgba(0,0,0,.25)] overflow-hidden"}>
         <div className="mx-auto w-44 relative">
           {loading ? (
@@ -94,7 +94,7 @@ const ProductCard = ({ data, loading, text }) => {
             </>
           ) : (
             <>
-              <p className={darkMode?"font-[500] text-white/90":"font-bold primary-Color"}>{title}</p>
+              <p className={darkMode?"font-[500] hover:no-underline text-white/90":"font-bold primary-Color"}>{title}</p>
               <p className={darkMode?"text-xs text-gray-400 font-[400] uppercase tracking-widest":"text-xs text-slate-600 font-medium uppercase tracking-widest"}>
                 {author}
               </p>

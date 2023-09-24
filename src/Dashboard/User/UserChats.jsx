@@ -36,8 +36,6 @@ const UserChats = () => {
       index === self.findIndex((u) => u?.email === user?.email)
   );
 
-  
-
   const routeHandler = (data) => {
     if (data?.email) {
       return navigate("/dashboard/userChat");
@@ -57,37 +55,33 @@ const UserChats = () => {
     };
   }, []);
 
-  
-
   return (
     <div
-    className={
-      darkMode
-        ? " mt-10 md:px-20 lg:px-20 w-[90%] ps-6"
-        : " md:px-20 mt-10 lg:px-20 w-[90%] ps-6"
-    }
+      className={
+        darkMode
+          ? " mt-10 md:px-20 lg:px-20 w-[90%] ps-6"
+          : " md:px-20 mt-10 lg:px-20 w-[90%] ps-6"
+      }
     >
-      <h1 className={darkMode?"dashboard-heading-dark":"dashboard-heading"}>All Your Chats</h1>
+      <h1 className={darkMode ? "dashboard-heading-dark" : "dashboard-heading"}>
+        Your Chat List
+      </h1>
       {allChats?.map((a) => (
         <div key={a?._id}>
           <button onClick={() => routeHandler(a)} className="w-full ">
             <div
-               className={
+              className={
                 darkMode
                   ? "my-2 p-[5px] py-[15px]    space-y-3 overflow-hidden   rounded-md  bg-gray hover:bg-gray/30 hover:no-underline  flex shadow-white shadow-sm w-full mx-auto"
                   : "my-2 p-[5px] py-[15px]  hover:text-black/70 hover:no-underline   space-y-3 overflow-hidden   rounded-md   hover:bg-[#f3f4f6]  flex shadow-md w-full mx-auto"
               }
             >
-
               <section className="w-[15%] mt-2 pl-2">
                 {uniqueUsersData.map((userData) => {
-                  
                   const otherUserEmail = a?.array?.find(
-                    
                     (email) => email !== user?.email
                   );
                   if (userData?.email === otherUserEmail) {
-                  
                     return (
                       <img
                         src={userData?.photoURL ? userData?.photoURL : logo} // Assuming 'photoURL' contains the image URL
@@ -118,7 +112,8 @@ const UserChats = () => {
                             : "text-[17px]    font-[500]  text-gray-600"
                         }
                       >
-                        { userData?.displayName ? userData?.displayName?.slice(0, 30)
+                        {userData?.displayName
+                          ? userData?.displayName?.slice(0, 30)
                           : "Books Vers"}
                       </p>
                     );
