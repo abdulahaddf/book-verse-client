@@ -92,3 +92,72 @@ Cash on Delivery (COD): Users have the option to pay in cash upon the delivery o
 ## Documentation
 
 [Documentation](https://docs.google.com/document/d/1IwpKcGz2RgTqgLVxAO9vCe9G5vUei5UGgFvaqB0nCkc/edit?usp=sharing)
+
+## Used Technologies : 
+### Frontend Technologies and Libraries:
+React: A JavaScript library for building user interfaces.
+Redux Toolkit: A library for managing state in React applications.
+React Router DOM: A library for handling routing in React applications.
+Axios: A library for making HTTP requests.
+Firebase: A platform for building web and mobile applications.
+React Query: A library for managing, caching, and synchronizing server state in React applications.
+React PDF: A library for rendering PDF documents in React applications.
+React Toastify: A library for displaying toast notifications.
+React Helmet: A library for dynamically setting page titles.
+React Icons: A library of customizable SVG icons for React applications.
+React Slick: A carousel/slider component for React.
+React Lottie: A library for adding animations in React using Lottie.
+React Chartjs 2: A wrapper for Chart.js, a charting library.
+React Lazy Load: A library for lazy-loading images and components.
+React Transition Group: A library for managing component transitions.
+React Spring: A library for animating React components.
+React Search Box: A library for adding search functionality.
+React Loading Skeleton: A library for displaying loading skeletons.
+React Headroom: A library for adding sticky headers.
+React Responsive Carousel: A responsive carousel component.
+React Lottie: A library for rendering Lottie animations.
+React ID Swiper: A swiper/slider component for React.
+React Spinners: A library for displaying loading spinners.
+React Tabs: A tab component for React.
+React PDF Renderer: A library for rendering PDF documents.
+React Awesome Reveal: A library for animating elements on scroll.
+React Countup: A library for animated number counting.
+React Hook Form: A library for managing forms in React.
+React Slick: A carousel/slider component for React.
+Recharts: A charting library for React.
+Swiper: A modern touch slider and swiper library
+
+### Styling and CSS:
+Tailwind CSS: A utility-first CSS framework.
+Sass: A CSS preprocessor.
+DaisyUI: A library of utility classes for Tailwind CSS.
+PostCSS: A tool for transforming CSS with JavaScript.
+Autoprefixer: A PostCSS plugin for adding vendor prefixes to CSS.
+Build Tools and Development Dependencies:
+Vite: A build tool and development server for JavaScript and TypeScript.
+Babel: A JavaScript compiler.
+Jest: A JavaScript testing framework.
+ESLint: A tool for identifying and fixing problems in JavaScript code.
+Tailwind CSS: A utility-first CSS framework (used both for styling and development).
+Vitest: A test runner and utility for testing JavaScript and TypeScript projects.
+Payment Processing:
+Stripe: A payment processing platform.
+React Stripe.js: A library for integrating Stripe with React.
+Data Storage:
+LocalForage: A library for offline data storage.
+### Other Utilities:
+Filestack: A file uploading and transformation service.
+Moment.js: A library for handling dates and times.
+HTML2PDF.js: A library for converting HTML to PDF.
+jsPDF: A library for generating PDFs in JavaScript.
+SweetAlert2: A library for creating modals and alerts.
+
+### Backend Technologies and Libraries:
+1. Express: A fast, unopinionated, and minimalist web framework for Node.js.
+2. MongoDB: A NoSQL database for storing and managing data.
+3. CORS: A middleware for enabling Cross-Origin Resource Sharing in your Express application.
+4. JSON Web Tokens (JWT): A library for handling authentication and authorization through tokens.
+5. dotenv: A library for loading environment variables from a .env file.
+6. SSLCommerz LTS: A library for integrating SSLCommerz, a payment gateway service.
+7. Stripe: A library for integrating Stripe, a payment processing platform.
+
