@@ -78,7 +78,7 @@ const BestSelling = () => {
           className="mySwiper flex w-full z-0"
         >
           {data?.slice(0, 20).map((book, idx) => (
-            <SwiperSlide key={idx}>
+             <SwiperSlide key={idx}  className={darkMode?" bg-gray":""} >
               <ProductCard
                 key={book._id}
                 data={book}

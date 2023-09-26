@@ -71,7 +71,7 @@ const KidsZone = () => {
           {books?.map((book, idx) => {
             if (book.category.toLowerCase() === "kids") {
               return (
-                <SwiperSlide key={idx}>
+                <SwiperSlide key={idx}  className={darkMode?" bg-gray":""} >
                   <ProductCard
                     key={book._id}
                     data={book}

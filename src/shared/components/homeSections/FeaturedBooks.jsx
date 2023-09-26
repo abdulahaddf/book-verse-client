@@ -35,7 +35,7 @@ const FeaturedBooks = () => {
   //   },
   // };
   return (
-    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
+    <div className={`${darkMode ? "section  bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
         <Heading title={"Featured Books"}></Heading>
       </div>
@@ -69,7 +69,7 @@ const FeaturedBooks = () => {
           className="mySwiper flex w-full"
         >
           {books?.slice(0, 20).map((book, idx) => (
-            <SwiperSlide key={idx}>
+            <SwiperSlide key={idx}  className={darkMode?" bg-gray":""} >
               <ProductCard
                 key={book._id}
                 data={book}
