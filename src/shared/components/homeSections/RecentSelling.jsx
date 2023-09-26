@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+
 import { Pagination, Navigation } from "swiper/modules";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { useContext } from "react";
@@ -21,13 +22,13 @@ const RecentSelling = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  const [data, setData] = useState([]);
+  const [data,setData]=useState([])
 
   useEffect(() => {
     fetch("https://book-verse-server-phi.vercel.app/recentSelling")
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        setData(data)
         dispatch(setRecentSelling({ recentSelling: data }));
         setLoading(false);
       })
@@ -35,10 +36,12 @@ const RecentSelling = () => {
     setLoading(false);
   }, [dispatch]);
 
+
+ 
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center z-0">
-        <Heading title={"Recent Selling"}></Heading>
+        <Heading title={"Recent Seller"}></Heading>
         <Link
           to="/allRecentSelling"
           className={
@@ -91,6 +94,7 @@ const RecentSelling = () => {
           ))}
         </Swiper>
       </div>
+     
     </div>
   );
 };
