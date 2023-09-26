@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <section className="2xl:container mx-auto">
+    {/* <section className="2xl:container mx-auto"> */}
       <SkeletonTheme baseColor="#cccccc" highlightColor="#e3e3e3">
         <Provider store={store}>
           <QueryClientProvider client={queryClient}>
@@ -41,6 +41,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           </QueryClientProvider>
         </Provider>
       </SkeletonTheme>
-    </section>
+    {/* </section> */}
   </React.StrictMode>
 );

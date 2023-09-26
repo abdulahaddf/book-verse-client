@@ -39,8 +39,8 @@ const RecentSelling = () => {
 
  
   return (
-    <div className={`${darkMode ? "section bg-gray " : "section"}`}>
-      <div className="flex justify-between items-center z-0">
+    <div className={`${darkMode ? "section bg-gray   " : "section"}`}>
+      <div className="flex justify-between items-center z-0 ">
         <Heading title={"Recent Seller"}></Heading>
         <Link
           to="/allRecentSelling"
@@ -56,7 +56,7 @@ const RecentSelling = () => {
       {/* ----------------------------------
               Slider added -foisal 
           ----------------------------*/}
-      <div className="py-5">
+      <div className="py-5   ">
         <Swiper
           slidesPerView={1}
           // centeredSlides={true}
@@ -80,11 +80,12 @@ const RecentSelling = () => {
               slidesPerView: 7,
             },
           }}
-          className="mySwiper flex w-full z-0"
+          className="mySwiper flex w-full z-0    "
         >
           {data?.slice(0, 20).map((book, idx) => (
-            <SwiperSlide key={idx}>
+            <SwiperSlide key={idx}  className={darkMode?" bg-gray":""} >
               <ProductCard
+              
                 key={book._id}
                 data={book}
                 text="recentSelling"

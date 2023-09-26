@@ -61,20 +61,21 @@ const ProductCard = ({ data, loading, text }) => {
   // tonmoy end 
 
   return (
-    <Link className="hover:no-underline focus:no-underline" to={`/details/${previous_id ? previous_id : _id}`}>
-      <div href="#" className={darkMode?"group relative block hover:shadow-sm hover:shadow-white px-auto w-48 p-2  overflow-hidden":"group relative block px-auto w-48 p-2   hover:shadow-[0_2px_4px_0_rgba(0,0,0,.25)] overflow-hidden"}>
-        <div className="mx-auto w-44 relative">
+    <Link className="hover:no-underline focus:no-underline  " to={`/details/${previous_id ? previous_id : _id}`}>
+      <div  className={darkMode?"group relative block hover:shadow-sm   hover:shadow-white px-auto w-48 p-2     overflow-hidden":"group relative block px-auto w-48 p-2   hover:shadow-[0_2px_4px_0_rgba(0,0,0,.25)] overflow-hidden"}>
+        <div className="mx-auto w-44 relative ">
           {loading ? (
             <Skeleton height={256} width={352} />
           ) : (
             <>
-              <img
+              <img style={{height:'256px'}}
                 alt="Developer"
                 src={
                   cover_image ||
                   "https://i.ibb.co/Lx94QQt/book-default-data.jpg"
                 }
-                className="relative inset-0  w-44 h-64  transition-opacity group-hover:opacity-90"
+                // h-64
+                className="relative inset-0  w-44   transition-opacity group-hover:opacity-90"
               />
               <p className="bg-[#F23534] h-10 w-10  text-xs font-medium text-slate-50 absolute -top-2 -left-2 inline rounded-full p-2 pt-3">
                 -{savedPer}%

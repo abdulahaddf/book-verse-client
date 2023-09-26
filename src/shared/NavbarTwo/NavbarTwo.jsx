@@ -82,7 +82,7 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <li className="my-8">
+      <div className="my-8">
         <div
           className={` ${
             darkMode
@@ -146,7 +146,7 @@ const Navbar = () => {
             </li>
           </div>
         </div>
-      </li>
+      </div>
 
       <li className=" text-base font-bold ">
         <NavLink
