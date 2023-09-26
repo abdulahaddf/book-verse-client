@@ -129,11 +129,10 @@ Cash on Delivery (COD): Users have the option to pay in cash upon the delivery o
 
 ### Styling and CSS:
 - Tailwind CSS: A utility-first CSS framework.
-- Sass: A CSS preprocessor.
 - DaisyUI: A library of utility classes for Tailwind CSS.
 - PostCSS: A tool for transforming CSS with JavaScript.
 - Autoprefixer: A PostCSS plugin for adding vendor prefixes to CSS.
-- Build Tools and Development Dependencies:
+### Build Tools and Development Dependencies:
 - Vite: A build tool and development server for JavaScript and TypeScript.
 - Babel: A JavaScript compiler.
 - Jest: A JavaScript testing framework.
