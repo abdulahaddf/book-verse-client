@@ -6,9 +6,7 @@
   .btn-card {
     @apply btn-sm btn btn-outline btn-secondary text-white hover:text-red border-red  hover:border-b-red hover:bg-white  px-4 py-1 rounded-lg border-b-4 hover:scale-105 duration-300;
   }
-  /* .btn-fifth {
-    @apply btn w-24 text-black  bg-white hover:text-white border-red normal-case hover:bg-red  px-2 py-1 rounded-lg border-b-4 hover:scale-105 duration-300 hover:shadow-rose-400 shadow-lg;
-  } */
+
   .btn-custom {
     @apply btn btn-sm text-black  bg-white hover:text-white border-red  hover:border-b-white hover:no-underline
          hover:bg-red  rounded-lg px-5 border-b-4 hover:scale-105 duration-300;
@@ -288,6 +286,8 @@
 }
 
 /* Button end Tonmoy for dark mode */
+
+
 
 
 /*----- dashboard navlink active rout color set ---- */

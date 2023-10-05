@@ -22,9 +22,12 @@ const BestSelling = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/bestSelling")
-      .then((res) => res.json())
+    fetch("https://book-verse-team-project-server.up.railway.app/bestSelling")
+      .then((res) => {
+        console.log(res,'dhur')
+       return res.json()})
       .then((data) => {
+         
         setData(data);
         dispatch(setBestSelling({ bestSelling: data }));
         setLoading(false);

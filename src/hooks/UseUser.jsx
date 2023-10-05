@@ -12,7 +12,7 @@ const UseUser = () => {
     refetch,
   } = useQuery([user, "userinfo"], async () => {
     const res = await fetch(
-      `https://book-verse-server-phi.vercel.app/userinfo/?email=${user?.email}`
+      `https://book-verse-team-project-server.up.railway.app/userinfo/?email=${user?.email}`
     );
     return res.json();
   });

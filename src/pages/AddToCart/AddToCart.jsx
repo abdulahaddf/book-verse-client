@@ -23,7 +23,7 @@ const AddToCart = () => {
   const [promoUpdate, setUpdate] = useState("");
   console.log(promo);
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/promo")
+    fetch("https://book-verse-team-project-server.up.railway.app/promo")
       .then((response) => response.json())
       .then((data) => setPromo(data));
   }, [addToCartData]);

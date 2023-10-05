@@ -27,7 +27,7 @@ const AllOldBooks = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://book-verse-server-phi.vercel.app/oldBooks?search=${search}&sort=${sortByPrice}&page=${currentPage}&perPage=${perPage}`
+          `https://book-verse-team-project-server.up.railway.app/oldBooks?search=${search}&sort=${sortByPrice}&page=${currentPage}&perPage=${perPage}`
         );
 
         if (!response.ok) {

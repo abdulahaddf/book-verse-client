@@ -22,7 +22,7 @@ const ContactWithSeller = () => {
     chat: [],
   };
 
-  fetch(`https://book-verse-server-phi.vercel.app/sellerAndBuyerCollections`, {
+  fetch(`https://book-verse-team-project-server.up.railway.app/sellerAndBuyerCollections`, {
     method: "POST",
 
     headers: {
@@ -64,7 +64,7 @@ const ContactWithSeller = () => {
     ];
 
     fetch(
-      `https://book-verse-server-phi.vercel.app/postChatUserToUser?id=${messages?._id}`,
+      `https://book-verse-team-project-server.up.railway.app/postChatUserToUser?id=${messages?._id}`,
       {
         method: "POST",
 

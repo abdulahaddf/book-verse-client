@@ -5,7 +5,7 @@ const usePaymentHistory = (search) => {
     ["paymentHistory", search],
     async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/paymentHistory?search=${search}`
+        `https://book-verse-team-project-server.up.railway.app/paymentHistory?search=${search}`
       );
       return res.json();
     }

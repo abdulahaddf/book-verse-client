@@ -11,7 +11,7 @@ const GeographyChart = () => {
   // const [userData, setUserData] = useState([]);
 
   // useEffect(() => {
-  //   fetch('https://book-verse-server-phi.vercel.app/users')
+  //   fetch('https://book-verse-team-project-server.up.railway.app/users')
   //     .then((response) => {
   //       if (!response.ok) {
   //         throw new Error('Network response was not ok');

@@ -148,7 +148,7 @@ const OldBookDetails = () => {
         <div className="">
           <h2 className="text-2xl font-semibold my-3">Seller Information</h2>
 
-          <div className=" mx-auto flex gap-10">
+          <div className=" mx-auto   xl:flex 2xl:flex gap-10">
             <img
               className="w-[150px] h-[150px] rounded-lg shadow-2xl"
               src={sellerPhoto}
@@ -161,14 +161,12 @@ const OldBookDetails = () => {
               <p>{sellerAddress}</p>
             </div>
           </div>
+
+          {/* btn-fifth-dark w-[90%] mt-10 */}
           {_id && (
             <button
               onClick={contactWithSellerHandler}
-              className={`${
-                darkMode
-                  ? "btn-fifth-dark w-[90%] mt-10 "
-                  : " btn-fifth w-[90%] mt-10"
-              }`}
+              className={`w-[90%] mt-10 ${darkMode?'btn-fifth-dark':'btn-fifth'} ${user?.email === sellerMail || singleUser?.role === "admin"?'  hover:cursor-not-allowed' :' '}`}
               disabled={
                 user?.email === sellerMail || singleUser?.role === "admin"
                   ? true

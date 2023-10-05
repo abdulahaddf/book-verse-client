@@ -6,7 +6,7 @@ export const useUserToUserMessageById = (id) => {
 
     queryFn: async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/getMessageUserToUser?id=${id}`
+        `https://book-verse-team-project-server.up.railway.app/getMessageUserToUser?id=${id}`
       );
 
       return res.json();

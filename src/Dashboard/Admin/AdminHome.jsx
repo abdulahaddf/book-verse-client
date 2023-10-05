@@ -56,7 +56,7 @@ const AdminHome = () => {
   });
 
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/revenueSummary")
+    fetch("https://book-verse-team-project-server.up.railway.app/revenueSummary")
       .then((response) => response.json())
       .then((data) => {
         setRevenueSummary(data);
@@ -68,7 +68,7 @@ const AdminHome = () => {
 
   useEffect(() => {
     fetch(
-      `https://book-verse-server-phi.vercel.app/paymentHistory?search=${search}`
+      `https://book-verse-team-project-server.up.railway.app/paymentHistory?search=${search}`
     )
       .then((res) => res.json())
       .then((data) => {

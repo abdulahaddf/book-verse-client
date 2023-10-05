@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "https://book-verse-server-phi.vercel.app",
+  baseURL: "https://book-verse-team-project-server.up.railway.app",
 });
 
 const useAxiosSecure = () => {

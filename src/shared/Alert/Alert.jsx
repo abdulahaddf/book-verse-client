@@ -32,7 +32,7 @@ const Alert = () => {
     ];
 
     fetch(
-      `https://book-verse-server-phi.vercel.app/postChat?email=${user?.email}`,
+      `https://book-verse-team-project-server.up.railway.app/postChat?email=${user?.email}`,
       {
         method: "POST",
 
@@ -55,7 +55,7 @@ const Alert = () => {
 
   const cancelHandler = () => {
     fetch(
-      `https://book-verse-server-phi.vercel.app/chatAction?email=${user?.email}`,
+      `https://book-verse-team-project-server.up.railway.app/chatAction?email=${user?.email}`,
       {
         method: "POST",
 

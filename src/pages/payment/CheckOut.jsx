@@ -134,7 +134,7 @@ const CheckOut = ({ books, price }) => {
           if (array) {
             for (let a of array) {
               fetch(
-                "https://book-verse-server-phi.vercel.app/bestSellingAndRecentSelling",
+                "https://book-verse-team-project-server.up.railway.app/bestSellingAndRecentSelling",
                 {
                   method: "POST",
                   headers: {

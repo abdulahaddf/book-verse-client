@@ -36,7 +36,7 @@ const ManageBannerCard = ({ banner, refetch, index }) => {
            
             axios
               .patch(
-                `https://book-verse-server-phi.vercel.app/banner/${_id}`,
+                `https://book-verse-team-project-server.up.railway.app/banner/${_id}`,
                 bannerDetails
               )
               .then((res) => {
@@ -74,7 +74,7 @@ const ManageBannerCard = ({ banner, refetch, index }) => {
       .then((result) => {
         console.log(result)
         if (result.isConfirmed) {
-          axios.delete(`https://book-verse-server-phi.vercel.app/banner/${_id}`)
+          axios.delete(`https://book-verse-team-project-server.up.railway.app/banner/${_id}`)
             .then(res => {
               console.log(res)
               if (res.data.acknowledged) {
