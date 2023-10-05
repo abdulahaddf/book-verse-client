@@ -67,7 +67,7 @@ const Register = () => {
                     photoURL: imageURL,
                     role: "user",
                   };
-                  fetch("https://book-verse-server-phi.vercel.app/users", {
+                  fetch("https://book-verse-team-project-server.up.railway.app/users", {
                     method: "POST",
                     headers: {
                       "content-type": "application/json",
@@ -113,7 +113,7 @@ const Register = () => {
           photoURL: loggedInUser.photoURL,
           role: "user",
         };
-        fetch("https://book-verse-server-phi.vercel.app/users", {
+        fetch("https://book-verse-team-project-server.up.railway.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -152,7 +152,7 @@ const Register = () => {
           photoURL: loggedInUser.photoURL,
           role: "user",
         };
-        fetch("https://book-verse-server-phi.vercel.app/users", {
+        fetch("https://book-verse-team-project-server.up.railway.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

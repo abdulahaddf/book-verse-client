@@ -16,7 +16,7 @@ const AdminSingleChat = () => {
   const [singleUser, setSingleUser] = useState();
 
   useEffect(() => {
-    fetch(`https://book-verse-server-phi.vercel.app/singleUserData/${id}`)
+    fetch(`https://book-verse-team-project-server.up.railway.app/singleUserData/${id}`)
       .then((res) => res.json())
       .then((res) => setSingleUser(res))
       .catch((error) => console.log(error));
@@ -46,7 +46,7 @@ const AdminSingleChat = () => {
     ];
 
     fetch(
-      `https://book-verse-server-phi.vercel.app/postChat?email=${messages?.email}`,
+      `https://book-verse-team-project-server.up.railway.app/postChat?email=${messages?.email}`,
       {
         method: "POST",
 

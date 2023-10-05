@@ -70,7 +70,7 @@ const UserHome = () => {
     };
     axios
       .patch(
-        https://book-verse-server-phi.vercel.app/userinfoupdate/?email=${user?.email},
+        https://book-verse-team-project-server.up.railway.app/userinfoupdate/?email=${user?.email},
         profile
       )
       .then((res) => {
@@ -124,7 +124,7 @@ const UserHome = () => {
             };
             axios
               .patch(
-                https://book-verse-server-phi.vercel.app/userpictureupdate/?email=${user?.email},
+                https://book-verse-team-project-server.up.railway.app/userpictureupdate/?email=${user?.email},
                 profile
               )
               .then((res) => {

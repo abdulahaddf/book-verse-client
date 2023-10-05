@@ -20,7 +20,7 @@ const AddPromo = () => {
     try {
       // Send Promo Codes Data to API
       const apiResponse = await fetch(
-        "https://book-verse-server-phi.vercel.app/promo",
+        "https://book-verse-team-project-server.up.railway.app/promo",
         {
           method: "POST",
           headers: {
@@ -46,7 +46,7 @@ const AddPromo = () => {
   };
 
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/promo")
+    fetch("https://book-verse-team-project-server.up.railway.app/promo")
       .then((response) => response.json())
       .then((data) => setPromos(data));
   }, [promos]);
@@ -61,7 +61,7 @@ const AddPromo = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://book-verse-server-phi.vercel.app/promo/${promo._id}`, {
+        fetch(`https://book-verse-team-project-server.up.railway.app/promo/${promo._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

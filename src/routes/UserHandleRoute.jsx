@@ -15,7 +15,7 @@ const UserHandleRoute = ({ children }) => {
 
   if (location.pathname === "/userChat") {
     fetch(
-      `https://book-verse-server-phi.vercel.app/chatAction?email=${user?.email}`,
+      `https://book-verse-team-project-server.up.railway.app/chatAction?email=${user?.email}`,
       {
         method: "POST",
 

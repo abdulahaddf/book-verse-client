@@ -25,7 +25,7 @@ const RecentSelling = () => {
   const [data,setData]=useState([])
 
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/recentSelling")
+    fetch("https://book-verse-team-project-server.up.railway.app/recentSelling")
       .then((res) => res.json())
       .then((data) => {
         setData(data)

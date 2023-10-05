@@ -4,7 +4,7 @@ import CouponCard from "./CouponCard";
 const CouponSection = () => {
   const [coupon, setCoupon] = useState([]);
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/promo")
+    fetch("https://book-verse-team-project-server.up.railway.app/promo")
       .then((response) => response.json())
       .then((data) => setCoupon(data));
   }, []);

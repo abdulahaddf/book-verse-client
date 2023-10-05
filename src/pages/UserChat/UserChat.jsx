@@ -38,7 +38,7 @@ const UserChat = () => {
     ];
 
     fetch(
-      `https://book-verse-server-phi.vercel.app/postChat?email=${user?.email}`,
+      `https://book-verse-team-project-server.up.railway.app/postChat?email=${user?.email}`,
       {
         method: "POST",
 

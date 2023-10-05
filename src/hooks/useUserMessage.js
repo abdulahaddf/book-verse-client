@@ -6,7 +6,7 @@ export const useUserMessage = (email) => {
 
     queryFn: async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/userData?email=${email}`
+        `https://book-verse-team-project-server.up.railway.app/userData?email=${email}`
       );
 
       return res.json();

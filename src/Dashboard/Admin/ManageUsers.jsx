@@ -13,12 +13,12 @@ const ManageUsers = () => {
 
   //  Tonmoy end
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("https://book-verse-server-phi.vercel.app/users");
+    const res = await fetch("https://book-verse-team-project-server.up.railway.app/users");
     return res.json();
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`https://book-verse-server-phi.vercel.app/users/admin/${user?._id}`, {
+    fetch(`https://book-verse-team-project-server.up.railway.app/users/admin/${user?._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -50,7 +50,7 @@ const ManageUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://book-verse-server-phi.vercel.app/users/${user._id}`, {
+        fetch(`https://book-verse-team-project-server.up.railway.app/users/${user._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

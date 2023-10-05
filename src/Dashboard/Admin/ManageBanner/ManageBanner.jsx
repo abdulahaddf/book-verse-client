@@ -34,7 +34,7 @@ const ManageBanner = () => {
     isLoading,
     refetch,
   } = useQuery(["banners"], async () => {
-    const res = await fetch("https://book-verse-server-phi.vercel.app/banners");
+    const res = await fetch("https://book-verse-team-project-server.up.railway.app/banners");
     return res.json();
   });
 
@@ -48,7 +48,7 @@ const bannerDetails = {
           };
 
 axios.post(
-                "https://book-verse-server-phi.vercel.app/banners", bannerDetails
+                "https://book-verse-team-project-server.up.railway.app/banners", bannerDetails
               )
               .then((res) => {
                 console.log(res.data);

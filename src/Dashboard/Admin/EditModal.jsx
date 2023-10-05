@@ -119,7 +119,7 @@ const EditModal = ({ isOpen, book, onClose }) => {
       };
       // Send Book Data to API
       const apiResponse = await fetch(
-        `https://book-verse-server-phi.vercel.app/allBooks/${_id}`,
+        `https://book-verse-team-project-server.up.railway.app/allBooks/${_id}`,
         {
           method: "PUT",
           headers: {
