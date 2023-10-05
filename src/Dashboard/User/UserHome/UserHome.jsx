@@ -142,10 +142,10 @@ const UserHome = () => {
   }
 
   return (
-    <div className="w-11/12 flex justify-center items-center mx-auto gap-6">
+    <div className="w-11/12 flex flex-col md:flex-row justify-center items-center mx-auto gap-6 mb-16">
        
       <div className={darkMode?"w-11/12 p-10  bg-gray shadow-xl border-[1px] rounded-md":"w-11/12 p-10 rounded shadow-xl border-t-2 border-[#126e9d]"}>
-        <h1 className="uppercase font-bold text-[#126e9d] text-2xl mb-4">
+        <h1 className="uppercase font-bold text-[#126e9d] text-xl md:text-2xl mb-4">
         Manage Your Profile
         </h1>
         <div className="image-container">
@@ -230,23 +230,7 @@ const UserHome = () => {
                 {userinfo.phoneNumber}
               </p>
               </div>
-            {/* <div className="">
-              <p className="border-2 px-2 py-2 lg:h-10 lg:min-w-fit mt-6">
-                {userinfo.displayName}
-              </p>
-              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
-                {userinfo.address}
-              </p>
-              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
-                {userinfo.gender}
-              </p>
-              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
-                {userinfo.birthday}
-              </p>
-              <p className="border-2 px-2 py-2 h-10 lg:min-w-fit mt-[10px]">
-                {userinfo.phoneNumber}
-              </p>
-            </div> */}
+       
           </div>
         </div>
 
@@ -387,13 +371,13 @@ const UserHome = () => {
         </dialog>
       </div>
 
-      <div className={darkMode?"border-[1px] px-5 bg-white/10  rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0":"shadow-lg py-2 px-5 rounded-lg w-11/12 lg:w-1/4 my-10 lg:my-0"}>
+      <div className={darkMode?"border-[1px] px-5 bg-white/10 rounded-lg w-11/12 md::w-1/4 my-10 md::my-0   overflow:hidden md:overflow-auto":"shadow-lg py-2 px-5 rounded-lg w-11/12 md:w-1/4 my-10 md:my-0"}>
           <h1 className="text-xl text-start my-5">Best Selling Books</h1>
 
         <div className="md:h-1/2">
        
 
-          {bestSellingData.slice(0, 3).map((book) => (
+          {bestSellingData.slice(0, 4).map((book) => (
             <BestSellingCard key={book._id} data={book} />
           ))}
         </div>
