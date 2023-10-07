@@ -73,12 +73,12 @@ const SSLPaymentSuccess = () => {
       <div
         className={
           darkMode
-            ? " text-center w-[50%] mx-auto  bg-gray p-[20px] border-[1px] rounded-[30px] "
-            : " text-center w-[50%] mx-auto  bg-gray-800 p-[20px] rounded-[30px] "
+            ? " text-center w-[90%] md:w-[50%] lg:w-[50%] xl:w-[50%] 2xl:w-[50%] mx-auto  bg-gray p-[20px] border-[1px] rounded-[30px] "
+            : " text-center w-[90%] md:w-[50%] lg:w-[50%] xl:w-[50%] mx-auto  bg-slate-800 p-[20px] rounded-[30px] "
         }
         style={{ boxShadow: "10px 10px 10px black" }}
       >
-        <h2 className="text-[35px] font-[500] text-white mt-[20px]">
+        <h2 className="text-[20px]  md:text-[30px] lg:text-[30px] xl:text-[35px] 2xl:text-[35px] font-[500] text-white mt-[20px]">
           {" "}
           Your payment successfully done{" "}
         </h2>
@@ -88,7 +88,7 @@ const SSLPaymentSuccess = () => {
             className={
               darkMode
                 ? "btn-fifth-dark w-[40%] mt-[50px] mb-[20px] hover:no-underline"
-                : "p-[10px] rounded-md  uppercase border-none text-white hover:text-white  bg-gradient-to-r from-cyan-500 to-blue-500  text-center w-[40%] hover:no-underline font-[500] text-[16px]  mt-[50px] mb-[20px]"
+                : "p-[10px] rounded-md  uppercase border-none text-white hover:text-white  bg-gradient-to-r from-cyan-500 to-blue-500  text-center hover:no-underline font-[500]   mt-[50px] mb-[20px]  w-[70%] md:w-[50%] lg:w-[50%] xl:w-[50%] 2xl:w-[50%] text-[12px]  md:text-[12px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px]"
             }
             to="/"
           >
