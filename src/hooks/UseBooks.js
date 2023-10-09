@@ -12,7 +12,7 @@ const UseBooks = () => {
   useEffect(() => {
     setLoading(true);
     setUserNotFound(false);
-    fetch(`https://book-verse-server-phi.vercel.app/allBooks?search=${search}`)
+    fetch(`https://book-verse-team-project-server.up.railway.app/allBooks?search=${search}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");

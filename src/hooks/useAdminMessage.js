@@ -6,7 +6,7 @@ export const useAdminMessage = (id) => {
 
     queryFn: async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/singleUserData/${id}`
+        `https://book-verse-team-project-server.up.railway.app/singleUserData/${id}`
       );
 
       return res.json();

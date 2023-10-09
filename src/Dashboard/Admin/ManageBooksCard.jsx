@@ -42,7 +42,7 @@ const ManageBooksCard = ({ book, books, setBooks }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://book-verse-server-phi.vercel.app/allBooks/${_id}`, {
+        fetch(`https://book-verse-team-project-server.up.railway.app/allBooks/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

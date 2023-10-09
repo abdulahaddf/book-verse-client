@@ -22,9 +22,12 @@ const BestSelling = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://book-verse-server-phi.vercel.app/bestSelling")
-      .then((res) => res.json())
+    fetch("https://book-verse-team-project-server.up.railway.app/bestSelling")
+      .then((res) => {
+        console.log(res,'dhur')
+       return res.json()})
       .then((data) => {
+         
         setData(data);
         dispatch(setBestSelling({ bestSelling: data }));
         setLoading(false);
@@ -35,7 +38,7 @@ const BestSelling = () => {
   return (
     <div className={`${darkMode ? "section bg-gray " : "section"}`}>
       <div className="flex justify-between items-center">
-        <Heading title={"Best Seller"}></Heading>
+        <Heading title={"Best Selling"}></Heading>
         <Link
           to="/allBestSelling"
           className={`${
@@ -78,7 +81,7 @@ const BestSelling = () => {
           className="mySwiper flex w-full z-0"
         >
           {data?.slice(0, 20).map((book, idx) => (
-            <SwiperSlide key={idx}>
+             <SwiperSlide key={idx}  className={darkMode?" bg-gray":""} >
               <ProductCard
                 key={book._id}
                 data={book}

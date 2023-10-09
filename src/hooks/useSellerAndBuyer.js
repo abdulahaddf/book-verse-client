@@ -5,7 +5,7 @@ const UseSellerAndBuyer = (sellerMail, buyerMail) => {
     [sellerMail, buyerMail, "sellerAndBuyerCollections"],
     async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/sellerAndBuyerCollections?seller=${sellerMail}&&buyer=${buyerMail}`
+        `https://book-verse-team-project-server.up.railway.app/sellerAndBuyerCollections?seller=${sellerMail}&&buyer=${buyerMail}`
       );
       return res.json();
     }

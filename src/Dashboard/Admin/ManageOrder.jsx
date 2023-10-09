@@ -24,7 +24,7 @@ const ManageOrder = () => {
       status: value,
     };
     // console.log(data);
-    fetch(`https://book-verse-server-phi.vercel.app/paymentStatus/${id}`, {
+    fetch(`https://book-verse-team-project-server.up.railway.app/paymentStatus/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

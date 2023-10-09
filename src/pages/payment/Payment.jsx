@@ -49,7 +49,8 @@ const Payment = () => {
       date: new Date(),
       customer, //add it to server tonmoy vai----------------------------------------------
     };
-    fetch("https://book-verse-server-phi.vercel.app/order", {
+    fetch("https://book-verse-team-project-server.up.railway.app/order", {
+   
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,7 +79,7 @@ const Payment = () => {
       status: "Cash On Delivery",
       customer,
     };
-    fetch("https://book-verse-server-phi.vercel.app/payments", {
+    fetch("https://book-verse-team-project-server.up.railway.app/payments", {
       method: "POST",
       headers: {
         "content-type": "application/json",

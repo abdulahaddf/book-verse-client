@@ -12,7 +12,7 @@ const MyBooks = () => {
   // console.log(books);
   useEffect(() => {
     fetch(
-      `https://book-verse-server-phi.vercel.app/myBooks?email=${user.email}`
+      `https://book-verse-team-project-server.up.railway.app/myBooks?email=${user.email}`
     )
       .then((response) => response.json())
       .then((data) => setBooks(data));
@@ -28,7 +28,7 @@ const MyBooks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://book-verse-server-phi.vercel.app/delete/${book._id}`, {
+        fetch(`https://book-verse-team-project-server.up.railway.app/delete/${book._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -6,7 +6,7 @@ export const useAllUsersData = () => {
 
     queryFn: async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/allUserData`
+        `https://book-verse-team-project-server.up.railway.app/allUserData`
       );
 
       return res.json();

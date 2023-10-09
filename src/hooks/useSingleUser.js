@@ -5,7 +5,7 @@ const UseSingleUser = (email) => {
     [email, "singleUserDataByEmail"],
     async () => {
       const res = await fetch(
-        `https://book-verse-server-phi.vercel.app/singleUserDataByEmail/${email}`
+        `https://book-verse-team-project-server.up.railway.app/singleUserDataByEmail/${email}`
       );
       return res.json();
     }

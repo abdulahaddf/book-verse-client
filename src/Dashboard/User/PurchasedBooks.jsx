@@ -22,7 +22,7 @@ const PurchasedBooks = () => {
   useEffect(() => {
     axios
       .get(
-        `https://book-verse-server-phi.vercel.app/purchased?email=${user?.email}`
+        `https://book-verse-team-project-server.up.railway.app/purchased?email=${user?.email}`
       )
       .then((data) => setBooks(data.data));
   }, [user]);
@@ -57,7 +57,7 @@ const PurchasedBooks = () => {
       postDate: new Date().toISOString(),
     };
     console.log(review);
-    fetch("https://book-verse-server-phi.vercel.app/add-review", {
+    fetch("https://book-verse-team-project-server.up.railway.app/add-review", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(review),
@@ -67,7 +67,7 @@ const PurchasedBooks = () => {
         if (result.message === "Review added successfully") {
           // tonmoy start
           fetch(
-            "https://book-verse-server-phi.vercel.app/recentCellingAndBestCellingReview",
+            "https://book-verse-team-project-server.up.railway.app/recentCellingAndBestCellingReview",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },

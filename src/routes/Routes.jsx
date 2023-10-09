@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
         element: <BookDetails></BookDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://book-verse-server-phi.vercel.app/singleBook/${params.id}`
+            `https://book-verse-team-project-server.up.railway.app/singleBook/${params.id}`
           ),
       },
       {
@@ -150,7 +150,7 @@ export const router = createBrowserRouter([
         element: <OldBookDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
+            `https://book-verse-team-project-server.up.railway.app/oldBook/${params.id}`
           ),
       },
       {
@@ -241,7 +241,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://book-verse-server-phi.vercel.app/oldBook/${params.id}`
+            `https://book-verse-team-project-server.up.railway.app/oldBook/${params.id}`
           ),
       },
       {

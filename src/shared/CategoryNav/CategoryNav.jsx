@@ -121,7 +121,7 @@ const CategoryNav = () => {
               All Books
             </NavLink>
           </p>
-          <p className="font-semibold  ">
+          <p className="font-semibold my-0 ">
             <NavLink
               className={`${
                 darkMode

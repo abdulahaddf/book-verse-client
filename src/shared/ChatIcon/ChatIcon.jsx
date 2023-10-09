@@ -15,7 +15,7 @@ const ChatIcon = () => {
 
   useEffect(() => {
     fetch(
-      `https://book-verse-server-phi.vercel.app/singleUserDataByEmail/${user?.email}`
+      `https://book-verse-team-project-server.up.railway.app/singleUserDataByEmail/${user?.email}`
     )
       .then((res) => res.json())
       .then((res) => setUserData(res))

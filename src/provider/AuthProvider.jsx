@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("https://book-verse-server-phi.vercel.app/jwt", {
+          .post("https://book-verse-team-project-server.up.railway.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {

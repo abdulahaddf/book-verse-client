@@ -88,7 +88,7 @@ const Login = () => {
           photoURL: loggedInUser.photoURL,
           role: "user",
         };
-        fetch("https://book-verse-server-phi.vercel.app/users", {
+        fetch("https://book-verse-team-project-server.up.railway.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -122,7 +122,7 @@ const Login = () => {
           photoURL: loggedInUser.photoURL,
           role: "user",
         };
-        fetch("https://book-verse-server-phi.vercel.app/users", {
+        fetch("https://book-verse-team-project-server.up.railway.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
